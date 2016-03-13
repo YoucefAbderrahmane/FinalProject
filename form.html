@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<body>
+
+<form>
+
+	<fieldset>
+		<legend>Information sur la cible</legend>
+		
+		Source à observer<br>
+		<input type="text" name="object" required></input><br>
+		
+		Ascention droite<br>
+		<input type="text" name="AD" required=""></input><br>
+		
+		Déclinaison<br>
+		<input type="text" name="Dec" required=""></input><br>
+	</fieldset>
+
+	<br>
+
+	<fieldset>
+		<legend>Information sur l'observation</legend>
+		
+		Date de l'observation<br>
+		<input type="time" name="obs_time"></input>
+		<br>Type de l'observation<br>
+		<select name="obs_type">
+			<option name="none"></option>
+			<option name="periodic">Périodique</option>
+			<option name="repeated">Répétée</option>
+		</select><br>
+		Période<br>
+		<input type="text"></input><br>
+		Nombre de répétitions<br>
+		<input type="number" min="1"></input>
+	</fieldset>
+
+	<br>
+
+	<fieldset>
+		<legend>Caractéristiques techniques</legend>
+
+		Temps d'exposition<br>
+		<input type="text" name="tmp_exp"></input><br>
+		
+		<br>Filtres<br>
+		<select name="filters">
+		<option value="none" selected="true">Aucun</option>
+		<option value="filtre1">filtre 1</option>
+		<option value="filtre2">filtre 2</option>
+		<option value="filtre3">filtre 3</option>
+		<option value="filtre4">filtre 4</option>
+		</select><br>
+	</fieldset>
+
+
+	<fieldset>
+		<legend>Autres caractéristiques</legend>
+
+		Hauteur minimal<br>
+		<input type="text"></input><br>
+		Distance minimale à la Lune<br>
+		<input type="text"></input><br>
+		Phase lunaire miximale<br>
+		<select name="moon_phases">
+			<option value="none">Aucune</option>
+			<option value="new_moon">nouvelle Lune</option>
+			<option value="qrt_moon">Quart de Lune</option>
+			<option value="full_moon">Pleine Lune</option>
+		</select>
+	</fieldset>
+
+
+	<br><input type="submit" value="Enregistrer la requête"></input>
+
+</form>
+
+</body>
+</html>
