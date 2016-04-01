@@ -120,16 +120,31 @@ module.exports = function(passport) {
                 return done(null, false, req.flash('loginMessage', 'Utilisateur introuvable.')); // req.flash is the way to set flashdata using connect-flash
 
 
-            if( user.validPassword(password) == false ){
+            user.validPassword(password, function(err, res){
 
-                return done(null, false, req.flash('loginMessage', 'Mot de passe incorrect.')); 
-                // create the loginMessage and save it to session as flashdata
-            }
-            else{
+                if(err) throw err;
+                console.log("result = " + res);
+                if(!res){
 
-                // all is well, return successful user
-                return done(null, user);
-            }
+                    return done(null, false, req.flash('loginMessage', 'Mot de passe incorrect.'));                    
+                }
+                else{
+
+                    return done(null, user); 
+                }
+            });
+
+            // console.log("passport module " + user.validPassword(password));
+            // if( user.validPassword(password) === false ){
+
+            //     return done(null, false, req.flash('loginMessage', 'Mot de passe incorrect.')); 
+            //     // create the loginMessage and save it to session as flashdata
+            // }
+            // else{
+
+            //     // all is well, return successful user
+            //     return done(null, user);
+            // }
             
 
         })

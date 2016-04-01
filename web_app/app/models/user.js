@@ -33,13 +33,20 @@ var User = sequelize.define('observer', {
 	},
 	instanceMethods: {
       	
-      	validPassword : function(password){
+      	validPassword : function(password, callBack){
 
-			bcrypt.compare(password, this.password, function(err, res){
+      		console.log("password length " + password.length);
 
-				if(err) throw err;
-				return res;
-			});
+      		var result;
+
+      		bcrypt.compare(password, this.password, callBack);
+
+			// bcrypt.compare(password, this.password, function(err, res){
+
+			// 	if(err) throw err;
+			// 	console.log("result from validPassword " + res);
+			// 	return res;
+			// });
 		}
     }
 });

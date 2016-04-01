@@ -21,14 +21,14 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-6">
             <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
+                <h3><span class="fa fa-user"></span> Utilisateur</h3>
                     <p>
-                        
                         <strong>email</strong>: <%= user.email %><br>
-                        <strong>mot de passe (hash)</strong>: <%= user.password %>
                     </p>
-
+            </div>
+            <div>
+                <button href="/proj_request" class="btn btn-warning btn-lg">Soumettre un projet</button>
+                <button href="/obs_request" class="btn btn-warning btn-lg">Soumettre une requête</button>
             </div>
         </div>
 
