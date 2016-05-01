@@ -48,53 +48,46 @@ module.exports = function(passport) {
         // User.findOne wont fire unless data is sent back
         process.nextTick(function() {
 
-        // find a user whose email is the same as the forms email
-        // we are checking to see if the user trying to login already exists
-        User.findOne({ where: { 'email' :  email }}).then(function(user) {
+            // find a user whose email is the same as the forms email
+            // we are checking to see if the user trying to login already exists
+            User.findOne({ where: { 'email' :  email }}).then(function(user) {
 
-            // check to see if theres already a user with that email
-            if(user){
-                return done(null, false, req.flash('signupMessage', 'Email pris.'));
-            }else{
+                // check to see if theres already a user with that email
+                if(user){
+                    return done(null, false, req.flash('signupMessage', 'Email pris.'));
+                }else{
 
-                if(password == req.body.conf_password){
+                    if(password == req.body.conf_password){
 
-                    User.generateHash(password, function(err, hash) {
-                    
-                        // if there is no user with that email
-                        // create the user
-                        var newUser = User.build({
+                        User.generateHash(password, function(err, hash) {
+                        
+                            // if there is no user with that email
+                            // create the user
+                            var newUser = User.build({
 
-                            email: email,
-                            password: hash
-                        })
-                        .save()
-                        .then(function(newUser) {
-                            
-                            return done(null, newUser);
-                        })
-                        .catch(function(err){
+                                email: email,
+                                password: hash
+                            })
+                            .save()
+                            .then(function(newUser) {
+                                
+                                return done(null, newUser);
+                            })
+                            .catch(function(err){
 
-                            return done(err, false);
+                                return done(err, false);
+                            });
                         });
-                    });
+                    }
+                    else{
 
-                    
-                       
+                        return done(null, false, req.flash('signupMessage', 'Mots de passe non identique'));
+                    }
                 }
-                else{
-
-                    return done(null, false, req.flash('signupMessage', 'Mots de passe non identique'));
-                }
-               
-            }
-
-        }).catch(function(err){
-            return done(err, false);
-        });    
-
+            }).catch(function(err){
+                return done(err, false);
+            });    
         });
-
     }));
 
     // =========================================================================
@@ -123,7 +116,6 @@ module.exports = function(passport) {
             user.validPassword(password, function(err, res){
 
                 if(err) throw err;
-                console.log("result = " + res);
                 if(!res){
 
                     return done(null, false, req.flash('loginMessage', 'Mot de passe incorrect.'));                    
@@ -133,27 +125,11 @@ module.exports = function(passport) {
                     return done(null, user); 
                 }
             });
-
-            // console.log("passport module " + user.validPassword(password));
-            // if( user.validPassword(password) === false ){
-
-            //     return done(null, false, req.flash('loginMessage', 'Mot de passe incorrect.')); 
-            //     // create the loginMessage and save it to session as flashdata
-            // }
-            // else{
-
-            //     // all is well, return successful user
-            //     return done(null, user);
-            // }
-            
-
         })
         .catch(function(err){
 
             return done(err, false);
         });
-
     }));
-
 };
 

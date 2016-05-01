@@ -18,17 +18,22 @@
 
     <div class="row">
 
+        <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-6">
             <div class="well">
                 <h3><span class="fa fa-user"></span> Utilisateur</h3>
                     <p>
-                        <strong>email</strong>: <%= user.email %><br>
+                        <strong>Email</strong>: <%= user.email %><br>
                     </p>
             </div>
             <div>
-                <button href="/proj_request" class="btn btn-warning btn-lg">Soumettre un projet</button>
-                <button href="/obs_request" class="btn btn-warning btn-lg">Soumettre une requête</button>
+                <a href="/proj_request" class="btn btn-default"><span class="fa fa-user"></span> Soumettre un projet</a>
+                <a href="/obs_request" class="btn btn-default"><span class="fa fa-user"></span> Soumettre une requête</a>
             </div>
         </div>
 

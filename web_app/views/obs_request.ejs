@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Requête d'observation</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body        { padding-top: 80px; padding-bottom: 80px; }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+	<h1><span class="fa fa-sign-in"></span> Requête d'observation</h1>
+	
+	<form action="/obs_request" method="post" enctype="multipart/form-data">
+
+		<div>
+			<fieldset>
+				<legend>Information sur la requête</legend>
+				
+				<div class="form-group">
+					<label>Nom de la requête</label>
+					<input type="text" name="request_name" class="form-control" required></input>
+				</div>
+
+				<div class="form-group">
+					<label>Source à observer</label>
+					<input type="text" id="obj" name="object" class="form-control" required></input>
+					<p id="demo"></p>
+				</div>
+				
+				<div class="form-group">
+					<label>Ascention droite</label>
+					<div class="form_control">
+						<input type="number" id="ad_h" name="AD_h" max="24" min="0" required></input>
+						<input type="number" id="ad_min" name="AD_min" max="60" min="0" required></input>
+						<input type="number" id="ad_sec" name="AD_sec" max="60" min="0" step="any" required></input>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label>Déclinaison</label>
+						<div class="form_control">
+							<input type="number" name="Dec_deg" id="dec_deg" max="90" min="-90" required></input>
+							<input type="number" name="Dec_min" id="dec_min" max="60" min="0" required></input>
+							<input type="number" name="Dec_sec" id="dec_sec" max="60" min="0" step="any" required></input>
+						</div>
+				</div>
+			</fieldset>	
+		</div>
+		
+
+		<div>
+			<fieldset>
+				<legend>Information sur l'observation</legend>
+				
+				<!-- <div class="form-group">
+					<label>Temps d'exposition (en sec)</label>
+					<input type="number" name="obs_exp_time" required="true" class="form-control"></input>
+				</div> -->
+
+				<div class="form-group">
+					<label>Date début de l'observation (j:m:a:h:min:sec)</label>
+					<input type="time" name="obs_time_start" class="form-control"></input>
+				</div>
+
+				<div class="form-group">
+					<label>Date fin de l'observation (j:m:a:h:min:sec)</label>
+					<input type="time" name="obs_time_end" class="form-control"></input>
+				</div>
+				
+				<div class="form-group">
+					<label>Type de l'observation</label>
+					<select name="obs_type" id="obs_type_id" class="form-control">
+						<option name="none"></option>
+						<option name="periodic">Périodique</option>
+						<option name="repeated">Répétée</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label>Période</label>
+					<input type="text" name="period" id="per" class="form-control" ></input>
+				</div>
+
+				<div class="form-group">
+					<label>Nombre de prises</label>
+					<input type="number" name="nb_shot" id="reps" min="1" value="1" class="form-control" ></input>
+				</div>
+				
+			</fieldset>
+		</div>
+		
+		<div>
+			<fieldset>
+				<legend>Caractéristiques techniques</legend>
+
+				<table>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label>Filtres</label>
+							</div>
+						</td>
+						<td>
+							
+						</td>
+						<td>
+							<div class="form-group">
+								<label>Temps d'exposition</label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Sans
+						</td>
+						<td>
+							<input type="checkbox" name="sans_f" class="form-control"></input>
+						</td>
+						<td>
+							<input type="number" name="obs_exp_time" required="true" class="form-control"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Filtre A
+						</td>
+						<td>
+							<input type="checkbox" name="filterA" class="form-control"></input>
+						</td>
+						<td>
+							<input type="text" name="tmp_exp_filterA" class="form-control"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Filtre B
+						</td>
+						<td>
+							<input type="checkbox" name="filterB" class="form-control"></input>
+						</td>
+						<td>
+							<input type="text" name="tmp_exp_filterB" class="form-control"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Filtre C
+						</td>
+						<td>
+							<input type="checkbox" name="filterC" class="form-control"></input>
+						</td>
+						<td>
+							<input type="text" name="tmp_exp_filterC" class="form-control"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Filtre D
+						</td>
+						<td>
+							<input type="checkbox" name="filterD" class="form-control"></input>
+						</td>
+						<td>
+							<input type="text" name="tmp_exp_filterD" class="form-control"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Filtre E
+						</td>
+						<td>
+							<input type="checkbox" name="filterE" class="form-control"></input>
+						</td>
+						<td>
+							<input type="text" name="tmp_exp_filterE" class="form-control"></input>
+						</td>
+					</tr>
+				</table>	
+			</fieldset>
+		</div>
+
+		<div>
+			<fieldset>
+				<legend>Autres caractéristiques</legend>
+
+				<div class="form-group">
+					<label>Hauteur minimal</label>
+					<input type="text" name="min_moon_height" class="form-control"></input>
+				</div>
+
+				<div class="form-group">
+					<label>Distance minimale à la Lune</label>
+					<input type="text" name="min_moon_dist" class="form-control"></input>
+				</div>
+				
+			</fieldset>
+		</div>
+
+		<div>
+			<input type="submit" value="Enregistrer la requête" class="btn btn-warning btn-lg"></input>
+		</div>
+
+	</form>
+
+</div>
+
+</div>
+
+<script type="text/javascript" src="/javascripts/script.js"></script>
+
+</body>
+</html>

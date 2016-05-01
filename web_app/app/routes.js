@@ -1,5 +1,11 @@
 // app/routes.js
-module.exports = function(app, passport) {
+
+var util = require('util');
+var async = require('async');
+
+var db_query = require('../config/db_queries.js');
+
+module.exports = function(app, passport, formidable, pg) {
 
     // =====================================
     // HOME PAGE (with login links) ========
@@ -51,11 +57,68 @@ module.exports = function(app, passport) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function(req, res) {
-        console.log(req.user.email);
+
         res.render('profile.ejs', {
-            user : req.user // get the user out of session and pass to template
+            user : req.user, message: req.flash('profileMessage') // get the user out of session and pass to template
         });
     });
+
+    //Geting the observation request form 
+    app.get('/obs_request', isLoggedIn, isValid, function(req, res){
+
+        res.render('obs_request.ejs', {user : req.user});
+    });
+
+    //Observation request form post
+    app.post('/obs_request', isLoggedIn, isValid, function(req, res){
+
+        var form = formidable.IncomingForm();
+
+        // var fields
+
+        // form.on('field', function(field, value){
+
+        //     console.log(field);
+        //     console.log(value);
+        // });
+
+        // form.on('end', function(){
+
+        // });        
+
+        form.parse(req, function (err, fields, files){
+
+            console.log('parsing');
+
+            fields.user_id = req.user.user_id;
+
+            async.waterfall( [async.apply(db_query.insert_request, fields),
+                db_query.insert_observer_request,
+                db_query.insert_obs_seqs,
+                db_query.select_filter,
+                db_query.insert_filter_observation], 
+
+            function(err, result){
+
+                if(err) return err;
+
+                //console.log('result = ' ,result);
+
+                req.flash('profileMessage', 'Requête enregistrée');
+                res.redirect('/profile');
+            });
+        });
+    });
+
+
+
+    app.get("/test",function(req, res){
+
+        console.log("reception");
+        console.log(req.cible);
+    });
+
+
 
     // =====================================
     // LOGOUT ==============================
@@ -64,7 +127,47 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/');
     });
+
+
+
+    // =====================================
+    // ERROR HANDLING ======================
+    // =====================================
+    
+    app.get('/404', function(req, res, next){
+      // trigger a 404 since no other middleware
+      // will match /404 after this one, and we're not
+      // responding here
+      next();
+    });
+
+    
+    app.use(function(req, res, next){
+        res.status(404);
+
+        // respond with json
+        if (req.accepts('json')) {
+            
+            res.send({ error: 'Not found' });
+            return;
+        }
+
+        // default to plain-text. send()
+        res.type('txt').send('Not found');
+    });
+
 };
+
+
+
+    // =====================================
+    // FUNCTIONS ===========================
+    // =====================================
+
+function process_obs_req(req, res){
+
+    
+}
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
@@ -75,4 +178,12 @@ function isLoggedIn(req, res, next) {
 
     // if they aren't redirect them to the home page
     res.redirect('/');
+}
+
+
+function isValid(req, res, next){
+
+    if( req.user.valid ) return next();
+
+    res.redirect('/profile');
 }

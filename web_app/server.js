@@ -5,12 +5,14 @@ var app      = express();
 var port     = process.env.PORT || 8080;
 var passport = require('passport');
 var flash    = require('connect-flash');
+var path = require('path');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
-
+var formidable = require('formidable');
+var pg = require('pg');
 
 
 require('./config/passport')(passport); // pass passport for configuration
@@ -23,6 +25,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 // required for passport
 app.use(session({ secret: 'ilovescotchscotchyscotchscotch',resave: true, saveUninitialized: true })); // session secret
 app.use(passport.initialize());
@@ -30,7 +35,8 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./app/routes.js')(app, passport, formidable, pg); // load our routes and pass in our app and fully configured passport
+
 
 // launch ======================================================================
 app.listen(port);
