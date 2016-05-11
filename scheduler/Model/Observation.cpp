@@ -12,16 +12,34 @@
 
 #include "../libnova/libnova/solar.h"
 #include "../libnova/libnova/julian_day.h"
+#include "../libnova/libnova/transform.h"
+#include "config.h"
 
-Observation::Observation(int obs_id, Target target, int exposure_time) {
+Observation::Observation(Request request, int obs_id, Target target, int exposure_time) {
 
+	this->request = request;
 	this->obs_id = obs_id;
+
 	this->target = target;
+//	this->target.setEqDec(target.getEqDec());
+//	this->target.setEqRAsc(target.getEqRAsc());
+
 	this->exposure_time = exposure_time;
+	this->moon_min_separation = MOON_DISK;
 }
 
 Observation::~Observation() {
 	// TODO Auto-generated destructor stub
+}
+
+
+
+const Request& Observation::getRequest() const {
+	return request;
+}
+
+void Observation::setRequest(const Request& request) {
+	this->request = request;
 }
 
 int Observation::getExposureTime() const {
@@ -45,7 +63,7 @@ double Observation::getMoonMinSeparation() const {
 }
 
 void Observation::setMoonMinSeparation(double moonMinSeparation) {
-	moon_min_separation = moonMinSeparation;
+	if( moonMinSeparation > MOON_DISK ) moon_min_separation = moonMinSeparation;
 }
 
 int Observation::getObsId() const {
@@ -80,33 +98,56 @@ void Observation::setSchedTime(const struct time_interval& schedTime) {
 	sched_time = schedTime;
 }
 
-const std::vector<struct time_interval>& Observation::getVisibility() const {
-	return visibility;
+int Observation::getTelescope() const {
+	return telescope;
 }
 
-void Observation::setVisibility(
-		const std::vector<struct time_interval>& visibility) {
-	this->visibility = visibility;
+void Observation::setTelescope(int telescope) {
+	this->telescope = telescope;
+}
+
+int Observation::getTaken() const {
+	return taken;
+}
+
+void Observation::setTaken(int taken) {
+	this->taken = taken;
 }
 
 //*************
 
-
 int Observation::calculateVisibility(double JD,
 		struct ln_lnlat_posn* observer, std::vector<struct time_interval> * visibility) {
+
+	return calculateVisibilityHorizon(JD, observer, OBSERVATORY_HORIZON, visibility);
+}
+
+int Observation::calculateVisibilityHorizon(double JD,
+		struct ln_lnlat_posn* observer, double horizon, std::vector<struct time_interval> * visibility) {
 
 	struct time_interval night;
 	struct time_interval vis;
 	struct time_interval unvis;
 
+	int circumpolar;
+
 	/** GET night horizon **/
 
 	//calculate rise and set of the target
-	target.get_rise_set_transit(JD, observer);
+
+	circumpolar = target.get_rise_set_transit(JD, horizon, observer);
+
 	double rise = target.getRiseSetTransit().rise;
 	double set = target.getRiseSetTransit().set;
 
 	/** END **/
+
+	if( circumpolar == -1){
+
+		return FAILURE;
+	}
+
+
 
 	struct ln_rst_time * solar_rst = (struct ln_rst_time *) malloc(sizeof(struct ln_rst_time));;
 
@@ -127,19 +168,29 @@ int Observation::calculateVisibility(double JD,
 	}
 
 
+	//if it is always above horizon...
+	if( circumpolar == 1){
+
+		vis.start = night.start;
+		vis.end = night.end;
+		(*visibility).push_back(vis);
+		return SUCCESS;
+	}
+
+
 	if( rise < set ){
 
 		if( set < night.start || rise > night.end ){
 
 			(*visibility).push_back(time_interval());
-			return -1;
+			return FAILURE;
 		}
 
 		vis.start = std::max(rise, night.start);
 		vis.end = std::min(set, night.end);
 
 		(*visibility).push_back(vis);
-		return 0;
+		return SUCCESS;
 	}
 	else{
 
@@ -148,13 +199,13 @@ int Observation::calculateVisibility(double JD,
 			vis.start = night.start;
 			vis.end = night.end;
 			(*visibility).push_back(vis);
-			return 0;
+			return SUCCESS;
 		}
 
 		if( set < night.start && rise > night.end ){
 
 			(*visibility).push_back(vis);
-			return -1;
+			return FAILURE;
 		}
 
 		unvis.start = std::max(set, night.start);
@@ -174,6 +225,61 @@ int Observation::calculateVisibility(double JD,
 			(*visibility).push_back(vis);
 		}
 
-		return 0;
+		return SUCCESS;
 	}
+}
+
+int Observation::isAboveMinHeight(double JD) {
+
+	//get height of object
+
+	struct ln_equ_posn eq_coord;
+	struct ln_hrz_posn horiz_coord;
+	struct ln_lnlat_posn position;
+
+	eq_coord.dec = target.getEqDec();
+	eq_coord.ra = target.getEqRAsc();
+
+	position.lat = LATITUDE;
+	position.lng = LONGITUDE;
+
+	ln_get_hrz_from_equ(&eq_coord, &position, JD, &horiz_coord);
+
+	if( horiz_coord.alt >= getMinHeight() ) return SUCCESS;
+	else return FAILURE;
+}
+
+double Observation::getDuration() {
+
+	time_interval interval = getSchedTime();
+	return interval.end - interval.start;
+}
+
+int Observation::isAwayFromMoon(double JD){
+
+	double dist = target.getMoonAngularDistance(JD);
+
+	if( dist > getMoonMinSeparation() ) return SUCCESS; //good
+	else return FAILURE; //bad
+}
+
+int Observation::isInReqTime() {
+
+	time_interval scheduled = getSchedTime();
+	time_interval requested = getReqTime();
+
+	if( scheduled.start >= requested.start*(1 - TIME_MARGIN)
+			&& scheduled.end <= requested.end*(1 + TIME_MARGIN) )
+
+		return SUCCESS; //good
+	else return FAILURE; //bad
+}
+
+int Observation::isOptimalHeight(double JD) {
+
+	double transit = getTarget().getRiseSetTransit().transit;
+	time_interval scheduled = getSchedTime();
+
+	if( transit >= scheduled.start && transit <= scheduled.end ) return SUCCESS;
+	else return FAILURE;
 }

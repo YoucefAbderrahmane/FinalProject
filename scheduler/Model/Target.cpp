@@ -10,6 +10,8 @@
 #include <stdlib.h>
 
 #include "../libnova/libnova/rise_set.h"
+#include "../libnova/libnova/angular_separation.h"
+#include "../libnova/libnova/lunar.h"
 
 
 Target::Target() {
@@ -56,10 +58,18 @@ void Target::setRiseSetTransit(const struct ln_rst_time& riseSetTransit) {
 	rise_set_transit = riseSetTransit;
 }
 
+double Target::getMoonAngDist() {
+	return moon_ang_dist;
+}
+
+void Target::setMoonAngDist(double moonAngDist) {
+	moon_ang_dist = moonAngDist;
+}
+
 
 
 int Target::get_rise_set_transit(double julian_day,
-			struct ln_lnlat_posn * observer){
+			double horizon, struct ln_lnlat_posn * observer){
 
 	struct ln_equ_posn * object = (struct ln_equ_posn *) malloc(sizeof(struct ln_equ_posn));
 
@@ -68,11 +78,27 @@ int Target::get_rise_set_transit(double julian_day,
 
 	struct ln_rst_time * rst = (struct ln_rst_time *) malloc(sizeof(struct ln_rst_time));
 
-	int res = ln_get_object_next_rst(julian_day, observer, object, rst);
+	int res = ln_get_object_next_rst_horizon(julian_day, observer, object, horizon, rst);
 
 	setRiseSetTransit(*rst);
 
 	return res;
-
 }
 
+
+double Target::getMoonAngularDistance(double JD) {
+
+	struct ln_equ_posn position;
+
+	struct ln_equ_posn * object = (struct ln_equ_posn *) malloc(sizeof(struct ln_equ_posn));
+	object->dec = this->getEqDec();
+	object->ra = this->getEqRAsc();
+
+	ln_get_lunar_equ_coords (JD, &position);
+
+	double dist = ln_get_angular_separation(&position, object);
+
+	setMoonAngDist(dist);
+
+	return getMoonAngDist();
+}

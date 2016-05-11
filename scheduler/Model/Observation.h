@@ -11,19 +11,17 @@
 #include <iostream>
 #include <vector>
 #include "Target.h"
+#include "config.h"
 
-struct time_interval{
-	//in Julian Day
-	double start;
-	double end;
-};
 
 class Observation {
 public:
 	Observation();
-	Observation(int obs_id, Target target, int exposure_time);
+	Observation(Request request, int obs_id, Target target, int exposure_time);
 	virtual ~Observation();
 
+	const Request& getRequest() const;
+	void setRequest(const Request& request);
 	int getExposureTime() const;
 	void setExposureTime(int exposureTime);
 	double getMinHeight() const;
@@ -38,15 +36,25 @@ public:
 	void setReqTime(const struct time_interval& reqTime);
 	const struct time_interval& getSchedTime() const;
 	void setSchedTime(const struct time_interval& schedTime);
-	const std::vector<struct time_interval>& getVisibility() const;
-	void setVisibility(const std::vector<struct time_interval>& visibility);
+	int getTelescope() const;
+	void setTelescope(int telescope);
+	int getTaken() const;
+	void setTaken(int taken);
 
 	//calculate possible observation time using target and Sun rise and set
 	int calculateVisibility(double JD, struct ln_lnlat_posn * observer,
 			std::vector<struct time_interval> * visibility);
+	int calculateVisibilityHorizon(double JD,
+			struct ln_lnlat_posn* observer, double horizon, std::vector<struct time_interval> * visibility);
+	double getDuration();
 
+	int isAboveMinHeight(double JD);
+	int isAwayFromMoon(double JD);
+	int isInReqTime();
+	int isOptimalHeight(double JD);
 
 private:
+	Request request;
 	int obs_id;
 	Target target;
 	int exposure_time;
@@ -54,7 +62,8 @@ private:
 	struct time_interval sched_time;
 	double min_height;
 	double moon_min_separation;
-	std::vector<struct time_interval> visibility;
+	int telescope; //telescope used for this observation if taken = 0
+	int taken; // 1 if it is scheduled, 0 else
 };
 
 #endif /* OBSERVATION_H_ */
