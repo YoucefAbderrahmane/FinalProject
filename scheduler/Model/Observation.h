@@ -10,18 +10,22 @@
 
 #include <iostream>
 #include <vector>
+
 #include "Target.h"
+#include "Request.h"
 #include "config.h"
+
+class Request;
+class Target;
 
 
 class Observation {
 public:
 	Observation();
-	Observation(Request request, int obs_id, Target target, int exposure_time);
+	Observation(Request * request, int obs_id, Target target, int exposure_time);
 	virtual ~Observation();
 
-	const Request& getRequest() const;
-	void setRequest(const Request& request);
+
 	int getExposureTime() const;
 	void setExposureTime(int exposureTime);
 	double getMinHeight() const;
@@ -52,9 +56,11 @@ public:
 	int isAwayFromMoon(double JD);
 	int isInReqTime();
 	int isOptimalHeight(double JD);
+	const Request*& getRequest() const;
+	void setRequest(const Request*& request);
 
 private:
-	Request request;
+	Request * request;
 	int obs_id;
 	Target target;
 	int exposure_time;

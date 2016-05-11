@@ -10,9 +10,12 @@
 
 #include <vector>
 
-#include "Observation.h"
 #include "Request.h"
+#include "Observation.h"
 #include "config.h"
+
+class Request;
+class Observation;
 
 using namespace std;
 

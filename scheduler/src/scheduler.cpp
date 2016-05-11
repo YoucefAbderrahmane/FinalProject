@@ -14,6 +14,7 @@
 #include "../libnova/libnova/rise_set.h"
 #include "../Model/Observation.h"
 #include "../Model/Schedule.h"
+#include "../Model/Request.h"
 
 
 using namespace std;
@@ -28,9 +29,11 @@ int main() {
 
 	Target * Aldebaran = new Target(68.98041667, 16.50841667);
 
-	Schedule sched();
+	Schedule * test = new Schedule();
 
+	//Request * request = new Request(1);
 
+	//test.observationRequestGenerator(&request);
 
 	return 0;
 }

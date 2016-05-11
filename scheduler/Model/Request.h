@@ -5,10 +5,18 @@
  *      Author: dell
  */
 
+
 #ifndef REQUEST_H_
 #define REQUEST_H_
 
 #include <vector>
+
+#include "Observation.h"
+#include "Target.h"
+#include "config.h"
+
+class Target;
+class Observation;
 
 using namespace std;
 
@@ -16,7 +24,7 @@ class Request {
 public:
 	Request();
 	Request(int);
-	Request(int, vector<Observation>, int);
+	Request(int req_id, vector<Observation> observations, int length);
 	virtual ~Request();
 
 	int getLength() const;

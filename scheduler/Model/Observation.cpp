@@ -15,7 +15,7 @@
 #include "../libnova/libnova/transform.h"
 #include "config.h"
 
-Observation::Observation(Request request, int obs_id, Target target, int exposure_time) {
+Observation::Observation(Request * request, int obs_id, Target target, int exposure_time) {
 
 	this->request = request;
 	this->obs_id = obs_id;
@@ -34,13 +34,7 @@ Observation::~Observation() {
 
 
 
-const Request& Observation::getRequest() const {
-	return request;
-}
 
-void Observation::setRequest(const Request& request) {
-	this->request = request;
-}
 
 int Observation::getExposureTime() const {
 	return exposure_time;
@@ -282,4 +276,12 @@ int Observation::isOptimalHeight(double JD) {
 
 	if( transit >= scheduled.start && transit <= scheduled.end ) return SUCCESS;
 	else return FAILURE;
+}
+
+const Request*& Observation::getRequest() const {
+	return request;
+}
+
+void Observation::setRequest(const Request*& request) {
+	this->request = request;
 }

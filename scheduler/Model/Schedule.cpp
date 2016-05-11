@@ -192,7 +192,7 @@ int Schedule::observationRequestGenerator(Request * request){
 
 		ln_date t;
 		t.seconds = exposure;
-		julian_exp = ln_get_julian_day(&t)
+		julian_exp = ln_get_julian_day(&t);
 		//end of observation time
 		requested.end = requested.start + julian_exp; //start + exposure in JD
 
