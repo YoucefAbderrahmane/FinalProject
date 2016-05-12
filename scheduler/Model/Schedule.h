@@ -27,8 +27,7 @@ public:
 	Schedule(vector<Observation>, int, int);
 	virtual ~Schedule();
 
-	const vector<t_observations>& getObservations() const;
-	void setObservations(const vector<t_observations>& observations);
+
 	double getTotalDuration() const;
 	void setTotalDuration(double totalDuration);
 	const time_interval& getNightHorizon() const;
@@ -48,6 +47,8 @@ public:
 	int singularRequestGenerator(Request * request);
 	int singularObservationGenerator(Observation * observation);
 	int randomObservationListGenerator(int length);
+	const vector<Observation>& getObservations() const;
+	void setObservations(const vector<Observation>& observations);
 
 private:
 	vector<Observation> observations; //all observable requests for the night of the schedule

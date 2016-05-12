@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include <time.h>
+#include <iterator>
 
 #include "config.h"
 #include "Schedule.h"
@@ -38,13 +39,15 @@ Schedule::~Schedule() {
 	// TODO Auto-generated destructor stub
 }
 
-const vector<t_observations>& Schedule::getObservations() const {
+
+const vector<Observation>& Schedule::getObservations() const {
 	return observations;
 }
 
-void Schedule::setObservations(const vector<t_observations>& observations) {
+void Schedule::setObservations(const vector<Observation>& observations) {
 	this->observations = observations;
 }
+
 
 double Schedule::getTotalDuration() const {
 	return total_duration;
@@ -88,8 +91,6 @@ void Schedule::setTelesLength(int telesLength) {
 
 
 double Schedule::calculateTelescopeDuration(int telescope){
-
-	t_observations teles = observations.at(telescope);
 
 	double teles_duration = 0;
 
@@ -169,7 +170,7 @@ int Schedule::observationRequestGenerator(Request * request){
 
 
 	//Observation parameters
-	time_interval requested = new time_interval();
+	time_interval * requested = new time_interval();
 	double min_height = 0;
 	double min_moon_dist = MOON_DISK;
 
@@ -183,7 +184,7 @@ int Schedule::observationRequestGenerator(Request * request){
 		//randomly generating start time
 		double range = night_horizon.end - night_horizon.start;
 		div = RAND_MAX / range;
-		requested.start = night_horizon.start + rand() / div;
+		requested->start = night_horizon.start + rand() / div;
 
 		//randomly generating exposure time
 		int exp_range = MAX_EXPOSURE - MIN_EXPOSURE;
@@ -194,9 +195,9 @@ int Schedule::observationRequestGenerator(Request * request){
 		t.seconds = exposure;
 		julian_exp = ln_get_julian_day(&t);
 		//end of observation time
-		requested.end = requested.start + julian_exp; //start + exposure in JD
+		requested->end = requested->start + julian_exp; //start + exposure in JD
 
-		if( requested.end > night_horizon.end ) return FAILURE;
+		if( requested->end > night_horizon.end ) return FAILURE;
 	}
 
 	//min height constraint
@@ -217,19 +218,19 @@ int Schedule::observationRequestGenerator(Request * request){
 		min_moon_dist = rand() / div;
 	}
 
-	double first_end = requested.start;
+	double first_end = requested->start;
 
-	for(int i = 1; i <= request->length; i++){
+	for(int i = 1; i <= request->getLength(); i++){
 
-		Observation obs = new Observation(request, i, target, exposure);
+		Observation * obs = new Observation(request, i, target, exposure);
 
-		obs.setMinHeight(min_height);
-		obs.setMoonMinSeparation(min_moon_dist);
+		obs->setMinHeight(min_height);
+		obs->setMoonMinSeparation(min_moon_dist);
 
-		requested.start = first_end + (i-1)*(request->getPeriod());
-		requested.end = requested.start + julian_exp;
-		obs.setReqTime(requested);
-		first_end = requested.end;
+		requested->start = first_end + (i-1)*(request->getPeriod());
+		requested->end = requested->start + julian_exp;
+		obs->setReqTime(*requested);
+		first_end = requested->end;
 	}
 }
 
@@ -246,11 +247,11 @@ int Schedule::singularRequestGenerator(Request * request){
 		period = (rand() % MAX_PERIOD) + MIN_PERIOD;
 	}
 
-	ln_date t = new ln_date();
-	t.seconds = period;
+	ln_date * t = new ln_date();
+	t->seconds = period;
 
 	request->setLength(obs_length);
-	request->setPeriod(ln_get_julian_day(&t));
+	request->setPeriod(ln_get_julian_day(t));
 
 	//generating observation preperties
 	//...
@@ -284,3 +285,4 @@ int Schedule::randomObservationListGenerator(int request_length) {
 				std::make_move_iterator(request.getObservations().end()));
 	}
 }
+

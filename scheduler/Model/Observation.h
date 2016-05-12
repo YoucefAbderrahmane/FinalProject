@@ -56,8 +56,8 @@ public:
 	int isAwayFromMoon(double JD);
 	int isInReqTime();
 	int isOptimalHeight(double JD);
-	const Request*& getRequest() const;
-	void setRequest(const Request*& request);
+	Request* getRequest() const;
+	void setRequest(Request* request);
 
 private:
 	Request * request;

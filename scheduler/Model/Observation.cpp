@@ -278,10 +278,10 @@ int Observation::isOptimalHeight(double JD) {
 	else return FAILURE;
 }
 
-const Request*& Observation::getRequest() const {
+Request* Observation::getRequest() const {
 	return request;
 }
 
-void Observation::setRequest(const Request*& request) {
+void Observation::setRequest(Request* request) {
 	this->request = request;
 }
