@@ -281,8 +281,8 @@ int Schedule::randomObservationListGenerator(int request_length) {
 
 		//concatenate
 		observations.insert(observations.end(),
-				std::make_move_iterator(request.getObservations().begin()),
-				std::make_move_iterator(request.getObservations().end()));
+				request.getObservations().begin(),
+				request.getObservations().end());
 	}
 }
 
