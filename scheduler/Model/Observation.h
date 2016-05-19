@@ -45,6 +45,13 @@ public:
 	int getTaken() const;
 	void setTaken(int taken);
 
+	void setTimeConst(int isConst);
+	int isTimeConst();
+	void setHeightConst(int isConst);
+	int isHeightConst();
+	void setMoonConst(int isConst);
+	int isMoonConst();
+
 	//calculate possible observation time using target and Sun rise and set
 	int calculateVisibility(double JD, struct ln_lnlat_posn * observer,
 			std::vector<struct time_interval> * visibility);
@@ -69,7 +76,8 @@ private:
 	double min_height;
 	double moon_min_separation;
 	int telescope; //telescope used for this observation if taken = 0
-	int taken; // 1 if it is scheduled, 0 else
+	int taken; // 0 if it is scheduled, 1 else
+	int constraints[3]; //0 is constraint exists, 1 if not
 };
 
 #endif /* OBSERVATION_H_ */

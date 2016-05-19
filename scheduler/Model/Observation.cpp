@@ -108,6 +108,36 @@ void Observation::setTaken(int taken) {
 	this->taken = taken;
 }
 
+
+void Observation::setTimeConst(int isConst){
+
+	constraints[0] = isConst;
+}
+
+int Observation::isTimeConst(){
+
+	return constraints[0];
+}
+
+void Observation::setHeightConst(int isConst){
+
+	constraints[1] = isConst;
+}
+int Observation::isHeightConst(){
+
+	return constraints[1];
+}
+
+void Observation::setMoonConst(int isConst){
+
+	constraints[2] = isConst;
+}
+
+int Observation::isMoonConst(){
+
+	return constraints[2];
+}
+
 //*************
 
 int Observation::calculateVisibility(double JD,

@@ -19,14 +19,16 @@ Schedule::Schedule() {
 
 }
 
-Schedule::Schedule(vector<Observation> observations, int observation_length, int teles_length) {
+Schedule::Schedule(vector<Observation> observations, int observation_length, int teles_length, double ln, double lat) {
 
 	this->observations_length = observation_length;
 	this->observations = observations;
 	this->teles_length = teles_length;
+	this->observer.lng = ln;
+	this->observer.lat = lat;
 
 	const int width = observation_length;
-	const int height = teles_length;
+	const int height = N_TELESCOPE;
 
 	this->teles_alloc_matrix = new int*[width];
 	for(int i = 0; i < teles_length; i++){
@@ -149,89 +151,144 @@ int Schedule::calculateNightHorizon(double JD, struct ln_lnlat_posn* observer){
 	else return result;
 }
 
-int Schedule::observationRequestGenerator(Request * request){
+int Schedule::targetGenerator(Target * target){
 
-	srand(time(NULL));
+	bool stop = false;
+	int circump;
 
 	//Target generation
-	double dec = 0.0;
-	double ra = 0.0;
+	do {
+		double dec = 0.0;
+		double ra = 0.0;
 
-	double ra_range = 360.0 - 0.0;
-	double dec_range = 90.0 - (-90.0);
+		double ra_range = 360.0 - 0.0;
+		double dec_range = 90.0 - (-90.0);
 
-	double div = RAND_MAX / dec_range;
-	dec = -90.0 + rand() / div;
+		double div = RAND_MAX / dec_range;
+		dec = -90.0 + rand() / div;
 
-	div = RAND_MAX / ra_range;
-	ra = rand() / div;
+		div = RAND_MAX / ra_range;
+		ra = rand() / div;
 
-	Target target(ra, dec);
+		target = new Target(ra, dec);
+
+		circump = target->get_rise_set_transit(night_horizon.start, OBSERVATORY_HORIZON, &observer);
+
+		if( circump != -1 ) stop = true;
+
+	} while (!stop);
+
+	return SUCCESS;
+}
 
 
-	//Observation parameters
-	time_interval * requested = new time_interval();
-	double min_height = 0;
-	double min_moon_dist = MOON_DISK;
+int Schedule::timeConstraintGenerator(time_interval * requested, double julian_exp){
 
-	double exposure;
-	double julian_exp;
+	requested = new time_interval();
 
-	//time constraint
 	double time_const = (double) rand() / (double) RAND_MAX;
 	if( time_const <= TIME_CONST_RATIO ){
 
 		//randomly generating start time
 		double range = night_horizon.end - night_horizon.start;
-		div = RAND_MAX / range;
+		double div = RAND_MAX / range;
 		requested->start = night_horizon.start + rand() / div;
 
-		//randomly generating exposure time
-		int exp_range = MAX_EXPOSURE - MIN_EXPOSURE;
-		int exp_div = RAND_MAX / exp_range;
-		int exposure = MIN_EXPOSURE + rand() / exp_div;
-
-		ln_date t;
-		t.seconds = exposure;
-		julian_exp = ln_get_julian_day(&t);
 		//end of observation time
 		requested->end = requested->start + julian_exp; //start + exposure in JD
-
 		if( requested->end > night_horizon.end ) return FAILURE;
+
+		return SUCCESS;
 	}
 
-	//min height constraint
+	return FAILURE;
+}
+
+
+int Schedule::heightConstraintGenerator(double * min_height){
+
 	double height_const = (double) rand() / (double) RAND_MAX;
 	if( height_const <= MIN_HEIGHT_RATIO ){
 
 		double range = 90.0 - 0.0;
 		double div = RAND_MAX / range;
-		min_height = rand() / div;
+		*min_height = rand() / div;
+		return SUCCESS;
 	}
 
-	//min moon constraint
+	return FAILURE;
+}
+
+int Schedule::moonDistConstraintGenerator(double * min_moon_dist){
+
 	double moon_const = (double) rand() / (double) RAND_MAX;
 	if( moon_const <= MIN_MOON_DIST_RATIO ){
 
 		double range = 180.0 - MOON_DISK;
 		double div = RAND_MAX / range;
-		min_moon_dist = rand() / div;
+		*min_moon_dist = rand() / div;
+		return SUCCESS;
 	}
+
+	return FAILURE;
+}
+
+int Schedule::observationRequestGenerator(Request * request){
+
+	int isTimeConstrainted = 1;
+	int isHeightConstrainted = 1;
+	int isMoonConstrainted = 1;
+
+	srand(time(NULL));
+
+	//Target Generation...must be observable
+	Target target;
+	targetGenerator(&target);
+
+	//randomly generating exposure time
+	int exp_range = MAX_EXPOSURE - MIN_EXPOSURE;
+	int exp_div = RAND_MAX / exp_range;
+	int exposure = MIN_EXPOSURE + rand() / exp_div;
+	ln_date t;
+	t.seconds = exposure;
+	double julian_exp = ln_get_julian_day(&t);
+
+	//time constraint
+	time_interval * requested = new time_interval();
+	isTimeConstrainted = timeConstraintGenerator(requested, julian_exp);
+
+	//min height constraint
+	double min_height = 0;
+	isHeightConstrainted = heightConstraintGenerator(&min_height);
+
+	//min moon constraint
+	double min_moon_dist = MOON_DISK;
+	isMoonConstrainted = moonDistConstraintGenerator(&min_moon_dist);
 
 	double first_end = requested->start;
 
 	for(int i = 1; i <= request->getLength(); i++){
 
-		Observation * obs = new Observation(request, i, target, exposure);
+		Observation * obs = new Observation(request, i, target, julian_exp);
+		obs->setTimeConst(isTimeConstrainted);
 
-		obs->setMinHeight(min_height);
-		obs->setMoonMinSeparation(min_moon_dist);
+		obs->setHeightConst(isHeightConstrainted);
+		if( !isHeightConstrainted )
+			obs->setMinHeight(min_height);
+
+		obs->setMoonConst(isMoonConstrainted);
+		if( !isMoonConstrainted )
+			obs->setMoonMinSeparation(min_moon_dist);
 
 		requested->start = first_end + (i-1)*(request->getPeriod());
 		requested->end = requested->start + julian_exp;
 		obs->setReqTime(*requested);
 		first_end = requested->end;
+
+		request->addObservation(*obs);
 	}
+
+	return SUCCESS;
 }
 
 int Schedule::singularRequestGenerator(Request * request){
@@ -253,26 +310,16 @@ int Schedule::singularRequestGenerator(Request * request){
 	request->setLength(obs_length);
 	request->setPeriod(ln_get_julian_day(t));
 
-	//generating observation preperties
-	//...
-
-
-	observationRequestGenerator(request);
+	//Generating priority
+	request->setPriority((double) (rand() % MAX_PRIO) + 1.0 / 10.0);
 
 	//generating observations
 	//...
-
-
-}
-
-int Schedule::singularObservationGenerator(Observation * observation){
-
-
+	observationRequestGenerator(request);
 }
 
 int Schedule::randomObservationListGenerator(int request_length) {
 
-	int total = 0;
 	for(int i = 1; i <= request_length; i++){
 
 		//request and observation generation
@@ -286,3 +333,24 @@ int Schedule::randomObservationListGenerator(int request_length) {
 	}
 }
 
+int Schedule::randomObservationAllocation(){
+
+	srand(time(NULL));
+	double selected;
+
+	for(int i = 0; i < observations_length; i++){
+
+		selected = (double) rand() / (double) RAND_MAX;
+		if( selected < (observations[i].getRequest()->getPriority()) ){
+
+			observations[i].setTaken(0);
+
+			//allocate a random telescope
+			//...
+
+
+			//move on to the next observation
+			//...
+		}
+	}
+}

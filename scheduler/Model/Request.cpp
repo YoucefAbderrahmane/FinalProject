@@ -69,3 +69,18 @@ double Request::getPeriod() const {
 void Request::setPeriod(double period) {
 	this->period = period;
 }
+
+
+
+void Request::addObservation(Observation observation){
+
+	observations.push_back(observation);
+}
+
+double Request::getPriority() const {
+	return priority;
+}
+
+void Request::setPriority(double priority) {
+	this->priority = priority;
+}

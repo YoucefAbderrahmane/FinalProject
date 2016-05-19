@@ -37,6 +37,11 @@ public:
 	void setState(int state);
 	double getPeriod() const;
 	void setPeriod(double period);
+	double getPriority() const;
+	void setPriority(double priority);
+
+	void addObservation(Observation observation);
+
 
 private:
 	int req_id;
@@ -44,6 +49,7 @@ private:
 	int length;
 	int state;
 	double period; //in julian day
+	double priority; //defined as probability of selection in the range [0,1]
 };
 
 #endif /* REQUEST_H_ */
