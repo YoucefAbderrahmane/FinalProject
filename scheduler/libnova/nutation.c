@@ -17,9 +17,15 @@
  */
 
 #include <math.h>
+<<<<<<< HEAD
 #include <libnova/nutation.h>
 #include <libnova/dynamical_time.h>
 #include <libnova/utility.h>
+=======
+#include "libnova/nutation.h"
+#include "libnova/dynamical_time.h"
+#include "libnova/utility.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 #define TERMS 63
 #define LN_NUTATION_EPOCH_THRESHOLD 0.1

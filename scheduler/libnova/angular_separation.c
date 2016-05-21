@@ -17,8 +17,13 @@
  */
  
 #include <math.h>
+<<<<<<< HEAD
 #include <libnova/angular_separation.h>
 #include <libnova/utility.h>
+=======
+#include "libnova/angular_separation.h"
+#include "libnova/utility.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 /*! \fn double ln_get_angular_separation (struct ln_equ_posn* posn1, struct ln_equ_posn* posn2);
 * \param posn1 Equatorial position of body 1

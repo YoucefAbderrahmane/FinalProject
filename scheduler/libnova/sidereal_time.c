@@ -17,9 +17,15 @@
  */
 
 #include <math.h>
+<<<<<<< HEAD
 #include <libnova/sidereal_time.h>
 #include <libnova/nutation.h>
 #include <libnova/utility.h>
+=======
+#include "libnova/sidereal_time.h"
+#include "libnova/nutation.h"
+#include "libnova/utility.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 /*! \fn double ln_get_mean_sidereal_time (double JD)
 * \param JD Julian Day

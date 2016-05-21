@@ -19,7 +19,11 @@
 #ifndef _LN_SOLAR_H
 #define _LN_SOLAR_H
 
+<<<<<<< HEAD
 #include <libnova/ln_types.h>
+=======
+#include "ln_types.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 #define LN_SOLAR_STANDART_HORIZON              -0.8333
 #define LN_SOLAR_CIVIL_HORIZON                 -6.0

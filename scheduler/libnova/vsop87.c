@@ -21,8 +21,13 @@
 
 
 #include <math.h>
+<<<<<<< HEAD
 #include <libnova/vsop87.h>
 #include <libnova/utility.h>
+=======
+#include "libnova/vsop87.h"
+#include "libnova/utility.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 double ln_calc_series (const struct ln_vsop * data, int terms, double t)
 {

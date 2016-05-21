@@ -17,11 +17,19 @@
  */
 
 #include <math.h>
+<<<<<<< HEAD
 #include <libnova/transform.h>
 #include <libnova/utility.h>
 #include <libnova/sidereal_time.h>
 #include <libnova/nutation.h>
 #include <libnova/precession.h>
+=======
+#include "libnova/transform.h"
+#include "libnova/utility.h"
+#include "libnova/sidereal_time.h"
+#include "libnova/nutation.h"
+#include "libnova/precession.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 /*! \fn void ln_get_rect_from_helio (struct ln_helio_posn *object, struct ln_rect_posn * position); 
 * \param object Object heliocentric coordinates

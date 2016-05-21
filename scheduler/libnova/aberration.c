@@ -18,9 +18,15 @@
 
 #include <math.h>
 #include <stdlib.h>
+<<<<<<< HEAD
 #include <libnova/libnova/aberration.h>
 #include <libnova/solar.h>
 #include <libnova/utility.h>
+=======
+#include "libnova/aberration.h"
+#include "libnova/solar.h"
+#include "libnova/utility.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 #define TERMS 36
 

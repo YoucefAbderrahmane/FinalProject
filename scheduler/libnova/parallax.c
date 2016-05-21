@@ -17,9 +17,15 @@
  */
 
 #include <math.h>
+<<<<<<< HEAD
 #include <libnova/parallax.h>
 #include <libnova/utility.h>
 #include <libnova/sidereal_time.h>
+=======
+#include "libnova/parallax.h"
+#include "libnova/utility.h"
+#include "libnova/sidereal_time.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 /* Equ on page 77 - chapter 10, The Earth's globe
 */

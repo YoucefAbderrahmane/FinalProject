@@ -17,6 +17,7 @@
  */
 
 #include <math.h>
+<<<<<<< HEAD
 #include <libnova/parabolic_motion.h>
 #include <libnova/solar.h>
 #include <libnova/earth.h>
@@ -25,6 +26,16 @@
 #include <libnova/dynamical_time.h>
 #include <libnova/sidereal_time.h>
 #include <libnova/utility.h>
+=======
+#include "libnova/parabolic_motion.h"
+#include "libnova/solar.h"
+#include "libnova/earth.h"
+#include "libnova/transform.h"
+#include "libnova/rise_set.h"
+#include "libnova/dynamical_time.h"
+#include "libnova/sidereal_time.h"
+#include "libnova/utility.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 /*! \fn double ln_solve_barker (double q, double t);
 * \param q Perihelion distance in AU

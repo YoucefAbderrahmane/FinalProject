@@ -98,6 +98,7 @@
 #ifndef _LN_LIBNOVA_H
 #define _LN_LIBNOVA_H
 
+<<<<<<< HEAD
 #include <libnova/ln_types.h>
 #include <libnova/julian_day.h>
 #include <libnova/dynamical_time.h>
@@ -133,5 +134,42 @@
 #include <libnova/parallax.h>
 #include <libnova/airmass.h>
 #include <libnova/heliocentric_time.h>
+=======
+#include "ln_types.h"
+#include "julian_day.h"
+#include "dynamical_time.h"
+#include "sidereal_time.h"
+#include "transform.h"
+#include "nutation.h"
+#include "aberration.h"
+#include "apparent_position.h"
+#include "solar.h"
+#include "precession.h"
+#include "proper_motion.h"
+#include "mercury.h"
+#include "venus.h"
+#include "earth.h"
+#include "mars.h"
+#include "jupiter.h"
+#include "saturn.h"
+#include "uranus.h"
+#include "neptune.h"
+#include "pluto.h"
+#include "vsop87.h"
+#include "lunar.h"
+#include "elliptic_motion.h"
+#include "asteroid.h"
+#include "comet.h"
+#include "parabolic_motion.h"
+#include "refraction.h"
+#include "rise_set.h"
+#include "angular_separation.h"
+#include "ln_types.h"
+#include "utility.h"
+#include "hyperbolic_motion.h"
+#include "parallax.h"
+#include "airmass.h"
+#include "heliocentric_time.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 #endif

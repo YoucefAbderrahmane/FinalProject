@@ -20,6 +20,7 @@
  */
 
 #include <math.h>
+<<<<<<< HEAD
 #include <libnova/lunar.h>
 #include <libnova/vsop87.h>
 #include <libnova/solar.h>
@@ -27,6 +28,15 @@
 #include <libnova/transform.h>
 #include <libnova/rise_set.h>
 #include <libnova/utility.h>
+=======
+#include "libnova/lunar.h"
+#include "libnova/vsop87.h"
+#include "libnova/solar.h"
+#include "libnova/earth.h"
+#include "libnova/transform.h"
+#include "libnova/rise_set.h"
+#include "libnova/utility.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 #ifdef HAVE_LIBsunmath
 #include <sunmath.h>

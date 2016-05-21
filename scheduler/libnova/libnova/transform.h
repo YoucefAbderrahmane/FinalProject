@@ -19,7 +19,11 @@
 #ifndef _LN_TRANSFORM_H
 #define _LN_TRANSFORM_H
 
+<<<<<<< HEAD
 #include <libnova/ln_types.h>
+=======
+#include "ln_types.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 #ifdef __cplusplus
 extern "C" {

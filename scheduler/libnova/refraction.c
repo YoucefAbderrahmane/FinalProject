@@ -17,8 +17,13 @@
  */
 
 #include <math.h>
+<<<<<<< HEAD
 #include <libnova/refraction.h>
 #include <libnova/utility.h>
+=======
+#include "libnova/refraction.h"
+#include "libnova/utility.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 /*! \fn double ln_get_refraction_adj (double altitude, double atm_pres, double temp)
 * \param altitude The altitude of the object above the horizon in degrees

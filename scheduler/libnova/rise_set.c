@@ -17,11 +17,19 @@
  */
 
 #include <math.h>
+<<<<<<< HEAD
 #include <libnova/rise_set.h>
 #include <libnova/utility.h>
 #include <libnova/dynamical_time.h>
 #include <libnova/sidereal_time.h>
 #include <libnova/transform.h>
+=======
+#include "libnova/rise_set.h"
+#include "libnova/utility.h"
+#include "libnova/dynamical_time.h"
+#include "libnova/sidereal_time.h"
+#include "libnova/transform.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 // helper function to check if object can be visible
 int check_coords (struct ln_lnlat_posn * observer, double H1, double horizon, struct ln_equ_posn * object)
@@ -32,6 +40,10 @@ int check_coords (struct ln_lnlat_posn * observer, double H1, double horizon, st
 	{
 		/* check if maximal height < horizon */
 		// h = asin(cos(ln_deg_to_rad(observer->lat - object->dec)))
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 		h = 90 + object->dec - observer->lat;
 		// normalize to <-90;+90>
 		if (h > 90)

@@ -16,10 +16,17 @@
  *  Copyright (C) 2009 Petr Kubanek
  */
 
+<<<<<<< HEAD
 #include <libnova/heliocentric_time.h>
 #include <libnova/nutation.h>
 #include <libnova/earth.h>
 #include <libnova/utility.h>
+=======
+#include "libnova/heliocentric_time.h"
+#include "libnova/nutation.h"
+#include "libnova/earth.h"
+#include "libnova/utility.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 #include <math.h>
 

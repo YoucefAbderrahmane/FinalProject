@@ -18,12 +18,21 @@
 
 #include <math.h>
 #include <stdio.h>
+<<<<<<< HEAD
 #include <libnova/solar.h>
 #include <libnova/earth.h>
 #include <libnova/nutation.h>
 #include <libnova/transform.h>
 #include <libnova/rise_set.h>
 #include <libnova/utility.h>
+=======
+#include "libnova/solar.h"
+#include "libnova/earth.h"
+#include "libnova/nutation.h"
+#include "libnova/transform.h"
+#include "libnova/rise_set.h"
+#include "libnova/utility.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 /*! \fn void ln_get_solar_geom_coords (double JD, struct ln_helio_posn * position)
 * \param JD Julian day

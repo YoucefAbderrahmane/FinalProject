@@ -20,8 +20,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
+<<<<<<< HEAD
 #include <libnova/julian_day.h>
 #include <libnova/utility.h>
+=======
+#include "libnova/julian_day.h"
+#include "libnova/utility.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 /* Standard Win32 apps do not have POSIX support. */
 #ifndef __WIN32__

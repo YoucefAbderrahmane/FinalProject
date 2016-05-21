@@ -42,7 +42,11 @@
 #include <string.h>
 #include <math.h>
 #include <ctype.h>
+<<<<<<< HEAD
 #include <libnova/libnova.h>
+=======
+#include "libnova/libnova.h"
+>>>>>>> 6d8b8ad7a55c616262f643554a2d8d4584365c22
 
 #ifndef __APPLE__
 #include <malloc.h>
