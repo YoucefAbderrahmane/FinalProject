@@ -9,7 +9,7 @@
 #define CONFIG_H_
 
 
-#include "../libnova/libnova/ln_types.h"
+#include <libnova/ln_types.h>
 
 #define SUCCESS 0
 #define FAILURE 1

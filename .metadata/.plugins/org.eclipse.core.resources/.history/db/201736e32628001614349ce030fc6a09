@@ -1,0 +1,23 @@
+/*
+ * SchedulingProb.h
+ *
+ *  Created on: 1 juin 2016
+ *      Author: root
+ */
+
+#ifndef SCHEDULINGPROB_H_
+#define SCHEDULINGPROB_H_
+
+namespace pagmo {
+namespace problem {
+
+class SchedulingProb {
+public:
+	SchedulingProb();
+	virtual ~SchedulingProb();
+};
+
+} /* namespace problem */
+} /* namespace pagmo */
+
+#endif /* SCHEDULINGPROB_H_ */

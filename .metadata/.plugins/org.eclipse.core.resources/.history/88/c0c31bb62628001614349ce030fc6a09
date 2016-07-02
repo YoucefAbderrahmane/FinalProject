@@ -1,0 +1,18 @@
+/*
+ * SchedulingProb.cpp
+ *
+ *  Created on: 1 juin 2016
+ *      Author: root
+ */
+
+#include "SchedulingProb.h"
+
+SchedulingProb::SchedulingProb() {
+	// TODO Auto-generated constructor stub
+
+}
+
+SchedulingProb::~SchedulingProb() {
+	// TODO Auto-generated destructor stub
+}
+

@@ -9,10 +9,13 @@
 
 #include <stdlib.h>
 
-#include "../libnova/libnova/rise_set.h"
-#include "../libnova/libnova/angular_separation.h"
-#include "../libnova/libnova/lunar.h"
+#include <libnova/rise_set.h>
+#include <libnova/angular_separation.h>
+#include <libnova/lunar.h>
 
+Target::Target() {
+	// TODO Auto-generated destructor stub
+}
 
 Target::~Target() {
 	// TODO Auto-generated destructor stub

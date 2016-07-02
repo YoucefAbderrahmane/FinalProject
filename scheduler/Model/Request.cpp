@@ -8,23 +8,22 @@
 
 #include "Request.h"
 
-Request::Request() {
+Request::Request() : req_id(), state(1), period(), length(), priority() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Request::Request(int req_id){
+Request::Request(int req_id) : req_id(req_id), state(1), period(), length(), priority(){
 
-	this->req_id = req_id;
-	this->state = 1;
+
 }
 
-Request::Request(int req_id, vector<Observation> observations, int length){
+Request::Request(int req_id, vector<Observation> observations, int length) : req_id(req_id),
+		observations(observations), length(length), state(1), period(), priority(){
 
-	this->req_id = req_id;
-	this->observations = observations;
-	this->length = length;
-	this->state = 1;
+}
+
+Request::~Request() {
 }
 
 
@@ -69,10 +68,9 @@ void Request::setPeriod(double period) {
 }
 
 
-
 void Request::addObservation(Observation observation){
 
-	observations.push_back(observation);
+	this->observations.push_back(observation);
 }
 
 double Request::getPriority() const {
@@ -82,3 +80,4 @@ double Request::getPriority() const {
 void Request::setPriority(double priority) {
 	this->priority = priority;
 }
+

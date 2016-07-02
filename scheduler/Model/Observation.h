@@ -18,14 +18,14 @@
 class Request;
 class Target;
 
-
 class Observation {
 public:
+	//Constructors and destructors
 	Observation();
-	Observation(Request * request, int obs_id, Target target, int exposure_time);
+	Observation(Request * request, int obs_id, Target target, double exposure_time);
 	virtual ~Observation();
 
-
+	//Getters and Setters
 	int getExposureTime() const;
 	void setExposureTime(int exposureTime);
 	double getMinHeight() const;
@@ -38,8 +38,6 @@ public:
 	void setTarget(const Target& target);
 	const struct time_interval& getReqTime() const;
 	void setReqTime(const struct time_interval& reqTime);
-	const struct time_interval& getSchedTime() const;
-	void setSchedTime(const struct time_interval& schedTime);
 	int getTelescope() const;
 	void setTelescope(int telescope);
 	int getTaken() const;
@@ -65,16 +63,21 @@ public:
 	int isOptimalHeight(double JD);
 	Request* getRequest() const;
 	void setRequest(Request* request);
+	double getSchedTime() const;
+	void setSchedTime(double schedTime);
+	double getEndTime() const;
+	void setEndTime(double endTime);
 
 private:
-	Request * request;
-	int obs_id;
-	Target target;
-	int exposure_time;
-	struct time_interval req_time;
-	struct time_interval sched_time;
-	double min_height;
-	double moon_min_separation;
+	Request * request; //The request whome the observation belong to
+	int obs_id;	//observation id from DB
+	Target target;	//target of the observation
+	double exposure_time;	//exposure time needed for the shot
+	struct time_interval req_time;	//requested time interval for the start of the observation
+	double sched_time;	//scheduled start time
+	double end_time;	//scheduled end time
+	double min_height;	//minimum height allowed
+	double moon_min_separation;	//minimum moon distance allowed
 	int telescope; //telescope used for this observation if taken = 0
 	int taken; // 0 if it is scheduled, 1 else
 	int constraints[3]; //0 is constraint exists, 1 if not

@@ -1,0 +1,21 @@
+/*
+ * probA.h
+ *
+ *  Created on: 17 juin 2016
+ *      Author: root
+ */
+
+#ifndef PROBA_H_
+#define PROBA_H_
+
+namespace pagm {
+
+class prob_A {
+public:
+	prob_A();
+	virtual ~prob_A();
+};
+
+} /* namespace pagm */
+
+#endif /* PROBA_H_ */

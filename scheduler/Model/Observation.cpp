@@ -10,29 +10,45 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "../libnova/libnova/solar.h"
-#include "../libnova/libnova/julian_day.h"
-#include "../libnova/libnova/transform.h"
+#include <libnova/solar.h>
+#include <libnova/julian_day.h>
+#include <libnova/transform.h>
 #include "config.h"
+
+Observation::Observation() : request(),
+								obs_id(), 
+								target(), 
+								exposure_time(), 
+								moon_min_separation(),
+								req_time(),
+								sched_time(),
+								telescope(),
+								taken(),
+								constraints() {
+
+
+}
+
+
+Observation::Observation(Request * request, 
+	int obs_id, Target target, double exposure_time) : sched_time(),
+			min_height(), moon_min_separation(), telescope(), taken(), end_time() {
+
+	this->request = request;
+	this->obs_id = obs_id;
+
+	this->target = target;
+
+	this->exposure_time = exposure_time;
+	this->moon_min_separation = MOON_DISK;
+
+}
 
 
 Observation::~Observation() {
 	// TODO Auto-generated destructor stub
 }
 
-Observation::Observation(Request * request, 
-	int obs_id, Target target, int exposure_time) {
-
-	this->request = request;
-	this->obs_id = obs_id;
-
-	this->target = target;
-//	this->target.setEqDec(target.getEqDec());
-//	this->target.setEqRAsc(target.getEqRAsc());
-
-	this->exposure_time = exposure_time;
-	this->moon_min_separation = MOON_DISK;
-}
 
 int Observation::getExposureTime() const {
 	return exposure_time;
@@ -82,14 +98,6 @@ void Observation::setReqTime(const struct time_interval& reqTime) {
 	req_time = reqTime;
 }
 
-const struct time_interval& Observation::getSchedTime() const {
-	return sched_time;
-}
-
-void Observation::setSchedTime(const struct time_interval& schedTime) {
-	sched_time = schedTime;
-}
-
 int Observation::getTelescope() const {
 	return telescope;
 }
@@ -121,6 +129,7 @@ void Observation::setHeightConst(int isConst){
 
 	constraints[1] = isConst;
 }
+
 int Observation::isHeightConst(){
 
 	return constraints[1];
@@ -273,8 +282,8 @@ int Observation::isAboveMinHeight(double JD) {
 
 double Observation::getDuration() {
 
-	time_interval interval = getSchedTime();
-	return interval.end - interval.start;
+
+	return getSchedTime() + getExposureTime();
 }
 
 int Observation::isAwayFromMoon(double JD){
@@ -287,11 +296,11 @@ int Observation::isAwayFromMoon(double JD){
 
 int Observation::isInReqTime() {
 
-	time_interval scheduled = getSchedTime();
+	double scheduled = getSchedTime();
 	time_interval requested = getReqTime();
 
-	if( scheduled.start >= requested.start*(1 - TIME_MARGIN)
-			&& scheduled.end <= requested.end*(1 + TIME_MARGIN) )
+	if( scheduled >= requested.start
+			&& scheduled <= requested.end )
 
 		return SUCCESS; //good
 	else return FAILURE; //bad
@@ -300,10 +309,11 @@ int Observation::isInReqTime() {
 int Observation::isOptimalHeight(double JD) {
 
 	double transit = getTarget().getRiseSetTransit().transit;
-	time_interval scheduled = getSchedTime();
+	double scheduled = getSchedTime();
 
-	if( transit >= scheduled.start && transit <= scheduled.end ) return SUCCESS;
+	if( transit >= scheduled - 0.4169 && transit <= scheduled + 0.4169 ) return SUCCESS;
 	else return FAILURE;
+	return FAILURE;
 }
 
 Request* Observation::getRequest() const {
@@ -312,4 +322,20 @@ Request* Observation::getRequest() const {
 
 void Observation::setRequest(Request* request) {
 	this->request = request;
+}
+
+double Observation::getSchedTime() const {
+	return sched_time;
+}
+
+void Observation::setSchedTime(double schedTime) {
+	sched_time = schedTime;
+}
+
+double Observation::getEndTime() const {
+	return end_time;
+}
+
+void Observation::setEndTime(double endTime) {
+	end_time = endTime;
 }

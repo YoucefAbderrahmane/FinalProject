@@ -47,7 +47,7 @@ public:
 
 	int targetGenerator(Target * target);
 
-	int timeConstraintGenerator(time_interval * requested, double julian_exposure);
+	int timeConstraintGenerator(time_interval * requested);
 	int heightConstraintGenerator(double * height);
 	int moonDistConstraintGenerator(double * min_moon_dist);
 

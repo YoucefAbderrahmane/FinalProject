@@ -1,0 +1,23 @@
+/*
+ * schedpop.h
+ *
+ *  Created on: 24 juin 2016
+ *      Author: root
+ */
+
+#ifndef SCHEDPOP_H_
+#define SCHEDPOP_H_
+
+namespace algorithm {
+
+class base;
+
+class sched_pop {
+public:
+	sched_pop();
+	virtual ~sched_pop();
+};
+
+} /* namespace algorithm */
+
+#endif /* SCHEDPOP_H_ */

@@ -1,0 +1,18 @@
+/*
+ * prob.cpp
+ *
+ *  Created on: 17 juin 2016
+ *      Author: root
+ */
+
+#include "prob.h"
+
+prob::prob() {
+	// TODO Auto-generated constructor stub
+
+}
+
+prob::~prob() {
+	// TODO Auto-generated destructor stub
+}
+

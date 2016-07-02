@@ -11,19 +11,31 @@
 
 #include "config.h"
 #include "Schedule.h"
-#include "../libnova/libnova/solar.h"
-#include "../libnova/libnova/julian_day.h"
+#include <libnova/solar.h>
+#include <libnova/julian_day.h>
 
-Schedule::Schedule() {
+class Request;
+class Target;
+
+Schedule::Schedule() : observations(),
+		observations_length(),
+		teles_length(),
+		total_duration(),
+		observer(),
+		teles_alloc_matrix(){
 	// TODO Auto-generated constructor stub
 
 }
 
-Schedule::Schedule(vector<Observation> observations, int observation_length, int teles_length, double ln, double lat) {
+Schedule::Schedule(vector<Observation> observations,
+		int observation_length,
+		int teles_length,
+		double ln,
+		double lat) : observations(observations),
+				observations_length(observation_length),
+				teles_length(teles_length),
+				total_duration() {
 
-	this->observations_length = observation_length;
-	this->observations = observations;
-	this->teles_length = teles_length;
 	this->observer.lng = ln;
 	this->observer.lat = lat;
 
@@ -182,7 +194,7 @@ int Schedule::targetGenerator(Target * target){
 }
 
 
-int Schedule::timeConstraintGenerator(time_interval * requested, double julian_exp){
+int Schedule::timeConstraintGenerator(time_interval * requested){
 
 	requested = new time_interval();
 
@@ -194,10 +206,12 @@ int Schedule::timeConstraintGenerator(time_interval * requested, double julian_e
 		double div = RAND_MAX / range;
 		requested->start = night_horizon.start + rand() / div;
 
-		//end of observation time
-		requested->end = requested->start + julian_exp; //start + exposure in JD
-		if( requested->end > night_horizon.end ) return FAILURE;
+		//randomly generating start time second bound
+		range = night_horizon.end - requested->start;
+		div = RAND_MAX / range;
+		requested->end = night_horizon.start + rand() / div;
 
+		std::cout << "Time const " << SUCCESS << std::endl;
 		return SUCCESS;
 	}
 
@@ -213,6 +227,8 @@ int Schedule::heightConstraintGenerator(double * min_height){
 		double range = 90.0 - 0.0;
 		double div = RAND_MAX / range;
 		*min_height = rand() / div;
+
+		std::cout << "Height const " << SUCCESS << std::endl;
 		return SUCCESS;
 	}
 
@@ -227,6 +243,8 @@ int Schedule::moonDistConstraintGenerator(double * min_moon_dist){
 		double range = 180.0 - MOON_DISK;
 		double div = RAND_MAX / range;
 		*min_moon_dist = rand() / div;
+
+		std::cout << "Moon const " << SUCCESS << std::endl;
 		return SUCCESS;
 	}
 
@@ -242,20 +260,17 @@ int Schedule::observationRequestGenerator(Request * request){
 	srand(time(NULL));
 
 	//Target Generation...must be observable
-	Target target;
-	targetGenerator(&target);
+	Target * target = new Target();
+	targetGenerator(target);
 
 	//randomly generating exposure time
 	int exp_range = MAX_EXPOSURE - MIN_EXPOSURE;
 	int exp_div = RAND_MAX / exp_range;
 	int exposure = MIN_EXPOSURE + rand() / exp_div;
-	ln_date t;
-	t.seconds = exposure;
-	double julian_exp = ln_get_julian_day(&t);
 
 	//time constraint
 	time_interval * requested = new time_interval();
-	isTimeConstrainted = timeConstraintGenerator(requested, julian_exp);
+	isTimeConstrainted = timeConstraintGenerator(requested);
 
 	//min height constraint
 	double min_height = 0;
@@ -267,9 +282,11 @@ int Schedule::observationRequestGenerator(Request * request){
 
 	double first_end = requested->start;
 
+	double duration = requested->end - requested->start;
+
 	for(int i = 1; i <= request->getLength(); i++){
 
-		Observation * obs = new Observation(request, i, target, julian_exp);
+		Observation * obs = new Observation(request, i, *target, (double) exposure);
 		obs->setTimeConst(isTimeConstrainted);
 
 		obs->setHeightConst(isHeightConstrainted);
@@ -281,9 +298,16 @@ int Schedule::observationRequestGenerator(Request * request){
 			obs->setMoonMinSeparation(min_moon_dist);
 
 		requested->start = first_end + (i-1)*(request->getPeriod());
-		requested->end = requested->start + julian_exp;
+		requested->end = requested->start + duration;
+
+		if( requested->end > night_horizon.end ){
+
+			request->setLength(i-1);
+			break;
+		}
+
 		obs->setReqTime(*requested);
-		first_end = requested->end;
+		first_end = requested->start;
 
 		request->addObservation(*obs);
 	}
@@ -304,11 +328,8 @@ int Schedule::singularRequestGenerator(Request * request){
 		period = (rand() % MAX_PERIOD) + MIN_PERIOD;
 	}
 
-	ln_date * t = new ln_date();
-	t->seconds = period;
-
 	request->setLength(obs_length);
-	request->setPeriod(ln_get_julian_day(t));
+	request->setPeriod(period);
 
 	//Generating priority
 	request->setPriority((double) (rand() % MAX_PRIO) + 1.0 / 10.0);
@@ -316,21 +337,35 @@ int Schedule::singularRequestGenerator(Request * request){
 	//generating observations
 	//...
 	observationRequestGenerator(request);
+
+	return SUCCESS;
 }
 
 int Schedule::randomObservationListGenerator(int request_length) {
 
+	Request * request;
 	for(int i = 1; i <= request_length; i++){
 
 		//request and observation generation
-		Request request(i);
-		singularRequestGenerator(&request);
+		request = new Request(i);
+		singularRequestGenerator(request);
 
-		//concatenate
-		observations.insert(observations.end(),
-				request.getObservations().begin(),
-				request.getObservations().end());
+		// //concatenate
+		// observations.insert(observations.end(),
+		// 		request->getObservations().begin(),
+		// 		request->getObservations().end());
+
+		std::vector<Observation> obss = request->getObservations();
+
+		for(vector<Observation>::size_type i = 0; i < obss.size(); i++ ){
+
+			observations.push_back(obss[i]);
+		}
+
+//		delete request;
 	}
+
+	return SUCCESS;
 }
 
 int Schedule::randomObservationAllocation(){
@@ -353,4 +388,6 @@ int Schedule::randomObservationAllocation(){
 			//...
 		}
 	}
+
+	return SUCCESS;
 }

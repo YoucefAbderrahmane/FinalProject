@@ -11,9 +11,10 @@
 #include <ctime>
 #include <time.h>
 
-#include "../libnova/libnova/julian_day.h"
-#include "../libnova/libnova/transform.h"
+//#include <libnova/libnova.h>
 
+#include <libnova/julian_day.h>
+#include <libnova/transform.h>
 
 class Target {
 

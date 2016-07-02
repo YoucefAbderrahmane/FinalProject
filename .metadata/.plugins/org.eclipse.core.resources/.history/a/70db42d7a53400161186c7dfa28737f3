@@ -1,0 +1,30 @@
+/*
+ * prob.h
+ *
+ *  Created on: 17 juin 2016
+ *      Author: root
+ */
+
+#ifndef PROB_H_
+#define PROB_H_
+
+#include <string>
+
+#include <config.h>
+#include <serialization.h>
+#include <types.h>
+#include <problem/base.h>
+
+namespace pagmo { namespace problem {
+
+class __PAGMO_VISIBLE prob : public base {
+public:
+	prob();
+	virtual ~prob();
+};
+}
+}
+
+
+
+#endif /* PROB_H_ */

@@ -1,0 +1,17 @@
+/*
+ * prob.h
+ *
+ *  Created on: 17 juin 2016
+ *      Author: root
+ */
+
+#ifndef PROB_H_
+#define PROB_H_
+
+class prob {
+public:
+	prob();
+	virtual ~prob();
+};
+
+#endif /* PROB_H_ */

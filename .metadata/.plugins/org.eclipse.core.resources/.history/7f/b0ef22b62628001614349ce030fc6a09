@@ -1,0 +1,24 @@
+/*
+ * SchedulingProb.h
+ *
+ *  Created on: 1 juin 2016
+ *      Author: root
+ */
+
+#ifndef SCHEDULINGPROB_H_
+#define SCHEDULINGPROB_H_
+
+#include <string>
+
+#include <config.h>
+#include <serialization.h>
+#include <types.h>
+#include <algorithm/base.h>
+
+class SchedulingProb: public algorithm::base {
+public:
+	SchedulingProb();
+	virtual ~SchedulingProb();
+};
+
+#endif /* SCHEDULINGPROB_H_ */

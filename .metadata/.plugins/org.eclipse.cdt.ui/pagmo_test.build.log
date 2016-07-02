@@ -1,0 +1,20 @@
+13:47:25 **** Build of configuration Debug for project pagmo_test ****
+make all 
+Building file: ../src/pagmo_test.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/Cpp/Libraries/pagmo/src -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pagmo_test.d" -MT"src/pagmo_test.o" -o "src/pagmo_test.o" "../src/pagmo_test.cpp"
+Finished building: ../src/pagmo_test.cpp
+ 
+Building file: ../src/prob.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/Cpp/Libraries/pagmo/src -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/prob.d" -MT"src/prob.o" -o "src/prob.o" "../src/prob.cpp"
+Finished building: ../src/prob.cpp
+ 
+Building target: pagmo_test
+Invoking: GCC C++ Linker
+g++ -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu -L/home/pfe/dev/Cpp/Libraries/pagmo/build/src -o "pagmo_test"  ./src/pagmo_test.o ./src/prob.o   -lpagmo -lnlopt -lboost_serialization -lboost_thread -lboost_system
+Finished building target: pagmo_test
+ 
+
+13:47:48 Build Finished (took 22s.888ms)
+
