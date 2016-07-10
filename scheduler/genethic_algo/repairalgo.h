@@ -12,9 +12,12 @@
 #include <serialization.h>
 #include <types.h>
 #include <algorithm/base.h>
+#include "schedpop.h"
 
 namespace pagmo {
 namespace algorithm {
+
+class sched_pop;
 
 class repair_algo : public base {
 public:
