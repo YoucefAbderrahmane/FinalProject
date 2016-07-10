@@ -1,0 +1,18 @@
+/*
+ * Obsconditions.cpp
+ *
+ *  Created on: 5 juil. 2016
+ *      Author: root
+ */
+
+#include <Obsconditions.h>
+
+Obs_conditions::Obs_conditions() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Obs_conditions::~Obs_conditions() {
+	// TODO Auto-generated destructor stub
+}
+

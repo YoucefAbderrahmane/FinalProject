@@ -17,27 +17,44 @@
 class Request;
 class Target;
 
+
+// HELPING FUNCTIONS
+
+double addSecondsToJD(double JD, double seconds){
+
+	//convert JD to date
+	time_t * d = new time_t();
+	ln_get_timet_from_julian(JD, d);
+
+	//Add seconds to d
+	struct tm d_tm = *localtime(d);
+	d_tm.tm_sec += seconds;
+
+	//normalize tm and convert it to time_t
+	time_t new_d = mktime(&d_tm);
+
+	//return the equivalent julian day
+	return ln_get_julian_from_timet (&new_d);
+} 
+
+
 Schedule::Schedule() : observations(),
 		observations_length(),
+		teles_alloc_matrix(),
 		teles_length(),
 		total_duration(),
-		observer(),
-		teles_alloc_matrix(){
+		conditions(){
 	// TODO Auto-generated constructor stub
 
 }
 
 Schedule::Schedule(vector<Observation> observations,
 		int observation_length,
-		int teles_length,
-		double ln,
-		double lat) : observations(observations),
+		int teles_length) : observations(observations),
 				observations_length(observation_length),
 				teles_length(teles_length),
-				total_duration() {
-
-	this->observer.lng = ln;
-	this->observer.lat = lat;
+				total_duration(),
+				conditions(){
 
 	const int width = observation_length;
 	const int height = N_TELESCOPE;
@@ -47,6 +64,20 @@ Schedule::Schedule(vector<Observation> observations,
 
 		teles_alloc_matrix[i] = new int[height];
 	}
+}
+
+Schedule::Schedule(vector<Observation> observations, 
+	int observation_length, 
+	int teles_length, 
+	double jd, //which represent the date of the schedule
+	Obs_conditions * conditions) : observations(observations),
+		observations_length(observation_length),
+		teles_alloc_matrix(),
+		teles_length(teles_length),
+		total_duration(),
+		conditions(conditions) {
+
+	this->conditions = new Obs_conditions(jd);
 }
 
 Schedule::~Schedule() {
@@ -71,13 +102,6 @@ void Schedule::setTotalDuration(double totalDuration) {
 	total_duration = totalDuration;
 }
 
-const time_interval& Schedule::getNightHorizon() const {
-	return night_horizon;
-}
-
-void Schedule::setNightHorizon(const time_interval& nightHorizon) {
-	night_horizon = nightHorizon;
-}
 
 int Schedule::getObservationsLength() const {
 	return observations_length;
@@ -137,32 +161,6 @@ double Schedule::calculateTotalDuration() {
 	return total;
 }
 
-int Schedule::calculateNightHorizon(double JD, struct ln_lnlat_posn* observer){
-
-	struct ln_rst_time * solar_rst = (struct ln_rst_time *) malloc(sizeof(struct ln_rst_time));;
-
-	int result = ln_get_solar_rst(JD, observer, solar_rst);
-
-	if (result == SUCCESS) {
-		if( JD > solar_rst->rise ){
-
-			struct ln_rst_time * next_solar_rst = (struct ln_rst_time *) malloc(sizeof(struct ln_rst_time));;
-			ln_get_solar_rst(JD+1, observer, next_solar_rst);
-
-			night_horizon.start = solar_rst->set;
-			night_horizon.end = next_solar_rst->rise;
-		}
-		else{
-
-			night_horizon.start = JD;
-			night_horizon.end = solar_rst->rise;
-		}
-
-		return SUCCESS;
-	}
-	else return result;
-}
-
 int Schedule::targetGenerator(Target * target){
 
 	bool stop = false;
@@ -184,7 +182,9 @@ int Schedule::targetGenerator(Target * target){
 
 		target = new Target(ra, dec);
 
-		circump = target->get_rise_set_transit(night_horizon.start, OBSERVATORY_HORIZON, &observer);
+		circump = target->get_rise_set_transit(conditions->night_horizon.start,
+				OBSERVATORY_HORIZON,
+				&conditions->observer);
 
 		if( circump != -1 ) stop = true;
 
@@ -196,22 +196,22 @@ int Schedule::targetGenerator(Target * target){
 
 int Schedule::timeConstraintGenerator(time_interval * requested){
 
-	requested = new time_interval();
 
 	double time_const = (double) rand() / (double) RAND_MAX;
+	time_const = 0.1;
 	if( time_const <= TIME_CONST_RATIO ){
 
 		//randomly generating start time
-		double range = night_horizon.end - night_horizon.start;
+		double range = conditions->night_horizon.end - conditions->night_horizon.start;
 		double div = RAND_MAX / range;
-		requested->start = night_horizon.start + rand() / div;
+
+		requested->start = conditions->night_horizon.start + rand() / div;
 
 		//randomly generating start time second bound
-		range = night_horizon.end - requested->start;
+		range = conditions->night_horizon.end - requested->start;
 		div = RAND_MAX / range;
-		requested->end = night_horizon.start + rand() / div;
+		requested->end = conditions->night_horizon.start + rand() / div;
 
-		std::cout << "Time const " << SUCCESS << std::endl;
 		return SUCCESS;
 	}
 
@@ -228,7 +228,6 @@ int Schedule::heightConstraintGenerator(double * min_height){
 		double div = RAND_MAX / range;
 		*min_height = rand() / div;
 
-		std::cout << "Height const " << SUCCESS << std::endl;
 		return SUCCESS;
 	}
 
@@ -244,7 +243,6 @@ int Schedule::moonDistConstraintGenerator(double * min_moon_dist){
 		double div = RAND_MAX / range;
 		*min_moon_dist = rand() / div;
 
-		std::cout << "Moon const " << SUCCESS << std::endl;
 		return SUCCESS;
 	}
 
@@ -257,7 +255,7 @@ int Schedule::observationRequestGenerator(Request * request){
 	int isHeightConstrainted = 1;
 	int isMoonConstrainted = 1;
 
-	srand(time(NULL));
+	//srand(time(NULL));
 
 	//Target Generation...must be observable
 	Target * target = new Target();
@@ -268,25 +266,26 @@ int Schedule::observationRequestGenerator(Request * request){
 	int exp_div = RAND_MAX / exp_range;
 	int exposure = MIN_EXPOSURE + rand() / exp_div;
 
-	//time constraint
+	//time constraint generation
 	time_interval * requested = new time_interval();
 	isTimeConstrainted = timeConstraintGenerator(requested);
 
-	//min height constraint
+	//min height constraint generation
 	double min_height = 0;
 	isHeightConstrainted = heightConstraintGenerator(&min_height);
 
-	//min moon constraint
+	//min moon constraint generation
 	double min_moon_dist = MOON_DISK;
 	isMoonConstrainted = moonDistConstraintGenerator(&min_moon_dist);
 
-	double first_end = requested->start;
-
+	//helping variables...
+	double start = requested->start;
 	double duration = requested->end - requested->start;
 
+	//Generating the request's observations
 	for(int i = 1; i <= request->getLength(); i++){
 
-		Observation * obs = new Observation(request, i, *target, (double) exposure);
+		Observation * obs = new Observation(request, i, *target, (double) exposure, conditions);
 		obs->setTimeConst(isTimeConstrainted);
 
 		obs->setHeightConst(isHeightConstrainted);
@@ -297,18 +296,16 @@ int Schedule::observationRequestGenerator(Request * request){
 		if( !isMoonConstrainted )
 			obs->setMoonMinSeparation(min_moon_dist);
 
-		requested->start = first_end + (i-1)*(request->getPeriod());
-		requested->end = requested->start + duration;
+		requested->start = addSecondsToJD(start, (i-1)*(request->getPeriod()));
+		requested->end = requested->start + duration; //in JD
 
-		if( requested->end > night_horizon.end ){
+		if( requested->end > conditions->night_horizon.end ){
 
 			request->setLength(i-1);
 			break;
 		}
 
 		obs->setReqTime(*requested);
-		first_end = requested->start;
-
 		request->addObservation(*obs);
 	}
 
@@ -320,7 +317,8 @@ int Schedule::singularRequestGenerator(Request * request){
 	int obs_length = 1;
 	int period = 0;
 
-	srand(time(NULL));
+
+	//srand(time(NULL));
 	double multi_obs = (double) rand() / (double) RAND_MAX;
 	if( multi_obs < PERIODIC_RATIO ){
 
@@ -343,6 +341,18 @@ int Schedule::singularRequestGenerator(Request * request){
 
 int Schedule::randomObservationListGenerator(int request_length) {
 
+
+	srand(time(NULL));
+
+	if( conditions->allSet == 1){
+		conditions->calculateNightHorizon();
+	}
+	else{
+
+		double JD = ln_get_julian_from_sys ();
+		conditions = new Obs_conditions(JD);
+	}
+
 	Request * request;
 	for(int i = 1; i <= request_length; i++){
 
@@ -350,13 +360,7 @@ int Schedule::randomObservationListGenerator(int request_length) {
 		request = new Request(i);
 		singularRequestGenerator(request);
 
-		// //concatenate
-		// observations.insert(observations.end(),
-		// 		request->getObservations().begin(),
-		// 		request->getObservations().end());
-
 		std::vector<Observation> obss = request->getObservations();
-
 		for(vector<Observation>::size_type i = 0; i < obss.size(); i++ ){
 
 			observations.push_back(obss[i]);
@@ -390,4 +394,12 @@ int Schedule::randomObservationAllocation(){
 	}
 
 	return SUCCESS;
+}
+
+Obs_conditions* Schedule::getConditions() const {
+	return conditions;
+}
+
+void Schedule::setConditions(Obs_conditions * conditions) {
+	this->conditions = conditions;
 }

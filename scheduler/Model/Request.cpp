@@ -8,12 +8,12 @@
 
 #include "Request.h"
 
-Request::Request() : req_id(), state(1), period(), length(), priority() {
+Request::Request() : req_id(), length(), state(1), period(), priority() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Request::Request(int req_id) : req_id(req_id), state(1), period(), length(), priority(){
+Request::Request(int req_id) : req_id(req_id), length(), state(1), period(), priority(){
 
 
 }

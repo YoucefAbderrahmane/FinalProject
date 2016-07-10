@@ -20,6 +20,7 @@ SchedulingProb::SchedulingProb(std::vector<Observation> observations,
 				observations_length(observations_length),
 				teles_length(teles_length),
 				night_horizon(night_horizon),
+				total_duration(),
 				observer(observer){
 	// TODO Auto-generated destructor stub
 
@@ -32,8 +33,6 @@ SchedulingProb::~SchedulingProb() {
 }
 
 
-
-
 base_ptr SchedulingProb::clone() const {
 
 	return base_ptr(new SchedulingProb(*this));
@@ -42,25 +41,64 @@ base_ptr SchedulingProb::clone() const {
 void SchedulingProb::objfun_impl(fitness_vector& f,
 		const decision_vector& x) const {
 
-//	int observed = 0;
-//	int i = 0, j = 0;
-//
-//	while(j < observations_length){
-//
-//		i++;
-//		j = 0;
-//		observed = 0;
-//		while(observed == 0 && j < teles_length){
-//
-//			if(teles_alloc_matrix[i][j] == 1){
-//
-//				observed = 1;
-//				f[0]++;
-//			}
-//			j++;
-//		}
-//	}
 
+	f[0] = 0.0; //f[0] : number of scheduled observations (maximize this value)
+	f[1] = 0.0; //f[1] : Average of altitude merits of all observed targets (maximize)
+	f[2] = 0.0; //f[2] : Average of telescope movement during the whole schedule (minimize)
+	f[3] = 0.0; //f[3] : number of telescopes using for scheduling (minimize)
+
+	int i = 0;
+	while( i < observations_length ){
+
+		//Calculating f[0]
+		//affectation[i] is equal to either 1 (scheduled) or 0 (not scheduled)
+		f[0] += affectations[i];
+
+		//Calculating f[1]
+		double count = 0.0;
+		if( affectations[i] == 1 ){
+
+			count = count + 1.0;
+			f[1] += observations[i].altituteMerit();
+		}
+		f[1] = (double) (f[1] / count);
+
+		i++;
+	}
+
+	i = 0;
+	int j = 0;
+	struct ln_equ_posn * pos;
+	double dist = 0.0;
+	double sum = 0.0;
+	double telescope_count = 0.0;
+	while( i < teles_length ){
+
+		if ( telescopes_used[i] == 1 ) {
+
+			telescope_count = telescope_count + 1.0;
+			while( j < observations_length - 1 ){
+
+				if( x[get_decv_index(i, j)] == 1 ){
+
+					//calculate distance between current target and next target
+					pos = new ln_equ_posn();
+					pos = observations[j+1].getTarget().getEqCord();
+					dist = observations[j].getTarget().getAngularDistance(pos);
+					sum += dist;
+				}
+				j++;
+			}
+		}
+		i++;
+	}
+
+	f[2] = sum / teles_length;
+	f[3] = telescope_count;
+
+	//Converting maximization problems into minimization problems (default)
+	f[1] = -f[1];
+	f[2] = -f[2];
 }
 
 
@@ -118,8 +156,8 @@ void SchedulingProb::compute_constraints_impl(constraint_vector& c,
 			j = 0;
 			while( j < observations_length - 1 ){
 
-				//if( observations[j].getSchedTime().end > observations[j+1].getSchedTime() )
-					//c[3] = 1;
+				if( observations[j].calculateEndTime() > observations[j+1].getSchedTime() )
+					c[3] = 1;
 			}
 		}
 	}

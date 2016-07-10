@@ -1,85 +1,12 @@
-18:45:40 **** Incremental Build of configuration Debug for project scheduler ****
+11:42:23 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
-Building file: ../Model/Schedule.cpp
+Building file: ../genethic_algo/SchedulingProb.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Schedule.d" -MT"Model/Schedule.o" -o "Model/Schedule.o" "../Model/Schedule.cpp"
-In file included from ../Model/Schedule.cpp:13:0:
-../Model/Schedule.h: In constructor ‘Schedule::Schedule()’:
-../Model/Schedule.h:68:16: warning: ‘Schedule::observer’ will be initialized after [-Wreorder]
-  ln_lnlat_posn observer;
-                ^
-../Model/Schedule.h:64:8: warning:   ‘int** Schedule::teles_alloc_matrix’ [-Wreorder]
-  int** teles_alloc_matrix; //telescope allocation matrix of the observations
-        ^
-../Model/Schedule.cpp:20:1: warning:   when initialized here [-Wreorder]
- Schedule::Schedule() : observations(),
- ^
-Finished building: ../Model/Schedule.cpp
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algo/SchedulingProb.d" -MT"genethic_algo/SchedulingProb.o" -o "genethic_algo/SchedulingProb.o" "../genethic_algo/SchedulingProb.cpp"
+Finished building: ../genethic_algo/SchedulingProb.cpp
  
 Building target: scheduler
 Invoking: GCC C++ Linker
-g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/home/pfe/dev/Cpp/Libraries/pagmo/build/src -o "scheduler"  ./src/scheduler.o  ./genethic_algo/SchedulingProb.o ./genethic_algo/schedpop.o  ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnlopt -lboost_system -lpagmo -lnova -lboost_thread -lboost_serialization
-Finished building target: scheduler
- 
-18:46:00 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-18:46:08 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/home/pfe/dev/Cpp/Libraries/pagmo/build/src -o "scheduler"  ./src/scheduler.o  ./genethic_algo/SchedulingProb.o ./genethic_algo/schedpop.o  ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnlopt -lboost_system -lpagmo -lnova -lboost_thread -lboost_serialization
-Finished building target: scheduler
- 
-18:47:05 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/home/pfe/dev/Cpp/Libraries/pagmo/build/src -o "scheduler"  ./src/scheduler.o  ./genethic_algo/SchedulingProb.o ./genethic_algo/schedpop.o  ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnlopt -lboost_system -lpagmo -lnova -lboost_thread -lboost_serialization
-Finished building target: scheduler
- 
-18:52:33 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../Model/Schedule.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Schedule.d" -MT"Model/Schedule.o" -o "Model/Schedule.o" "../Model/Schedule.cpp"
-In file included from ../Model/Schedule.cpp:13:0:
-../Model/Schedule.h: In constructor ‘Schedule::Schedule()’:
-../Model/Schedule.h:68:16: warning: ‘Schedule::observer’ will be initialized after [-Wreorder]
-  ln_lnlat_posn observer;
-                ^
-../Model/Schedule.h:64:8: warning:   ‘int** Schedule::teles_alloc_matrix’ [-Wreorder]
-  int** teles_alloc_matrix; //telescope allocation matrix of the observations
-        ^
-../Model/Schedule.cpp:20:1: warning:   when initialized here [-Wreorder]
- Schedule::Schedule() : observations(),
- ^
-Finished building: ../Model/Schedule.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/home/pfe/dev/Cpp/Libraries/pagmo/build/src -o "scheduler"  ./src/scheduler.o  ./genethic_algo/SchedulingProb.o ./genethic_algo/schedpop.o  ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnlopt -lboost_system -lpagmo -lnova -lboost_thread -lboost_serialization
-Finished building target: scheduler
- 
-18:52:55 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/home/pfe/dev/Cpp/Libraries/pagmo/build/src -o "scheduler"  ./src/scheduler.o  ./genethic_algo/SchedulingProb.o ./genethic_algo/schedpop.o  ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnlopt -lboost_system -lpagmo -lnova -lboost_thread -lboost_serialization
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/home/pfe/dev/Cpp/Libraries/pagmo/build/src -o "scheduler"  ./src/scheduler.o  ./genethic_algo/SchedulingProb.o ./genethic_algo/repairalgo.o ./genethic_algo/schedpop.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnlopt -lboost_system -lpagmo -lnova -lboost_thread -lboost_serialization
 Finished building target: scheduler
  

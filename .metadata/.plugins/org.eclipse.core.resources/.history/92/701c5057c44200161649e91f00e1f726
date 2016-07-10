@@ -1,0 +1,64 @@
+/*
+ * Obsconditions.cpp
+ *
+ *  Created on: 5 juil. 2016
+ *      Author: root
+ */
+
+#include <Obsconditions.h>
+
+Obs_conditions::Obs_conditions() : observer(), night_horizon() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Obs_conditions::~Obs_conditions() {
+	// TODO Auto-generated destructor stub
+}
+
+const time_interval*& Obs_conditions::getNightHorizon() const {
+	return night_horizon;
+}
+
+void Obs_conditions::setNightHorizon(const time_interval*& nightHorizon) {
+	night_horizon = nightHorizon;
+}
+
+const ln_lnlat_posn*& Obs_conditions::getObserver() const {
+	return observer;
+}
+
+void Obs_conditions::setObserver(const ln_lnlat_posn*& observer) {
+	this->observer = observer;
+}
+
+void Obs_conditions::setObserverFromConfig(){
+
+	obse
+}
+
+int Obs_conditions::calculateNightHorizon(double JD){
+
+	struct ln_rst_time * solar_rst = (struct ln_rst_time *) malloc(sizeof(struct ln_rst_time));;
+
+	int result = ln_get_solar_rst(JD, observer, solar_rst);
+
+	if (result == SUCCESS) {
+		if( JD > solar_rst->rise ){
+
+			struct ln_rst_time * next_solar_rst = (struct ln_rst_time *) malloc(sizeof(struct ln_rst_time));;
+			ln_get_solar_rst(JD+1, observer, next_solar_rst);
+
+			night_horizon->start = solar_rst->set;
+			night_horizon->end = next_solar_rst->rise;
+		}
+		else{
+
+			night_horizon->start = JD;
+			night_horizon->end = solar_rst->rise;
+		}
+
+		return SUCCESS;
+	}
+	else return FAILURE;
+}

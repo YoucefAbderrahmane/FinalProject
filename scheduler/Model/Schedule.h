@@ -12,10 +12,12 @@
 
 #include "Request.h"
 #include "Observation.h"
+#include "Obsconditions.h"
 #include "config.h"
 
 class Request;
 class Observation;
+class Obs_conditions;
 
 using namespace std;
 
@@ -23,11 +25,13 @@ typedef vector<Observation> t_observations;
 
 class Schedule {
 public:
+	//Constructors and destructors
 	Schedule();
-	Schedule(vector<Observation>, int, int, double, double);
+	Schedule(vector<Observation>, int, int);
+	Schedule(vector<Observation>, int, int, double, Obs_conditions *);
 	virtual ~Schedule();
 
-
+	//Getters and Setters
 	double getTotalDuration() const;
 	void setTotalDuration(double totalDuration);
 	const time_interval& getNightHorizon() const;
@@ -41,12 +45,13 @@ public:
 	const vector<Observation>& getObservations() const;
 	void setObservations(const vector<Observation>& observations);
 
+	//Different calculations needed
 	double calculateTelescopeDuration(int telescope);
 	double calculateTotalDuration();
-	int calculateNightHorizon(double JD, struct ln_lnlat_posn* observer);
+	//int calculateNightHorizon(double JD, struct ln_lnlat_posn* observer);
 
+	//Generators for testing the scheduler
 	int targetGenerator(Target * target);
-
 	int timeConstraintGenerator(time_interval * requested);
 	int heightConstraintGenerator(double * height);
 	int moonDistConstraintGenerator(double * min_moon_dist);
@@ -56,16 +61,16 @@ public:
 	int singularObservationGenerator(Observation * observation);
 	int randomObservationListGenerator(int length);
 	int randomObservationAllocation();
-
+	Obs_conditions* getConditions() const;
+	void setConditions(Obs_conditions * conditions);
 
 private:
 	vector<Observation> observations; //all observable requests for the night of the schedule
-	int observations_length;
+	int observations_length; //number of observable requests
 	int** teles_alloc_matrix; //telescope allocation matrix of the observations
 	int teles_length; //number of telescopes used
-	time_interval night_horizon;
-	double total_duration;
-	ln_lnlat_posn observer;
+	double total_duration;	//duration of the schedule
+	Obs_conditions * conditions;
 };
 
 #endif /* SCHEDULE_H_ */

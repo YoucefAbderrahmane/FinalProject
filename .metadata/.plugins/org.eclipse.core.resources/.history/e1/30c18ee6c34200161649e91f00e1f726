@@ -1,0 +1,33 @@
+/*
+ * Obsconditions.cpp
+ *
+ *  Created on: 5 juil. 2016
+ *      Author: root
+ */
+
+#include <Obsconditions.h>
+
+Obs_conditions::Obs_conditions() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Obs_conditions::~Obs_conditions() {
+	// TODO Auto-generated destructor stub
+}
+
+const time_interval*& Obs_conditions::getNightHorizon() const {
+	return night_horizon;
+}
+
+void Obs_conditions::setNightHorizon(const time_interval*& nightHorizon) {
+	night_horizon = nightHorizon;
+}
+
+const ln_lnlat_posn*& Obs_conditions::getObserver() const {
+	return observer;
+}
+
+void Obs_conditions::setObserver(const ln_lnlat_posn*& observer) {
+	this->observer = observer;
+}

@@ -13,7 +13,7 @@
 #include <libnova/angular_separation.h>
 #include <libnova/lunar.h>
 
-Target::Target() {
+Target::Target() : eq_r_asc(), eq_dec(), moon_ang_dist() {
 	// TODO Auto-generated destructor stub
 }
 
@@ -21,10 +21,8 @@ Target::~Target() {
 	// TODO Auto-generated destructor stub
 }
 
-Target::Target(double eq_ra, double eq_dec){
+Target::Target(double eq_ra, double eq_dec) : eq_r_asc(eq_ra), eq_dec(eq_dec), moon_ang_dist(){
 
-	this->eq_r_asc = eq_ra;
-	this->eq_dec = eq_dec;
 }
 
 
@@ -89,7 +87,7 @@ double Target::getMoonAngularDistance(double JD) {
 
 	struct ln_equ_posn position;
 
-	struct ln_equ_posn * object = (struct ln_equ_posn *) malloc(sizeof(struct ln_equ_posn));
+	struct ln_equ_posn * object = new ln_equ_posn();
 	object->dec = this->getEqDec();
 	object->ra = this->getEqRAsc();
 
@@ -100,4 +98,18 @@ double Target::getMoonAngularDistance(double JD) {
 	setMoonAngDist(dist);
 
 	return getMoonAngDist();
+}
+
+struct ln_equ_posn * Target::getEqCord() const {
+
+	ln_equ_posn * position = new ln_equ_posn();
+	position->dec = this->eq_dec;
+	position->ra = this->eq_r_asc;
+
+	return position;
+}
+
+double Target::getAngularDistance(struct ln_equ_posn * position) const {
+
+	return ln_get_angular_separation(this->getEqCord(), position);
 }

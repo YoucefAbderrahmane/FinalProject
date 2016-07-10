@@ -54,7 +54,7 @@ private:
 	vector<Observation> observations;
 	int length;
 	int state;
-	double period; //in julian day
+	double period; //in seconds
 	double priority; //defined as probability of selection in the range [0,1]
 };
 

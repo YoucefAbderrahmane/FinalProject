@@ -11,7 +11,7 @@ namespace pagmo {
 
 //sched_pop::sched_pop() : population() {
 //	// TODO Auto-generated constructor stub
-//
+//	m_prob.get()->
 //}
 
 sched_pop::~sched_pop() {

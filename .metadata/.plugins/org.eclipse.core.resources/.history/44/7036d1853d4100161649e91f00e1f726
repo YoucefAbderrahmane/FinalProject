@@ -1,0 +1,21 @@
+/*
+ * repairalgo.h
+ *
+ *  Created on: 3 juil. 2016
+ *      Author: root
+ */
+
+#ifndef REPAIRALGO_H_
+#define REPAIRALGO_H_
+
+namespace algorithm {
+
+class repair_algo {
+public:
+	repair_algo();
+	virtual ~repair_algo();
+};
+
+} /* namespace algorithm */
+
+#endif /* REPAIRALGO_H_ */

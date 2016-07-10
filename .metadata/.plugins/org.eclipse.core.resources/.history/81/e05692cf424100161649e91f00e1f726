@@ -1,0 +1,29 @@
+/*
+ * repairalgo.cpp
+ *
+ *  Created on: 3 juil. 2016
+ *      Author: root
+ */
+
+#include "repairalgo.h"
+
+namespace pagmo {
+namespace algorithm {
+
+repair_algo::repair_algo() : base() {
+	// TODO Auto-generated constructor stub
+
+}
+
+repair_algo::~repair_algo() {
+	// TODO Auto-generated destructor stub
+}
+
+base_ptr SchedulingProb::clone() const {
+
+	return base_ptr(new repairalgo(*this));
+}
+
+} /* namespace algorithm */
+
+}

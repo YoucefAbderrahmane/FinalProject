@@ -11,7 +11,7 @@
 #include <vector>
 #include <iterator>
 
-//#include <julian_day.h>
+//#include <libnova/julian_day.h>
 //#include <solar.h>
 //#include <rise_set.h>
 #include <libnova/libnova.h>
@@ -32,76 +32,30 @@
 using namespace std;
 
 
-time_interval night_horizon = time_interval();
-
-int timeConstraintGenerator(time_interval * requested){
-
-	requested = new time_interval();
-
-	double time_const = (double) rand() / (double) RAND_MAX;
-	if( time_const <= TIME_CONST_RATIO ){
-
-		//randomly generating start time
-		double range = night_horizon.end - night_horizon.start;
-		double div = RAND_MAX / range;
-		requested->start = night_horizon.start + rand() / div;
-
-		//randomly generating start time second bound
-		range = night_horizon.end - requested->start;
-		div = RAND_MAX / range;
-		requested->end = night_horizon.start + rand() / div;
-
-		std::cout << "Time const " << SUCCESS << std::endl;
-		return SUCCESS;
-	}
-
-	return FAILURE;
-}
-
-
-int heightConstraintGenerator(double * min_height){
-
-	double height_const = (double) rand() / (double) RAND_MAX;
-	if( height_const <= MIN_HEIGHT_RATIO ){
-
-		double range = 90.0 - 0.0;
-		double div = RAND_MAX / range;
-		*min_height = rand() / div;
-		return SUCCESS;
-	}
-
-	return FAILURE;
-}
-
-int moonDistConstraintGenerator(double * min_moon_dist){
-
-	double moon_const = (double) rand() / (double) RAND_MAX;
-	if( moon_const <= MIN_MOON_DIST_RATIO ){
-
-		double range = 180.0 - MOON_DISK;
-		double div = RAND_MAX / range;
-		*min_moon_dist = rand() / div;
-		return SUCCESS;
-	}
-
-	return FAILURE;
-}
-
-
 int main() {
-
-	night_horizon.start = 2457568.37966;
-	night_horizon.end = 2457568.67133;
 
 	Target vega(279.2347, 38.7836);
 
-	cout << " hi " << endl;
-	Schedule * sched = new Schedule();
-	sched->randomObservationListGenerator(10);
+	double jd = ln_get_julian_from_sys();
 
-	cout << " hi again " << endl;
-	cout << fixed << sched->getObservations().at(1).getExposureTime() << endl;
+	Request * req = new Request(0);
 
+	Obs_conditions * conditions = new Obs_conditions(jd);
+
+	Observation * obs = new Observation(req, 0, vega, 20.0, conditions);
+	obs->setHeightConst(1);
+	obs->setMinHeight(45.0);
+
+	double alt_merit = obs->altituteMerit();
+
+//	Schedule * sched = new Schedule();
+//	sched->randomObservationListGenerator(10);
+//
+	ln_date * d = new ln_date();
+//
+//	ln_get_date(sched->getObservations().at(0).getReqTime().start, d);
+
+	cout << fixed << alt_merit << endl;
 
 //	Target kochab(222.676375, 74.1555);
 //
