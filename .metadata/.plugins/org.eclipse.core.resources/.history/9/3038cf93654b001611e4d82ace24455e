@@ -1,0 +1,20 @@
+/*
+ * population.cpp
+ *
+ *  Created on: 16 juil. 2016
+ *      Author: root
+ */
+
+#include "population.h"
+
+population::population(int population_size) : individuals(), population_size(population_size),
+		champion()
+{
+	// TODO Auto-generated constructor stub
+
+}
+
+population::~population() {
+	// TODO Auto-generated destructor stub
+}
+

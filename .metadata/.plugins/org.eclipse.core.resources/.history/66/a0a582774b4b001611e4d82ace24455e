@@ -1,0 +1,31 @@
+/*
+ * chromosome.h
+ *
+ *  Created on: 16 juil. 2016
+ *      Author: root
+ */
+
+#ifndef CHROMOSOME_H_
+#define CHROMOSOME_H_
+
+#include "gene.h"
+
+namespace algorithm {
+
+class chromosome {
+public:
+	chromosome();
+	chromosome(std::vector<Observation> Observations)
+	virtual ~chromosome();
+
+private:
+	std::vector<gene> genes;
+	int gene_size;
+
+	std::vector<double> f;	//objective functions vector
+	std::vector<double> c; //constraints vector
+};
+
+} /* namespace algorithm */
+
+#endif /* CHROMOSOME_H_ */

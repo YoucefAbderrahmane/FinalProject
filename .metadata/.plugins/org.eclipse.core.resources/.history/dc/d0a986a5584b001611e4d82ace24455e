@@ -1,0 +1,26 @@
+/*
+ * population.h
+ *
+ *  Created on: 16 juil. 2016
+ *      Author: root
+ */
+
+#ifndef POPULATION_H_
+#define POPULATION_H_
+
+#include "chromosome.h"
+
+class population {
+public:
+	population();
+	virtual ~population();
+
+	void update_crowding_dist();
+
+private:
+	std::vector<chromosome> individuals;
+
+	int population_size;
+};
+
+#endif /* POPULATION_H_ */

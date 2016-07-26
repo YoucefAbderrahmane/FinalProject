@@ -1,0 +1,39 @@
+/*
+ * gene.cpp
+ *
+ *  Created on: 16 juil. 2016
+ *      Author: root
+ */
+
+#include "gene.h"
+#include "../utilities/time_calculation.h"
+
+gene::gene() : random_selection(), start_date(), end_date(), telescope_used() {
+	// TODO Auto-generated constructor stub
+
+}
+
+gene::gene() : random_selection(), start_date(),
+		end_date(), telescope_used(){
+
+}
+
+gene::~gene() {
+	// TODO Auto-generated destructor stub
+}
+
+bool gene::is_scheduled() {
+
+	return ( random_selection < observation->getRequest()->getPriority());
+}
+
+Observation* gene::getObs() {
+
+	return observation;
+}
+
+double gene::get_end_time(Observation * observation) {
+
+	end_date = addSecondsToJD(start_date, observation->getDuration());
+	return end_date;
+}

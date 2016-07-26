@@ -1,0 +1,23 @@
+/*
+ * comparators.h
+ *
+ *  Created on: 21 juil. 2016
+ *      Author: root
+ */
+
+#ifndef COMPARATORS_H_
+#define COMPARATORS_H_
+
+#include "../genethic_algorithm/gene.h"
+
+struct gene_less_comp{
+
+	bool operator()(gene g1, gene g2){
+
+		return (g1.get_start_time() < g2.get_start_time());
+	}
+};
+
+
+
+#endif /* COMPARATORS_H_ */

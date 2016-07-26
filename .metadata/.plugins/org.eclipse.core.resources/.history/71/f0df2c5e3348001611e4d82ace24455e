@@ -1,0 +1,21 @@
+/*
+ * aures.h
+ *
+ *  Created on: 12 juil. 2016
+ *      Author: root
+ */
+
+#ifndef AURES_H_
+#define AURES_H_
+
+namespace algorithm {
+
+class aures {
+public:
+	aures();
+	virtual ~aures();
+};
+
+} /* namespace algorithm */
+
+#endif /* AURES_H_ */

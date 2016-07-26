@@ -1,0 +1,29 @@
+/*
+ * aures.h
+ *
+ *  Created on: 12 juil. 2016
+ *      Author: root
+ */
+
+#ifndef AURES_H_
+#define AURES_H_
+
+#include <string>
+
+#include <config.h>
+#include <serialization.h>
+#include <types.h>
+#include <problem/base.h>
+
+namespace pagmo { namespace problem {
+
+class aures {
+public:
+	aures();
+	virtual ~aures();
+};
+
+} /* namespace problem */
+} /* namespace pagmo */
+
+#endif /* AURES_H_ */

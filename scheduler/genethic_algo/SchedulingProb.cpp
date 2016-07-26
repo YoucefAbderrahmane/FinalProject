@@ -98,7 +98,7 @@ void SchedulingProb::objfun_impl(fitness_vector& f,
 
 	//Converting maximization problems into minimization problems (default)
 	f[1] = -f[1];
-	f[2] = -f[2];
+	f[0] = -f[0];
 }
 
 

@@ -21,6 +21,9 @@ class Target;
 class Obs_conditions;
 
 class Observation {
+
+	friend class aures;
+
 public:
 	//Constructors and destructors
 	Observation();

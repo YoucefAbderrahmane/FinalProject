@@ -1,0 +1,6 @@
+#ifndef GA_CONFIG_H_
+#define CONFIG_H_
+
+#define PROB_DIM 4
+
+#endif /* GA_CONFIG_H_ */
