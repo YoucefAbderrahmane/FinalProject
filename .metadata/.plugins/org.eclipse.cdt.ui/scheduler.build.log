@@ -1,9 +1,87 @@
-11:42:23 **** Incremental Build of configuration Debug for project scheduler ****
+19:46:47 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
+Building file: ../src/scheduler.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
+../src/scheduler.cpp: In function ‘int main()’:
+../src/scheduler.cpp:54:12: warning: unused variable ‘d’ [-Wunused-variable]
+  ln_date * d = new ln_date();
+            ^
+Finished building: ../src/scheduler.cpp
+ 
 Building file: ../genethic_algo/SchedulingProb.cpp
 Invoking: GCC C++ Compiler
 g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algo/SchedulingProb.d" -MT"genethic_algo/SchedulingProb.o" -o "genethic_algo/SchedulingProb.o" "../genethic_algo/SchedulingProb.cpp"
 Finished building: ../genethic_algo/SchedulingProb.cpp
+ 
+Building file: ../genethic_algo/repairalgo.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algo/repairalgo.d" -MT"genethic_algo/repairalgo.o" -o "genethic_algo/repairalgo.o" "../genethic_algo/repairalgo.cpp"
+Finished building: ../genethic_algo/repairalgo.cpp
+ 
+Building file: ../genethic_algo/schedpop.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algo/schedpop.d" -MT"genethic_algo/schedpop.o" -o "genethic_algo/schedpop.o" "../genethic_algo/schedpop.cpp"
+Finished building: ../genethic_algo/schedpop.cpp
+ 
+Building file: ../Model/Obsconditions.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
+Finished building: ../Model/Obsconditions.cpp
+ 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:86:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:82:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:20:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:88:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
+      ^
+../Model/Observation.h:84:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
+         ^
+../Model/Observation.cpp:29:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
+ ^
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:338:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:341:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+Finished building: ../Model/Observation.cpp
+ 
+Building file: ../Model/Request.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Request.d" -MT"Model/Request.o" -o "Model/Request.o" "../Model/Request.cpp"
+Finished building: ../Model/Request.cpp
+ 
+Building file: ../Model/Schedule.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Schedule.d" -MT"Model/Schedule.o" -o "Model/Schedule.o" "../Model/Schedule.cpp"
+Finished building: ../Model/Schedule.cpp
+ 
+Building file: ../Model/Target.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Target.d" -MT"Model/Target.o" -o "Model/Target.o" "../Model/Target.cpp"
+Finished building: ../Model/Target.cpp
+ 
+Building file: ../Model/observer.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/observer.d" -MT"Model/observer.o" -o "Model/observer.o" "../Model/observer.cpp"
+Finished building: ../Model/observer.cpp
  
 Building target: scheduler
 Invoking: GCC C++ Linker
@@ -11,5 +89,5 @@ g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/home/pfe/dev/Cpp/Libraries/p
 Finished building target: scheduler
  
 
-11:44:06 Build Finished (took 1m:42s.427ms)
+19:47:23 Build Finished (took 36s.328ms)
 
