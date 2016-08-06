@@ -23,6 +23,9 @@ void repair_algo::evolve(population &p) const{
 
 	/* repair the only individual of the population */
 
+	//Cast the population to "Schedpop"
+	//sched_pop * pop = (sched_pop *) p;
+
 	//Get the individual to repair
 	population::individual_type individual = p.get_individual(0);
 

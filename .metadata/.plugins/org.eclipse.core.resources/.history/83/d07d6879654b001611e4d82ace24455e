@@ -1,0 +1,18 @@
+/*
+ * population.cpp
+ *
+ *  Created on: 16 juil. 2016
+ *      Author: root
+ */
+
+#include "population.h"
+
+population::population() {
+	// TODO Auto-generated constructor stub
+
+}
+
+population::~population() {
+	// TODO Auto-generated destructor stub
+}
+

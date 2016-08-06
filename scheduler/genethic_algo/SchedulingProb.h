@@ -17,10 +17,14 @@
 
 #include "../Model/Observation.h"
 #include "../Model/config.h"
+//#include "schedpop.h"
 
 namespace pagmo { namespace problem {
 
 class __PAGMO_VISIBLE SchedulingProb : public base {
+
+	//friend class schedpop;
+
 public:
 	SchedulingProb(std::vector<Observation> observations,
 			int observations_length,
@@ -64,7 +68,6 @@ private:
 	    ar & end_time;
 	    ar & start_time;
 	    ar & night_horizon;
-	    ar & total_duration;
 	    ar & observer;
 	}
 

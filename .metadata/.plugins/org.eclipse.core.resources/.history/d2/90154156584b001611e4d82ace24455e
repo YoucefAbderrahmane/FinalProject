@@ -1,0 +1,17 @@
+/*
+ * population.h
+ *
+ *  Created on: 16 juil. 2016
+ *      Author: root
+ */
+
+#ifndef POPULATION_H_
+#define POPULATION_H_
+
+class population {
+public:
+	population();
+	virtual ~population();
+};
+
+#endif /* POPULATION_H_ */

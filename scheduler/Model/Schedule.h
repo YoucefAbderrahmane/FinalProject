@@ -24,6 +24,9 @@ using namespace std;
 typedef vector<Observation> t_observations;
 
 class Schedule {
+
+	friend class chromosome;
+
 public:
 	//Constructors and destructors
 	Schedule();
@@ -44,6 +47,10 @@ public:
 	void setTelesLength(int telesLength);
 	const vector<Observation>& getObservations() const;
 	void setObservations(const vector<Observation>& observations);
+
+	std::vector<Observation> * getObs();
+
+	void checkObservations();
 
 	//Different calculations needed
 	double calculateTelescopeDuration(int telescope);

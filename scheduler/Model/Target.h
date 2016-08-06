@@ -34,7 +34,6 @@ public:
 	void setEqDec(double eqDec);
 	double getEqRAsc() const;
 	void setEqRAsc(double eqRAsc);
-
 	const struct ln_rst_time& getRiseSetTransit() const;
 	void setRiseSetTransit(const struct ln_rst_time& riseSetTransit);
 	

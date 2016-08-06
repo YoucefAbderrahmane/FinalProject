@@ -13,29 +13,30 @@
 #include "Schedule.h"
 #include <libnova/solar.h>
 #include <libnova/julian_day.h>
+#include "../utilities/time_calculation.h"
 
 class Request;
 class Target;
 
 
-// HELPING FUNCTIONS
-
-double addSecondsToJD(double JD, double seconds){
-
-	//convert JD to date
-	time_t * d = new time_t();
-	ln_get_timet_from_julian(JD, d);
-
-	//Add seconds to d
-	struct tm d_tm = *localtime(d);
-	d_tm.tm_sec += seconds;
-
-	//normalize tm and convert it to time_t
-	time_t new_d = mktime(&d_tm);
-
-	//return the equivalent julian day
-	return ln_get_julian_from_timet (&new_d);
-} 
+//// HELPING FUNCTIONS
+//
+//double addSecondsToJD(double JD, double seconds){
+//
+//	//convert JD to date
+//	time_t * d = new time_t();
+//	ln_get_timet_from_julian(JD, d);
+//
+//	//Add seconds to d
+//	struct tm d_tm = *localtime(d);
+//	d_tm.tm_sec += seconds;
+//
+//	//normalize tm and convert it to time_t
+//	time_t new_d = mktime(&d_tm);
+//
+//	//return the equivalent julian day
+//	return ln_get_julian_from_timet (&new_d);
+//}
 
 
 Schedule::Schedule() : observations(),
@@ -46,6 +47,7 @@ Schedule::Schedule() : observations(),
 		conditions(){
 	// TODO Auto-generated constructor stub
 
+	conditions = new Obs_conditions();
 }
 
 Schedule::Schedule(vector<Observation> observations,
@@ -55,6 +57,8 @@ Schedule::Schedule(vector<Observation> observations,
 				teles_length(teles_length),
 				total_duration(),
 				conditions(){
+
+	conditions = new Obs_conditions();
 
 	const int width = observation_length;
 	const int height = N_TELESCOPE;
@@ -180,7 +184,8 @@ int Schedule::targetGenerator(Target * target){
 		div = RAND_MAX / ra_range;
 		ra = rand() / div;
 
-		target = new Target(ra, dec);
+		target->setEqDec(dec);
+		target->setEqRAsc(ra);
 
 		circump = target->get_rise_set_transit(conditions->night_horizon.start,
 				OBSERVATORY_HORIZON,
@@ -198,7 +203,7 @@ int Schedule::timeConstraintGenerator(time_interval * requested){
 
 
 	double time_const = (double) rand() / (double) RAND_MAX;
-	time_const = 0.1;
+
 	if( time_const <= TIME_CONST_RATIO ){
 
 		//randomly generating start time
@@ -210,7 +215,7 @@ int Schedule::timeConstraintGenerator(time_interval * requested){
 		//randomly generating start time second bound
 		range = conditions->night_horizon.end - requested->start;
 		div = RAND_MAX / range;
-		requested->end = conditions->night_horizon.start + rand() / div;
+		requested->end = requested->start + rand() / div;
 
 		return SUCCESS;
 	}
@@ -330,7 +335,7 @@ int Schedule::singularRequestGenerator(Request * request){
 	request->setPeriod(period);
 
 	//Generating priority
-	request->setPriority((double) (rand() % MAX_PRIO) + 1.0 / 10.0);
+	request->setPriority((double)  ((rand() % MAX_PRIO) + 1.0) / 10.0);
 
 	//generating observations
 	//...
@@ -400,6 +405,39 @@ Obs_conditions* Schedule::getConditions() const {
 	return conditions;
 }
 
+void Schedule::checkObservations() {
+
+	//Use this function to check if observations are generated correctly
+	//This function will become useless when the number of observation is too high
+
+	std::cout << "Number of generated observations : " << observations.size() << std::endl;
+	std::cout << "Julian day : " << fixed << conditions->JD << std::endl;
+	std::cout << "Observer's position : " << "lat " << conditions->observer.lat
+			<< " - lng " << conditions->observer.lng << std::endl;
+	std::cout << "Night horizon : " << fixed << conditions->night_horizon.start << " - " << fixed << conditions->night_horizon.end <<std::endl;
+
+	for(int i = 0; i < (int) observations.size(); i++){
+
+		std::cout << "Observation " << i << std::endl;
+		std::cout << "Obs req id : " << observations[i].getRequest()->getReqId() << std::endl;
+		std::cout << "Obs id : " << observations[i].getObsId()<< std::endl;
+		std::cout << "Obs priority : " << observations[i].getRequest()->getPriority()<< std::endl;
+		std::cout << "Obs exp time : " << fixed << observations[i].getExposureTime() << std::endl;
+		std::cout << "Obs min h : " << fixed << observations[i].getMinHeight() << std::endl;
+		std::cout << "Obs min moon : " << fixed << observations[i].getMoonMinSeparation() << std::endl;
+		std::cout << "Obs req time : " << fixed << observations[i].getReqTime().start << " - "
+				<< fixed << observations[i].getReqTime().end << std::endl;
+		std::cout << "Obs target : " << "dec " << fixed << observations[i].getTarget().getEqDec() << " - "
+				<< "ra " << fixed << observations[i].getTarget().getEqRAsc() << std::endl;
+		std::cout << endl;
+	}
+}
+
 void Schedule::setConditions(Obs_conditions * conditions) {
 	this->conditions = conditions;
+}
+
+std::vector<Observation> * Schedule::getObs() {
+
+	return &observations;
 }

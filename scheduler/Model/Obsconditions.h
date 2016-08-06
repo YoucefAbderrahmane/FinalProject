@@ -11,6 +11,8 @@
 #include <libnova/ln_types.h>
 #include "config.h"
 
+#include "../genethic_algo/aures.h"
+
 class Obs_conditions {
 
 	friend class Schedule;

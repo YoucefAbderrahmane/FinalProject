@@ -10,6 +10,7 @@
 Obs_conditions::Obs_conditions() : observer(), night_horizon(), horizon(), allSet(1) {
 	// TODO Auto-generated constructor stub
 
+	JD = ln_get_julian_from_sys();
 	setObserverFromConfig();
 }
 
@@ -38,7 +39,7 @@ int Obs_conditions::calculateNightHorizon(){
 	int result = ln_get_solar_rst(JD, &observer, solar_rst);
 
 	if (result == SUCCESS) {
-		if( JD > solar_rst->rise ){
+		if( JD < solar_rst->set ){
 
 			struct ln_rst_time * next_solar_rst = new ln_rst_time();
 			ln_get_solar_rst(JD+1, &observer, next_solar_rst);

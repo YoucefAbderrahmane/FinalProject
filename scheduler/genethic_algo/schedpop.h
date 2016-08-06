@@ -13,14 +13,17 @@
 #include <serialization.h>
 #include <types.h>
 
+#include "SchedulingProb.h"
+
 namespace pagmo {
 
 class sched_pop : public population {
 public:
-	sched_pop();
+	sched_pop(const problem::base &p, int n, const boost::uint32_t &seed);
 	virtual ~sched_pop();
 private:
 	void reinit(const size_type &);
+
 };
 
 } /* namespace algorithm */

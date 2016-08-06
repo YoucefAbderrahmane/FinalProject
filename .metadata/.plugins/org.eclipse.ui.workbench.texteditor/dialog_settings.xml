@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="301" key="DIALOG_WIDTH"/>
-		<item value="171" key="DIALOG_Y_ORIGIN"/>
-		<item value="424" key="DIALOG_HEIGHT"/>
-		<item value="464" key="DIALOG_X_ORIGIN"/>
+		<item value="307" key="DIALOG_WIDTH"/>
+		<item value="123" key="DIALOG_Y_ORIGIN"/>
+		<item value="973" key="DIALOG_X_ORIGIN"/>
+		<item value="425" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="cout" key="selection"/>
+		<item value="request" key="selection"/>
 		<list key="findhistory">
-			<item value="cout"/>
+			<item value="request"/>
+			<item value="targetGen"/>
+			<item value="targetge"/>
+			<item value="i&apos;m in"/>
+			<item value="genes.at(i).telescope_used"/>
+			<item value="night_horizon"/>
 			<item value="observer"/>
-			<item value="sched_time"/>
-			<item value="size"/>
+			<item value="cout"/>
 		</list>
 		<list key="replacehistory">
+			<item value="curr_teles"/>
 		</list>
 	</section>
 </section>

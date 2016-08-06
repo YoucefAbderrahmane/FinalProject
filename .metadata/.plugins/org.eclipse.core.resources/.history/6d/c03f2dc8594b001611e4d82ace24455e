@@ -1,0 +1,33 @@
+/*
+ * population.h
+ *
+ *  Created on: 16 juil. 2016
+ *      Author: root
+ */
+
+#ifndef POPULATION_H_
+#define POPULATION_H_
+
+#include "chromosome.h"
+
+class population {
+public:
+	population();
+	virtual ~population();
+
+	void init(); //Randomly initialize the population
+	void repair(chromosome individual);
+	chromosome get_individual(int index);
+
+	void update_pareto_information(); //update the pareto info (front rank and crowding distance)
+	void update_crowding_dist(); //update the crowding distance of all individuals
+	std::vector<std::vector<int>> compute_pareto_fronts(); //compute the pareto fronts.
+	std::vector<double> compute_ideal();	//compute the ideal objective vector
+	std::vector<double> compute_nadir();	//compute the nadir objective vector
+
+private:
+	std::vector<chromosome> individuals;
+	int population_size;
+};
+
+#endif /* POPULATION_H_ */

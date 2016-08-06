@@ -1,0 +1,51 @@
+/*
+ * schedpop.cpp
+ *
+ *  Created on: 24 juin 2016
+ *      Author: root
+ */
+
+#include "schedpop.h"
+
+namespace pagmo {
+
+sched_pop::sched_pop(const problem::base &p, int n, const boost::uint32_t &seed) : population(p, n, seed) {
+	// TODO Auto-generated constructor stub
+	m_prob.get()->
+}
+
+sched_pop::~sched_pop() {
+	// TODO Auto-generated destructor stub
+}
+
+void sched_pop::reinit(const size_type &idx)
+{
+	if (idx >= size()) {
+		pagmo_throw(index_error,"invalid index");
+	}
+	const decision_vector::size_type p_size = m_prob->get_dimension(), i_size = m_prob->get_i_dimension();
+	// Initialise randomly the continuous part of the decision vector.
+	for (decision_vector::size_type j = 0; j < p_size - i_size; ++j) {
+		m_container[idx].cur_x[j] = boost::uniform_real<double>(m_prob->get_lb()[j],m_prob->get_ub()[j])(m_drng);
+	}
+	// Initialise randomly the integer part of the decision vector.
+	for (decision_vector::size_type j = p_size - i_size; j < p_size; ++j) {
+		m_container[idx].cur_x[j] = boost::uniform_int<int>(m_prob->get_lb()[j],m_prob->get_ub()[j])(m_urng);
+	}
+	// Initialise randomly the velocity vector.
+	init_velocity(idx);
+	// Fill in the constraints.
+	m_prob->compute_constraints(m_container[idx].cur_c,m_container[idx].cur_x);
+	// Compute the fitness.
+	m_prob->objfun(m_container[idx].cur_f,m_container[idx].cur_x);
+	// Best decision vector is current decision vector, best fitness is current fitness, best constraints are current constraints.
+	m_container[idx].best_x = m_container[idx].cur_x;
+	m_container[idx].best_f = m_container[idx].cur_f;
+	m_container[idx].best_c = m_container[idx].cur_c;
+	// Update the champion.
+	update_champion(idx);
+	// Update the domination lists.
+	update_dom(idx);
+}
+
+} /* namespace algorithm */

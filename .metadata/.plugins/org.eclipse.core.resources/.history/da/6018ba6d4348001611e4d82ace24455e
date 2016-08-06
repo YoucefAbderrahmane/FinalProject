@@ -1,0 +1,63 @@
+/*
+ * aures.cpp
+ *
+ *  Created on: 12 juil. 2016
+ *      Author: root
+ */
+
+#include "aures.h"
+
+namespace pagmo {
+namespace problem {
+
+double addSecondsToJD(double JD, double seconds){
+
+	//convert JD to date
+	time_t * d = new time_t();
+	ln_get_timet_from_julian(JD, d);
+
+	//Add seconds to d
+	struct tm d_tm = *localtime(d);
+	d_tm.tm_sec += seconds;
+
+	//normalize tm and convert it to time_t
+	time_t new_d = mktime(&d_tm);
+
+	//return the equivalent julian day
+	return ln_get_julian_from_timet (&new_d);
+}
+
+aures::aures(std::vector<Observation> observations, int observation_length, int teles_length) :
+		base(observations_length*teles_length), observations_length(observation_length),
+		teles_length(teles_length), night_horizon(), bounds(), total_duration()
+{
+
+	night_horizon.start = observations.at(0).getConditions()->getNightHorizon().start;
+	night_horizon.end = observations.at(0).getConditions()->getNightHorizon().end;
+
+	bounds.start = addSecondsToJD(night_horizon.start, -7200.0);
+	bounds.end = addSecondsToJD(night_horizon.end, 7200.0);
+
+	set_lb(bounds.start);
+	set_ub(bounds.end);
+}
+
+aures::~aures() {
+	// TODO Auto-generated destructor stub
+}
+
+base_ptr aures::clone() const {
+
+	return base_ptr(new aures(*this));
+}
+
+void aures::objfun_impl(fitness_vector& allocator,
+		const decision_vector& allocator1) const {
+}
+
+void aures::compute_constraints_impl(constraint_vector& c,
+		const decision_vector& x) const {
+}
+
+} /* namespace  problem */
+} /* namespace  pagmo */
