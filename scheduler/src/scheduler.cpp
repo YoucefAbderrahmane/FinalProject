@@ -54,19 +54,19 @@ int main() {
 
 
 
-//	chromosome * ch = new chromosome(sched->getObs());
-//
-//	cout << "fknfi," << endl;
-//
-//
-//	ch->checkObservations();
-//	ch->compute_obj_func();
-//
-//	cout << "fknfi," << endl;
-//	cout << fixed << ch->get_obj_func(0) << endl;
-//	cout << fixed << ch->get_obj_func(1) << endl;
-//	cout << fixed << ch->get_obj_func(2) << endl;
-//	cout << fixed << ch->get_obj_func(3) << endl;
+	chromosome * ch = new chromosome(sched->getObs());
+
+	cout << "fknfi," << endl;
+
+
+	ch->checkObservations();
+	ch->compute_obj_func();
+
+	cout << "fknfi," << endl;
+	cout << fixed << ch->get_obj_func(0) << endl;
+	cout << fixed << ch->get_obj_func(1) << endl;
+	cout << fixed << ch->get_obj_func(2) << endl;
+	cout << fixed << ch->get_obj_func(3) << endl;
 
 
 

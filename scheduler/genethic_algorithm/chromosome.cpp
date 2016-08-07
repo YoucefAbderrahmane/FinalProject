@@ -44,7 +44,7 @@ chromosome::~chromosome() {
 
 void chromosome::compute_obj_func() {
 
-
+	std::cout << "I-----------------------begin objt func"<<std::endl;
 	f[0] = 0.0; //f[0] : number of scheduled observations (maximize this value)
 	f[1] = 0.0; //f[1] : Average of altitude merits of all observed targets (maximize)
 	f[2] = 0.0; //f[2] : Average of telescope movement during the whole schedule (minimize)
@@ -124,6 +124,7 @@ void chromosome::compute_obj_func() {
 	//Converting maximization problems into minimization problems (default)
 	f[1] = -f[1];
 	f[2] = -f[2];
+	std::cout<< "------------------------------------the end obj func "<<std::endl;
 }
 
 double chromosome::get_obj_func(int index) {

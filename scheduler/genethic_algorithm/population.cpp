@@ -6,6 +6,9 @@
  */
 
 #include "population.h"
+
+#include <stdlib.h>
+#include <algorithm>
 #include <time.h>
 #include "../Model/config.h"
 #include "../utilities/time_calculation.h"
@@ -34,11 +37,24 @@ void population::init() {
 
 	srand(time(NULL));
 
-	//initialize all individuals of the population
-	for(std::vector<chromosome>::size_type i = 0; i < individuals.size(); i++){
 
-		init_individual(i);
+	//initialize all individuals of the population
+	std::vector<gene>::size_type size = individuals.size();
+	std::cout<<"__________________size of individuals"<< size<<std::endl;
+	std::vector<chromosome>::size_type ind = 0;
+	while( ind < size){
+
+		std::cout<<"I am individual ->"<< ind <<std::endl;
+
+		init_individual((int)ind);
+		//individuals[i]->compute_obj_func();
+		ind++;
+		std::cout<<"I am individual the next ->"<< ind <<std::endl;
 	}
+
+	std::cout << " it is ok pop" <<std::endl;
+
+
 }
 
 void population::init_individual(int index) {
@@ -46,10 +62,18 @@ void population::init_individual(int index) {
 	individuals[index] = new chromosome(schedule.getObs());
 
 	//initialize the genes of the chromosome
-	for(std::vector<gene>::size_type i = 0; i < individuals[index]->genes.size(); i++){
+	std::vector<gene>::size_type size = individuals[index]->genes.size();
+	for(std::vector<gene>::size_type i = 0; i < size; i++){
 
 		init_gene(i, index);
 	}
+
+	std::cout << " End fo the initializatoin of  "<< index <<std::endl;
+
+	individuals[index]->compute_obj_func();
+
+	std::cout << " in inir_individual it is ok obj fun" <<std::endl;
+
 }
 
 void population::init_gene(int gene_index, int individual_index) {
@@ -228,6 +252,20 @@ void population::repair_vect_obs(std::vector<gene *>* genes) {
 		}
 	}
 }
+//checks if indivual1 dominates individual2 which objective functions are f1 and f2 respectively
+int population::compare_fitness(std::vector<double> f1,
+		std::vector<double> f2) {
+	int dom =1;
+	for(int i=0; i < (int) f1.size(); i++)
+	{
+		if(f1[i] < f2 [i]) return 0;
+	}
+	return dom;
+}
+
+void population::update_crowding_dist() {
+
+}
 
 void population::check_gene(int gene_idx, int individual_idx) {
 
@@ -236,4 +274,48 @@ void population::check_gene(int gene_idx, int individual_idx) {
 	std::cout << "Gene's start time: " << fixed << individuals[individual_idx]->genes[gene_idx].start_date << std::endl;
 	std::cout << "Gene's allocated telescope: " << individuals[individual_idx]->genes[gene_idx].telescope_used << std::endl;
 	std::cout << std::endl;
+}
+
+void population::update_dom(int index) {
+	int i;
+	chromosome* cr = this->individuals[index];
+
+	for(i =0; i < cr->dom_count; i++)// decrease the number of domination count of every dominated individual by index
+	{
+		this->individuals[cr->dom_list[i]]->dom_count --;
+	}
+	cr->dom_list.clear();
+	cr->dom_count = 0;
+
+	for(i=0;i < this->population_size;i++)
+	{
+		if(i!=index)
+		{
+			//check if i dominates index
+			if(compare_fitness(this->individuals[i]->f,cr->f))
+			{
+				//update the domination count of index
+				cr->dom_count++;
+				//check if index exists in the list of dominated individual of i and add it if not
+				if(std::find(this->individuals[i]->dom_list.begin(),this->individuals[i]->dom_list.end(),index)== this->individuals[i]->dom_list.end())
+				{
+					this->individuals[i]->dom_list.push_back(index);
+				}
+			}
+			else {
+				//remove index from the list of dominated individuals of i
+				std::vector<int>::iterator x = std::find(this->individuals[i]->dom_list.begin(),this->individuals[i]->dom_list.end(),index);
+				if(x !=this->individuals[i]->dom_list.end())
+				{
+					this->individuals[i]->dom_list.erase(x);
+				}
+			}
+			//check if index dominates i
+			if(compare_fitness(cr->f,this->individuals[i]->f))
+			{
+				cr->dom_list.push_back(i);
+				this->individuals[i]->dom_count++;
+			}
+		}
+	}
 }
