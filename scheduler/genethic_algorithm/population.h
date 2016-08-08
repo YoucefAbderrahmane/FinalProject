@@ -14,7 +14,7 @@
 class population {
 public:
 	population(int population_size, Schedule schedule);
-	population(std::vector<chromosome *> individuals, int population_size);
+	population(std::vector<chromosome> individuals, int population_size);
 	virtual ~population();
 
 	void init(); //Randomly initialize the population
@@ -24,7 +24,7 @@ public:
 	void repair(chromosome * individual);
 	void repair_vect_obs(std::vector<gene *> * genes);
 
-	chromosome * get_individual(int chromosome_index);
+	chromosome get_individual(int chromosome_index);
 	int compare_fitness(std::vector<double> f1, std::vector<double> f2);//return true if f1 is better than f2
 	void update_pareto_information(); //update the pareto info (front rank and crowding distance)
 	void update_crowding_dist(); //update the crowding distance of all individuals
@@ -37,7 +37,7 @@ public:
 	void check_gene(int gene_idx, int individual_idx);
 
 private:
-	std::vector<chromosome *> individuals;
+	std::vector<chromosome> individuals;
 	int population_size;
 
 	std::vector<chromosome> champions;

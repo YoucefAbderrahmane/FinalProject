@@ -18,11 +18,14 @@ population::population(int population_size, Schedule schedule) : individuals(), 
 {
 	// TODO Auto-generated constructor stub
 
-	this->individuals.resize(population_size);
+	this->individuals.reserve(population_size);
+	for(int i = 0; i < population_size; i++){
+		individuals.push_back(* new chromosome(*schedule.getObs()));
+	}
 	init();
 }
 
-population::population(std::vector<chromosome *> individuals, int population_size) : individuals(individuals),
+population::population(std::vector<chromosome> individuals, int population_size) : individuals(individuals),
 		population_size(population_size), champions()
 {
 	// TODO Auto-generated constructor stub
@@ -49,30 +52,30 @@ void population::init() {
 		init_individual((int)ind);
 		//individuals[i]->compute_obj_func();
 		ind++;
-		std::cout<<"I am individual the next ->"<< ind <<std::endl;
+
+		std::cout << "index is now = " << ind << "and size is = " << size << std::endl;
 	}
-
-	std::cout << " it is ok pop" <<std::endl;
-
 
 }
 
 void population::init_individual(int index) {
 
-	individuals[index] = new chromosome(schedule.getObs());
+	//individuals[index] = new chromosome(schedule.getObs());
+
+	std::cout << "index = " << index << std::endl;
 
 	//initialize the genes of the chromosome
-	std::vector<gene>::size_type size = individuals[index]->genes.size();
+	std::vector<gene>::size_type size = individuals.at(index).genes.size();
+
+	std::cout << "size " << size << std::endl;
+
 	for(std::vector<gene>::size_type i = 0; i < size; i++){
 
 		init_gene(i, index);
 	}
 
-	std::cout << " End fo the initializatoin of  "<< index <<std::endl;
+	individuals.at(index).compute_obj_func();
 
-	individuals[index]->compute_obj_func();
-
-	std::cout << " in inir_individual it is ok obj fun" <<std::endl;
 
 }
 
@@ -87,20 +90,20 @@ void population::init_gene(int gene_index, int individual_index) {
 	sup = 1.0;
 	range = sup - inf;
 	div = RAND_MAX / range;
-	individuals[individual_index]->genes[gene_index].random_selection = inf + rand() / div;
+	individuals.at(individual_index).genes.at(gene_index).random_selection = inf + rand() / div;
 
 	//generate a random start date within the night horizon
 	inf = schedule.getConditions()->getNightHorizon().start;
 	sup = schedule.getConditions()->getNightHorizon().end;
 	range = sup - inf;
 	div = RAND_MAX / range;
-	individuals[individual_index]->genes[gene_index].start_date = inf + rand() / div;
-	individuals[individual_index]->genes[gene_index].duration = schedule.getObs()->at(gene_index).getDuration();
+	individuals.at(individual_index).genes[gene_index].start_date = inf + rand() / div;
+	individuals.at(individual_index).genes[gene_index].duration = schedule.getObs()->at(gene_index).getDuration();
 
 	//randomly chose the allocated telescope
-	int low = 1;
-	int up = N_TELESCOPE;
-	individuals[individual_index]->genes[gene_index].telescope_used = rand() % up + low;
+	int low = 0;
+	int up = N_TELESCOPE - 1;
+	individuals[individual_index].genes[gene_index].telescope_used = rand() % up + low;
 
 }
 
@@ -115,20 +118,20 @@ void population::check_init() {
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	int gene = rand() % individuals[0]->genes.size();
+	int gene = rand() % individuals[0].genes.size();
 	check_gene(gene, i);
 
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	gene = individuals[i]->genes.size() - 1;
+	gene = individuals[i].genes.size() - 1;
 	check_gene(gene, i);
 
 	std::cout << std::endl;
 	std::cout << std::endl;
 }
 
-chromosome * population::get_individual(int ind_index) {
+chromosome population::get_individual(int ind_index) {
 
 	return individuals[ind_index];
 }
@@ -270,51 +273,51 @@ void population::update_crowding_dist() {
 void population::check_gene(int gene_idx, int individual_idx) {
 
 	std::cout << "Gene: " << gene_idx << std::endl;
-	std::cout << "Gene's selection probability: " << individuals[individual_idx]->genes[gene_idx].random_selection << std::endl;
-	std::cout << "Gene's start time: " << fixed << individuals[individual_idx]->genes[gene_idx].start_date << std::endl;
-	std::cout << "Gene's allocated telescope: " << individuals[individual_idx]->genes[gene_idx].telescope_used << std::endl;
+	std::cout << "Gene's selection probability: " << individuals[individual_idx].genes[gene_idx].random_selection << std::endl;
+	std::cout << "Gene's start time: " << fixed << individuals[individual_idx].genes[gene_idx].start_date << std::endl;
+	std::cout << "Gene's allocated telescope: " << individuals[individual_idx].genes[gene_idx].telescope_used << std::endl;
 	std::cout << std::endl;
 }
 
 void population::update_dom(int index) {
 	int i;
-	chromosome* cr = this->individuals[index];
+	chromosome cr = this->individuals[index];
 
-	for(i =0; i < cr->dom_count; i++)// decrease the number of domination count of every dominated individual by index
+	for(i =0; i < cr.dom_count; i++)// decrease the number of domination count of every dominated individual by index
 	{
-		this->individuals[cr->dom_list[i]]->dom_count --;
+		this->individuals[cr.dom_list[i]].dom_count --;
 	}
-	cr->dom_list.clear();
-	cr->dom_count = 0;
+	cr.dom_list.clear();
+	cr.dom_count = 0;
 
 	for(i=0;i < this->population_size;i++)
 	{
 		if(i!=index)
 		{
 			//check if i dominates index
-			if(compare_fitness(this->individuals[i]->f,cr->f))
+			if(compare_fitness(this->individuals[i].f,cr.f))
 			{
 				//update the domination count of index
-				cr->dom_count++;
+				cr.dom_count++;
 				//check if index exists in the list of dominated individual of i and add it if not
-				if(std::find(this->individuals[i]->dom_list.begin(),this->individuals[i]->dom_list.end(),index)== this->individuals[i]->dom_list.end())
+				if(std::find(this->individuals[i].dom_list.begin(),this->individuals[i].dom_list.end(),index)== this->individuals[i].dom_list.end())
 				{
-					this->individuals[i]->dom_list.push_back(index);
+					this->individuals[i].dom_list.push_back(index);
 				}
 			}
 			else {
 				//remove index from the list of dominated individuals of i
-				std::vector<int>::iterator x = std::find(this->individuals[i]->dom_list.begin(),this->individuals[i]->dom_list.end(),index);
-				if(x !=this->individuals[i]->dom_list.end())
+				std::vector<int>::iterator x = std::find(this->individuals[i].dom_list.begin(),this->individuals[i].dom_list.end(),index);
+				if(x !=this->individuals[i].dom_list.end())
 				{
-					this->individuals[i]->dom_list.erase(x);
+					this->individuals[i].dom_list.erase(x);
 				}
 			}
 			//check if index dominates i
-			if(compare_fitness(cr->f,this->individuals[i]->f))
+			if(compare_fitness(cr.f,this->individuals[i].f))
 			{
-				cr->dom_list.push_back(i);
-				this->individuals[i]->dom_count++;
+				cr.dom_list.push_back(i);
+				this->individuals[i].dom_count++;
 			}
 		}
 	}
