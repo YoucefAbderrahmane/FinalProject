@@ -12,12 +12,14 @@ chromosome::chromosome() : observations(), genes(), telescopes_alloc(), f(), c()
 		dom_count(), dom_list() {
 	// TODO Auto-generated constructor stub
 
-	f.reserve(PROB_DIM);
-	c.reserve(CSTR_DIM);
-	telescopes_alloc.reserve(N_TELESCOPE);
+	f.resize(PROB_DIM);
+	c.resize(CSTR_DIM);
+	telescopes_alloc.resize(N_TELESCOPE);
+
+	//std::cout << "instantiation succeeded." << std::endl;
 }
 
-chromosome::chromosome(std::vector<Observation> * observations) : observations(), genes(), telescopes_alloc(), f(), c(),
+chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(), f(), c(),
 		overlap_index(), pareto_rank(), crowding_dist(), dom_count(), dom_list(){
 
 	this->observations = observations;
@@ -25,15 +27,23 @@ chromosome::chromosome(std::vector<Observation> * observations) : observations()
 	f.resize(PROB_DIM);
 	c.resize(CSTR_DIM);
 	telescopes_alloc.resize(N_TELESCOPE);
-	overlap_index.resize(observations->size());
+	overlap_index.resize(observations.size());
+	genes.reserve(observations.size());
 
-	gene * g;
-	for(std::vector<Observation>::size_type i = 0; i < observations->size(); i++){
+	for(int i = 0; i < (int) observations.size(); i++){
 
-		g = new gene();
-		//g->observation = &observations->at(i);
-		genes.push_back(*g);
+		genes.push_back(* new gene(i));
 	}
+//
+//	gene * g;
+//	for(std::vector<Observation>::size_type i = 0; i < observations->size(); i++){
+//
+//		g = new gene();
+//		//g->observation = &observations->at(i);
+//		genes.push_back(*g);
+//
+//		//genes[i] = gene();
+//	}
 
 }
 
@@ -44,20 +54,25 @@ chromosome::~chromosome() {
 
 void chromosome::compute_obj_func() {
 
+	std::cout << "I-----------------------begin objt func " << f.size() <<std::endl;
+	f.at(0) = 0.0; //f[0] : number of scheduled observations (maximize this value)
+	f.at(1) = 0.0; //f[1] : Average of altitude merits of all observed targets (maximize)
+	f.at(2) = 0.0; //f[2] : Average of telescope movement during the whole schedule (minimize)
+	f.at(3) = 0.0; //f[3] : number of telescopes used for scheduling (minimize)
 
-	f[0] = 0.0; //f[0] : number of scheduled observations (maximize this value)
-	f[1] = 0.0; //f[1] : Average of altitude merits of all observed targets (maximize)
-	f[2] = 0.0; //f[2] : Average of telescope movement during the whole schedule (minimize)
-	f[3] = 0.0; //f[3] : number of telescopes used for scheduling (minimize)
+	std::vector<double> telescope_dist(N_TELESCOPE);
+	//telescope_dist.reserve(N_TELESCOPE);
+	//telescope_dist.resize(N_TELESCOPE);
 
-	std::vector<double> telescope_dist;
-	telescope_dist.resize(N_TELESCOPE);
+	std::vector<Observation> last_teles_obs(N_TELESCOPE);
+//	last_teles_obs.reserve(N_TELESCOPE);
+	//last_teles_obs.resize(N_TELESCOPE);
 
-	std::vector<Observation> last_teles_obs;
-	last_teles_obs.resize(N_TELESCOPE);
+	std::vector<int> first(N_TELESCOPE);
+//	first.reserve(N_TELESCOPE);
+	//first.resize(N_TELESCOPE);
 
-	std::vector<int> first(N_TELESCOPE, 0);
-	//first.reserve(N_TELESCOPE);
+	std::cout << "first size " << first.size() << std::endl;
 
 	//	std::vector<double> telescope_dist(N_TELESCOPE, 0); //contains distances traveled by each telescope
 //	std::vector<Observation> last_teles_obs(N_TELESCOPE, 0); //contains the last observation visited by the telescope
@@ -73,36 +88,36 @@ void chromosome::compute_obj_func() {
 	for(i = 0; i < (int) genes.size(); i++){
 
 		//if the observation is scheduled
-		if( genes.at(i).is_scheduled(observations->at(i)) ){
+		if( genes.at(i).is_scheduled(observations.at(i)) ){
 
 			curr_teles = genes.at(i).telescope_used;	//get the telescope id
-			telescopes_alloc[curr_teles] = 1;	//mark the telescope as used
+			telescopes_alloc.at(curr_teles) = 1;	//mark the telescope as used
 
 
 			f[0]++;	//increase the number of scheduled observations
 
 			//sum altitude merits of all observed targets
 			//f[1] += genes.at(i).observation->altituteMerit();
-			f[1] += observations->at(i).altituteMerit();
+			f.at(1) += observations.at(i).altituteMerit();
 
 			//computing the distance traveled by each telescope
 
-			if(first[curr_teles] == 0){ //if it is the first observation, save it and move on
+			if(first.at(curr_teles) == 0){ //if it is the first observation, save it and move on
 
-				first[curr_teles] = 1;
+				first.at(curr_teles) = 1;
 			}
 			else{ //if not, compute the distance with the last observation
 
 				//compute the actual distance traveled
 				pos = new ln_equ_posn();
 				//pos = genes.at(i).observation->getTarget().getEqCord();
-				pos = observations->at(i).getTarget().getEqCord();
+				pos = observations.at(i).getTarget().getEqCord();
 				dist = last_teles_obs[curr_teles].getTarget().getAngularDistance(pos);
 				telescope_dist[curr_teles] += dist;
 			}
 
 			//update the last observation visited of the current telescope
-			last_teles_obs[curr_teles] = observations->at(i);//* genes.at(i).observation;
+			last_teles_obs.at(curr_teles) = observations.at(i);//* genes.at(i).observation;
 		}
 	}
 
@@ -124,6 +139,7 @@ void chromosome::compute_obj_func() {
 	//Converting maximization problems into minimization problems (default)
 	f[1] = -f[1];
 	f[2] = -f[2];
+	std::cout<< "------------------------------------the end obj func "<<std::endl;
 }
 
 double chromosome::get_obj_func(int index) {
@@ -214,15 +230,15 @@ void chromosome::checkObservations() {
 	for(int i = 0; i < (int) genes.size(); i++){
 
 		std::cout << "Observation " << i << std::endl;
-		std::cout << "Obs req id : " << observations->at(i).getRequest()->getReqId() << std::endl;
-		std::cout << "Obs id : " << observations->at(i).getObsId()<< std::endl;
-		std::cout << "Obs exp time : " << fixed << observations->at(i).getExposureTime() << std::endl;
-		std::cout << "Obs min h : " << fixed << observations->at(i).getMinHeight() << std::endl;
-		std::cout << "Obs min moon : " << fixed << observations->at(i).getMoonMinSeparation() << std::endl;
-		std::cout << "Obs req time : " << fixed << observations->at(i).getReqTime().start << " - "
-				<< fixed << observations->at(i).getReqTime().end << std::endl;
-		std::cout << "Obs target : " << "dec " << fixed << observations->at(i).getTarget().getEqDec() << " - "
-				<< "ra " << fixed << observations->at(i).getTarget().getEqRAsc() << std::endl;
+		std::cout << "Obs req id : " << observations.at(i).getRequest()->getReqId() << std::endl;
+		std::cout << "Obs id : " << observations.at(i).getObsId()<< std::endl;
+		std::cout << "Obs exp time : " << fixed << observations.at(i).getExposureTime() << std::endl;
+		std::cout << "Obs min h : " << fixed << observations.at(i).getMinHeight() << std::endl;
+		std::cout << "Obs min moon : " << fixed << observations.at(i).getMoonMinSeparation() << std::endl;
+		std::cout << "Obs req time : " << fixed << observations.at(i).getReqTime().start << " - "
+				<< fixed << observations.at(i).getReqTime().end << std::endl;
+		std::cout << "Obs target : " << "dec " << fixed << observations.at(i).getTarget().getEqDec() << " - "
+				<< "ra " << fixed << observations.at(i).getTarget().getEqRAsc() << std::endl;
 		std::cout << endl;
 	}
 }

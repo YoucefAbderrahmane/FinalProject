@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 13:00:16 **** Incremental Build of configuration Debug for project scheduler ****
+=======
+18:06:54 **** Incremental Build of configuration Debug for project scheduler ****
+>>>>>>> pagmo_integ
 make all 
 Building file: ../cpp_node_conn/test.cpp
 Invoking: GCC C++ Compiler
@@ -124,5 +128,9 @@ In file included from /usr/include/node/node.h:42:0,
    ^
 make: *** [cpp_node_conn/test.o] Erreur 1
 
+<<<<<<< HEAD
 13:05:18 Build Finished (took 5m:2s.571ms)
+=======
+18:06:55 Build Finished (took 80ms)
+>>>>>>> pagmo_integ
 

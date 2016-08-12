@@ -41,32 +41,32 @@ int main() {
 	cout << "Initializing the population..." << endl;
 
 	population * p = new population(20, *sched);
-
-	cout << "Population initialized..." << endl;
-
-	p->check_init();
-
-	p->get_individual(0)->compute_constraints();
-
-	cout << p->get_individual(0)->get_cst_val(0);
+//
+//	cout << "Population initialized..." << endl;
+//
+//	p->check_init();
+//
+//	p->get_individual(0).compute_constraints();
+//
+//	cout << p->get_individual(0).get_cst_val(0);
 
 //	sched->checkObservations();
 
 
 
-//	chromosome * ch = new chromosome(sched->getObs());
-//
-//	cout << "fknfi," << endl;
-//
-//
-//	ch->checkObservations();
-//	ch->compute_obj_func();
-//
-//	cout << "fknfi," << endl;
-//	cout << fixed << ch->get_obj_func(0) << endl;
-//	cout << fixed << ch->get_obj_func(1) << endl;
-//	cout << fixed << ch->get_obj_func(2) << endl;
-//	cout << fixed << ch->get_obj_func(3) << endl;
+	chromosome * ch = new chromosome(*sched->getObs());
+
+	cout << "fknfi," << endl;
+
+
+	//ch->checkObservations();
+	ch->compute_obj_func();
+
+	cout << "fknfi," << endl;
+	cout << fixed << ch->get_obj_func(0) << endl;
+	cout << fixed << ch->get_obj_func(1) << endl;
+	cout << fixed << ch->get_obj_func(2) << endl;
+	cout << fixed << ch->get_obj_func(3) << endl;
 
 
 

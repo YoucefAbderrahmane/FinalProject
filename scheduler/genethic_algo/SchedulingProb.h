@@ -68,7 +68,6 @@ private:
 	    ar & end_time;
 	    ar & start_time;
 	    ar & night_horizon;
-	    ar & total_duration;
 	    ar & observer;
 	}
 
