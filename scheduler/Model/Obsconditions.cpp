@@ -12,6 +12,7 @@ Obs_conditions::Obs_conditions() : observer(), night_horizon(), horizon(), allSe
 
 	JD = ln_get_julian_from_sys();
 	setObserverFromConfig();
+	calculateNightHorizon();
 }
 
 Obs_conditions::Obs_conditions(double julian_day) : observer(), night_horizon(), JD(julian_day),
