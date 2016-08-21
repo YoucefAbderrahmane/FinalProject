@@ -8,7 +8,9 @@
 #ifndef MYNSGA_H_
 #define MYNSGA_H_
 
-class MyNSGA {
+#include <algorithm/nsga2.h>
+
+class MyNSGA: public pagmo::algorithm::nsga2 {
 public:
 	MyNSGA();
 	virtual ~MyNSGA();
