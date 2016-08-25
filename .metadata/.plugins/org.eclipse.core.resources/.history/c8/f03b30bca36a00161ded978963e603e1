@@ -52,11 +52,11 @@ int main() {
 
 	Schedule * sched = new Schedule();
 
-	sched->randomObservationListGenerator(5);
+	sched->randomObservationListGenerator(10);
 
 	cout << "Initializing the population..." << endl;
 
-	population * p = new population(10, *sched);
+	population * p = new population(20, *sched);
 //
 //	cout << "Population initialized..." << endl;
 //
@@ -87,12 +87,7 @@ int main() {
 		front.push_back(p->getIndividualPointeur(i));
 
 	}
-	for (int i = 0; i< p->get_size();i++) 	p->update_dom(i);
-	p->update_pareto_information();
-	//p->displayFronts();
 
-
-	//various test
 	/*/(*front)[0].setDomCount(1500);
 
 

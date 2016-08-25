@@ -454,12 +454,12 @@ void population::update_pareto_information() {
 				}
 			}
 		}
-		//std::cout<< "test de taille de front "<< front.size()<< endl;
+		std::cout<< "test de taille de front "<< front.size()<< endl;
 		front = S;
-		//std::cout<< "test 2 de taille de front "<< front.size()<< endl;
-		//std::cout<< "test de taille de S "<< S.size()<< endl;
+		std::cout<< "test 2 de taille de front "<< front.size()<< endl;
+		std::cout<< "test de taille de S "<< S.size()<< endl;
 		S.clear();
-		//std::cout<< "test 2 de taille de S "<< S.size()<< endl;
+		std::cout<< "test 2 de taille de S "<< S.size()<< endl;
 		rank++;
 	}
 }

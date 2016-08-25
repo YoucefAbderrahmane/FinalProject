@@ -87,9 +87,9 @@ int main() {
 		front.push_back(p->getIndividualPointeur(i));
 
 	}
-	for (int i = 0; i< p->get_size();i++) 	p->update_dom(i);
+	//for (int i = 0; i< p->get_size();i++) 	p->update_dom(i);
 	p->update_pareto_information();
-	//p->displayFronts();
+	p->displayFronts();
 
 
 	//various test

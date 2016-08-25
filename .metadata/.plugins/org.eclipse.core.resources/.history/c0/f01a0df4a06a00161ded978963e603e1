@@ -367,31 +367,28 @@ void population::update_crowding_dist(std::vector<chromosome *> front) {
 		 front.at(taille)->setCrowdingDist(std::numeric_limits<double>::max());
 
 		 //compute crowding distance
-	//	 cout<< "valeur de f(" << i << ") de 0 "<< front.at(0)->get_obj_func(i)<< endl;
-		// cout<< "valeur de f(" << i << ") de 0 "<< front.at(taille)->get_obj_func(i)<< endl;
+		 cout<< "valeur de f(" << i << ") de 0"<< front.at(0)->get_obj_func(i)<< endl;
+		 cout<< "valeur de f(" << i << ") de 0"<< front.at(taille)->get_obj_func(i)<< endl;
 
 		 double diff = front.at(taille)->get_obj_func(i) - front.at(0)->get_obj_func(i);
-		 //cout<< diff << endl;
 
+		 std::cout<<"_________________________e tour numéro"<<tour<<std::endl;
 
-		 for(std::vector<chromosome>::size_type j = 1; j < taille;j++)
+		 for(std::vector<chromosome>::size_type j =1; j < taille;j++)
 		 {
 			 if(diff==0.0)
 			 {
 				 front.at(j)->setCrowdingDist(0.0);
-			//	 std::cout<<"crowd a 0"<<std::endl;
+				 std::cout<<"crowd a 0"<<std::endl;
 			 }
 			 else{
-				// std::cout<< "valeur "<< (front.at(j+1)->get_obj_func(i) - front.at(j-1)->get_obj_func(i))/diff<<std::endl;
-				 //std::cout<< "former crowding distance"<< front.at(j)->getCrowdingDist()<<std::endl;
-
+				 std::cout<< "valeur "<< (front.at(j+1)->get_obj_func(i) - front.at(j-1)->get_obj_func(i))/diff<<std::endl;
+				 std::cout<< "former crowding distance"<< front.at(j)->getCrowdingDist()<<std::endl;
 				 crow = front.at(j)->getCrowdingDist() + (front.at(j+1)->get_obj_func(i) - front.at(j-1)->get_obj_func(i))/diff;
-
 				 front.at(j)->setCrowdingDist(crow);
-				 //std::cout<< "current crowdin distance " << crow <<std::endl;
+				 std::cout<< "current crowdin distance " << crow <<std::endl;
 			 }
 		 }
-		 //std::cout<<"_________________________e tour numéro"<<tour<<std::endl;
 		 tour++;
 	 }
 	 std::cout<<"fin"<<std::endl;
@@ -400,7 +397,6 @@ void population::update_crowding_dist(std::vector<chromosome *> front) {
 
 void population::change(){this->individuals[0].setCrowdingDist(1024);}
 
-//have to update dom count before
 void population::update_pareto_information() {
 	std::vector<int> list_dom_count(this->get_size(),0);
 		//we need the index to update the crowding distance in the population
@@ -433,7 +429,7 @@ void population::update_pareto_information() {
 		}*/
 
 		population::compute_pareto_fronts(index);
-		index.clear();
+		//index.clear();
 		//for each individual int the front
 		for(std::vector<chromosome *>::size_type i=0; i < front.size();i++)
 		{
@@ -454,12 +450,8 @@ void population::update_pareto_information() {
 				}
 			}
 		}
-		//std::cout<< "test de taille de front "<< front.size()<< endl;
 		front = S;
-		//std::cout<< "test 2 de taille de front "<< front.size()<< endl;
-		//std::cout<< "test de taille de S "<< S.size()<< endl;
 		S.clear();
-		//std::cout<< "test 2 de taille de S "<< S.size()<< endl;
 		rank++;
 	}
 }
@@ -507,17 +499,6 @@ std::vector<double> population::compute_nadir() {
 	}
 	return nadir;
 }
-
-void population::displayFronts()
-{
-	for(int i = 0; i< this->fronts.size(); i++)
-	{
-		std::cout<<"liste des individus du front i = "<< i<< std::endl;
-		for(int j = 0; j<fronts[i].size(); j++) std::cout<< this->fronts[i][j]<< std::endl;
-		std::cout<< "________________________________"<< std::endl;
-	}
-}
-
 double population::getDomCountOf(int index)
 {
 	return  this->individuals[index].dom_count;

@@ -52,7 +52,7 @@ int main() {
 
 	Schedule * sched = new Schedule();
 
-	sched->randomObservationListGenerator(5);
+	sched->randomObservationListGenerator(4);
 
 	cout << "Initializing the population..." << endl;
 
@@ -87,33 +87,24 @@ int main() {
 		front.push_back(p->getIndividualPointeur(i));
 
 	}
-	for (int i = 0; i< p->get_size();i++) 	p->update_dom(i);
-	p->update_pareto_information();
-	//p->displayFronts();
-
-
-	//various test
-	/*/(*front)[0].setDomCount(1500);
-
-
-		//p->getIndividualPointeur(0)->setDomCount(1500);
-
-		//(p->getIndividualPointeur(0))->setCrowdingDist(120);
-
-		//std::vector<chromosome>::iterator i = p->getIndividuals().begin();
-		for(std::vector<chromosome>::iterator i = p->getIndividuals().begin(); i < p->getIndividuals().end(); i++)
-		{
-			front.insert(i,p->get_individual(i));
-		}*/
-
-	//test crowding_distance
-/*	p->update_crowding_dist(front);
+	p->update_crowding_dist(front);
 	for(int i =0; i <p->getIndividuals().size(); i++)
 	{
 		cout << "crowding distance de  " << i << "	" << p->get_individual(i).getCrowdingDist()<< endl;
+	}
+
+	//(*front)[0].setDomCount(1500);
+
+
+	//p->getIndividualPointeur(0)->setDomCount(1500);
+
+	//(p->getIndividualPointeur(0))->setCrowdingDist(120);
+
+	//std::vector<chromosome>::iterator i = p->getIndividuals().begin();
+	/*for(std::vector<chromosome>::iterator i = p->getIndividuals().begin(); i < p->getIndividuals().end(); i++)
+	{
+		front.insert(i,p->get_individual(i));
 	}*/
-
-
 
 // test de f.obj
 
@@ -171,7 +162,7 @@ int main() {
 	//front[1].decrementDomCount(); ok
 	//p->update_dom(i); //ok
 	//obj_fct_comp f(0); ok
-	//p->update_crowding_dist(front); ok
+
 //
 //	Target RigilKentaurus(219.8795833, -60.81952778);
 //

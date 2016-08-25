@@ -63,7 +63,6 @@ public:
 	std::vector<chromosome> * getIndividualsPointer();
 void change();
 double getDomCountOf(int index);
-void displayFronts();
 
 private:
 	std::vector<chromosome> individuals;

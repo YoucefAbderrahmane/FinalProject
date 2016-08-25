@@ -367,11 +367,11 @@ void population::update_crowding_dist(std::vector<chromosome *> front) {
 		 front.at(taille)->setCrowdingDist(std::numeric_limits<double>::max());
 
 		 //compute crowding distance
-	//	 cout<< "valeur de f(" << i << ") de 0 "<< front.at(0)->get_obj_func(i)<< endl;
-		// cout<< "valeur de f(" << i << ") de 0 "<< front.at(taille)->get_obj_func(i)<< endl;
+		 cout<< "valeur de f(" << i << ") de 0 "<< front.at(0)->get_obj_func(i)<< endl;
+		 cout<< "valeur de f(" << i << ") de 0 "<< front.at(taille)->get_obj_func(i)<< endl;
 
 		 double diff = front.at(taille)->get_obj_func(i) - front.at(0)->get_obj_func(i);
-		 //cout<< diff << endl;
+		 cout<< diff << endl;
 
 
 		 for(std::vector<chromosome>::size_type j = 1; j < taille;j++)
@@ -379,19 +379,19 @@ void population::update_crowding_dist(std::vector<chromosome *> front) {
 			 if(diff==0.0)
 			 {
 				 front.at(j)->setCrowdingDist(0.0);
-			//	 std::cout<<"crowd a 0"<<std::endl;
+				 std::cout<<"crowd a 0"<<std::endl;
 			 }
 			 else{
-				// std::cout<< "valeur "<< (front.at(j+1)->get_obj_func(i) - front.at(j-1)->get_obj_func(i))/diff<<std::endl;
-				 //std::cout<< "former crowding distance"<< front.at(j)->getCrowdingDist()<<std::endl;
+				 std::cout<< "valeur "<< (front.at(j+1)->get_obj_func(i) - front.at(j-1)->get_obj_func(i))/diff<<std::endl;
+				 std::cout<< "former crowding distance"<< front.at(j)->getCrowdingDist()<<std::endl;
 
 				 crow = front.at(j)->getCrowdingDist() + (front.at(j+1)->get_obj_func(i) - front.at(j-1)->get_obj_func(i))/diff;
 
 				 front.at(j)->setCrowdingDist(crow);
-				 //std::cout<< "current crowdin distance " << crow <<std::endl;
+				 std::cout<< "current crowdin distance " << crow <<std::endl;
 			 }
 		 }
-		 //std::cout<<"_________________________e tour numéro"<<tour<<std::endl;
+		 std::cout<<"_________________________e tour numéro"<<tour<<std::endl;
 		 tour++;
 	 }
 	 std::cout<<"fin"<<std::endl;
@@ -433,7 +433,7 @@ void population::update_pareto_information() {
 		}*/
 
 		population::compute_pareto_fronts(index);
-		index.clear();
+		//index.clear();
 		//for each individual int the front
 		for(std::vector<chromosome *>::size_type i=0; i < front.size();i++)
 		{
@@ -454,12 +454,8 @@ void population::update_pareto_information() {
 				}
 			}
 		}
-		//std::cout<< "test de taille de front "<< front.size()<< endl;
 		front = S;
-		//std::cout<< "test 2 de taille de front "<< front.size()<< endl;
-		//std::cout<< "test de taille de S "<< S.size()<< endl;
 		S.clear();
-		//std::cout<< "test 2 de taille de S "<< S.size()<< endl;
 		rank++;
 	}
 }
