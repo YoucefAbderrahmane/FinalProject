@@ -31,8 +31,8 @@
 								<option id="gnu.cpp.compiler.option.include.paths.1520901267" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/libraries/libnova-0.15.0/src"/>
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/pagmo/src"/>
-									<listOptionValue builtIn="false" value="../scheduler/scheduler/Model"/>
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova"/>
+									<listOptionValue builtIn="false" value="/home/pfe/dev/Graduation_project/scheduler/Model"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.include.files.396202026" name="Include files (-include)" superClass="gnu.cpp.compiler.option.include.files" valueType="includeFiles">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h"/>
@@ -43,10 +43,7 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.exe.debug.option.optimization.level.1553865387" name="Optimization Level" superClass="gnu.c.compiler.exe.debug.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.exe.debug.option.debugging.level.24459448" name="Debug Level" superClass="gnu.c.compiler.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.456288329" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="/home/pfe/dev/libraries/libnova-0.15.0/src"/>
-									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/pagmo/src"/>
-									<listOptionValue builtIn="false" value="../scheduler/scheduler/Model"/>
-									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/scheduler/Model}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.files.932738807" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" valueType="includeFiles">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h"/>
@@ -71,7 +68,7 @@
 								<option id="gnu.both.asm.option.include.paths.1630040689" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/libraries/libnova-0.15.0/src"/>
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/pagmo/src"/>
-									<listOptionValue builtIn="false" value="../scheduler/scheduler/Model"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/scheduler/Model}&quot;"/>
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.151256334" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>

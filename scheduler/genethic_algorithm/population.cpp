@@ -131,10 +131,18 @@ void population::check_init() {
 	std::cout << std::endl;
 }
 
-chromosome population::get_individual(int ind_index) {
+chromosome  population::get_individual(int chromosome_index) {
 
-	return individuals[ind_index];
+	return individuals[chromosome_index];
 }
+
+chromosome * population::getIndividualPointeur( int index)
+{
+	return &individuals[index];}
+
+std::vector<chromosome> * population::getIndividualsPointer() {
+		return &individuals;
+	}
 
 
 struct gene_less_comp{
@@ -255,6 +263,10 @@ void population::repair_vect_obs(std::vector<gene *>* genes) {
 		}
 	}
 }
+
+int population::get_size() {
+	return this->population_size;
+}
 //checks if indivual1 dominates individual2 which objective functions are f1 and f2 respectively
 int population::compare_fitness(std::vector<double> f1,
 		std::vector<double> f2) {
@@ -266,9 +278,6 @@ int population::compare_fitness(std::vector<double> f1,
 	return dom;
 }
 
-void population::update_crowding_dist() {
-
-}
 
 void population::check_gene(int gene_idx, int individual_idx) {
 
@@ -278,27 +287,29 @@ void population::check_gene(int gene_idx, int individual_idx) {
 	std::cout << "Gene's allocated telescope: " << individuals[individual_idx].genes[gene_idx].telescope_used << std::endl;
 	std::cout << std::endl;
 }
-
+//ok
 void population::update_dom(int index) {
 	int i;
-	chromosome cr = this->individuals[index];
-
-	for(i =0; i < cr.dom_count; i++)// decrease the number of domination count of every dominated individual by index
+	chromosome * cr = &(this->individuals[index]);
+	if(cr->getDomList().size() != 0){
+	for(i =0; i < cr->getDomList().size(); i++)// decrease the number of domination count of every dominated individual by index
 	{
-		this->individuals[cr.dom_list[i]].dom_count --;
+		this->individuals[cr->getDomListOf(i)].dom_count--;
+		std::cout<< "mise a jour	";
 	}
-	cr.dom_list.clear();
-	cr.dom_count = 0;
+	}
+	cr->clearDomList();
+	cr->setDomCount(0);
 
 	for(i=0;i < this->population_size;i++)
 	{
 		if(i!=index)
 		{
 			//check if i dominates index
-			if(compare_fitness(this->individuals[i].f,cr.f))
+			if(compare_fitness(this->individuals[i].getF(),cr->getF()))
 			{
 				//update the domination count of index
-				cr.dom_count++;
+				cr->incrementDomCount();
 				//check if index exists in the list of dominated individual of i and add it if not
 				if(std::find(this->individuals[i].dom_list.begin(),this->individuals[i].dom_list.end(),index)== this->individuals[i].dom_list.end())
 				{
@@ -314,11 +325,181 @@ void population::update_dom(int index) {
 				}
 			}
 			//check if index dominates i
-			if(compare_fitness(cr.f,this->individuals[i].f))
+			if(compare_fitness(cr->f,this->individuals[i].f))
 			{
-				cr.dom_list.push_back(i);
+				cr->dom_list.push_back(i);
 				this->individuals[i].dom_count++;
 			}
 		}
 	}
+	cr= NULL;
+	delete cr;
+}
+//ok
+struct obj_fct_comp {
+
+	obj_fct_comp(int dim):obj_fct(dim) {};
+	bool operator()(chromosome * c1, chromosome * c2){
+
+			return (c1->get_obj_func(obj_fct) < c2->get_obj_func(obj_fct));
+		}
+int obj_fct;
+};
+
+//updates the crowding distance of a front ok
+void population::update_crowding_dist(std::vector<chromosome *> front) {
+	std::vector<chromosome>::size_type taille  = front.size()-1;
+	//std::cout<<"je suis taille "<< taille<< std::endl;
+	obj_fct_comp f(0);
+	double crow = 0.0;
+	//std::cout<<"je suis PROB_DIM "<< PROB_DIM << std::endl;
+
+	 //we loop for each objective function
+	int tour =0;
+	 for (int i = 0; i < PROB_DIM; ++i)
+	 {
+		 f.obj_fct=i;
+
+		 std::sort(front.begin(),front.end(),f);
+
+		 front.at(0)->setCrowdingDist(std::numeric_limits<double>::max());
+
+		 front.at(taille)->setCrowdingDist(std::numeric_limits<double>::max());
+
+		 //compute crowding distance
+		 cout<< "valeur de f(" << i << ") de 0"<< front.at(0)->get_obj_func(i)<< endl;
+		 cout<< "valeur de f(" << i << ") de 0"<< front.at(taille)->get_obj_func(i)<< endl;
+
+		 double diff = front.at(taille)->get_obj_func(i) - front.at(0)->get_obj_func(i);
+
+		 std::cout<<"_________________________e tour numéro"<<tour<<std::endl;
+
+		 for(std::vector<chromosome>::size_type j =1; j < taille;j++)
+		 {
+			 if(diff==0.0)
+			 {
+				 front.at(j)->setCrowdingDist(0.0);
+				 std::cout<<"crowd a 0"<<std::endl;
+			 }
+			 else{
+				 std::cout<< "valeur "<< (front.at(j+1)->get_obj_func(i) - front.at(j-1)->get_obj_func(i))/diff<<std::endl;
+				 std::cout<< "former crowding distance"<< front.at(j)->getCrowdingDist()<<std::endl;
+				 crow = front.at(j)->getCrowdingDist() + (front.at(j+1)->get_obj_func(i) - front.at(j-1)->get_obj_func(i))/diff;
+				 front.at(j)->setCrowdingDist(crow);
+				 std::cout<< "current crowdin distance " << crow <<std::endl;
+			 }
+		 }
+		 tour++;
+	 }
+	 std::cout<<"fin"<<std::endl;
+
+}
+
+void population::change(){this->individuals[0].setCrowdingDist(1024);}
+
+void population::update_pareto_information() {
+	std::vector<int> list_dom_count(this->get_size(),0);
+		//we need the index to update the crowding distance in the population
+		std::vector<int> index;
+		std::vector<chromosome *> front, S;
+	for(int i =0; i < this->get_size();i++){
+		this->individuals[i].setCrowdingDist(0);
+		this->individuals[i].setParetoRank(0);
+		list_dom_count[i] = this->individuals[i].getDomCount();
+
+		//find first pareto front
+		if(list_dom_count[i]==0) {
+			front.push_back(&(this->individuals[i]));
+			index.push_back(i);
+		}
+	}
+	//to reinitalize the fronts, because changes can appear during the resolution
+	this->fronts.clear();
+	unsigned int rank =1;
+	//we search for the other fronts
+	while(front.size()!=0)
+	{
+		//update crowding distance of the current  paerto front
+		population::update_crowding_dist(front);
+
+		//update crowding distance of the population
+		/*for(std::vector<int>::size_type i =0; i < index.size();i++)
+		{
+			this->individuals[index[i]].setCrowdingDist(front[i].getCrowdingDist());
+		}*/
+
+		population::compute_pareto_fronts(index);
+		//index.clear();
+		//for each individual int the front
+		for(std::vector<chromosome *>::size_type i=0; i < front.size();i++)
+		{
+			//for each individual dominated by front[i]
+			for(std::vector<double>::size_type j=0; j< front[i]->getDomList().size();j++)
+			{
+				//decrease the dom_count
+				list_dom_count[front[i]->getDomList()[j]]--;
+				//check if there isn't an individual that dominates the individual j
+				if(list_dom_count[front[i]->getDomList()[j]]==0)
+				{
+					S.push_back(&(this->individuals[front[i]->getDomList()[j]]));
+
+					this->individuals[front[i]->getDomList()[j]].setParetoRank(rank);
+
+					//save the index of the individuals to update the crowding distance in the population
+					index.push_back(front[i]->getDomList()[j]);
+				}
+			}
+		}
+		front = S;
+		S.clear();
+		rank++;
+	}
+}
+
+void population::compute_pareto_fronts(std::vector<int> index) {
+	fronts.push_back(index);
+}
+
+std::vector<double> population::compute_ideal() {
+update_pareto_information();
+
+std::vector<double> ideal (PROB_DIM,numeric_limits<double>::max());
+for(std::vector<chromosome>::size_type i = 0; i < this->individuals.size();i++ )
+{
+	if(this->individuals[i].getParetoRank() == 0)
+	{
+		for(std::vector<double>::size_type j = 0; j < ideal.size(); i++)
+		{
+			if(this->individuals[i].get_obj_func(j) < ideal[j])
+			{
+				ideal[j] = this->individuals[i].get_obj_func(j);
+			}
+		}
+	}
+}
+return ideal;
+}
+
+std::vector<double> population::compute_nadir() {
+	update_pareto_information();
+
+	std::vector<double> nadir (PROB_DIM,- numeric_limits<double>::max());
+	for(std::vector<chromosome>::size_type i = 0; i < this->individuals.size();i++ )
+	{
+		if(this->individuals[i].getParetoRank() == 0)
+		{
+			for(std::vector<double>::size_type j = 0; j < nadir.size(); i++)
+			{
+				if(this->individuals[i].get_obj_func(j) > nadir[j])
+				{
+					nadir[j] = this->individuals[i].get_obj_func(j);
+				}
+			}
+		}
+	}
+	return nadir;
+}
+double population::getDomCountOf(int index)
+{
+	return  this->individuals[index].dom_count;
 }

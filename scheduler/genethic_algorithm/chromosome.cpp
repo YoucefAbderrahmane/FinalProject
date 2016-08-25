@@ -145,7 +145,7 @@ void chromosome::compute_obj_func() {
 
 double chromosome::get_obj_func(int index) {
 
-	return f[index];
+	return this->f[index];
 }
 
 
@@ -242,5 +242,21 @@ void chromosome::checkObservations() {
 				<< "ra " << fixed << observations.at(i).getTarget().getEqRAsc() << std::endl;
 		std::cout << endl;
 	}
+}
+
+void chromosome::clearDomList() {
+	dom_list.clear();
+}
+
+void chromosome::incrementDomCount() {
+	this->dom_count++;
+}
+
+void chromosome::decrementDomCount() {
+	this->dom_count--;
+}
+double chromosome::getDomListOf(int index)
+{
+	return this->dom_list[index];
 }
 

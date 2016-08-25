@@ -30,9 +30,60 @@ public:
 
 	double get_obj_func(int index);
 	double get_cst_val(int index);
+	void clearDomList();
+	void incrementDomCount();
+	void decrementDomCount();
 
 	void checkObservations();
+	const std::vector<double>& getC() const {
+			return c;
+		}
 
+		void setC(const std::vector<double>& c) {
+			this->c = c;
+		}
+
+		double getCrowdingDist() const {
+			return crowding_dist;
+		}
+
+		void setCrowdingDist(double crowdingDist) {
+			crowding_dist = crowdingDist;
+		}
+
+		int getDomCount() const {
+			return dom_count;
+		}
+
+		void setDomCount(int domCount) {
+			this->dom_count = domCount;
+		}
+
+		const std::vector<int>& getDomList() const {
+			return dom_list;
+		}
+
+		void setDomList(const std::vector<int>& domList) {
+			dom_list = domList;
+		}
+
+		const std::vector<double>& getF() const {
+			return f;
+		}
+
+		void setF(const std::vector<double>& f) {
+			this->f = f;
+		}
+
+		int getParetoRank() const {
+			return pareto_rank;
+		}
+
+		void setParetoRank(int paretoRank) {
+			pareto_rank = paretoRank;
+		}
+
+		double getDomListOf(int index);
 private:
 	std::vector<Observation> observations;
 
