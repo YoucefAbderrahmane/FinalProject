@@ -1,21 +1,43 @@
-<<<<<<< HEAD
-13:00:16 **** Incremental Build of configuration Debug for project scheduler ****
-=======
-18:06:43 **** Incremental Build of configuration Debug for project scheduler ****
+19:00:25 **** Clean-only build of configuration Debug for project scheduler ****
+make clean 
+rm -rf  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./genethic_algo/SchedulingProb.o ./genethic_algo/aures.o ./genethic_algo/repairalgo.o ./genethic_algo/schedpop.o  ./cpp_node_conn/test.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o ./Model/targettest.o  ./utilities/time_calculation.d  ./src/scheduler.d  ./genethic_algorithm/MyNSGA.d ./genethic_algorithm/chromosome.d ./genethic_algorithm/gene.d ./genethic_algorithm/population.d  ./genethic_algo/SchedulingProb.d ./genethic_algo/aures.d ./genethic_algo/repairalgo.d ./genethic_algo/schedpop.d  ./cpp_node_conn/test.d  ./Model/Obsconditions.d ./Model/Observation.d ./Model/Request.d ./Model/Schedule.d ./Model/Target.d ./Model/observer.d ./Model/targettest.d  scheduler
+ 
+19:00:43 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
+Building file: ../utilities/time_calculation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"utilities/time_calculation.d" -MT"utilities/time_calculation.o" -o "utilities/time_calculation.o" "../utilities/time_calculation.cpp"
+Finished building: ../utilities/time_calculation.cpp
+ 
+Building file: ../src/scheduler.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
+../src/scheduler.cpp: In function ‘int main()’:
+../src/scheduler.cpp:43:15: warning: unused variable ‘p’ [-Wunused-variable]
+  population * p = new population(20, *sched);
+               ^
+Finished building: ../src/scheduler.cpp
+ 
+Building file: ../genethic_algorithm/MyNSGA.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
+Finished building: ../genethic_algorithm/MyNSGA.cpp
+ 
 Building file: ../genethic_algorithm/chromosome.cpp
 Invoking: GCC C++ Compiler
 g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/chromosome.d" -MT"genethic_algorithm/chromosome.o" -o "genethic_algorithm/chromosome.o" "../genethic_algorithm/chromosome.cpp"
 Finished building: ../genethic_algorithm/chromosome.cpp
  
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/home/pfe/dev/Cpp/Libraries/pagmo/build/src -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./genethic_algo/SchedulingProb.o ./genethic_algo/aures.o ./genethic_algo/repairalgo.o ./genethic_algo/schedpop.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnlopt -lboost_system -lpagmo -lnova -lboost_thread -lboost_serialization
-Finished building target: scheduler
+Building file: ../genethic_algorithm/gene.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/gene.d" -MT"genethic_algorithm/gene.o" -o "genethic_algorithm/gene.o" "../genethic_algorithm/gene.cpp"
+Finished building: ../genethic_algorithm/gene.cpp
  
-18:06:54 **** Incremental Build of configuration Debug for project scheduler ****
->>>>>>> pagmo_integ
-make all 
+Building file: ../genethic_algorithm/population.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
+Finished building: ../genethic_algorithm/population.cpp
+ 
 Building file: ../cpp_node_conn/test.cpp
 Invoking: GCC C++ Compiler
 g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"cpp_node_conn/test.d" -MT"cpp_node_conn/test.o" -o "cpp_node_conn/test.o" "../cpp_node_conn/test.cpp"

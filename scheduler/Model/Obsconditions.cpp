@@ -5,7 +5,7 @@
  *      Author: root
  */
 
-#include <Obsconditions.h>
+#include "Obsconditions.h"
 
 Obs_conditions::Obs_conditions() : observer(), night_horizon(), horizon(), allSet(1) {
 	// TODO Auto-generated constructor stub

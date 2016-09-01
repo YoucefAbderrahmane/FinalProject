@@ -1,9 +1,39 @@
-<<<<<<< HEAD
-13:00:16 **** Incremental Build of configuration Debug for project scheduler ****
-=======
-18:06:54 **** Incremental Build of configuration Debug for project scheduler ****
->>>>>>> pagmo_integ
+19:00:43 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
+Building file: ../utilities/time_calculation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"utilities/time_calculation.d" -MT"utilities/time_calculation.o" -o "utilities/time_calculation.o" "../utilities/time_calculation.cpp"
+Finished building: ../utilities/time_calculation.cpp
+ 
+Building file: ../src/scheduler.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
+../src/scheduler.cpp: In function ‘int main()’:
+../src/scheduler.cpp:43:15: warning: unused variable ‘p’ [-Wunused-variable]
+  population * p = new population(20, *sched);
+               ^
+Finished building: ../src/scheduler.cpp
+ 
+Building file: ../genethic_algorithm/MyNSGA.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
+Finished building: ../genethic_algorithm/MyNSGA.cpp
+ 
+Building file: ../genethic_algorithm/chromosome.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/chromosome.d" -MT"genethic_algorithm/chromosome.o" -o "genethic_algorithm/chromosome.o" "../genethic_algorithm/chromosome.cpp"
+Finished building: ../genethic_algorithm/chromosome.cpp
+ 
+Building file: ../genethic_algorithm/gene.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/gene.d" -MT"genethic_algorithm/gene.o" -o "genethic_algorithm/gene.o" "../genethic_algorithm/gene.cpp"
+Finished building: ../genethic_algorithm/gene.cpp
+ 
+Building file: ../genethic_algorithm/population.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
+Finished building: ../genethic_algorithm/population.cpp
+ 
 Building file: ../cpp_node_conn/test.cpp
 Invoking: GCC C++ Compiler
 g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I"/home/pfe/dev/Graduation_project/scheduler/Model" -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"cpp_node_conn/test.d" -MT"cpp_node_conn/test.o" -o "cpp_node_conn/test.o" "../cpp_node_conn/test.cpp"
@@ -128,9 +158,5 @@ In file included from /usr/include/node/node.h:42:0,
    ^
 make: *** [cpp_node_conn/test.o] Erreur 1
 
-<<<<<<< HEAD
-13:05:18 Build Finished (took 5m:2s.571ms)
-=======
-18:06:55 Build Finished (took 80ms)
->>>>>>> pagmo_integ
+19:05:38 Build Finished (took 4m:54s.473ms)
 

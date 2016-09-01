@@ -14,7 +14,6 @@ var session      = require('express-session');
 var formidable = require('formidable');
 var pg = require('pg');
 
-
 require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application

@@ -1,0 +1,1 @@
+cmd_Release/obj.target/scheduler.node := g++ -shared -pthread -rdynamic -m64  -Wl,-soname=scheduler.node -o Release/obj.target/scheduler.node -Wl,--start-group Release/obj.target/scheduler/../scheduler/Model/Target.o Release/obj.target/scheduler/test_wrap.o -Wl,--end-group 

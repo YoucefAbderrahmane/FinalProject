@@ -1,7 +1,7 @@
-const addon = require('../../../scheduler/cpp_node_conn/build/Release/test');
+var scheduler = require("./module");
 
-// console.log(addon.add(2,3)); // 'world'
+var Target = scheduler.target_test;
 
-addon((msg) => {
-  console.log(msg); // 'hello world'
-});
+var star = new Target(30.0, 52.0);
+
+console.log(star);

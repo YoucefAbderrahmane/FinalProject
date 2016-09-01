@@ -13,9 +13,10 @@
 
 //#include <libnova/libnova.h>
 //#include "../genethic_algo/SchedulingProb.h"
-
-#include <libnova/julian_day.h>
-#include <libnova/transform.h>
+//
+//#include <libnova/julian_day.h>
+//#include <libnova/transform.h>
+#include <libnova/libnova.h>
 
 class ScheduleProb;
 class Observation;

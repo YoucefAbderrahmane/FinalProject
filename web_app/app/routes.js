@@ -4,6 +4,7 @@ var util = require('util');
 var async = require('async');
 
 var db_query = require('../config/db_queries.js');
+//var scheduler = require('../cpp_node_conn/build/Release/scheduler');
 
 module.exports = function(app, passport, formidable, pg) {
 

@@ -8,10 +8,8 @@
 #ifndef OBSCONDITIONS_H_
 #define OBSCONDITIONS_H_
 
-#include <libnova/ln_types.h>
+#include <libnova/libnova.h>
 #include "config.h"
-
-#include "../genethic_algo/aures.h"
 
 class Obs_conditions {
 

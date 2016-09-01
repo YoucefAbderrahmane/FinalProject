@@ -7,6 +7,7 @@
 
 #include "chromosome.h"
 #include <cmath>
+#include <algorithm>
 
 chromosome::chromosome() : observations(), genes(), telescopes_alloc(), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
 		dom_count(), dom_list() {
