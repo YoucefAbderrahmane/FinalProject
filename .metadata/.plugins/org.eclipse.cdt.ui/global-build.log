@@ -1,38 +1,12 @@
-11:19:37 **** Incremental Build of configuration Debug for project scheduler ****
+23:23:54 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
-Building file: ../src/scheduler.cpp
+Building file: ../genethic_algorithm/MyNSGA.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-../src/scheduler.cpp:149:2: warning: "/*" within comment [-Wcomment]
-  /*cout<< "dom count "<< point[0]->getDomCount()<< " front aussi "<< (*front)[0].getDomCount()<<endl;
- ^
-../src/scheduler.cpp: In function ‘int main()’:
-../src/scheduler.cpp:85:45: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int i =0; i < p->getIndividuals().size(); i++)
-                                             ^
-Finished building: ../src/scheduler.cpp
- 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::update_dom(int)’:
-../genethic_algorithm/population.cpp:295:38: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(i =0; i < cr->getDomList().size(); i++)// decrease the number of domination count of every dominated individual by index
-                                      ^
-../genethic_algorithm/population.cpp: In member function ‘void population::displayFronts()’:
-../genethic_algorithm/population.cpp:513:38: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int i = 0; i< this->fronts.size(); i++)
-                                      ^
-../genethic_algorithm/population.cpp:516:35: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int j = 0; j<fronts[i].size(); j++) std::cout<< this->fronts[i][j]<< std::endl;
-                                   ^
-Finished building: ../genethic_algorithm/population.cpp
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
+Finished building: ../genethic_algorithm/MyNSGA.cpp
  
 Building target: scheduler
 Invoking: GCC C++ Linker
 g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
 Finished building target: scheduler
  
-11:19:41 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».

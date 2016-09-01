@@ -19,6 +19,7 @@ class Target;
 class chromosome {
 
 	friend class population;
+	friend class MyNSGA;
 
 public:
 	chromosome();
@@ -84,6 +85,15 @@ public:
 		}
 
 		double getDomListOf(int index);
+
+	double getViolationRatio() const {
+		return violation_ratio;
+	}
+
+	void setViolationRatio(double violationRatio) {
+		violation_ratio = violationRatio;
+	}
+	void updateViolationRatio();
 private:
 	std::vector<Observation> observations;
 
@@ -99,6 +109,7 @@ private:
 
 	int dom_count; //the Pareto domination count for the individual
 	std::vector<int> dom_list; //list of dominated individuals
+	double violation_ratio;
 };
 
 #endif /* CHROMOSOME_H_ */

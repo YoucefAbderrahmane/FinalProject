@@ -15,6 +15,9 @@
 #include <cstdio>
 
 class population {
+
+	friend class MyNSGA;
+
 public:
 	population(int population_size, Schedule schedule);
 	population(std::vector<chromosome> individuals, int population_size);
@@ -27,8 +30,8 @@ public:
 	void repair(chromosome * individual);
 	void repair_vect_obs(std::vector<gene *> * genes);
 
-	chromosome  get_individual(int chromosome_index);
-	chromosome * getIndividualPointeur(int index);
+	void addIndividual(chromosome ch);
+
 	int compare_fitness(std::vector<double> f1, std::vector<double> f2);//return true if f1 is better than f2 /*ok*/
 	void update_pareto_information(); //update the pareto info (front rank and crowding distance)/*ok*/
 	void update_crowding_dist(std::vector<chromosome *> front); /* ok *///update the crowding distance of all individuals /*ok*/
@@ -57,13 +60,16 @@ public:
 	void setIndividuals(const std::vector<chromosome>& individuals) {
 		this->individuals = individuals;
 	}
-
-
-
+	chromosome  get_individual(int chromosome_index);
+	chromosome * getIndividualPointeur(int index);
+	double getDomCountOf(int index);
+	int getFrontsSize();
+	void bestIndividuals(int nb_champ);
 	std::vector<chromosome> * getIndividualsPointer();
-void change();
-double getDomCountOf(int index);
-void displayFronts();
+	void updateViolation();
+
+	void change();
+	void displayFronts();
 
 private:
 	std::vector<chromosome> individuals;

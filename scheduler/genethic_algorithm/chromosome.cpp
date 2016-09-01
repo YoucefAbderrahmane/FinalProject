@@ -123,7 +123,8 @@ void chromosome::compute_obj_func() {
 	}
 
 	//get the average altitude merit
-	f[1] = f[1] / f[0];
+	if(f[0]) f[1] = f[1] / f[0];
+	else f[1] = 0.0;
 
 	//get the average distance traveled
 	//AND
@@ -259,4 +260,18 @@ double chromosome::getDomListOf(int index)
 {
 	return this->dom_list[index];
 }
-
+void chromosome::updateViolationRatio()
+{
+	int size = this->observations.size();
+	violation_ratio = 0.0;
+	for(int i = 0; i < size; i++)
+	{
+		/*int isAboveMinHeight(double JD);
+	int isAwayFromMoon(double JD);
+	int isInReqTime();*/
+		violation_ratio += this->observations[i].isAboveMinHeight(this->genes[i].start_date);
+		violation_ratio += this->observations[i].isAwayFromMoon(this->genes[i].start_date);
+		violation_ratio +=  this->observations[i].isInReqTime();
+	}
+	this->violation_ratio /= size;// (7ta ma3na la moyenn)
+}

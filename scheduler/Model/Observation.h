@@ -23,6 +23,7 @@ class Obs_conditions;
 class Observation {
 
 	friend class aures;
+	friend class chromosome;
 
 public:
 	//Constructors and destructors
