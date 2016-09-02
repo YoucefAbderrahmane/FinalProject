@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;scheduler/genethic_algorithm/config&apos; to &apos;config.h&apos;" description="Rename resource &apos;config&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="genethic_algorithm/config" name="config.h" stamp="1468682428153" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;scheduler/genethic_algorithm/config.h&apos; to &apos;ga_config.h&apos;" description="Rename resource &apos;config.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="genethic_algorithm/config.h" name="ga_config.h" stamp="1468684469959" updateReferences="true"/>
-</session>
