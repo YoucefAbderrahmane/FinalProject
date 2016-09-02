@@ -11,6 +11,11 @@
 #include <libnova/libnova.h>
 #include "config.h"
 
+<<<<<<< HEAD
+=======
+//#include "../genethic_algo/aures.h"
+
+>>>>>>> 01a3012e1ad38673fc30b0e9c97b3521c9b04e3d
 class Obs_conditions {
 
 	friend class Schedule;

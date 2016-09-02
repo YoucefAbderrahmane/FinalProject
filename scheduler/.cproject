@@ -31,7 +31,11 @@
 								<option id="gnu.cpp.compiler.option.include.paths.1520901267" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/libraries/libnova-0.15.0/src"/>
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/pagmo/src"/>
+<<<<<<< HEAD
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/scheduler/scheduler/Model}&quot;"/>
+=======
+									<listOptionValue builtIn="false" value="../scheduler/scheduler/Model"/>
+>>>>>>> 01a3012e1ad38673fc30b0e9c97b3521c9b04e3d
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.include.files.396202026" name="Include files (-include)" superClass="gnu.cpp.compiler.option.include.files" valueType="includeFiles">
@@ -45,7 +49,11 @@
 								<option id="gnu.c.compiler.option.include.paths.456288329" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/libraries/libnova-0.15.0/src"/>
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/pagmo/src"/>
+<<<<<<< HEAD
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/scheduler/scheduler/Model}&quot;"/>
+=======
+									<listOptionValue builtIn="false" value="../scheduler/scheduler/Model"/>
+>>>>>>> 01a3012e1ad38673fc30b0e9c97b3521c9b04e3d
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.files.932738807" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" valueType="includeFiles">
@@ -56,18 +64,34 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.949204861" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.839839840" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
+<<<<<<< HEAD
 								<option id="gnu.cpp.link.option.paths.911166807" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths"/>
 								<option id="gnu.cpp.link.option.libs.1453650055" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs"/>
+=======
+								<option id="gnu.cpp.link.option.paths.911166807" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="/use/local/lib"/>
+								</option>
+								<option id="gnu.cpp.link.option.libs.1453650055" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="nova"/>
+								</option>
+>>>>>>> 01a3012e1ad38673fc30b0e9c97b3521c9b04e3d
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.272569253" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
 								</inputType>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.exe.debug.1704582352" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.exe.debug">
+<<<<<<< HEAD
 								<option id="gnu.both.asm.option.include.paths.1219334956" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/libraries/libnova-0.15.0/src"/>
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/pagmo/src"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/scheduler/scheduler/Model}&quot;"/>
+=======
+								<option id="gnu.both.asm.option.include.paths.1630040689" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/pfe/dev/libraries/libnova-0.15.0/src"/>
+									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/pagmo/src"/>
+									<listOptionValue builtIn="false" value="../scheduler/scheduler/Model"/>
+>>>>>>> 01a3012e1ad38673fc30b0e9c97b3521c9b04e3d
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.151256334" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
@@ -75,7 +99,11 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
+<<<<<<< HEAD
 						<entry excluding="genethic_algo|Model|cpp_node_conn|src|utilities|genethic_algorithm" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+=======
+						<entry excluding="Model|genethic_algo|cpp_node_conn|src|utilities|genethic_algorithm" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+>>>>>>> 01a3012e1ad38673fc30b0e9c97b3521c9b04e3d
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Model"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="genethic_algorithm"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
