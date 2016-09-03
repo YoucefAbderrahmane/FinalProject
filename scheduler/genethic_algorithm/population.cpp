@@ -290,11 +290,11 @@ void population::check_gene(int gene_idx, int individual_idx) {
 }
 //ok
 void population::update_dom(int index) {
-	std::cout<< "-------------------start update_dom, index ="<< index<< std::endl;
+	//std::cout<< "-------------------start update_dom, index ="<< index<< std::endl;
 	int i;
 	chromosome * cr = &(this->individuals[index]);
 	if(cr->getDomList().size() != 0){
-	for(i =0; i < cr->getDomList().size(); i++)// decrease the number of domination count of every dominated individual by index
+	for(i =0; i < (int) cr->getDomList().size(); i++)// decrease the number of domination count of every dominated individual by index
 	{
 		this->individuals[cr->getDomListOf(i)].dom_count--;
 		//std::cout<< "mise a jour	";
@@ -305,17 +305,17 @@ void population::update_dom(int index) {
 
 	for(i=0;i < this->population_size;i++)
 	{
-		std::cout<< "I'm i = "<< i<< std::endl;
+		//std::cout<< "I'm i = "<< i<< std::endl;
 		if(i!=index)
 		{
-			std::cout<< "I'm i and different from index "<< std::endl;
+			//std::cout<< "I'm i and different from index "<< std::endl;
 			//check if i dominates index
 			if(compare_fitness(this->individuals[i].getF(),cr->getF()))
 			{
-				std::cout<<"result of the comparison "<< compare_fitness(this->individuals[i].getF(),cr->getF())<< std::endl;
+				//std::cout<<"result of the comparison "<< compare_fitness(this->individuals[i].getF(),cr->getF())<< std::endl;
 				//update the domination count of index
 				cr->incrementDomCount();
-				std::cout << "In the first if I am "<< index << " and I'm dominated by  "<< i<< std::endl;
+				//std::cout << "In the first if I am "<< index << " and I'm dominated by  "<< i<< std::endl;
 				//check if index exists in the list of dominated individual of i and add it if not
 				if(std::find(this->individuals[i].dom_list.begin(),this->individuals[i].dom_list.end(),index)== this->individuals[i].dom_list.end())
 				{
@@ -329,20 +329,20 @@ void population::update_dom(int index) {
 				{
 					this->individuals[i].dom_list.erase(x);
 				}
-				std::cout<< "got you"<<std::endl;
+				//std::cout<< "got you"<<std::endl;
 			}
 			//check if index dominates i
 		if(compare_fitness(cr->f,this->individuals[i].f))
 			{
 				cr->dom_list.push_back(i);
 				this->individuals[i].dom_count++;
-				std::cout<< "I am "<< index<< " and I dominate "<< i<< std::endl;
+				//std::cout<< "I am "<< index<< " and I dominate "<< i<< std::endl;
 			}
 		}
 	}
 	cr= NULL;
 	delete cr;
-	std::cout<< "-------------find de update_dom----------------"<< std::endl;
+//	std::cout<< "-------------find de update_dom----------------"<< std::endl;
 }
 //ok
 struct obj_fct_comp {
@@ -412,9 +412,9 @@ void population::change(){this->individuals[0].setCrowdingDist(1024);}
 //have to update dom count before
 void population::update_pareto_information() {
 	std::vector<int> list_dom_count(this->get_size(),0);
-		//we need the index to update the crowding distance in the population
-		std::vector<int> index;
-		std::vector<chromosome *> front, S;
+	//we need the index to update the crowding distance in the population
+	std::vector<int> index;
+	std::vector<chromosome *> front, S;
 	for(int i =0; i < this->get_size();i++){
 		this->individuals[i].setCrowdingDist(0);
 		this->individuals[i].setParetoRank(0);
@@ -532,11 +532,12 @@ void population::bestIndividuals(int nb_champ) {
 	int size_front = 0;
 	std::vector<int> v;
 	int index;
-	for(index = 0; index < this->fronts.size(); index++)
+	int size = (int) this->fronts.size();
+	for(index = 0; index < size; index++)
 	{
 		nb_champions = (int) this->champions.size();
 		size_front = (int) this->fronts[index].size();
-		if( (nb_champions + size_front) < nb_champ)
+		if( (nb_champions + size_front) <= nb_champ)
 		{
 			for(int i =0; i < size_front; i++)
 			{
@@ -560,10 +561,11 @@ void population::bestIndividuals(int nb_champ) {
 
 void population::displayFronts()
 {
-	for(int i = 0; i< this->fronts.size(); i++)
+	for(int i = 0; i< (int) this->fronts.size(); i++)
 	{
 		std::cout<<"liste des individus du front i = "<< i<< std::endl;
-		for(int j = 0; j<fronts[i].size(); j++) std::cout<< this->fronts[i][j]<< std::endl;
+		int size = (int) fronts[i].size();
+		for(int j = 0; j < size; j++) std::cout<< this->fronts[i][j]<< std::endl;
 		std::cout<< "________________________________"<< std::endl;
 	}
 }
@@ -587,4 +589,8 @@ void population::updateViolation() {
 	{
 		individuals[i].updateViolationRatio();
 	}
+}
+
+void population::clearChampions() {
+	this->champions.clear();
 }

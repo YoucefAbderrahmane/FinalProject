@@ -94,6 +94,16 @@ public:
 		violation_ratio = violationRatio;
 	}
 	void updateViolationRatio();
+
+	std::vector<gene> getGenes() {
+		return genes;
+	}
+
+	void setGenes(const std::vector<gene>& genes) {
+		this->genes = genes;
+	}
+	gene getGene(int index);
+
 private:
 	std::vector<Observation> observations;
 

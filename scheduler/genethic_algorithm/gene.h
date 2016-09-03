@@ -48,6 +48,14 @@ public:
 		telescope_used = telescopeUsed;
 	}
 
+	int getIndex() const {
+		return index;
+	}
+
+	void setIndex(int index) {
+		this->index = index;
+	}
+
 private:
 	//Observation * observation; //the observation to be scheduled
 	int index;

@@ -21,6 +21,7 @@
 #include "../genethic_algorithm/chromosome.h"
 #include "../genethic_algorithm/gene.h"
 #include "../genethic_algorithm/population.h"
+#include "../genethic_algorithm/MyNSGA.h"
 
 #include <algorithm>
 #include <limits>
@@ -60,11 +61,11 @@ int main() {
 
 	Schedule * sched = new Schedule();
 
-	sched->randomObservationListGenerator(10);
+	sched->randomObservationListGenerator(4);
 
 	cout << "Initializing the population..." << endl;
 
-	population * p = new population(20, *sched);
+	population * p = new population(4, *sched);
 //
 //	cout << "Population initialized..." << endl;
 //
@@ -85,6 +86,59 @@ int main() {
 
 
 	ch->compute_obj_func();
+	for (int i = 0; i< p->get_size();i++) 	p->update_dom(i);
+	p->update_pareto_information();
+	p->updateViolation();
+/*	for(int i =0; i < p->get_size(); i++)
+	{
+		cout<< "the violation ratio :"<< p->get_individual(i).getViolationRatio()<< endl;
+	}*/
+
+
+	MyNSGA algo(1);
+
+
+	/*p->getIndividualPointeur(0)->setParetoRank(0);
+	p->getIndividualPointeur(1)->setParetoRank(0);
+	cout<< "the ranks of 0 and 1 :"<< p->get_individual(0).getParetoRank()<< " and	"<< p->get_individual(1).getParetoRank()<< endl;
+	cout<< "the crowding distance :"<< p->get_individual(0).getCrowdingDist()<< " and "<< p->get_individual(1).getCrowdingDist()<< endl;
+	cout<< "the violation ratio :"<< p->get_individual(0).getViolationRatio()<< " and "<< p->get_individual(1).getViolationRatio()<< endl;*/
+
+
+	chromosome par = algo.tournamentSelection(0,1,*p);
+	chromosome par2 = algo.tournamentSelection(2,3, *p);
+	chromosome e1, e2;
+	algo.nsga2(p);
+
+
+
+
+/*	// test AG
+ * selection ok
+ * crossover ok
+ * mutation ok
+	cout<< "begin crossover"<< endl;
+	algo.crossover(&e1,&e2,par,par2);
+	cout<< "par " << par.getGenes().size() << endl;
+	cout<< "par2 " << par2.getGenes().size() << endl;
+	cout<< "e1 " << e1.getGenes().size() << endl;
+	cout<< "e2 " << e2.getGenes().size() << endl;
+
+
+	for(int i = 0; i < (int) par.getGenes().size(); i++)
+	{
+		cout<<"numero du gene "<< i<< " :   ";
+		cout<< fixed << par.getGene(i).getStartDate()<< "    "
+				<< fixed << par2.getGene(i).getStartDate()<< "    "
+				<< fixed << e1.getGene(i).getStartDate()<< "    "
+				<< fixed << e2.getGene(i).getStartDate()<< endl;
+	}
+	algo.mutation(&e1,&e2, *p);
+*/
+	/*cout<< "the ranks of par :"<< par.getParetoRank()<< endl;
+	cout<< "the crowding distance :"<< par.getCrowdingDist()<< endl;
+	cout<< "the violation ratio :"<< par.getViolationRatio()<< endl;*/
+
 	/*test si shuffle de deux vecteurs successifs est différent
 	vector<int> v1, v2;
 	for(int i =0; i < 10; i++)
@@ -103,7 +157,7 @@ int main() {
 			cout<< *i << endl;
 		}*/
 //test pareto
-	std::vector<chromosome *>  front;
+	/*std::vector<chromosome *>  front;
 	std::vector<chromosome *> point;
 	//front = p->getIndividualsPointer();
 	for(int i =0; i < p->getIndividuals().size(); i++)
@@ -147,10 +201,10 @@ int main() {
 			cout<< "individu "<< i << " domination cout = "<< p->get_individual(i).getDomCount()<< endl;
 		}
 	cout<< "_______________________________________________________________________________________"<< endl;
-	p->displayFronts();
+	p->displayFronts();*/
 
 	//test crowding_distance
-	p->update_crowding_dist(front);
+/*	p->update_crowding_dist(front);
 	for(int i =0; i <p->getIndividuals().size(); i++)
 	{
 		cout << "crowding distance de  " << i << "	" << p->get_individual(i).getCrowdingDist()<< endl;
@@ -164,7 +218,7 @@ int main() {
 		for(int j =0; j < vv.size(); j++)
 		{
 		cout<< "nombre d'individus dans le fronts est : "<< p->get_individual(vv[j]).getCrowdingDist()<< endl;
-		}
+		}*/
 
 // test de f.obj
 

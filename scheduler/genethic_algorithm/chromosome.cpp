@@ -270,8 +270,17 @@ void chromosome::updateViolationRatio()
 	int isAwayFromMoon(double JD);
 	int isInReqTime();*/
 		violation_ratio += this->observations[i].isAboveMinHeight(this->genes[i].start_date);
+		//std::cout<< "details of violation "<< violation_ratio<< std::endl;
 		violation_ratio += this->observations[i].isAwayFromMoon(this->genes[i].start_date);
+		//std::cout<< "details of violation "<< violation_ratio<< std::endl;
 		violation_ratio +=  this->observations[i].isInReqTime();
+		//std::cout<< "observation "<< i << " valeur de violation = "<< violation_ratio<< std::endl;
 	}
-	this->violation_ratio /= size;// (7ta ma3na la moyenn)
+	this->violation_ratio /= size;
+	//std::cout<< "_________________________________"<< std::endl;
+}
+
+gene chromosome::getGene(int index)
+{
+	return genes.at(index);
 }

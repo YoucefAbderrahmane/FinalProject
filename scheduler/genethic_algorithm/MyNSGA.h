@@ -16,6 +16,7 @@
 class MyNSGA {
 public:
 	MyNSGA();
+	MyNSGA(int nb_gen);
 	virtual ~MyNSGA();
 	chromosome tournamentSelection(int individu1, int individu2, population p);
 	void mutation(chromosome *c, chromosome *cr, population p);

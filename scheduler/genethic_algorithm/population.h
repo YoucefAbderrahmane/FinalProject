@@ -67,9 +67,18 @@ public:
 	void bestIndividuals(int nb_champ);
 	std::vector<chromosome> * getIndividualsPointer();
 	void updateViolation();
+	void clearChampions();
 
 	void change();
 	void displayFronts();
+
+	const std::vector<chromosome>& getChampions() const {
+		return champions;
+	}
+
+	void setChampions(const std::vector<chromosome>& champions) {
+		this->champions = champions;
+	}
 
 private:
 	std::vector<chromosome> individuals;

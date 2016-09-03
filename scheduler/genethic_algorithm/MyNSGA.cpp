@@ -12,6 +12,12 @@ MyNSGA::MyNSGA() {
 
 }
 
+MyNSGA::MyNSGA(int nb_gen):nb_gen(nb_gen) {
+	// TODO Auto-generated constructor stub
+
+}
+
+
 MyNSGA::~MyNSGA() {
 	// TODO Auto-generated destructor stub
 }
@@ -30,31 +36,48 @@ chromosome MyNSGA::tournamentSelection(int individu1, int individu2, population 
 
 void MyNSGA::crossover(chromosome *enf1, chromosome *enf2, chromosome p1, chromosome p2)
 {
-	if(rand()/RAND_MAX < 0.5)
+	double k = (double) rand()/RAND_MAX;
+	double x = 0.0;
+	if( /*k < 0.5*/1)
 	{
+		std::cout<< "two point crossover"<< std::endl;
+		//std::cout<< k << std::endl;
 		int size = p1.genes.size();
-		if(rand()/RAND_MAX < 1/3){// one point crossover
-
-			int i = rand() % size + 1;//make sure to have at least one gene changed
-			int k =0;
-			for(k =0; k < i; k++)
+		x = (double) rand()/RAND_MAX;
+		//std::cout<< x << std::endl;
+		if(0/*x < 1/3.0*/){// one point crossover
+			std::cout<< "one point crossover"<< std::endl;
+			enf1->genes.resize(size);
+			enf2->genes.resize(size);
+			int i = rand() % (size-1) + 1;//make sure to have at least one gene changed
+			std::cout<< i<< std::endl;
+			//int k =0;
+			std::copy(p1.genes.begin(),p1.genes.begin()+ i, enf1->genes.begin());
+			std::copy(p2.genes.begin(),p2.genes.begin()+ i, enf2->genes.begin());
+			/*for(k =0; k < i; k++)
 			{
 				enf1->genes.push_back(p1.genes[k]);
 				enf2->genes.push_back(p2.genes[k]);
 
-			}
-			for(k=1; k< size; k++)
+			}*/
+			std::copy(p2.genes.begin()+i,p2.genes.end(), enf1->genes.begin() + i);
+			std::copy(p1.genes.begin()+i,p1.genes.end(), enf2->genes.begin() + i);
+			/*for(k=i; k< size; k++)
 			{
 				enf1->genes.push_back(p2.genes[k]);
 				enf2->genes.push_back(p1.genes[k]);
-			}
+			}*/
 		}
-		if(1/3 < rand()/RAND_MAX && rand()/RAND_MAX < 2/3)//uniform crossover
+		if(0 /*1/3.0 <= x && x < 2/3.0*/)//uniform crossover
 		{
-			int u =0 ;
+			double u = 0.0 ;
+			std::cout<< "uniform crossover"<< std::endl;
+			enf1->genes.clear();
+			enf2->genes.clear();
 			for(int i =0; i < size; i++)
 			{
-				u = rand()/RAND_MAX;
+				u = (double) rand()/RAND_MAX;
+				//std::cout<< "cout u each time "<< u<< std::endl;
 				if( u < 0.5)
 				{
 					enf1->genes.push_back(p1.genes[i]);
@@ -66,62 +89,105 @@ void MyNSGA::crossover(chromosome *enf1, chromosome *enf2, chromosome p1, chromo
 				}
 			}
 		}
-		if( rand()/RAND_MAX < 1)//two points crossover
+		if( 1/*2/3.0 <= x*/)//two points crossover
 		{
+			//std::cout<< "two points crossover"<< std::endl;
 			int i =0, j=0;
+			while(i == j)
+			{
 			i = rand() % (size-2) + 1;
 			j = i + rand() % (size-i);
-			for(int k =0; k < i; k++)
+			}
+			enf1->genes.resize(size);
+			enf2->genes.resize(size);
+			std::cout<< i << "  "<< j<< std::endl;
+			std::copy(p1.genes.begin(),p1.genes.begin()+ i, enf1->genes.begin());
+			std::copy(p2.genes.begin(),p2.genes.begin()+ i, enf2->genes.begin());
+			/*for(int k =0; k < i; k++)
 			{
 				enf1->genes.push_back(p1.genes[k]);
 				enf2->genes.push_back(p2.genes[k]);
-			}
-			for(int k =i; k< j; k++)
+			}*/
+			std::copy(p1.genes.begin() + i,p1.genes.begin()+ j, enf2->genes.begin() + i);
+			std::copy(p2.genes.begin() + i,p2.genes.begin()+ j, enf1->genes.begin() + i);
+			/*for(int k =i; k< j; k++)
 			{
 				enf1->genes.push_back(p2.genes[k]);
 				enf2->genes.push_back(p1.genes[k]);
 
-			}
-			for(int k =j; k < size; k++)
+			}*/
+			std::copy(p1.genes.begin() + j,p1.genes.end(), enf1->genes.begin() + j);
+			std::copy(p2.genes.begin() + j,p2.genes.end(), enf2->genes.begin() + j);
+			/*for(int k =j; k < size; k++)
 			{
 				enf1->genes.push_back(p1.genes[k]);
 				enf2->genes.push_back(p2.genes[k]);
 
-			}
+			}*/
 		}
+	}
+	else {
+		*enf1 = p1;
+		*enf2 = p2;
 	}
 	}
 
 void MyNSGA::mutation(chromosome *c, chromosome *cr, population p)
 {
-	if(rand()/RAND_MAX < 0.5)
+	double x = (double) rand()/RAND_MAX;
+	if(x < 0.5)
 	{
-		int i = rand()% (c->genes.size());
-		c->genes[i].setRandomSelection(rand()/RAND_MAX);
+		std::cout<< "valeur ordo"<< std::endl;
+		int size = c->genes.size();
+		int i = rand() % size;
+		std::cout<< size<< std::endl;
+		std::cout<< "child one "<< c->genes[i].getRandomSelection();
+		c->genes[i].setRandomSelection((double) rand()/RAND_MAX);
+		std::cout<< "	new " << c->genes[i].getRandomSelection()<< endl;
 
+		std::cout<< "child two "<< cr->genes[i].getRandomSelection();
 		i = rand()% (c->genes.size());
-		cr->genes[i].setRandomSelection(rand()/RAND_MAX);
+		cr->genes[i].setRandomSelection((double) rand()/RAND_MAX);
+		std::cout<< "	new " << cr->genes[i].getRandomSelection()<< endl;
 	}
-	if(rand()/RAND_MAX < 0.5)
+	x = (double) rand()/RAND_MAX;
+	if(x < 0.5)
 		{
-		int i = rand()% (c->genes.size());
+		std::cout<<"début observ"<< std::endl;
+		int size = c->genes.size();
+		int i = rand()% size;
+
 		double start = p.schedule.getConditions()->getNightHorizon().start;
-		double h = p.schedule.getConditions()->getNightHorizon().start - p.schedule.getConditions()->getNightHorizon().end;
+		double h = p.schedule.getConditions()->getNightHorizon().end - p.schedule.getConditions()->getNightHorizon().start;
+		double x = start + ((double) rand()/RAND_MAX) * h;
 
-		c->genes[i].setStartDate(start + rand()/RAND_MAX * h);
 
-		i = rand()% (c->genes.size());
+		c->genes[i].setStartDate(x);
 
-		cr->genes[i].setStartDate( start + rand()/RAND_MAX * h);
+
+		i = rand()% size;
+
+		x = start + ((double)rand()/RAND_MAX) * h;
+		cr->genes[i].setStartDate( x);
+
 		}
-	if(rand()/RAND_MAX < 0.5)
+	x = (double) rand()/RAND_MAX;
+	if(x < 0.5)
 		{
+		std::cout<<	"tel alloué" << std::endl;
+		int size = c->genes.size();
+		int g = rand()% size;
 			int i = rand() % N_TELESCOPE;
-			c->genes[i].setTelescopeUsed(i);
 
+			std::cout<< "child one "<< g<< "  used telescope "<< c->genes[g].getTelescopeUsed();
+			c->genes[g].setTelescopeUsed(i);
+			std::cout<< "	new " << c->genes[g].getTelescopeUsed()<< endl;
+
+			g = rand()% size;
 			i = rand() % N_TELESCOPE;
-			cr->genes[i].setTelescopeUsed(i);
-
+			std::cout<< "child two "<< g<< "  used telescope "<< cr->genes[g].getTelescopeUsed();
+			cr->genes[g].setTelescopeUsed(i);
+			std::cout<< "	new " << cr->genes[g].getTelescopeUsed()<< endl;
 		}
 }
 
@@ -134,11 +200,12 @@ void MyNSGA::nsga2(population *p)
 	{
 		v1[i] = i;
 		v2[i] = i;
+		p->update_dom(i);
 	}
 	for(int g =0; g< this->nb_gen; g++)
 	{
 		p->update_pareto_information(); // update fronts and ranks
-		p->updateViolation();
+		p->updateViolation(); //update violation ratio of the constraints for the crossover
 		population  cr(p->getIndividuals(),p->get_size()); //Initialization de R
 		std::random_shuffle(v1.begin(),v1.end()); //shuffle the vectors to pick the parents randomly
 		std::random_shuffle(v2.begin(),v2.end());
@@ -155,12 +222,10 @@ void MyNSGA::nsga2(population *p)
 
 			//maj des fitness contrainte et dom
 			enfant1.compute_obj_func();
-			enfant1.updateViolationRatio();
 			cr.addIndividual(enfant1);
 			cr.update_dom(cr.get_size()-1);
 
 			enfant2.compute_obj_func();
-			enfant2.updateViolationRatio();
 			cr.addIndividual(enfant2);
 			cr.update_dom(cr.get_size()-1);
 
@@ -172,19 +237,19 @@ void MyNSGA::nsga2(population *p)
 			cr.repair(&enfant2);
 			//maj des fitness contrainte et dom
 			enfant1.compute_obj_func();
-			enfant1.updateViolationRatio();
 			cr.addIndividual(enfant1);
 			cr.update_dom(cr.get_size()-1);
 
 
 			enfant2.compute_obj_func();
-			enfant2.updateViolationRatio();
 			cr.addIndividual(enfant2);
 			cr.update_dom(cr.get_size()-1);
 
 		}
 		//trier et choisir les meilleurs -> pareto information + tri + sélectionnner les NP premier
 		cr.bestIndividuals(NP);
-		p->setIndividuals(cr.getIndividuals());
+		cr.clearChampions();
+		p->setIndividuals(cr.getChampions());
+		for(int i = 0; i < NP; i++) p->update_dom(i);
 	}
 }
