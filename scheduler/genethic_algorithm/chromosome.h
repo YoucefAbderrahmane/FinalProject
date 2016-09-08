@@ -60,7 +60,7 @@ public:
 			this->dom_count = domCount;
 		}
 
-		const std::vector<int>& getDomList() const {
+		std::vector<int> getDomList() {
 			return dom_list;
 		}
 
@@ -104,11 +104,39 @@ public:
 	}
 	gene getGene(int index);
 
+	int is_close_to_meridien(int index);
+	int is_above_min_height(Obs_conditions conditions, int index);
+	int is_away_moon(Obs_conditions conditions, int index);
+	int is_in_req_time(int index);
+
+	void ratio_violated_const(Obs_conditions conditions);
+
+	std::vector<Observation> getObservations() const {
+		return observations;
+	}
+
+	void setObservations(const std::vector<Observation> observations) {
+		this->observations = observations;
+	}
+
+	 Obs_conditions getConditions()  {
+		return conditions;
+	}
+
+	void setConditions( Obs_conditions conditions) {
+		this->conditions = conditions;
+	}
+
+	double get_duration();
+	int getNbMaxT();
+	void setNbMaxT(int nbMaxT);
+
 private:
 	std::vector<Observation> observations;
 
 	std::vector<gene> genes;
 	std::vector<int> telescopes_alloc;
+	int nb_max_t; // number max of the telescopes allocated
 
 	std::vector<double> f;	//objective functions vector
 	std::vector<double> c; //constraints vector
@@ -120,6 +148,7 @@ private:
 	int dom_count; //the Pareto domination count for the individual
 	std::vector<int> dom_list; //list of dominated individuals
 	double violation_ratio;
+	Obs_conditions conditions;
 };
 
 #endif /* CHROMOSOME_H_ */

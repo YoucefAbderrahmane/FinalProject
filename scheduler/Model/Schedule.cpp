@@ -39,26 +39,28 @@ class Target;
 //}
 
 
-Schedule::Schedule() : observations(),
+Obs_conditions * Schedule::conditions = new Obs_conditions();
+vector<Observation> Schedule::observations;
+
+
+Schedule::Schedule() :
 		observations_length(),
 		teles_alloc_matrix(),
 		teles_length(),
-		total_duration(),
-		conditions(){
+		total_duration(){
 	// TODO Auto-generated constructor stub
 
-	conditions = new Obs_conditions();
+	//conditions = new Obs_conditions();
 }
 
 Schedule::Schedule(vector<Observation> observations,
 		int observation_length,
-		int teles_length) : observations(observations),
+		int teles_length) :
 				observations_length(observation_length),
 				teles_length(teles_length),
-				total_duration(),
-				conditions(){
+				total_duration(){
 
-	conditions = new Obs_conditions();
+	this->observations = observations;
 
 	const int width = observation_length;
 	const int height = N_TELESCOPE;
@@ -74,13 +76,13 @@ Schedule::Schedule(vector<Observation> observations,
 	int observation_length, 
 	int teles_length, 
 	double jd, //which represent the date of the schedule
-	Obs_conditions * conditions) : observations(observations),
+	Obs_conditions * conditions) :
 		observations_length(observation_length),
 		teles_alloc_matrix(),
 		teles_length(teles_length),
-		total_duration(),
-		conditions(conditions) {
+		total_duration() {
 
+	this->observations = observations;
 	this->conditions = new Obs_conditions(jd);
 }
 
@@ -335,7 +337,9 @@ int Schedule::singularRequestGenerator(Request * request){
 	request->setPeriod(period);
 
 	//Generating priority
-	request->setPriority((double)  ((rand() % MAX_PRIO) + 1.0) / 10.0);
+	//request->setPriority((double)  ((rand() % MAX_PRIO) + 1.0) / 10.0);
+
+	request->setPriority(rand() % 10);
 
 	//generating observations
 	//...
@@ -401,20 +405,21 @@ int Schedule::randomObservationAllocation(){
 	return SUCCESS;
 }
 
-Obs_conditions* Schedule::getConditions() const {
-	return conditions;
-}
+//static Obs_conditions * Schedule::getConditions() const {
+//	return conditions;
+//}
 
 void Schedule::checkObservations() {
 
 	//Use this function to check if observations are generated correctly
 	//This function will become useless when the number of observation is too high
 
-	std::cout << "Number of generated observations : " << observations.size() << std::endl;
-	std::cout << "Julian day : " << fixed << conditions->JD << std::endl;
-	std::cout << "Observer's position : " << "lat " << conditions->observer.lat
-			<< " - lng " << conditions->observer.lng << std::endl;
-	std::cout << "Night horizon : " << fixed << conditions->night_horizon.start << " - " << fixed << conditions->night_horizon.end <<std::endl;
+	std::cout << "Number of generated observations : " << Schedule::observations.size() << std::endl;
+	std::cout << "Julian day : " << fixed << Schedule::conditions->JD << std::endl;
+	std::cout << "Observer's position : " << "lat " << Schedule::conditions->observer.lat
+			<< " - lng " << Schedule::conditions->observer.lng << std::endl;
+	std::cout << "Night horizon : " << fixed << Schedule::conditions->night_horizon.start << " - "
+			<< fixed << Schedule::conditions->night_horizon.end <<std::endl;
 
 	for(int i = 0; i < (int) observations.size(); i++){
 

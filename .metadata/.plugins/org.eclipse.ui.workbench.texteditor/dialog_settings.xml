@@ -3,26 +3,26 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="307" key="DIALOG_WIDTH"/>
 		<item value="123" key="DIALOG_Y_ORIGIN"/>
-		<item value="425" key="DIALOG_HEIGHT"/>
 		<item value="973" key="DIALOG_X_ORIGIN"/>
+		<item value="425" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="get_" key="selection"/>
+		<item value="getTa" key="selection"/>
 		<list key="findhistory">
-			<item value="get_"/>
-			<item value="get"/>
-			<item value="addSecondsToJD"/>
-			<item value="is_"/>
-			<item value="request"/>
-			<item value="targetGen"/>
-			<item value="targetge"/>
-			<item value="i&apos;m in"/>
+			<item value="getTa"/>
+			<item value="repair_vect"/>
+			<item value="repair"/>
+			<item value="clear"/>
+			<item value="sup"/>
+			<item value="div"/>
+			<item value="/div"/>
+			<item value="getg"/>
 		</list>
 		<list key="replacehistory">
 			<item value="curr_teles"/>
@@ -31,8 +31,8 @@
 	<section name="org.eclipse.cdt.internal.ui.preferences.CTemplatePreferencePage$CEditTemplateDialog_dialogBounds">
 		<item value="518" key="DIALOG_WIDTH"/>
 		<item value="72" key="DIALOG_Y_ORIGIN"/>
-		<item value="92" key="DIALOG_X_ORIGIN"/>
 		<item value="335" key="DIALOG_HEIGHT"/>
+		<item value="92" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Ubuntu|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 </section>

@@ -48,7 +48,7 @@ public:
 	const vector<Observation>& getObservations() const;
 	void setObservations(const vector<Observation>& observations);
 
-	std::vector<Observation> * getObs();
+	static std::vector<Observation> * getObs();
 
 	void checkObservations();
 
@@ -68,16 +68,20 @@ public:
 	int singularObservationGenerator(Observation * observation);
 	int randomObservationListGenerator(int length);
 	int randomObservationAllocation();
-	Obs_conditions* getConditions() const;
+	static Obs_conditions* getConditions();
 	void setConditions(Obs_conditions * conditions);
 
+
+	static Obs_conditions * conditions;
+	static vector<Observation> observations; //all observable requests for the night of the schedule
+
 private:
-	vector<Observation> observations; //all observable requests for the night of the schedule
+
 	int observations_length; //number of observable requests
 	int** teles_alloc_matrix; //telescope allocation matrix of the observations
 	int teles_length; //number of telescopes used
 	double total_duration;	//duration of the schedule
-	Obs_conditions * conditions;
+
 };
 
 #endif /* SCHEDULE_H_ */

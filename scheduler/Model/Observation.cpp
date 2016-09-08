@@ -74,11 +74,11 @@ void Observation::setObsId(int obsId) {
 	obs_id = obsId;
 }
 
-const Target& Observation::getTarget() const {
+Target Observation::getTarget(){
 	return target;
 }
 
-void Observation::setTarget(const Target& target) {
+void Observation::setTarget(Target target) {
 	this->target = target;
 }
 

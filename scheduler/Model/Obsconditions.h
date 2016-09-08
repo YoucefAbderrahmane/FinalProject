@@ -27,16 +27,19 @@ public:
 	void setObserverFromConfig();
 
 	int calculateNightHorizon();
-	double getJd() const;
+	double getJd();
 	void setJd(double jd);
-	const time_interval& getNightHorizon() const;
-	void setNightHorizon(const time_interval& nightHorizon);
-	const ln_lnlat_posn& getObserver() const;
-	void setObserver(const ln_lnlat_posn& observer);
-	int getAllSet() const;
+	time_interval getNightHorizon();
+	void setNightHorizon(time_interval nightHorizon);
+	ln_lnlat_posn getObserver();
+	ln_lnlat_posn * getObserverPtr();
+	void setObserver(ln_lnlat_posn observer);
+	int getAllSet();
 	void setAllSet(int allSet);
-	double getHorizon() const;
+	double getHorizon();
 	void setHorizon(double horizon);
+
+	double night_duration_in_ms ();
 
 private:
 	ln_lnlat_posn observer; //position of the observer

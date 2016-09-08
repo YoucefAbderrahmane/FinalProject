@@ -1,5 +1,5 @@
 /*
- * gene.h
+x * gene.h
  *
  *  Created on: 16 juil. 2016
  *      Author: root
@@ -23,6 +23,10 @@ public:
 	Observation * getObs();
 	double get_start_time();
 	double get_end_time();
+	int is_in_time(Observation observation);
+	int is_above_min_height(Observation observation);
+
+
 
 	double getRandomSelection() const {
 		return random_selection;
@@ -56,6 +60,9 @@ public:
 		this->index = index;
 	}
 
+	int getIsSched() const;
+	void setIsSched(int isSched);
+
 private:
 	//Observation * observation; //the observation to be scheduled
 	int index;
@@ -65,6 +72,9 @@ private:
 	double start_date; //in JD
 	int telescope_used; //Id of the telescope used for observing the target
 
+	int is_sched;
+
+	int violated_const;
 
 	double duration; 	//in seconds
 	double end_date; //in JD

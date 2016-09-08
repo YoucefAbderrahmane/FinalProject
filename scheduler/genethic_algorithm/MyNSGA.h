@@ -11,6 +11,7 @@
 #include "chromosome.h"
 #include "population.h"
 #include <algorithm>
+#include "../utilities/time_calculation.h"
 
 
 class MyNSGA {
@@ -26,8 +27,8 @@ public:
 
 private :
 	int nb_gen;
-	double prob_cross;
-	double prob_mut;
+	//double prob_cross;
+	//double prob_mut;
 
 };
 

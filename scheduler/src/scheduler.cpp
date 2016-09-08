@@ -22,12 +22,14 @@
 #include "../genethic_algorithm/gene.h"
 #include "../genethic_algorithm/population.h"
 #include "../genethic_algorithm/MyNSGA.h"
-
+#include <ctime>
+#include <time.h>
 #include <algorithm>
 #include <limits>
+#include "../utilities/time_calculation.h"
 using namespace std;
 
-struct obj_fct_comp {
+/*struct obj_fct_comp {
 
 	obj_fct_comp(int dim):obj_fct(dim) {};
 	bool operator()(chromosome * c1, chromosome * c2){
@@ -49,7 +51,7 @@ int * get_inter()
 {
 
 	return &k;
-}
+}*/
 
 int main() {
 
@@ -59,17 +61,24 @@ int main() {
 //	pos = vega.getEqCord();
 //	cout << kochab.getAngularDistance(pos) << endl;
 
+
+
 	Schedule * sched = new Schedule();
 
-	sched->randomObservationListGenerator(4);
+	sched->randomObservationListGenerator(400);
 
 	cout << "Initializing the population..." << endl;
 
-	population * p = new population(4, *sched);
+	population * p = new population(12, *sched); //population multiple of 4
+
+	std::cout << "pop " << fixed << p->getIndividualsPointer()->at(0).getGenes().at(0).get_start_time() << std::endl;
+
+//	cout << "Initializing ended..." << endl;
+
 //
 //	cout << "Population initialized..." << endl;
 //
-//	p->check_init();
+	//p->check_init();
 //
 //	p->get_individual(0).compute_constraints();
 //
@@ -79,36 +88,73 @@ int main() {
 
 
 
-	chromosome * ch = new chromosome(*sched->getObs());
+	//chromosome * ch = new chromosome(*sched->getObs());
 
-	cout << "fknfi," << endl;
+	//cout << "fknfi," << endl;
 
 
 
-	ch->compute_obj_func();
-	for (int i = 0; i< p->get_size();i++) 	p->update_dom(i);
+	//ch->compute_obj_func();
+	/*for (int i = 0; i< p->get_size();i++) 	p->update_dom(i);
 	p->update_pareto_information();
-	p->updateViolation();
+	p->updateViolation();*/
 /*	for(int i =0; i < p->get_size(); i++)
 	{
 		cout<< "the violation ratio :"<< p->get_individual(i).getViolationRatio()<< endl;
 	}*/
 
 
-	MyNSGA algo(1);
+	MyNSGA algo(150);
+//	std::cout<< "algo init : end " << std::endl;
 
 
-	/*p->getIndividualPointeur(0)->setParetoRank(0);
-	p->getIndividualPointeur(1)->setParetoRank(0);
-	cout<< "the ranks of 0 and 1 :"<< p->get_individual(0).getParetoRank()<< " and	"<< p->get_individual(1).getParetoRank()<< endl;
-	cout<< "the crowding distance :"<< p->get_individual(0).getCrowdingDist()<< " and "<< p->get_individual(1).getCrowdingDist()<< endl;
-	cout<< "the violation ratio :"<< p->get_individual(0).getViolationRatio()<< " and "<< p->get_individual(1).getViolationRatio()<< endl;*/
 
 
-	chromosome par = algo.tournamentSelection(0,1,*p);
+
+	/*chromosome par = algo.tournamentSelection(0,1,*p);
 	chromosome par2 = algo.tournamentSelection(2,3, *p);
-	chromosome e1, e2;
+	chromosome e1, e2;*/
+
+	//p->bestIndividuals(2);
+	//vector<chromosome> cro = p->getIndividuals();
+
+
+	//cout<< "le nombre de champions est de "<< cro.size()<< endl;
+
+	/*for(int i = 0; i < 4; i++){
+
+		p->repair(p->getIndividualPointeur(i));
+	}*/
+
+
+	/*for(int i = 0; i< sizec; i++) {
+		cout<< fixed << p->get_individual(0).getGene(i).getStartDate() << endl;
+	}*/
+	//population p2 = *p;
+	clock_t tStart = clock();
 	algo.nsga2(p);
+
+	//std::cout<< "nsga : end " << std::endl;
+
+	double end_t = (double)(clock() - tStart)/CLOCKS_PER_SEC;
+	printf("Time taken full: %.2fs\n", end_t);
+	int size = (int) p->get_size();
+	int sizec = p->get_individual(0).getGenes().size();
+
+	cout<< "taille de la population "<< size<< endl;
+
+	cout<< "nombre de genes " << sizec<< endl;
+
+	p->show_stats();
+	printf("\n Time taken full: %.2fs\n", end_t);
+//	std::cout << "Taux req " << p->getIndividualPointeur(0)->get_obj_func(0) << std::endl;
+//	std::cout << "Hauteur moyenne " << p->getIndividualPointeur(0)->get_obj_func(1) << std::endl;
+//	std::cout << "Distance moyenne " << p->getIndividualPointeur(0)->get_obj_func(2) << std::endl;
+//	std::cout << "Télescopes " << p->getIndividualPointeur(8)->get_obj_func(3) << std::endl;
+	//cout<< "aprs :"<< endl;
+	/*for(int i = 0; i< sizec; i++)
+		cout<< fixed <<p->get_individual(0).getGene(i).getStartDate() << endl;
+	cout<< "taille de la population "<< size<< endl;*/
 
 
 
@@ -247,7 +293,7 @@ int main() {
 	}
 
 
-	/*cout<< "dom count "<< point[0]->getDomCount()<< " front aussi "<< (*front)[0].getDomCount()<<endl;
+	cout<< "dom count "<< point[0]->getDomCount()<< " front aussi "<< (*front)[0].getDomCount()<<endl;
 		cout<< "dom count "<< point[1]->getDomCount()<< " front aussi "<< (*front)[1].getDomCount()<<endl;
 		cout<< "dom count "<< point[2]->getDomCount()<< " front aussi "<< (*front)[2].getDomCount()<<endl;
 	cout<< "___________________"<< endl;
@@ -293,7 +339,44 @@ int main() {
 //	Target RigilKentaurus(219.8795833, -60.81952778);
 //
 //	Target * Aldebaran = new Target(68.98041667, 16.50841667);
-	cout<< "fin"<< endl;
+
+
+//	vector<Observation> o;
+//	double scheduled;
+//	double fraction = 0.0;
+//	double moyenne =0.0;
+//	for(int j =0 ; j< size; j++)
+//	{
+//	o = p->get_individual(j).getObservations();
+//	scheduled = 0.0;
+//	for(int i = 0; i < sizec; i++)
+//	{
+//		scheduled += (int) p->get_individual(j).getGenes().at(i).is_scheduled(o[i]); //o[i].getTaken();
+//	}
+//
+//	fraction = scheduled/ sizec;
+//	moyenne += fraction;
+//	cout<< "le pourcentage de requêtes ordonnancées de l'individu "<< j<< " est de :"<< fraction* 100<< endl;
+//	}
+//	cout<< "moyenne des requêtes ordonnancées dans la population "<< moyenne/size*100<< endl;
+//	MyNSGA algo2(50);
+//	algo2.nsga2(&p2);
+//	moyenne = 0.0;
+//	for(int j =0 ; j< size; j++)
+//	{
+//	o = p->get_individual(j).getObservations();
+//	scheduled = 0.0;
+//	for(int i = 0; i < sizec; i++)
+//	{
+//		scheduled += (int) p2.get_individual(j).getGenes().at(i).is_scheduled(o[i]); //o[i].getTaken();
+//	}
+//
+//	fraction = scheduled/ sizec;
+//	moyenne += fraction;
+//	cout<< "le pourcentage de requêtes ordonnancées de l'individu "<< j<< " est de :"<< fraction* 100<< endl;
+//	}
+//	cout<< "moyenne des requêtes ordonnancées dans la population "<< moyenne/size*100<< endl;
+
 	return 0;
 }
 
