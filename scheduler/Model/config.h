@@ -30,8 +30,8 @@
 #define MAX_PERIOD 7000 //seconds
 #define MIN_PERIOD 300 //seconds
 
-#define MIN_EXPOSURE 5 //seconds
-#define MAX_EXPOSURE 240 //seconds = 4min
+#define MIN_EXPOSURE 240 //seconds = 4min
+#define MAX_EXPOSURE 600 //seconds = 10min
 
 #define PERIODIC_RATIO 0.2
 #define TIME_CONST_RATIO 0.2
@@ -41,14 +41,14 @@
 
 #define MAX_PRIO 9
 #define PRIO_1_PROBA 0.9
-#define PRIO_2_PROBA 0.8
-#define PRIO_3_PROBA 0.7
-#define PRIO_4_PROBA 0.6
-#define PRIO_5_PROBA 0.5
-#define PRIO_6_PROBA 0.4
-#define PRIO_7_PROBA 0.3
-#define PRIO_8_PROBA 0.2
-#define PRIO_9_PROBA 0.1
+#define PRIO_2_PROBA 0.85
+#define PRIO_3_PROBA 0.8
+#define PRIO_4_PROBA 0.75
+#define PRIO_5_PROBA 0.7
+#define PRIO_6_PROBA 0.65
+#define PRIO_7_PROBA 0.6
+#define PRIO_8_PROBA 0.55
+#define PRIO_9_PROBA 0.5
 
 struct time_interval{
 	//in Julian Day

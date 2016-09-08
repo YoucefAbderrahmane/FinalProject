@@ -1,6 +1,7 @@
 /Debug/
 /Release/
 .metadata
+<<<<<<< HEAD
 bin/
 tmp/
 *.tmp
@@ -22,3 +23,5 @@ local.properties
 *.launch
 
 .cproject
+=======
+>>>>>>> 590e3da40ca0255b9d7974dcbfdb17bc509dbd18

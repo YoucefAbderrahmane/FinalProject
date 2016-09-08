@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plugin>
 	<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
-		<provider class="org.eclipse.cdt.managedbuilder.language.settings.providers.GCCBuiltinSpecsDetector" console="false" env-hash="1134915391341516079" id="org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetector" keep-relative-paths="false" name="CDT GCC Built-in Compiler Settings" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot;">
+		<provider class="org.eclipse.cdt.managedbuilder.language.settings.providers.GCCBuiltinSpecsDetector" console="false" env-hash="1135062754131972079" id="org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetector" keep-relative-paths="false" name="CDT GCC Built-in Compiler Settings" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot;">
 			<language-scope id="org.eclipse.cdt.core.gcc"/>
 			<language-scope id="org.eclipse.cdt.core.g++"/>
 			<language id="org.eclipse.cdt.core.gcc">
-				<entry kind="includePath" name="/usr/lib/gcc/x86_64-linux-gnu/4.9/include">
+				<entry kind="includePath" name="/usr/lib/gcc/x86_64-linux-gnu/4.8/include">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
 				<entry kind="includePath" name="/usr/local/include">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="includePath" name="/usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed">
+				<entry kind="includePath" name="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
 				<entry kind="includePath" name="/usr/include/x86_64-linux-gnu">
@@ -287,19 +287,13 @@
 				<entry kind="macro" name="__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8" value="1">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="macro" name="__GCC_IEC_559" value="2">
-					<flag value="BUILTIN|READONLY"/>
-				</entry>
-				<entry kind="macro" name="__GCC_IEC_559_COMPLEX" value="2">
-					<flag value="BUILTIN|READONLY"/>
-				</entry>
 				<entry kind="macro" name="__GNUC_GNU_INLINE__" value="1">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="macro" name="__GNUC_MINOR__" value="9">
+				<entry kind="macro" name="__GNUC_MINOR__" value="8">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="3">
+				<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="4">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
 				<entry kind="macro" name="__GNUC__" value="4">
@@ -680,7 +674,7 @@
 				<entry kind="macro" name="__USER_LABEL_PREFIX__" value="">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="macro" name="__VERSION__" value="&quot;4.9.3&quot;">
+				<entry kind="macro" name="__VERSION__" value="&quot;4.8.4&quot;">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
 				<entry kind="macro" name="__WCHAR_MAX__" value="2147483647">
@@ -711,12 +705,6 @@
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
 				<entry kind="macro" name="__gnu_linux__" value="1">
-					<flag value="BUILTIN|READONLY"/>
-				</entry>
-				<entry kind="macro" name="__has_include(STR)" value="__has_include__(STR)">
-					<flag value="BUILTIN|READONLY"/>
-				</entry>
-				<entry kind="macro" name="__has_include_next(STR)" value="__has_include_next__(STR)">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
 				<entry kind="macro" name="__k8" value="1">
@@ -751,22 +739,22 @@
 				</entry>
 			</language>
 			<language id="org.eclipse.cdt.core.g++">
-				<entry kind="includePath" name="/usr/include/c++/4.9">
+				<entry kind="includePath" name="/usr/include/c++/4.8">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="includePath" name="/usr/include/x86_64-linux-gnu/c++/4.9">
+				<entry kind="includePath" name="/usr/include/x86_64-linux-gnu/c++/4.8">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="includePath" name="/usr/include/c++/4.9/backward">
+				<entry kind="includePath" name="/usr/include/c++/4.8/backward">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="includePath" name="/usr/lib/gcc/x86_64-linux-gnu/4.9/include">
+				<entry kind="includePath" name="/usr/lib/gcc/x86_64-linux-gnu/4.8/include">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
 				<entry kind="includePath" name="/usr/local/include">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="includePath" name="/usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed">
+				<entry kind="includePath" name="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
 				<entry kind="includePath" name="/usr/include/x86_64-linux-gnu">
@@ -1051,19 +1039,13 @@
 				<entry kind="macro" name="__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8" value="1">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="macro" name="__GCC_IEC_559" value="2">
-					<flag value="BUILTIN|READONLY"/>
-				</entry>
-				<entry kind="macro" name="__GCC_IEC_559_COMPLEX" value="2">
-					<flag value="BUILTIN|READONLY"/>
-				</entry>
 				<entry kind="macro" name="__GNUC_GNU_INLINE__" value="1">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="macro" name="__GNUC_MINOR__" value="9">
+				<entry kind="macro" name="__GNUC_MINOR__" value="8">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="3">
+				<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="4">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
 				<entry kind="macro" name="__GNUC__" value="4">
@@ -1453,7 +1435,7 @@
 				<entry kind="macro" name="__USER_LABEL_PREFIX__" value="">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="macro" name="__VERSION__" value="&quot;4.9.3&quot;">
+				<entry kind="macro" name="__VERSION__" value="&quot;4.8.4&quot;">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
 				<entry kind="macro" name="__WCHAR_MAX__" value="2147483647">
@@ -1486,16 +1468,7 @@
 				<entry kind="macro" name="__cplusplus" value="199711L">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
-				<entry kind="macro" name="__cpp_binary_literals" value="201304">
-					<flag value="BUILTIN|READONLY"/>
-				</entry>
 				<entry kind="macro" name="__gnu_linux__" value="1">
-					<flag value="BUILTIN|READONLY"/>
-				</entry>
-				<entry kind="macro" name="__has_include(STR)" value="__has_include__(STR)">
-					<flag value="BUILTIN|READONLY"/>
-				</entry>
-				<entry kind="macro" name="__has_include_next(STR)" value="__has_include_next__(STR)">
 					<flag value="BUILTIN|READONLY"/>
 				</entry>
 				<entry kind="macro" name="__k8" value="1">

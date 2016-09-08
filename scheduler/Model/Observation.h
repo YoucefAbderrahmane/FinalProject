@@ -23,6 +23,7 @@ class Obs_conditions;
 class Observation {
 
 	friend class aures;
+	friend class chromosome;
 
 public:
 	//Constructors and destructors
@@ -40,8 +41,8 @@ public:
 	void setMoonMinSeparation(double moonMinSeparation);
 	int getObsId() const;
 	void setObsId(int obsId);
-	const Target& getTarget() const;
-	void setTarget(const Target& target);
+	Target getTarget();
+	void setTarget(Target target);
 	const struct time_interval& getReqTime() const;
 	void setReqTime(const struct time_interval& reqTime);
 	int getTelescope() const;

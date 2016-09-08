@@ -74,11 +74,11 @@ void Observation::setObsId(int obsId) {
 	obs_id = obsId;
 }
 
-const Target& Observation::getTarget() const {
+Target Observation::getTarget(){
 	return target;
 }
 
-void Observation::setTarget(const Target& target) {
+void Observation::setTarget(Target target) {
 	this->target = target;
 }
 
@@ -238,7 +238,7 @@ int Observation::isAboveMinHeight(double JD) {
 	eq_coord.dec = target.getEqDec();
 	eq_coord.ra = target.getEqRAsc();
 
-	ln_get_hrz_from_equ(&eq_coord, &conditions->observer, conditions->JD, &horiz_coord);
+	ln_get_hrz_from_equ(&eq_coord, &conditions->observer, JD, &horiz_coord);
 
 	if( horiz_coord.alt >= getMinHeight() ) return SUCCESS;
 	else return FAILURE;

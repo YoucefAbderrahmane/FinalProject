@@ -18,7 +18,12 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.exe.debug.966390831." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.exe.debug.2035404447" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.exe.debug">
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.exe.debug.887724741" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.exe.debug"/>
-							<builder buildPath="${workspace_loc:/scheduler}/Debug" id="cdt.managedbuild.target.gnu.builder.exe.debug.424482449" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.exe.debug"/>
+							<builder buildPath="${workspace_loc:/scheduler}/Debug" id="cdt.managedbuild.target.gnu.builder.exe.debug.424482449" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.exe.debug">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release"/>
+								</outputEntries>
+							</builder>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1806736101" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.2045495415" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug">
 								<option id="gnu.cpp.compiler.exe.debug.option.optimization.level.1505721997" name="Optimization Level" superClass="gnu.cpp.compiler.exe.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
@@ -26,7 +31,8 @@
 								<option id="gnu.cpp.compiler.option.include.paths.1520901267" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/libraries/libnova-0.15.0/src"/>
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/pagmo/src"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Model}&quot;"/>
+									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova"/>
+									<listOptionValue builtIn="false" value="/home/pfe/dev/Graduation_project/scheduler/Model"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.include.files.396202026" name="Include files (-include)" superClass="gnu.cpp.compiler.option.include.files" valueType="includeFiles">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h"/>
@@ -37,7 +43,7 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.exe.debug.option.optimization.level.1553865387" name="Optimization Level" superClass="gnu.c.compiler.exe.debug.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.exe.debug.option.debugging.level.24459448" name="Debug Level" superClass="gnu.c.compiler.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.456288329" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/scheduler/Model}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.files.932738807" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" valueType="includeFiles">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h"/>
@@ -48,20 +54,10 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.949204861" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.839839840" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
 								<option id="gnu.cpp.link.option.paths.911166807" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="/usr/lib/x86_64-linux-gnu"/>
-									<listOptionValue builtIn="false" value="/usr/lib"/>
-									<listOptionValue builtIn="false" value="/usr/local/lib"/>
-									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/pagmo/build/src"/>
+									<listOptionValue builtIn="false" value="/use/local/lib"/>
 								</option>
 								<option id="gnu.cpp.link.option.libs.1453650055" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
-									<listOptionValue builtIn="false" value="nlopt"/>
-									<listOptionValue builtIn="false" value="v8"/>
-									<listOptionValue builtIn="false" value="uv"/>
-									<listOptionValue builtIn="false" value="boost_system"/>
-									<listOptionValue builtIn="false" value="pagmo"/>
 									<listOptionValue builtIn="false" value="nova"/>
-									<listOptionValue builtIn="false" value="boost_thread"/>
-									<listOptionValue builtIn="false" value="boost_serialization"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.272569253" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -69,17 +65,21 @@
 								</inputType>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.exe.debug.1704582352" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.exe.debug">
+								<option id="gnu.both.asm.option.include.paths.1630040689" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/pfe/dev/libraries/libnova-0.15.0/src"/>
+									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/pagmo/src"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/scheduler/Model}&quot;"/>
+									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.151256334" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="cpp_node_conn|utilities|genethic_algorithm|Model|genethic_algo|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Model"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="cpp_node_conn"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="genethic_algo"/>
+						<entry excluding="Model|genethic_algo|cpp_node_conn|src|utilities|genethic_algorithm" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Model"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="genethic_algorithm"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="utilities"/>
 					</sourceEntries>
 				</configuration>
@@ -129,8 +129,6 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="cpp_node_conn|utilities|genethic_algorithm|genethic_algo" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="cpp_node_conn"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="genethic_algo"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="genethic_algorithm"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="utilities"/>
 					</sourceEntries>

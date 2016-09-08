@@ -13,16 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="addSecondsToJD" key="selection"/>
+		<item value="getTa" key="selection"/>
 		<list key="findhistory">
-			<item value="addSecondsToJD"/>
-			<item value="is_"/>
-			<item value="request"/>
-			<item value="targetGen"/>
-			<item value="targetge"/>
-			<item value="i&apos;m in"/>
-			<item value="genes.at(i).telescope_used"/>
-			<item value="night_horizon"/>
+			<item value="getTa"/>
+			<item value="repair_vect"/>
+			<item value="repair"/>
+			<item value="clear"/>
+			<item value="sup"/>
+			<item value="div"/>
+			<item value="/div"/>
+			<item value="getg"/>
 		</list>
 		<list key="replacehistory">
 			<item value="curr_teles"/>

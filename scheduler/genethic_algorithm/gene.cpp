@@ -8,13 +8,13 @@
 #include "gene.h"
 #include "../utilities/time_calculation.h"
 
-gene::gene() : index(), random_selection(), start_date(), duration(), end_date(), telescope_used() {
+gene::gene() : index(), random_selection(), start_date(), is_sched(1), violated_const(), duration(), end_date(), telescope_used() {
 	// TODO Auto-generated constructor stub
 
 }
 
 
-gene::gene(int index) : index(index), random_selection(), start_date(), duration(), end_date(), telescope_used() {
+gene::gene(int index) : index(index), random_selection(), start_date(), is_sched(1), violated_const(), duration(), end_date(), telescope_used() {
 	// TODO Auto-generated constructor stub
 
 }
@@ -25,7 +25,8 @@ gene::~gene() {
 
 bool gene::is_scheduled(Observation observation) {
 
-	return ( random_selection < observation.getRequest()->getPriority());
+	//return ( random_selection < observation.getRequest()->getPriority());
+	return getIsSched();
 }
 
 //Observation* gene::getObs() {
@@ -35,10 +36,24 @@ bool gene::is_scheduled(Observation observation) {
 
 double gene::get_end_time() {
 
-	if( end_date > 0.0 ) end_date = addSecondsToJD(start_date, duration);
-	return end_date;
+	return end_date = addSecondsToJD(start_date, duration);
 }
 
 double gene::get_start_time() {
 	return start_date;
+}
+
+int gene::is_in_time(Observation observation) {
+
+	if( start_date >= observation.getReqTime().start && start_date <= observation.getReqTime().end )
+		return 1;
+	else return 0;
+}
+
+int gene::getIsSched() const {
+	return is_sched;
+}
+
+void gene::setIsSched(int isSched) {
+	is_sched = isSched;
 }

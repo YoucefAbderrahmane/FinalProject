@@ -8,12 +8,28 @@
 #ifndef MYNSGA_H_
 #define MYNSGA_H_
 
-#include <algorithm/nsga2.h>
+#include "chromosome.h"
+#include "population.h"
+#include <algorithm>
+#include "../utilities/time_calculation.h"
 
-class MyNSGA: public pagmo::algorithm::nsga2 {
+
+class MyNSGA {
 public:
 	MyNSGA();
+	MyNSGA(int nb_gen);
 	virtual ~MyNSGA();
+	chromosome tournamentSelection(int individu1, int individu2, population p);
+	void mutation(chromosome *c, chromosome *cr, population p);
+	void crossover(chromosome *enf1, chromosome *enf2, chromosome p1, chromosome p2);
+	void nsga2(population *p);
+	//chromosome tournamentSelection(int individu1, int individu2, population p);
+
+private :
+	int nb_gen;
+	//double prob_cross;
+	//double prob_mut;
+
 };
 
 
