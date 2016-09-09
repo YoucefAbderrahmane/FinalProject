@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <iterator>
+#include <cmath>
 
 #include <libnova/libnova.h>
 
@@ -61,15 +62,33 @@ int main() {
 //	pos = vega.getEqCord();
 //	cout << kochab.getAngularDistance(pos) << endl;
 
-
+//
+//	struct ln_rst_time * solar_rst = new ln_rst_time();
+//
+//	ln_lnlat_posn * observer = new ln_lnlat_posn();
+//
+//	observer->lat = LATITUDE;
+//	observer->lng = LONGITUDE;
+//
+//	double JD = std::abs(2457641.04398) - 0.5;
+//
+//	ln_get_solar_rst(JD , observer, solar_rst);
+//
+//	std::cout << "lever soleil " << fixed << solar_rst->rise << std::endl;
+//	std::cout << "coucher soleil "<< fixed << solar_rst->set << std::endl;
+//
+//
+//
+//
+//	exit(0);
 
 	Schedule * sched = new Schedule();
 
-	sched->randomObservationListGenerator(400);
+	sched->randomObservationListGenerator(200);
 
 	cout << "Initializing the population..." << endl;
 
-	population * p = new population(12, *sched); //population multiple of 4
+	population * p = new population(52, *sched); //population multiple of 4
 
 	std::cout << "pop " << fixed << p->getIndividualsPointer()->at(0).getGenes().at(0).get_start_time() << std::endl;
 
@@ -104,7 +123,7 @@ int main() {
 	}*/
 
 
-	MyNSGA algo(150);
+	MyNSGA algo(50);
 //	std::cout<< "algo init : end " << std::endl;
 
 

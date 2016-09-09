@@ -7,6 +7,7 @@
 
 #include "Obsconditions.h"
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -41,41 +42,61 @@ int Obs_conditions::calculateNightHorizon(){
 	struct ln_rst_time * solar_rst = new ln_rst_time();
 	struct ln_rst_time * last_solar_rst = new ln_rst_time();
 
-	int result = ln_get_solar_rst(JD, &observer, solar_rst);
+	double julian = std::abs(JD) - 0.5;
 
-	std::cout << "SOL debut " << fixed << solar_rst->set << " fin " << fixed << solar_rst->rise << std::endl;
+	int result = ln_get_solar_rst(julian, &observer, solar_rst);
 
-	if( JD > solar_rst->rise && JD < solar_rst->set){
+	//std::cout << "SOL debut " << fixed << solar_rst->set << " fin " << fixed << solar_rst->rise << std::endl;
 
-		ln_get_solar_rst(JD + 1, &observer, last_solar_rst);
+	if( JD < solar_rst->rise ){
+
+		night_horizon.start = JD;
+		night_horizon.end = solar_rst->rise;
 	}
-	else ln_get_solar_rst(JD - 1, &observer, last_solar_rst);
+	else{
+
+		ln_get_solar_rst(julian + 1, &observer, last_solar_rst);
 
 
-
-
-	std::cout << "NEXT SOL debut " << fixed << last_solar_rst->set << " fin " << fixed << last_solar_rst->rise << std::endl;
-
-	if (result == SUCCESS) {
-		if( JD < last_solar_rst->set ){
-
-			night_horizon.start = last_solar_rst->set;
-			night_horizon.end = solar_rst->rise;
-		}
-		else{
-
-			night_horizon.start = JD;
-			night_horizon.end = solar_rst->rise;
-		}
-
-		night_horizon.start = solar_rst->set;
+		night_horizon.start = std::max(JD, solar_rst->set);
 		night_horizon.end = last_solar_rst->rise;
+	}
+
+	//std::cout << "SOL debut " << fixed << night_horizon.start << " fin "
+//					<< fixed << night_horizon.start << std::endl;
+
+//	if( JD > solar_rst->rise && JD < solar_rst->set){
+//
+//		ln_get_solar_rst(JD + 1, &observer, last_solar_rst);
+//	}
+//	else ln_get_solar_rst(JD - 1, &observer, last_solar_rst);
+//
+//
+//	//std::cout << "NEXT SOL debut " << fixed << last_solar_rst->set << " fin " << fixed << last_solar_rst->rise << std::endl;
+//
+//	if (result == SUCCESS) {
+//		if( JD < last_solar_rst->set ){
+//
+//			night_horizon.start = last_solar_rst->set;
+//			night_horizon.end = solar_rst->rise;
+//		}
+//		else{
+//
+//			night_horizon.start = JD;
+//			night_horizon.end = solar_rst->rise;
+//		}
+//
+//		night_horizon.start = solar_rst->set;
+//		night_horizon.end = last_solar_rst->rise;
+//
+//		std::cout << "SOL debut " << fixed << night_horizon.start << " fin "
+//				<< fixed << night_horizon.start << std::endl;
 
 		allSet = 0;
 
 		return SUCCESS;
-	}
-	else return FAILURE;
+//	}
+//	else return FAILURE;
 }
 
 double Obs_conditions::getJd() {

@@ -801,11 +801,11 @@ for(std::vector<chromosome>::size_type i = 0; i < this->individuals.size();i++ )
 {
 	if(this->individuals[i].getParetoRank() == 0)
 	{
-			if(this->individuals[i].get_obj_func(0) < ideal[0])
+			if(this->individuals[i].get_obj_func(1) < ideal[0])
 			{
 				//std::cout<< "ideal de j "<< j<< " est "<< this->individuals[i].get_obj_func(j)<< std::endl;
 				best = i;
-				ideal[0] = this->individuals[i].get_obj_func(0);
+				ideal[0] = this->individuals[i].get_obj_func(1);
 			}
 	}
 }
@@ -821,7 +821,9 @@ void population::show_stats() {
 //	Stats * s;
 	Stats * all = new Stats();
 
-	chromosome best = compute_ideal_ind();
+	//chromosome best = compute_ideal_ind();
+
+	chromosome best = front.at(rand()%front.size());
 
 //	std::vector<double> ideals = compute_ideal();
 //

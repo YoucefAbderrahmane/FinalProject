@@ -10,16 +10,18 @@
 #include <stdlib.h>
 #include <math.h>
 
+
 #include <libnova/solar.h>
 #include <libnova/julian_day.h>
 #include <libnova/transform.h>
 #include "config.h"
+#include "Schedule.h"
 
 
 
 Observation::Observation() : request(),
 								obs_id(), target(), exposure_time(), moon_min_separation(), req_time(),
-								sched_time(), end_time(), min_height(), telescope(), taken(), constraints(),
+								sched_time(), end_time(), min_height(), max_height(), telescope(), taken(), constraints(),
 								conditions(){
 
 }
@@ -28,7 +30,7 @@ Observation::Observation() : request(),
 Observation::Observation(Request * request, 
 	int obs_id, Target target, double exposure_time, Obs_conditions * conditions) : request(request),
 			obs_id(obs_id), target(target), exposure_time(exposure_time), sched_time(), min_height(),
-			moon_min_separation(MOON_DISK), telescope(), taken(), end_time(), conditions(conditions){
+			max_height(), moon_min_separation(MOON_DISK), telescope(), taken(), end_time(), conditions(conditions){
 
 	this->target = target;
 	this->request = request;
@@ -55,7 +57,13 @@ double Observation::getMinHeight() const {
 }
 
 void Observation::setMinHeight(double minHeight) {
-	min_height = minHeight;
+
+		double range = max_height - 0.0;
+		double div = RAND_MAX / range;
+		min_height = rand() / div;
+
+//		int i = (max_height > min_height);
+//		std::cout << i << std::endl;
 }
 
 double Observation::getMoonMinSeparation() const {
@@ -293,38 +301,46 @@ double Observation::calculateEndTime() {
 
 double Observation::altituteMerit(){
 
-	if( isHeightConst() ){
+
+	//get the actual height of the target
+
+		//1. get the current time in julian day
+	double current_jd = ln_get_julian_from_sys();
+	struct ln_hrz_posn * position = new ln_hrz_posn();
+		//2. calculate the target position
+	ln_get_hrz_from_equ (target.getEqCord(),
+							&Schedule::conditions->observer,
+							current_jd,
+							position);
+		//3. get the target's height
+	double height = round(position->alt - 0.5);
 
 		//get the minimum height of the target
-		double H_min = min_height;
+	double H_min = OBSERVATORY_HORIZON;
 
-		//get the transit heinght of the target
-		double transit_jd = target.getRiseSetTransit().transit;
-		struct ln_hrz_posn * position = new ln_hrz_posn();
-		ln_get_hrz_from_equ (target.getEqCord(),
-						& conditions->observer,
-						transit_jd,
-						position);
-		double H_t = position->alt;
+	if( !isHeightConst() ){
+		H_min = min_height;
+	}
 
-		//get the actual height of the target
+	//std::cout << "h " << height  << " hmin " << H_min << " hmax " << max_height << std::endl;
 
-			//1. get the current time in julian day
-		double current_jd = ln_get_julian_from_sys();
 
-			//2. calculate the target position
-		ln_get_hrz_from_equ (target.getEqCord(),
-								& conditions->observer,
-								current_jd,
-								position);
+	if (height < H_min) return 0.0;
 
-			//3. get the target's height
-		double height = position->alt;
+	double v = (double) (height - H_min) / (max_height - H_min);
+	//std::cout << "v " << v << std::endl;
+	return v;
+
+//		//get the transit heinght of the target
+//		double transit_jd = target.getRiseSetTransit().transit;
+//		ln_get_hrz_from_equ (target.getEqCord(),
+//						& conditions->observer,
+//						transit_jd,
+//						position);
+//		double H_t = abs(position->alt);
 
 		//calculate the altitude merit
-		return (double) (height - H_min) / (H_t - H_min);
-	}
-	else return 1.0;
+
 }
 
 
@@ -382,4 +398,21 @@ Obs_conditions* Observation::getConditions() const {
 
 void Observation::setConditions(Obs_conditions* conditions) {
 	this->conditions = conditions;
+}
+
+void Observation::set_max_height(){
+
+	struct ln_hrz_posn * position = new ln_hrz_posn();
+
+
+	//get the transit heinght of the target
+			double transit_jd = target.getRiseSetTransit().transit;
+			ln_get_hrz_from_equ(target.getEqCord(),
+							& Schedule::conditions->observer,
+							transit_jd,
+							position);
+
+			//std::cout << fixed << transit_jd << std::endl;
+
+			max_height = abs(position->alt);
 }

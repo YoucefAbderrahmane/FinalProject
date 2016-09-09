@@ -1,276 +1,52 @@
-03:35:37 **** Incremental Build of configuration Debug for project scheduler ****
+20:25:53 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
-Building file: ../genethic_algorithm/population.cpp
+Building file: ../Model/Target.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:147:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:217:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-03:35:54 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-03:38:09 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:147:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:217:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-03:39:11 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:147:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:217:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-03:57:27 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/MyNSGA.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
-Finished building: ../genethic_algorithm/MyNSGA.cpp
- 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:147:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:217:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair_vect_obs(std::vector<gene*>*)’:
-../genethic_algorithm/population.cpp:306:13: error: expected primary-expression before ‘<<’ token
-             << genes->at(i)->get_end_time() << std::endl;
-             ^
-make: *** [genethic_algorithm/population.o] Erreur 1
-03:57:44 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:147:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:217:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-04:00:14 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building file: ../genethic_algorithm/MyNSGA.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
-Finished building: ../genethic_algorithm/MyNSGA.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-04:00:38 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-04:08:37 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building file: ../genethic_algorithm/MyNSGA.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
-Finished building: ../genethic_algorithm/MyNSGA.cpp
- 
-Building file: ../genethic_algorithm/chromosome.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/chromosome.d" -MT"genethic_algorithm/chromosome.o" -o "genethic_algorithm/chromosome.o" "../genethic_algorithm/chromosome.cpp"
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome()’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Target.d" -MT"Model/Target.o" -o "Model/Target.o" "../Model/Target.cpp"
+../Model/Target.cpp: In member function ‘int Target::get_rise_set_transit(double, double, ln_lnlat_posn*)’:
+../Model/Target.cpp:82:2: error: ‘cout’ is not a member of ‘std’
+  std::cout << res << std::endl;
+  ^
+../Model/Target.cpp:82:22: error: ‘endl’ is not a member of ‘std’
+  std::cout << res << std::endl;
                       ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:149:19: warning: ‘chromosome::dom_list’ will be initialized after [-Wreorder]
-  std::vector<int> dom_list; //list of dominated individuals
-                   ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome(std::vector<Observation>)’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:151:17: warning: ‘chromosome::conditions’ will be initialized after [-Wreorder]
-  Obs_conditions conditions;
-                 ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-../genethic_algorithm/chromosome.cpp: In member function ‘double chromosome::get_duration()’:
-../genethic_algorithm/chromosome.cpp:380:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0; (int) i < genes.size(); i++){
-                                       ^
-Finished building: ../genethic_algorithm/chromosome.cpp
- 
-Building file: ../genethic_algorithm/gene.cpp
+make: *** [Model/Target.o] Erreur 1
+20:27:02 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Target.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/gene.d" -MT"genethic_algorithm/gene.o" -o "genethic_algorithm/gene.o" "../genethic_algorithm/gene.cpp"
-In file included from ../genethic_algorithm/gene.cpp:8:0:
-../genethic_algorithm/gene.h: In constructor ‘gene::gene()’:
-../genethic_algorithm/gene.h:80:9: warning: ‘gene::end_date’ will be initialized after [-Wreorder]
-  double end_date; //in JD
-         ^
-../genethic_algorithm/gene.h:73:6: warning:   ‘int gene::telescope_used’ [-Wreorder]
-  int telescope_used; //Id of the telescope used for observing the target
-      ^
-../genethic_algorithm/gene.cpp:11:1: warning:   when initialized here [-Wreorder]
- gene::gene() : index(), random_selection(), start_date(), is_sched(1), violated_const(), duration(), end_date(), telescope_used() {
- ^
-In file included from ../genethic_algorithm/gene.cpp:8:0:
-../genethic_algorithm/gene.h: In constructor ‘gene::gene(int)’:
-../genethic_algorithm/gene.h:80:9: warning: ‘gene::end_date’ will be initialized after [-Wreorder]
-  double end_date; //in JD
-         ^
-../genethic_algorithm/gene.h:73:6: warning:   ‘int gene::telescope_used’ [-Wreorder]
-  int telescope_used; //Id of the telescope used for observing the target
-      ^
-../genethic_algorithm/gene.cpp:17:1: warning:   when initialized here [-Wreorder]
- gene::gene(int index) : index(index), random_selection(), start_date(), is_sched(1), violated_const(), duration(), end_date(), telescope_used() {
- ^
-Finished building: ../genethic_algorithm/gene.cpp
- 
-Building file: ../genethic_algorithm/population.cpp
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Target.d" -MT"Model/Target.o" -o "Model/Target.o" "../Model/Target.cpp"
+../Model/Target.cpp: In member function ‘int Target::get_rise_set_transit(double, double, ln_lnlat_posn*)’:
+../Model/Target.cpp:80:18: error: ‘printf’ was not declared in this scope
+  printf("%d", res);
+                  ^
+make: *** [Model/Target.o] Erreur 1
+20:27:24 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Target.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:147:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:217:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Target.d" -MT"Model/Target.o" -o "Model/Target.o" "../Model/Target.cpp"
+Finished building: ../Model/Target.cpp
  
-Building file: ../Model/Obsconditions.cpp
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
+ 
+20:27:59 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Target.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
-Finished building: ../Model/Obsconditions.cpp
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Target.d" -MT"Model/Target.o" -o "Model/Target.o" "../Model/Target.cpp"
+Finished building: ../Model/Target.cpp
  
-Building file: ../Model/Observation.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
-In file included from ../Model/Observation.cpp:8:0:
-../Model/Observation.h: In constructor ‘Observation::Observation()’:
-../Model/Observation.h:90:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
-  double moon_min_separation; //minimum moon distance allowed
-         ^
-../Model/Observation.h:86:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
-  struct time_interval req_time; //requested time interval for the start of the observation
-                       ^
-../Model/Observation.cpp:20:1: warning:   when initialized here [-Wreorder]
- Observation::Observation() : request(),
- ^
-In file included from ../Model/Observation.cpp:8:0:
-../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
-../Model/Observation.h:92:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
-  int taken; // 0 if it is scheduled, 1 else
-      ^
-../Model/Observation.h:88:9: warning:   ‘double Observation::end_time’ [-Wreorder]
-  double end_time; //scheduled end time
-         ^
-../Model/Observation.cpp:28:1: warning:   when initialized here [-Wreorder]
- Observation::Observation(Request * request, 
- ^
-../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
-../Model/Observation.cpp:334:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
-  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
-         ^
-../Model/Observation.cpp:337:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
-  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
-         ^
-Finished building: ../Model/Observation.cpp
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
  
-Building file: ../Model/Request.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Request.d" -MT"Model/Request.o" -o "Model/Request.o" "../Model/Request.cpp"
-Finished building: ../Model/Request.cpp
- 
+20:33:29 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
 Building file: ../Model/Schedule.cpp
 Invoking: GCC C++ Compiler
 g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Schedule.d" -MT"Model/Schedule.o" -o "Model/Schedule.o" "../Model/Schedule.cpp"
@@ -281,404 +57,41 @@ Invoking: GCC C++ Linker
 g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
 Finished building target: scheduler
  
-04:09:09 **** Incremental Build of configuration Debug for project scheduler ****
+20:33:50 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
-Building file: ../src/scheduler.cpp
+Building file: ../Model/Schedule.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Schedule.d" -MT"Model/Schedule.o" -o "Model/Schedule.o" "../Model/Schedule.cpp"
+Finished building: ../Model/Schedule.cpp
  
 Building target: scheduler
 Invoking: GCC C++ Linker
 g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
 Finished building target: scheduler
  
-04:11:58 **** Incremental Build of configuration Debug for project scheduler ****
+20:34:17 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
-Building file: ../genethic_algorithm/population.cpp
+Building file: ../Model/Schedule.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:147:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:217:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Schedule.d" -MT"Model/Schedule.o" -o "Model/Schedule.o" "../Model/Schedule.cpp"
+Finished building: ../Model/Schedule.cpp
  
 Building target: scheduler
 Invoking: GCC C++ Linker
 g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
 Finished building target: scheduler
  
-04:12:54 **** Incremental Build of configuration Debug for project scheduler ****
+20:35:42 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:147:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:217:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-04:16:48 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/chromosome.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/chromosome.d" -MT"genethic_algorithm/chromosome.o" -o "genethic_algorithm/chromosome.o" "../genethic_algorithm/chromosome.cpp"
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome()’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:149:19: warning: ‘chromosome::dom_list’ will be initialized after [-Wreorder]
-  std::vector<int> dom_list; //list of dominated individuals
-                   ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome(std::vector<Observation>)’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:151:17: warning: ‘chromosome::conditions’ will be initialized after [-Wreorder]
-  Obs_conditions conditions;
-                 ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-../genethic_algorithm/chromosome.cpp: In member function ‘double chromosome::get_duration()’:
-../genethic_algorithm/chromosome.cpp:380:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0; (int) i < genes.size(); i++){
-                                       ^
-Finished building: ../genethic_algorithm/chromosome.cpp
- 
-Building file: ../Model/Obsconditions.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
-Finished building: ../Model/Obsconditions.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-04:27:02 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../Model/Obsconditions.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
-Finished building: ../Model/Obsconditions.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-04:27:22 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-04:32:15 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:147:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:217:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-04:39:16 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-04:43:49 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:147:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:217:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building file: ../Model/Obsconditions.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
-Finished building: ../Model/Obsconditions.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-04:51:11 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/chromosome.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/chromosome.d" -MT"genethic_algorithm/chromosome.o" -o "genethic_algorithm/chromosome.o" "../genethic_algorithm/chromosome.cpp"
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome()’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:149:19: warning: ‘chromosome::dom_list’ will be initialized after [-Wreorder]
-  std::vector<int> dom_list; //list of dominated individuals
-                   ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome(std::vector<Observation>)’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:151:17: warning: ‘chromosome::conditions’ will be initialized after [-Wreorder]
-  Obs_conditions conditions;
-                 ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-../genethic_algorithm/chromosome.cpp: In member function ‘double chromosome::get_duration()’:
-../genethic_algorithm/chromosome.cpp:380:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0; (int) i < genes.size(); i++){
-                                       ^
-Finished building: ../genethic_algorithm/chromosome.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           05:31:49 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../utilities/time_calculation.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"utilities/time_calculation.d" -MT"utilities/time_calculation.o" -o "utilities/time_calculation.o" "../utilities/time_calculation.cpp"
-Finished building: ../utilities/time_calculation.cpp
- 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building file: ../genethic_algorithm/MyNSGA.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
-Finished building: ../genethic_algorithm/MyNSGA.cpp
- 
-Building file: ../genethic_algorithm/Stats.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/Stats.d" -MT"genethic_algorithm/Stats.o" -o "genethic_algorithm/Stats.o" "../genethic_algorithm/Stats.cpp"
-In file included from ../genethic_algorithm/Stats.cpp:8:0:
-../genethic_algorithm/Stats.h: In constructor ‘Stats::Stats()’:
-../genethic_algorithm/Stats.h:21:9: warning: ‘Stats::time_management_ratio’ will be initialized after [-Wreorder]
-  double time_management_ratio;
-         ^
-../genethic_algorithm/Stats.h:16:9: warning:   ‘double Stats::f_scheduled_obs_ratio’ [-Wreorder]
-Finished building: ../genethic_algorithm/Stats.cpp
- 
-  double f_scheduled_obs_ratio;
-Building file: ../genethic_algorithm/chromosome.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/chromosome.d" -MT"genethic_algorithm/chromosome.o" -o "genethic_algorithm/chromosome.o" "../genethic_algorithm/chromosome.cpp"
-         ^
-../genethic_algorithm/Stats.cpp:10:1: warning:   when initialized here [-Wreorder]
- Stats::Stats() : time_management_ratio(),
- ^
-In file included from ../genethic_algorithm/Stats.cpp:8:0:
-../genethic_algorithm/Stats.h:24:9: warning: ‘Stats::scheduled_above_min_height_ratio’ will be initialized after [-Wreorder]
-  double scheduled_above_min_height_ratio;
-         ^
-../genethic_algorithm/Stats.h:22:9: warning:   ‘double Stats::opt_height_ratio’ [-Wreorder]
-  double opt_height_ratio;
-         ^
-../genethic_algorithm/Stats.cpp:10:1: warning:   when initialized here [-Wreorder]
- Stats::Stats() : time_management_ratio(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome()’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:149:19: warning: ‘chromosome::dom_list’ will be initialized after [-Wreorder]
-  std::vector<int> dom_list; //list of dominated individuals
-                   ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome(std::vector<Observation>)’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:151:17: warning: ‘chromosome::conditions’ will be initialized after [-Wreorder]
-  Obs_conditions conditions;
-                 ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-../genethic_algorithm/chromosome.cpp: In member function ‘double chromosome::get_duration()’:
-../genethic_algorithm/chromosome.cpp:380:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0; (int) i < genes.size(); i++){
-                                       ^
-Finished building: ../genethic_algorithm/chromosome.cpp
- 
-Building file: ../genethic_algorithm/gene.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/gene.d" -MT"genethic_algorithm/gene.o" -o "genethic_algorithm/gene.o" "../genethic_algorithm/gene.cpp"
-In file included from ../genethic_algorithm/gene.cpp:8:0:
-../genethic_algorithm/gene.h: In constructor ‘gene::gene()’:
-../genethic_algorithm/gene.h:80:9: warning: ‘gene::end_date’ will be initialized after [-Wreorder]
-  double end_date; //in JD
-         ^
-../genethic_algorithm/gene.h:73:6: warning:   ‘int gene::telescope_used’ [-Wreorder]
-  int telescope_used; //Id of the telescope used for observing the target
-      ^
-../genethic_algorithm/gene.cpp:11:1: warning:   when initialized here [-Wreorder]
- gene::gene() : index(), random_selection(), start_date(), is_sched(1), violated_const(), duration(), end_date(), telescope_used() {
- ^
-In file included from ../genethic_algorithm/gene.cpp:8:0:
-../genethic_algorithm/gene.h: In constructor ‘gene::gene(int)’:
-../genethic_algorithm/gene.h:80:9: warning: ‘gene::end_date’ will be initialized after [-Wreorder]
-  double end_date; //in JD
-         ^
-../genethic_algorithm/gene.h:73:6: warning:   ‘int gene::telescope_used’ [-Wreorder]
-  int telescope_used; //Id of the telescope used for observing the target
-      ^
-../genethic_algorithm/gene.cpp:17:1: warning:   when initialized here [-Wreorder]
- gene::gene(int index) : index(index), random_selection(), start_date(), is_sched(1), violated_const(), duration(), end_date(), telescope_used() {
- ^
-Finished building: ../genethic_algorithm/gene.cpp
- 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:148:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:218:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building file: ../Model/Obsconditions.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
-Finished building: ../Model/Obsconditions.cpp
- 
 Building file: ../Model/Observation.cpp
 Invoking: GCC C++ Compiler
 g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
 In file included from ../Model/Observation.cpp:8:0:
 ../Model/Observation.h: In constructor ‘Observation::Observation()’:
-../Model/Observation.h:90:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
   double moon_min_separation; //minimum moon distance allowed
          ^
-../Model/Observation.h:86:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
   struct time_interval req_time; //requested time interval for the start of the observation
                        ^
 ../Model/Observation.cpp:20:1: warning:   when initialized here [-Wreorder]
@@ -686,652 +99,617 @@ In file included from ../Model/Observation.cpp:8:0:
  ^
 In file included from ../Model/Observation.cpp:8:0:
 ../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
-../Model/Observation.h:92:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
   int taken; // 0 if it is scheduled, 1 else
       ^
-../Model/Observation.h:88:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
   double end_time; //scheduled end time
          ^
 ../Model/Observation.cpp:28:1: warning:   when initialized here [-Wreorder]
  Observation::Observation(Request * request, 
  ^
 ../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
-../Model/Observation.cpp:334:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+../Model/Observation.cpp:348:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
   double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
          ^
-../Model/Observation.cpp:337:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+../Model/Observation.cpp:351:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
   double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
          ^
 Finished building: ../Model/Observation.cpp
- 
-Building file: ../Model/Request.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Request.d" -MT"Model/Request.o" -o "Model/Request.o" "../Model/Request.cpp"
-Finished building: ../Model/Request.cpp
- 
-Building file: ../Model/Schedule.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Schedule.d" -MT"Model/Schedule.o" -o "Model/Schedule.o" "../Model/Schedule.cpp"
-Finished building: ../Model/Schedule.cpp
  
 Building file: ../Model/Target.cpp
 Invoking: GCC C++ Compiler
 g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Target.d" -MT"Model/Target.o" -o "Model/Target.o" "../Model/Target.cpp"
 Finished building: ../Model/Target.cpp
  
-Building file: ../Model/observer.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/observer.d" -MT"Model/observer.o" -o "Model/observer.o" "../Model/observer.cpp"
-Finished building: ../Model/observer.cpp
- 
 Building target: scheduler
 Invoking: GCC C++ Linker
 g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
 Finished building target: scheduler
  
-05:36:17 **** Incremental Build of configuration Debug for project scheduler ****
+20:36:55 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
-Building file: ../genethic_algorithm/population.cpp
+Building file: ../Model/Observation.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:150:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:220:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-05:39:25 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/chromosome.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/chromosome.d" -MT"genethic_algorithm/chromosome.o" -o "genethic_algorithm/chromosome.o" "../genethic_algorithm/chromosome.cpp"
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome()’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
          ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:20:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
  ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:149:19: warning: ‘chromosome::dom_list’ will be initialized after [-Wreorder]
-  std::vector<int> dom_list; //list of dominated individuals
-                   ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
       ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome(std::vector<Observation>)’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
          ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
+../Model/Observation.cpp:28:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
  ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:151:17: warning: ‘chromosome::conditions’ will be initialized after [-Wreorder]
-  Obs_conditions conditions;
-                 ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:348:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:351:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+Finished building: ../Model/Observation.cpp
+ 
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
+ 
+20:37:12 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:20:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
       ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-../genethic_algorithm/chromosome.cpp: In member function ‘double chromosome::get_duration()’:
-../genethic_algorithm/chromosome.cpp:380:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0; (int) i < genes.size(); i++){
-                                       ^
-../genethic_algorithm/chromosome.cpp:385:10: warning: unused variable ‘dur’ [-Wunused-variable]
-   double dur = total/f.at(3);
-          ^
-Finished building: ../genethic_algorithm/chromosome.cpp
- 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:150:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:220:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building file: ../Model/Obsconditions.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
-../Model/Obsconditions.cpp: In member function ‘double Obs_conditions::night_duration_in_ms()’:
-../Model/Obsconditions.cpp:123:9: warning: unused variable ‘dif’ [-Wunused-variable]
-  double dif = difftime(*end, *start);
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
          ^
-Finished building: ../Model/Obsconditions.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-05:42:11 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-05:43:26 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-05:44:11 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-05:45:23 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../Model/Obsconditions.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
-Finished building: ../Model/Obsconditions.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-06:12:28 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:150:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:220:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-06:14:00 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:150:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:220:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-06:33:34 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-06:35:49 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/chromosome.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/chromosome.d" -MT"genethic_algorithm/chromosome.o" -o "genethic_algorithm/chromosome.o" "../genethic_algorithm/chromosome.cpp"
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome()’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
+../Model/Observation.cpp:28:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
  ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:149:19: warning: ‘chromosome::dom_list’ will be initialized after [-Wreorder]
-  std::vector<int> dom_list; //list of dominated individuals
-                   ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:348:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:351:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+Finished building: ../Model/Observation.cpp
+ 
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
+ 
+20:41:04 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:20:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
       ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome(std::vector<Observation>)’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
          ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
+../Model/Observation.cpp:28:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
  ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:151:17: warning: ‘chromosome::conditions’ will be initialized after [-Wreorder]
-  Obs_conditions conditions;
-                 ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:350:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:353:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+Finished building: ../Model/Observation.cpp
+ 
+Building file: ../Model/Schedule.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Schedule.d" -MT"Model/Schedule.o" -o "Model/Schedule.o" "../Model/Schedule.cpp"
+Finished building: ../Model/Schedule.cpp
+ 
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
+ 
+20:42:30 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:20:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
       ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
+         ^
+../Model/Observation.cpp:28:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
  ^
-../genethic_algorithm/chromosome.cpp: In member function ‘double chromosome::get_duration()’:
-../genethic_algorithm/chromosome.cpp:380:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0; (int) i < genes.size(); i++){
-                                       ^
-../genethic_algorithm/chromosome.cpp:385:10: warning: unused variable ‘dur’ [-Wunused-variable]
-   double dur = total/f.at(3);
-          ^
-Finished building: ../genethic_algorithm/chromosome.cpp
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:350:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:353:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+Finished building: ../Model/Observation.cpp
  
 Building target: scheduler
 Invoking: GCC C++ Linker
 g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
 Finished building target: scheduler
  
-06:38:37 **** Incremental Build of configuration Debug for project scheduler ****
+20:45:14 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Schedule.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Schedule.d" -MT"Model/Schedule.o" -o "Model/Schedule.o" "../Model/Schedule.cpp"
+Finished building: ../Model/Schedule.cpp
+ 
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
+ 
+20:48:22 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:20:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
+      ^
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
+         ^
+../Model/Observation.cpp:28:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
+ ^
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:350:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:353:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+../Model/Observation.cpp: In member function ‘void Observation::set_max_height()’:
+../Model/Observation.cpp:411:9: error: ‘Schedule’ has not been declared
+        &Schedule::conditions->observer,
+         ^
+make: *** [Model/Observation.o] Erreur 1
+20:48:30 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:20:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
+      ^
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
+         ^
+../Model/Observation.cpp:28:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
+ ^
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:350:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:353:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+../Model/Observation.cpp: In member function ‘void Observation::set_max_height()’:
+../Model/Observation.cpp:411:8: error: ‘Schedule’ has not been declared
+        Schedule::conditions->observer,
+        ^
+make: *** [Model/Observation.o] Erreur 1
+20:49:05 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:21:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
+      ^
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
+         ^
+../Model/Observation.cpp:29:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
+ ^
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:351:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:354:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+Finished building: ../Model/Observation.cpp
+ 
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
+ 
+20:50:12 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:21:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
+      ^
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
+         ^
+../Model/Observation.cpp:29:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
+ ^
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:351:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:354:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+Finished building: ../Model/Observation.cpp
+ 
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
+ 
+21:03:17 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:21:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
+      ^
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
+         ^
+../Model/Observation.cpp:29:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
+ ^
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:349:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:352:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+Finished building: ../Model/Observation.cpp
+ 
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
+ 
+21:12:25 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:22:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
+      ^
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
+         ^
+../Model/Observation.cpp:30:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
+ ^
+In file included from /usr/include/c++/4.9/tgmath.h:35:0,
+                 from ../Model/Observation.cpp:12:
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit()’:
+../Model/Observation.cpp:316:18: error: ‘void*’ is not a pointer-to-object type
+  double height = round(position->alt);
+                  ^
+../Model/Observation.cpp:316:18: error: ‘void*’ is not a pointer-to-object type
+  double height = round(position->alt);
+                  ^
+../Model/Observation.cpp:316:18: error: ‘void*’ is not a pointer-to-object type
+  double height = round(position->alt);
+                  ^
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:350:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:353:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+make: *** [Model/Observation.o] Erreur 1
+21:12:59 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:22:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
+      ^
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
+         ^
+../Model/Observation.cpp:30:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
+ ^
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:350:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:353:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+Finished building: ../Model/Observation.cpp
+ 
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
+ 
+21:13:40 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:22:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
+      ^
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
+         ^
+../Model/Observation.cpp:30:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
+ ^
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:350:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:353:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+Finished building: ../Model/Observation.cpp
+ 
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
+ 
+21:14:17 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../Model/Observation.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Observation.d" -MT"Model/Observation.o" -o "Model/Observation.o" "../Model/Observation.cpp"
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation()’:
+../Model/Observation.h:93:9: warning: ‘Observation::moon_min_separation’ will be initialized after [-Wreorder]
+  double moon_min_separation; //minimum moon distance allowed
+         ^
+../Model/Observation.h:88:23: warning:   ‘time_interval Observation::req_time’ [-Wreorder]
+  struct time_interval req_time; //requested time interval for the start of the observation
+                       ^
+../Model/Observation.cpp:22:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation() : request(),
+ ^
+In file included from ../Model/Observation.cpp:8:0:
+../Model/Observation.h: In constructor ‘Observation::Observation(Request*, int, Target, double, Obs_conditions*)’:
+../Model/Observation.h:95:6: warning: ‘Observation::taken’ will be initialized after [-Wreorder]
+  int taken; // 0 if it is scheduled, 1 else
+      ^
+../Model/Observation.h:90:9: warning:   ‘double Observation::end_time’ [-Wreorder]
+  double end_time; //scheduled end time
+         ^
+../Model/Observation.cpp:30:1: warning:   when initialized here [-Wreorder]
+ Observation::Observation(Request * request, 
+ ^
+../Model/Observation.cpp: In member function ‘double Observation::altituteMerit2()’:
+../Model/Observation.cpp:350:9: warning: unused variable ‘Aday_min’ [-Wunused-variable]
+  double Aday_min = conditions->observer.lat - 90.0 - target.getEqDec();
+         ^
+../Model/Observation.cpp:353:9: warning: unused variable ‘Aday_max’ [-Wunused-variable]
+  double Aday_max = 90.0 - conditions->observer.lat + target.getEqDec();
+         ^
+Finished building: ../Model/Observation.cpp
+ 
+Building target: scheduler
+Invoking: GCC C++ Linker
+g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
+Finished building target: scheduler
+ 
+21:15:00 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+make: Rien à faire pour « all ».
+21:15:30 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+make: Rien à faire pour « all ».
+21:16:10 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+make: Rien à faire pour « all ».
+21:16:46 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+make: Rien à faire pour « all ».
+21:17:32 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+make: Rien à faire pour « all ».
+21:19:19 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+make: Rien à faire pour « all ».
+21:21:01 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
 Building file: ../genethic_algorithm/population.cpp
 Invoking: GCC C++ Compiler
 g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
 ../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:150:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+../genethic_algorithm/population.cpp:150:18: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
   for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
+                  ^
 ../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:220:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+../genethic_algorithm/population.cpp:220:59: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
   for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-06:41:07 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-06:43:52 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-06:45:51 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-06:47:36 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-06:49:35 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-06:51:53 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-06:52:07 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-06:52:28 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-06:57:34 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-07:00:39 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-07:04:32 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-07:08:01 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../Model/Obsconditions.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
-Finished building: ../Model/Obsconditions.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-07:12:58 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../Model/Obsconditions.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
-Finished building: ../Model/Obsconditions.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-07:19:47 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../Model/Obsconditions.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
-Finished building: ../Model/Obsconditions.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-07:21:43 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../Model/Obsconditions.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Model/Obsconditions.d" -MT"Model/Obsconditions.o" -o "Model/Obsconditions.o" "../Model/Obsconditions.cpp"
-Finished building: ../Model/Obsconditions.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-07:24:33 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-07:28:44 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-07:31:57 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-07:37:00 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-07:37:59 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-07:38:17 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-07:55:07 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:150:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:220:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-07:56:57 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-08:00:27 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-08:02:04 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-08:03:21 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-08:06:29 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/MyNSGA.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
-Finished building: ../genethic_algorithm/MyNSGA.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-08:07:25 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-08:08:53 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/MyNSGA.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
-Finished building: ../genethic_algorithm/MyNSGA.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-08:10:49 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-08:13:36 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-08:16:15 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/MyNSGA.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
-Finished building: ../genethic_algorithm/MyNSGA.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-09:39:50 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../genethic_algorithm/MyNSGA.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
-Finished building: ../genethic_algorithm/MyNSGA.cpp
- 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:150:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:220:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-09:52:25 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building file: ../genethic_algorithm/MyNSGA.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
-Finished building: ../genethic_algorithm/MyNSGA.cpp
- 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
-../genethic_algorithm/population.cpp:150:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(int j =0; j < individuals[i].genes.size(); j++)
-                                              ^
-../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
-../genethic_algorithm/population.cpp:220:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
-                                                             ^
+                                                           ^
 ../genethic_algorithm/population.cpp: In member function ‘void population::show_stats()’:
 ../genethic_algorithm/population.cpp:819:6: warning: unused variable ‘size’ [-Wunused-variable]
   int size = front.size();
@@ -1346,60 +724,74 @@ Invoking: GCC C++ Linker
 g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
 Finished building target: scheduler
  
-09:53:49 **** Incremental Build of configuration Debug for project scheduler ****
+21:21:17 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
-make: Rien à faire pour « all ».
-10:11:25 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
+Building file: ../genethic_algorithm/population.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
+../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
+../genethic_algorithm/population.cpp:150:18: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for(int j =0; j < individuals[i].genes.size(); j++)
+                  ^
+../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
+../genethic_algorithm/population.cpp:220:59: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
+                                                           ^
+../genethic_algorithm/population.cpp: In member function ‘void population::show_stats()’:
+../genethic_algorithm/population.cpp:819:6: warning: unused variable ‘size’ [-Wunused-variable]
+  int size = front.size();
+      ^
+../genethic_algorithm/population.cpp:822:10: warning: unused variable ‘all’ [-Wunused-variable]
+  Stats * all = new Stats();
+          ^
+Finished building: ../genethic_algorithm/population.cpp
  
 Building target: scheduler
 Invoking: GCC C++ Linker
 g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
 Finished building target: scheduler
  
-10:12:20 **** Incremental Build of configuration Debug for project scheduler ****
+21:21:57 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
 make: Rien à faire pour « all ».
-10:13:01 **** Incremental Build of configuration Debug for project scheduler ****
+21:22:58 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
 make: Rien à faire pour « all ».
-10:16:38 **** Incremental Build of configuration Debug for project scheduler ****
+21:24:00 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
-Building file: ../src/scheduler.cpp
+make: Rien à faire pour « all ».
+21:26:15 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+Building file: ../genethic_algorithm/MyNSGA.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
+Finished building: ../genethic_algorithm/MyNSGA.cpp
+ 
+Building file: ../genethic_algorithm/population.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
+../genethic_algorithm/population.cpp: In member function ‘void population::check_init()’:
+../genethic_algorithm/population.cpp:150:18: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for(int j =0; j < individuals[i].genes.size(); j++)
+                  ^
+../genethic_algorithm/population.cpp: In member function ‘void population::repair(chromosome*)’:
+../genethic_algorithm/population.cpp:220:59: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
+                                                           ^
+../genethic_algorithm/population.cpp: In member function ‘void population::show_stats()’:
+../genethic_algorithm/population.cpp:819:6: warning: unused variable ‘size’ [-Wunused-variable]
+  int size = front.size();
+      ^
+../genethic_algorithm/population.cpp:822:10: warning: unused variable ‘all’ [-Wunused-variable]
+  Stats * all = new Stats();
+          ^
+Finished building: ../genethic_algorithm/population.cpp
  
 Building target: scheduler
 Invoking: GCC C++ Linker
 g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
 Finished building target: scheduler
  
-10:17:53 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-10:19:02 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-10:20:39 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
-Finished building target: scheduler
- 
-10:21:50 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-make: Rien à faire pour « all ».
-10:22:38 **** Incremental Build of configuration Debug for project scheduler ****
+21:27:05 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
 make: Rien à faire pour « all ».

@@ -8,6 +8,7 @@
 #include "Target.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 
 #include <libnova/rise_set.h>
 #include <libnova/angular_separation.h>
@@ -68,15 +69,16 @@ void Target::setMoonAngDist(double moonAngDist) {
 int Target::get_rise_set_transit(double julian_day,
 			double horizon, struct ln_lnlat_posn * observer){
 
-	struct ln_equ_posn * object = (struct ln_equ_posn *) malloc(sizeof(struct ln_equ_posn));
+	struct ln_equ_posn * object = new struct ln_equ_posn();
 
 	object->dec = getEqDec();
 	object->ra = getEqRAsc();
 
-	struct ln_rst_time * rst = (struct ln_rst_time *) malloc(sizeof(struct ln_rst_time));
+	struct ln_rst_time * rst = new struct ln_rst_time();
 
 	int res = ln_get_object_next_rst_horizon(julian_day, observer, object, horizon, rst);
 
+	//printf("%d\n", res);
 	setRiseSetTransit(*rst);
 
 	return res;
