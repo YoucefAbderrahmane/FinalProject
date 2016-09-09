@@ -364,7 +364,7 @@ void chromosome::ratio_violated_const(Obs_conditions conditions) {
 	for(int i = 0;  i < (int) genes.size(); i++){
 
 		sum +=  is_above_min_height(conditions, i) +
-				 is_away_moon(conditions, i) +
+				// is_away_moon(conditions, i) +
 				 is_in_req_time(i);
 	}
 

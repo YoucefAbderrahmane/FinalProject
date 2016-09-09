@@ -65,13 +65,13 @@ int main() {
 
 	Schedule * sched = new Schedule();
 
-	sched->randomObservationListGenerator(400);
+	sched->randomObservationListGenerator(200);
 
 	cout << "Initializing the population..." << endl;
 
-	population * p = new population(12, *sched); //population multiple of 4
+	population * p = new population(52, *sched); //population multiple of 4
 
-	std::cout << "pop " << fixed << p->getIndividualsPointer()->at(0).getGenes().at(0).get_start_time() << std::endl;
+	//std::cout << "pop " << fixed << p->getIndividualsPointer()->at(0).getGenes().at(0).get_start_time() << std::endl;
 
 //	cout << "Initializing ended..." << endl;
 
@@ -104,7 +104,7 @@ int main() {
 	}*/
 
 
-	MyNSGA algo(150);
+	MyNSGA algo(10);
 //	std::cout<< "algo init : end " << std::endl;
 
 
@@ -130,14 +130,14 @@ int main() {
 	/*for(int i = 0; i< sizec; i++) {
 		cout<< fixed << p->get_individual(0).getGene(i).getStartDate() << endl;
 	}*/
-	//population p2 = *p;
+	population p2 = *p;
+	population p3 = *p;
 	clock_t tStart = clock();
 	algo.nsga2(p);
 
 	//std::cout<< "nsga : end " << std::endl;
 
 	double end_t = (double)(clock() - tStart)/CLOCKS_PER_SEC;
-	printf("Time taken full: %.2fs\n", end_t);
 	int size = (int) p->get_size();
 	int sizec = p->get_individual(0).getGenes().size();
 
@@ -146,7 +146,50 @@ int main() {
 	cout<< "nombre de genes " << sizec<< endl;
 
 	p->show_stats();
-	printf("\n Time taken full: %.2fs\n", end_t);
+	printf("\n Time taken full: %.2fs\n\n", end_t);
+
+	cout<< "------------deuxième pop---------------"<< endl;
+
+	MyNSGA algo2(50);
+	clock_t tstart2 = clock();
+	algo2.nsga2(&p2);
+
+		//std::cout<< "nsga : end " << std::endl;
+
+		double end_t2 = (double)(clock() - tstart2)/CLOCKS_PER_SEC;
+		size = (int) p2.get_size();
+		sizec = p2.get_individual(0).getGenes().size();
+
+		cout<< "taille de la population "<< size<< endl;
+
+		cout<< "nombre de genes " << sizec<< endl;
+
+		p2.show_stats();
+		printf("\n Time taken full 2: %.2fs\n\n", end_t2);
+
+
+		cout<< "------------troisième pop---------------"<< endl;
+	MyNSGA algo3(100);
+		clock_t tstart3 = clock();
+
+	algo3.nsga2(&p3);
+
+		//std::cout<< "nsga : end " << std::endl;
+
+		double end_t3 = (double)(clock() - tstart3)/CLOCKS_PER_SEC;
+		size = (int) p3.get_size();
+		sizec = p3.get_individual(0).getGenes().size();
+
+		cout<< "taille de la population "<< size<< endl;
+
+		cout<< "nombre de genes " << sizec<< endl;
+
+		p3.show_stats();
+		printf("\n Time taken full 3: %.2fs\n", end_t3);
+
+
+
+
 //	std::cout << "Taux req " << p->getIndividualPointeur(0)->get_obj_func(0) << std::endl;
 //	std::cout << "Hauteur moyenne " << p->getIndividualPointeur(0)->get_obj_func(1) << std::endl;
 //	std::cout << "Distance moyenne " << p->getIndividualPointeur(0)->get_obj_func(2) << std::endl;

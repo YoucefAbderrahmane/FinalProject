@@ -42,7 +42,7 @@ void MyNSGA::crossover(chromosome *enf1, chromosome *enf2, chromosome p1, chromo
 
 	double k = (double) rand()/RAND_MAX;
 	double x = 0.0;
-	if(k < 0.2)
+	if(k < 0.75)
 	{
 
 		enf1->setObservations(p1.getObservations());
@@ -59,7 +59,7 @@ void MyNSGA::crossover(chromosome *enf1, chromosome *enf2, chromosome p1, chromo
 			enf1->setNbMaxT(p2.getNbMaxT());
 			enf2->setNbMaxT(p1.getNbMaxT());
 		}
-		if(1/*x < 1/3.0*/){// one point crossover
+		if(0/*x < 1/3.0*/){// one point crossover
 			//std::cout<< "one point crossover"<< std::endl;
 			enf1->genes.resize(size);
 			enf2->genes.resize(size);
@@ -103,7 +103,7 @@ void MyNSGA::crossover(chromosome *enf1, chromosome *enf2, chromosome p1, chromo
 				}
 			}
 		}
-		if( 0/*2/3.0 <= x*/)//two points crossover
+		if( 1/*2/3.0 <= x*/)//two points crossover
 		{
 			//std::cout<< "two points crossover"<< std::endl;
 			int i =0, j=0;
@@ -162,7 +162,7 @@ void MyNSGA::mutation(chromosome *c, chromosome *cr, population p)
 	double j = rand()% size;
 
 	double x = (double) rand()/RAND_MAX;
-	if(x < 0.8){
+	if(x < 0.01){
 
 		if( c->genes.at(i).getIsSched() ) c->genes.at(i).setIsSched(0);
 		else c->genes.at(i).setIsSched(1);
@@ -187,7 +187,7 @@ void MyNSGA::mutation(chromosome *c, chromosome *cr, population p)
 	}
 
 	x = (double) rand()/RAND_MAX;
-	if(x < 1){
+	if(x < 0.6){
 			int t = 0;
 			//c->setNbMaxT((rand()%N_TELESCOPE)+1);
 			int N_t = c->getNbMaxT();

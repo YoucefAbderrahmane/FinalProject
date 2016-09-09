@@ -6,7 +6,7 @@
  */
 
 #include "population.h"
-
+#include <math.h>
 #include <stdlib.h>
 #include <algorithm>
 #include <time.h>
@@ -147,7 +147,8 @@ void population::check_init() {
 	int i = rand() % individuals.size();
 
 	//check the first, last and a random gene
-	for(int j =0; j < individuals[i].genes.size(); j++)
+	int s = (int) individuals[i].genes.size();
+	for(int j =0; j < s; j++)
 	{
 	check_gene(j, i);
 	}
@@ -217,7 +218,7 @@ void population::repair(chromosome * individual) {
 
 	//std::cout << "one " << obs_per_tel.at(0).at(0)->get_start_time() << " two " << obs_per_tel.at(0).at(0)->get_start_time() << std::endl;
 
-	for(std::vector< std::vector<gene> >::size_type i = 0; i < nb_max_t; i++){
+	for(int i = 0; i < nb_max_t; i++){
 
 		//std::cout<< "vect size "<< obs_per_tel[i].size() << std::endl;
 		std::sort(obs_per_tel[i].begin(), obs_per_tel[i].end(), gene_less_comp());
@@ -755,12 +756,17 @@ void population::clearChampions() {
 
 std::vector<chromosome> * population::get_best_front() {
 
+
 	int size = (int)fronts.at(0).size();
+
 	std::vector<chromosome> * best_front = new std::vector<chromosome>();
 
 	std::vector<int> first = fronts.at(0);
+	crowding_d_comp c(this);
+	std::sort(first.begin(),first.end(),c);
 
-	for(int i; i < size; i++){
+	for(int i = 0; i < size; i++){
+
 
 		best_front->push_back(individuals.at(first.at(i)));
 	}
@@ -815,14 +821,33 @@ return individuals.at(best);
 
 void population::show_stats() {
 
+
 	std::vector<chromosome> front = *get_best_front();
 	int size = front.size();
-
+	double ecar_typ = 0.0;
+	double moyenne = 0.0;
+	int sizec = 0;
+	double som = 0.0;
+	double somc = 0.0;
+	std::vector<gene> genes;
+	int i = 0;
 //	Stats * s;
 	Stats * all = new Stats();
 
-	chromosome best = compute_ideal_ind();
-
+	//chromosome best = compute_ideal_ind();
+	chromosome best;
+	chromosome best2;
+	chromosome best3;
+	chromosome best4;
+	chromosome best5;
+	if(4 < size)
+	{
+	best  = front.at(size-1);
+	 best2 = front.at(size-2);
+	 best3 = front.at(size -3);
+	 best4 = front.at(0);
+	 best5 = front.at(4);
+	}
 //	std::vector<double> ideals = compute_ideal();
 //
 //	std::cout << " ideals " << std::endl;
@@ -864,6 +889,139 @@ void population::show_stats() {
 		std::cout << "Distance moyenne " << best.get_obj_func(2) << std::endl;
 		std::cout << "Hauteur " << best.get_obj_func(1) << std::endl;
 		std::cout << "Télescopes " << best.get_obj_func(3) << std::endl;
+
+		sizec = (int) best.genes.size();
+				genes = best.genes;
+				for( i = 0; i < sizec; i++)
+				{
+					if(genes.at(i).is_sched)
+					{
+						som += genes.at(i).start_date;
+						somc += pow(genes.at(i).start_date, 2.0);
+					}
+				}
+				moyenne = som/i;
+				som = pow(som/i, 2.0);
+				somc /=i;
+				som = somc - som;
+				ecar_typ = sqrt (som);
+				std::cout<<"écart-type des temps de début "<< fixed<< ecar_typ<< std::endl;
+				std::cout<<"moyenne des temps de début "<< fixed<< moyenne<< std::endl;
+				std::cout<< "crowding distance "<< best.crowding_dist<< std::endl;
+
+		std::cout << "_____________________________" << std::endl;
+		std::cout << "Fonctions objectifs du best2" << std::endl;
+		std::cout << "Taux req " << best2.get_obj_func(0) << std::endl;
+		std::cout << "Distance moyenne " << best2.get_obj_func(2) << std::endl;
+		std::cout << "Hauteur " << best2.get_obj_func(1) << std::endl;
+		std::cout << "Télescopes " << best2.get_obj_func(3) << std::endl;
+
+		sizec = (int) best2.genes.size();
+				genes = best2.genes;
+				som = 0.0;
+				somc = 0.0;
+				for( i = 0; i < sizec; i++)
+				{
+					if(genes.at(i).is_sched)
+					{
+						som += genes.at(i).start_date;
+						somc += pow(genes.at(i).start_date, 2.0);
+					}
+				}
+				moyenne = som/i;
+				som = pow(som/i, 2.0);
+				somc /=i;
+				som = somc - som;
+				ecar_typ = sqrt (som);
+
+				std::cout<<"écart-type des temps de début "<< fixed<< ecar_typ<< std::endl;
+				std::cout<<"moyenne des temps de début "<< fixed<< moyenne<< std::endl;
+				std::cout<< "crowding distance "<< best2.crowding_dist<< std::endl;
+
+		std::cout << "_____________________________" << std::endl;
+		std::cout << "Fonctions objectifs du best3" << std::endl;
+		std::cout << "Taux req " << best3.get_obj_func(0) << std::endl;
+		std::cout << "Distance moyenne " << best3.get_obj_func(2) << std::endl;
+		std::cout << "Hauteur " << best3.get_obj_func(1) << std::endl;
+		std::cout << "Télescopes " << best3.get_obj_func(3) << std::endl;
+		sizec = (int) best3.genes.size();
+		genes = best3.genes;
+		som = 0.0;
+		somc = 0.0;
+		for( i = 0; i < sizec; i++)
+		{
+			if(genes.at(i).is_sched)
+			{
+				som += genes.at(i).start_date;
+				somc += pow(genes.at(i).start_date, 2.0);
+			}
+		}
+		moyenne = som/i;
+		som = pow(som/i, 2.0);
+		somc /=i;
+		som = somc - som;
+		ecar_typ = sqrt (som);
+
+		std::cout<<"écart-type des temps de début "<< fixed<< ecar_typ<< std::endl;
+		std::cout<<"moyenne des temps de début "<< fixed<< moyenne<< std::endl;
+		std::cout<< "crowding distance "<< best3.crowding_dist<< std::endl;
+
+		std::cout << "_____________________________" << std::endl;
+		std::cout << "Fonctions objectifs du best4" << std::endl;
+		std::cout << "Taux req " << best4.get_obj_func(0) << std::endl;
+		std::cout << "Distance moyenne " << best4.get_obj_func(2) << std::endl;
+		std::cout << "Hauteur " << best4.get_obj_func(1) << std::endl;
+		std::cout << "Télescopes " << best4.get_obj_func(3) << std::endl;
+		sizec = (int) best4.genes.size();
+		genes = best4.genes;
+		som = 0.0;
+		somc = 0.0;
+		for( i = 0; i < sizec; i++)
+		{
+			if(genes.at(i).is_sched)
+			{
+				som += genes.at(i).start_date;
+				somc += pow(genes.at(i).start_date, 2.0);
+			}
+		}
+		moyenne = som/i;
+		som = pow(som/i, 2.0);
+		somc /=i;
+		som = somc - som;
+		ecar_typ = sqrt (som);
+
+		std::cout<<"écart-type des temps de début "<< fixed<< ecar_typ<< std::endl;
+		std::cout<<"moyenne des temps de début "<< fixed<< moyenne<< std::endl;
+		std::cout<< "crowding distance "<< best4.crowding_dist<< std::endl;
+
+		std::cout << "_____________________________" << std::endl;
+		std::cout << "Fonctions objectifs du best5" << std::endl;
+		std::cout << "Taux req " << best5.get_obj_func(0) << std::endl;
+		std::cout << "Distance moyenne " << best5.get_obj_func(2) << std::endl;
+		std::cout << "Hauteur " << best5.get_obj_func(1) << std::endl;
+		std::cout << "Télescopes " << best5.get_obj_func(3) << std::endl;
+		sizec = (int) best5.genes.size();
+		genes = best5.genes;
+		som = 0.0;
+		somc = 0.0;
+		for( i = 0; i < sizec; i++)
+		{
+			if(genes.at(i).is_sched)
+			{
+				som += genes.at(i).start_date;
+				somc += pow(genes.at(i).start_date, 2.0);
+			}
+		}
+		moyenne = som/i;
+		som = pow(som/i, 2.0);
+		somc /=i;
+		som = somc - som;
+		ecar_typ = sqrt (som);
+
+		std::cout<<"écart-type des temps de début "<< fixed<< ecar_typ<< std::endl;
+		std::cout<<"moyenne des temps de début "<< fixed<< moyenne<< std::endl;
+		std::cout<< "crowding distance "<< best5.crowding_dist<< std::endl;
+
 }
 
 
