@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 21:35:35 **** Incremental Build of configuration Debug for project scheduler ****
 make all 
 make: Rien à faire pour « all ».
 
 21:35:35 Build Finished (took 65ms)
+=======
+21:27:05 **** Incremental Build of configuration Debug for project scheduler ****
+make all 
+make: Rien à faire pour « all ».
+
+21:27:05 Build Finished (took 153ms)
+>>>>>>> 0387e8b643872840f8158d247c8b573c76b05fbf
 

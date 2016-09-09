@@ -187,7 +187,11 @@ void MyNSGA::mutation(chromosome *c, chromosome *cr, population p)
 	}
 
 	x = (double) rand()/RAND_MAX;
+<<<<<<< HEAD
 	if(x < 0.6){
+=======
+	if(x < 0.8){
+>>>>>>> 0387e8b643872840f8158d247c8b573c76b05fbf
 			int t = 0;
 			//c->setNbMaxT((rand()%N_TELESCOPE)+1);
 			int N_t = c->getNbMaxT();

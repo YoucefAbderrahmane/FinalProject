@@ -78,6 +78,8 @@ public:
 	Obs_conditions* getConditions() const;
 	void setConditions(Obs_conditions* conditions);
 
+	void set_max_height();
+
 private:
 	Request * request; //The request whom the observation belong to
 	int obs_id;	//observation id from DB
@@ -87,6 +89,7 @@ private:
 	double sched_time;	//scheduled start time
 	double end_time;	//scheduled end time
 	double min_height;	//minimum height allowed
+	double max_height;
 	double moon_min_separation;	//minimum moon distance allowed
 	int telescope; //telescope used for this observation if taken = 0
 	int taken; // 0 if it is scheduled, 1 else

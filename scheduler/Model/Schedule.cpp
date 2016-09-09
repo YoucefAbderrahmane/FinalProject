@@ -189,11 +189,12 @@ int Schedule::targetGenerator(Target * target){
 		target->setEqDec(dec);
 		target->setEqRAsc(ra);
 
-		circump = target->get_rise_set_transit(conditions->night_horizon.start,
+		double current_jd = ln_get_julian_from_sys();
+		circump = target->get_rise_set_transit(current_jd/*Schedule::conditions->night_horizon.start*/,
 				OBSERVATORY_HORIZON,
 				&conditions->observer);
 
-		if( circump != -1 ) stop = true;
+		if( circump != -1 && circump != 1 ) stop = true;
 
 	} while (!stop);
 
@@ -231,9 +232,9 @@ int Schedule::heightConstraintGenerator(double * min_height){
 	double height_const = (double) rand() / (double) RAND_MAX;
 	if( height_const <= MIN_HEIGHT_RATIO ){
 
-		double range = 90.0 - 0.0;
-		double div = RAND_MAX / range;
-		*min_height = rand() / div;
+//		double range = 90.0 - 0.0;
+//		double div = RAND_MAX / range;
+//		*min_height = rand() / div;
 
 		return SUCCESS;
 	}
@@ -292,8 +293,10 @@ int Schedule::observationRequestGenerator(Request * request){
 	//Generating the request's observations
 	for(int i = 1; i <= request->getLength(); i++){
 
-		Observation * obs = new Observation(request, i, *target, (double) exposure, conditions);
+		Observation * obs = new Observation(request, i, *target, (double) exposure, Schedule::conditions);
 		obs->setTimeConst(isTimeConstrainted);
+
+		obs->set_max_height();
 
 		obs->setHeightConst(isHeightConstrainted);
 		if( !isHeightConstrainted )
