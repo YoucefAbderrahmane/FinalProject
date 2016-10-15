@@ -14,8 +14,8 @@
 #include "../utilities/time_calculation.h"
 #include "Stats.h"
 
-population::population(int population_size, Schedule schedule) : individuals(), population_size(population_size),
-		champions(), schedule(schedule)
+population::population(int population_size, Schedule schedule, int n) : individuals(), population_size(population_size),
+		champions(), schedule(schedule),ordo(),n_telescopes(n)
 {
 	// TODO Auto-generated constructor stub
 
@@ -32,8 +32,8 @@ population::population(int population_size, Schedule schedule) : individuals(), 
 	//std::cout<< "Population : init ended" << std::endl;
 }
 
-population::population(std::vector<chromosome> individuals, int population_size) : individuals(individuals),
-		population_size(population_size), champions()
+population::population(std::vector<chromosome> individuals, int population_size, int n) : individuals(individuals),
+		population_size(population_size), champions(),ordo(),n_telescopes(n)
 {
 	// TODO Auto-generated constructor stub
 	this->individuals = individuals;
@@ -77,7 +77,7 @@ void population::init_individual(int index) {
 	std::vector<gene>::size_type size = individuals.at(index).genes.size();
 
 	//std::cout << "size " << size << std::endl;
-	int nb_max_t = (rand() % N_TELESCOPE) + 1;
+	int nb_max_t = (rand() % n_telescopes) + 1;
 	individuals.at(index).nb_max_t = nb_max_t;
 	//std::cout<< "Population init_individual : start " << std::endl;
 	for(std::vector<gene>::size_type i = 0; i < size; i++){
@@ -650,6 +650,8 @@ struct crowding_d_comp {
 		}
 	population *ps;
 };
+
+
 void population::bestIndividuals(int nb_champ) {
 
 	//double tstart = clock();
@@ -754,6 +756,23 @@ void population::clearChampions() {
 	this->champions.clear();
 }
 
+struct nb_t_comp{
+	nb_t_comp (population *p):ps(p){};
+	bool operator()(int c1, int c2)
+	{
+		return (ps->get_individual(c1).get_obj_func(3) < ps->get_individual(c2).get_obj_func(3));
+	}
+	population *ps;
+};
+
+struct nb_req_comp{
+	nb_req_comp (population *p):ps(p){};
+	bool operator()(int c1, int c2)
+	{
+		return (ps->get_individual(c1).get_obj_func(0) < ps->get_individual(c2).get_obj_func(0));
+	}
+	population *ps;
+};
 std::vector<chromosome> * population::get_best_front() {
 
 
@@ -763,8 +782,11 @@ std::vector<chromosome> * population::get_best_front() {
 
 	std::vector<int> first = fronts.at(0);
 	crowding_d_comp c(this);
+	nb_t_comp t(this);
+	nb_req_comp req(this);
 	std::sort(first.begin(),first.end(),c);
-
+	std::sort(first.begin(),first.end(), t);
+	std::sort(first.begin(),first.end(), req);
 	for(int i = 0; i < size; i++){
 
 
@@ -818,24 +840,19 @@ for(std::vector<chromosome>::size_type i = 0; i < this->individuals.size();i++ )
 return individuals.at(best);
 }
 
+void population::setSolution()
+{
+	std::vector<chromosome> front = *get_best_front();
+	setOrdo(front.at(0));
+}
 
 void population::show_stats() {
 
 
 	std::vector<chromosome> front = *get_best_front();
 	int size = front.size();
-	double ecar_typ = 0.0;
-	double moyenne = 0.0;
-	int sizec = 0;
-	double som = 0.0;
-	double somc = 0.0;
 	std::vector<gene> genes;
-	int i = 0;
-//	Stats * s;
-	Stats * all = new Stats();
 
-	//chromosome best = compute_ideal_ind();
-<<<<<<< HEAD
 	chromosome best;
 	chromosome best2;
 	chromosome best3;
@@ -843,17 +860,16 @@ void population::show_stats() {
 	chromosome best5;
 	if(4 < size)
 	{
-	best  = front.at(size-1);
-	 best2 = front.at(size-2);
-	 best3 = front.at(size -3);
-	 best4 = front.at(0);
+	best  = front.at(0);
+	 best2 = front.at(1);
+	 best3 = front.at(2);
+	 best4 = front.at(3);
 	 best5 = front.at(4);
 	}
-=======
+	this->ordo = best;
 
-	chromosome best = front.at(rand()%front.size());
+	//chromosome best = front.at(rand()%front.size());
 
->>>>>>> 0387e8b643872840f8158d247c8b573c76b05fbf
 //	std::vector<double> ideals = compute_ideal();
 //
 //	std::cout << " ideals " << std::endl;
@@ -884,36 +900,28 @@ void population::show_stats() {
 //	all->time_management_ratio /= size;
 //	//all->time_management_ratio /= Schedule::conditions->night_duration_in_ms();
 	std::cout<< "\n les valeurs moyennes des ";
+	std::cout << "Fonctions objectifs d'un individu choisi aléatoirement à partir du premier front" << std::endl;
+
+	std::cout << "Ordonnancement des requêtes " << -best.get_obj_func(0) * 100.0 / best.genes.size() << "%" << std::endl;
+			std::cout << "Distance angulaire moyenne " << best.get_obj_func(2) << " degrés" << std::endl;
+			std::cout << "Hauteur moyenne " << -best.get_obj_func(1) * 100.0 << "%" << std::endl;
+			std::cout << "Utilisation des télescopes " << best.get_obj_func(3) * 100.0 / N_TELESCOPE << "%" << std::endl;
+
+
+
+
+/*
+
+
+
+
 	std::cout << "Fonctions objectifs du best" << std::endl;
-//	std::cout << "Taux req " << all->f_scheduled_obs_ratio << std::endl;
-//	std::cout << "Distance moyenne " << all->f_distance << std::endl;
-//	std::cout << "Hauteur " << all->f_height << std::endl;
-//	std::cout << "Télescopes " << all->f_telescopes_used << std::endl;
-//	std::cout << "Time " << all->time_management_ratio << std::endl;
 
 		std::cout << "Taux req " << best.get_obj_func(0) << std::endl;
 		std::cout << "Distance moyenne " << best.get_obj_func(2) << std::endl;
 		std::cout << "Hauteur " << best.get_obj_func(1) << std::endl;
 		std::cout << "Télescopes " << best.get_obj_func(3) << std::endl;
 
-		sizec = (int) best.genes.size();
-				genes = best.genes;
-				for( i = 0; i < sizec; i++)
-				{
-					if(genes.at(i).is_sched)
-					{
-						som += genes.at(i).start_date;
-						somc += pow(genes.at(i).start_date, 2.0);
-					}
-				}
-				moyenne = som/i;
-				som = pow(som/i, 2.0);
-				somc /=i;
-				som = somc - som;
-				ecar_typ = sqrt (som);
-				std::cout<<"écart-type des temps de début "<< fixed<< ecar_typ<< std::endl;
-				std::cout<<"moyenne des temps de début "<< fixed<< moyenne<< std::endl;
-				std::cout<< "crowding distance "<< best.crowding_dist<< std::endl;
 
 		std::cout << "_____________________________" << std::endl;
 		std::cout << "Fonctions objectifs du best2" << std::endl;
@@ -922,27 +930,6 @@ void population::show_stats() {
 		std::cout << "Hauteur " << best2.get_obj_func(1) << std::endl;
 		std::cout << "Télescopes " << best2.get_obj_func(3) << std::endl;
 
-		sizec = (int) best2.genes.size();
-				genes = best2.genes;
-				som = 0.0;
-				somc = 0.0;
-				for( i = 0; i < sizec; i++)
-				{
-					if(genes.at(i).is_sched)
-					{
-						som += genes.at(i).start_date;
-						somc += pow(genes.at(i).start_date, 2.0);
-					}
-				}
-				moyenne = som/i;
-				som = pow(som/i, 2.0);
-				somc /=i;
-				som = somc - som;
-				ecar_typ = sqrt (som);
-
-				std::cout<<"écart-type des temps de début "<< fixed<< ecar_typ<< std::endl;
-				std::cout<<"moyenne des temps de début "<< fixed<< moyenne<< std::endl;
-				std::cout<< "crowding distance "<< best2.crowding_dist<< std::endl;
 
 		std::cout << "_____________________________" << std::endl;
 		std::cout << "Fonctions objectifs du best3" << std::endl;
@@ -950,27 +937,6 @@ void population::show_stats() {
 		std::cout << "Distance moyenne " << best3.get_obj_func(2) << std::endl;
 		std::cout << "Hauteur " << best3.get_obj_func(1) << std::endl;
 		std::cout << "Télescopes " << best3.get_obj_func(3) << std::endl;
-		sizec = (int) best3.genes.size();
-		genes = best3.genes;
-		som = 0.0;
-		somc = 0.0;
-		for( i = 0; i < sizec; i++)
-		{
-			if(genes.at(i).is_sched)
-			{
-				som += genes.at(i).start_date;
-				somc += pow(genes.at(i).start_date, 2.0);
-			}
-		}
-		moyenne = som/i;
-		som = pow(som/i, 2.0);
-		somc /=i;
-		som = somc - som;
-		ecar_typ = sqrt (som);
-
-		std::cout<<"écart-type des temps de début "<< fixed<< ecar_typ<< std::endl;
-		std::cout<<"moyenne des temps de début "<< fixed<< moyenne<< std::endl;
-		std::cout<< "crowding distance "<< best3.crowding_dist<< std::endl;
 
 		std::cout << "_____________________________" << std::endl;
 		std::cout << "Fonctions objectifs du best4" << std::endl;
@@ -978,59 +944,33 @@ void population::show_stats() {
 		std::cout << "Distance moyenne " << best4.get_obj_func(2) << std::endl;
 		std::cout << "Hauteur " << best4.get_obj_func(1) << std::endl;
 		std::cout << "Télescopes " << best4.get_obj_func(3) << std::endl;
-		sizec = (int) best4.genes.size();
-		genes = best4.genes;
-		som = 0.0;
-		somc = 0.0;
-		for( i = 0; i < sizec; i++)
-		{
-			if(genes.at(i).is_sched)
-			{
-				som += genes.at(i).start_date;
-				somc += pow(genes.at(i).start_date, 2.0);
-			}
-		}
-		moyenne = som/i;
-		som = pow(som/i, 2.0);
-		somc /=i;
-		som = somc - som;
-		ecar_typ = sqrt (som);
-
-		std::cout<<"écart-type des temps de début "<< fixed<< ecar_typ<< std::endl;
-		std::cout<<"moyenne des temps de début "<< fixed<< moyenne<< std::endl;
-		std::cout<< "crowding distance "<< best4.crowding_dist<< std::endl;
-
 		std::cout << "_____________________________" << std::endl;
 		std::cout << "Fonctions objectifs du best5" << std::endl;
 		std::cout << "Taux req " << best5.get_obj_func(0) << std::endl;
 		std::cout << "Distance moyenne " << best5.get_obj_func(2) << std::endl;
 		std::cout << "Hauteur " << best5.get_obj_func(1) << std::endl;
-		std::cout << "Télescopes " << best5.get_obj_func(3) << std::endl;
-		sizec = (int) best5.genes.size();
-		genes = best5.genes;
-		som = 0.0;
-		somc = 0.0;
-		for( i = 0; i < sizec; i++)
-		{
-			if(genes.at(i).is_sched)
-			{
-				som += genes.at(i).start_date;
-				somc += pow(genes.at(i).start_date, 2.0);
-			}
-		}
-		moyenne = som/i;
-		som = pow(som/i, 2.0);
-		somc /=i;
-		som = somc - som;
-		ecar_typ = sqrt (som);
-
-		std::cout<<"écart-type des temps de début "<< fixed<< ecar_typ<< std::endl;
-		std::cout<<"moyenne des temps de début "<< fixed<< moyenne<< std::endl;
-		std::cout<< "crowding distance "<< best5.crowding_dist<< std::endl;
+		std::cout << "Télescopes " << best5.get_obj_func(3) << std::endl;*/
 
 }
 
+void population::RetreiveRequestTelescopes(std::vector<Telescope>* telescopes) {
+	int sizec = (int) ordo.genes.size();
 
+
+	std::vector<gene> genes = ordo.genes;
+
+	for(int i =0; i < sizec; i++)
+	{
+		genes.at(i).setIndex(i);
+		telescopes->at(genes.at(i).telescope_used).tobserv.push_back(genes.at(i));
+
+	}
+}
+void population::saveInFile()
+{
+	std::vector<chromosome> front = *get_best_front();
+
+}
 //Stats get_individual_stats(chromosome c){
 //
 //	Stats * s = new Stats();

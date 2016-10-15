@@ -7,6 +7,7 @@
 
 #include "MyNSGA.h"
 #include <time.h>
+#include "ga_config.h"
 
 MyNSGA::MyNSGA():nb_gen() {
 	// TODO Auto-generated constructor stub
@@ -59,7 +60,7 @@ void MyNSGA::crossover(chromosome *enf1, chromosome *enf2, chromosome p1, chromo
 			enf1->setNbMaxT(p2.getNbMaxT());
 			enf2->setNbMaxT(p1.getNbMaxT());
 		}
-		if(0/*x < 1/3.0*/){// one point crossover
+		if(Cross_1/*x < 1/3.0*/){// one point crossover
 			//std::cout<< "one point crossover"<< std::endl;
 			enf1->genes.resize(size);
 			enf2->genes.resize(size);
@@ -82,7 +83,7 @@ void MyNSGA::crossover(chromosome *enf1, chromosome *enf2, chromosome p1, chromo
 				enf2->genes.push_back(p1.genes[k]);
 			}*/
 		}
-		if(0 /*1/3.0 <= x && x < 2/3.0*/)//uniform crossover
+		if(Cross_uni /*1/3.0 <= x && x < 2/3.0*/)//uniform crossover
 		{
 			double u = 0.0 ;
 			//std::cout<< "uniform crossover"<< std::endl;
@@ -103,7 +104,7 @@ void MyNSGA::crossover(chromosome *enf1, chromosome *enf2, chromosome p1, chromo
 				}
 			}
 		}
-		if( 1/*2/3.0 <= x*/)//two points crossover
+		if( Cross_2/*2/3.0 <= x*/)//two points crossover
 		{
 			//std::cout<< "two points crossover"<< std::endl;
 			int i =0, j=0;
@@ -162,7 +163,7 @@ void MyNSGA::mutation(chromosome *c, chromosome *cr, population p)
 	double j = rand()% size;
 
 	double x = (double) rand()/RAND_MAX;
-	if(x < 0.01){
+	if(x < 0.2){
 
 		if( c->genes.at(i).getIsSched() ) c->genes.at(i).setIsSched(0);
 		else c->genes.at(i).setIsSched(1);
@@ -187,11 +188,8 @@ void MyNSGA::mutation(chromosome *c, chromosome *cr, population p)
 	}
 
 	x = (double) rand()/RAND_MAX;
-<<<<<<< HEAD
-	if(x < 0.6){
-=======
+
 	if(x < 0.8){
->>>>>>> 0387e8b643872840f8158d247c8b573c76b05fbf
 			int t = 0;
 			//c->setNbMaxT((rand()%N_TELESCOPE)+1);
 			int N_t = c->getNbMaxT();
@@ -258,12 +256,11 @@ void MyNSGA::nsga2(population *p)
 
 		//tstart = clock();
 
-		//p->updateViolation(); //update violation ratio of the constraints for the crossover
 
 		//printf("START 2 Time taken: %.5fs\n", (double)(clock() - tstart)/CLOCKS_PER_SEC);
 		//tstart = clock();
 
-		population  cr(p->getIndividuals(),p->get_size()); //Initialization de R
+		population  cr(p->getIndividuals(),p->get_size(),p->n_telescopes); //Initialization de R
 
 		//printf("START 3 Time taken: %.5fs\n", (double)(clock() - tstart)/CLOCKS_PER_SEC);
 		//std::cout<<"_______________taille initial de R "<< g<< std::endl;

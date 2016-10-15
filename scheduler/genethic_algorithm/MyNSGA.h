@@ -12,6 +12,7 @@
 #include "population.h"
 #include <algorithm>
 #include "../utilities/time_calculation.h"
+#include "ga_config.h"
 
 
 class MyNSGA {

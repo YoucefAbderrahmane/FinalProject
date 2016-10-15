@@ -30,6 +30,7 @@
 								<option id="gnu.cpp.compiler.exe.debug.option.debugging.level.427733620" name="Debug Level" superClass="gnu.cpp.compiler.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1520901267" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/libraries/libnova-0.15.0/src"/>
+									<listOptionValue builtIn="false" value="pthread"/>
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/pagmo/src"/>
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova"/>
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Graduation_project/scheduler/Model"/>
@@ -37,6 +38,7 @@
 								<option id="gnu.cpp.compiler.option.include.files.396202026" name="Include files (-include)" superClass="gnu.cpp.compiler.option.include.files" valueType="includeFiles">
 									<listOptionValue builtIn="false" value="/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h"/>
 								</option>
+								<option id="gnu.cpp.compiler.option.dialect.std.1733698003" superClass="gnu.cpp.compiler.option.dialect.std" value="gnu.cpp.compiler.dialect.default" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1889849956" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.1116621278" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug">
@@ -58,6 +60,7 @@
 								</option>
 								<option id="gnu.cpp.link.option.libs.1453650055" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="nova"/>
+									<listOptionValue builtIn="false" value="pthread"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.272569253" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>

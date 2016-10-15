@@ -44,26 +44,10 @@ int Obs_conditions::calculateNightHorizon(){
 
 	double julian = std::abs(JD) - 0.5;
 
-<<<<<<< HEAD
-	//std::cout << "SOL debut " << fixed << solar_rst->set << " fin " << fixed << solar_rst->rise << std::endl;
-=======
+
 	int result = ln_get_solar_rst(julian, &observer, solar_rst);
->>>>>>> 0387e8b643872840f8158d247c8b573c76b05fbf
 
-	//std::cout << "SOL debut " << fixed << solar_rst->set << " fin " << fixed << solar_rst->rise << std::endl;
-
-<<<<<<< HEAD
-		ln_get_solar_rst(JD + 1, &observer, last_solar_rst);
-	}
-	else ln_get_solar_rst(JD - 1, &observer, last_solar_rst);
-
-
-
-
-	//std::cout << "NEXT SOL debut " << fixed << last_solar_rst->set << " fin " << fixed << last_solar_rst->rise << std::endl;
-=======
 	if( JD < solar_rst->rise ){
->>>>>>> 0387e8b643872840f8158d247c8b573c76b05fbf
 
 		night_horizon.start = JD;
 		night_horizon.end = solar_rst->rise;
@@ -71,7 +55,6 @@ int Obs_conditions::calculateNightHorizon(){
 	else{
 
 		ln_get_solar_rst(julian + 1, &observer, last_solar_rst);
-
 
 		night_horizon.start = std::max(JD, solar_rst->set);
 		night_horizon.end = last_solar_rst->rise;

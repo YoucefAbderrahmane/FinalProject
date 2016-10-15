@@ -6,12 +6,13 @@
  */
 
 #ifndef OBSERVATION_H_
+
 #define OBSERVATION_H_
 
 #include <iostream>
 #include <vector>
 
-#include "Target.h"
+#include <Target.h>
 #include "Request.h"
 #include "Obsconditions.h"
 #include "config.h"

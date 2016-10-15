@@ -14,6 +14,7 @@ class gene {
 
 	friend class chromosome;
 	friend class population;
+	friend class Telescope;
 public:
 	gene();
 	gene(int index);
@@ -72,9 +73,9 @@ private:
 	double start_date; //in JD
 	int telescope_used; //Id of the telescope used for observing the target
 
-	int is_sched;
+	int is_sched; //tells if the observation is scheduled or not
 
-	int violated_const;
+	int violated_const; //number of violated constrains
 
 	double duration; 	//in seconds
 	double end_date; //in JD

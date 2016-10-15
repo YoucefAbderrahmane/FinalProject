@@ -13,14 +13,16 @@
 #include "chromosome.h"
 #include "../Model/Schedule.h"
 #include <cstdio>
+#include <fstream>
+#include "Telescope.h"
 
 class population {
 
 	friend class MyNSGA;
 
 public:
-	population(int population_size, Schedule schedule);
-	population(std::vector<chromosome> individuals, int population_size);
+	population(int population_size, Schedule schedule, int n);
+	population(std::vector<chromosome> individuals, int population_size, int n);
 	virtual ~population();
 
 	void init(); //Randomly initialize the population
@@ -46,6 +48,8 @@ public:
 	void check_gene(int gene_idx, int individual_idx);
 
 	int get_size();
+	void setSolution();// call it after using nsga2 algorithm
+	void saveInFile();
 
 	const std::vector<std::vector<int> >& getFronts() const {
 		return fronts;
@@ -92,6 +96,16 @@ public:
 	chromosome compute_ideal_ind();
 	void show_stats();
 
+	 chromosome getOrdo() {
+		return ordo;
+	}
+
+	void setOrdo(const chromosome ordo) {
+		this->ordo = ordo;
+	}
+	void RetreiveRequestTelescopes(std::vector<Telescope> * telescopes);
+
+
 private:
 	std::vector<chromosome> individuals;
 	int population_size;
@@ -99,7 +113,11 @@ private:
 
 	std::vector<chromosome> champions;
 
+
+
 	Schedule schedule;
+	chromosome ordo;
+	int n_telescopes;
 };
 
 #endif /* POPULATION_H_ */
