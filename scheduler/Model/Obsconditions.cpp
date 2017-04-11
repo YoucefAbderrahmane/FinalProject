@@ -11,7 +11,14 @@
 
 using namespace std;
 
-Obs_conditions::Obs_conditions() : observer(), night_horizon(), horizon(), allSet(0) {
+double Obs_conditions::JD = ln_get_julian_from_sys();
+ln_lnlat_posn Obs_conditions::observer = * new ln_lnlat_posn();
+time_interval Obs_conditions::night_horizon = * new time_interval();
+double Obs_conditions::horizon = OBSERVATORY_HORIZON;
+std::vector<Observation> Obs_conditions::observations;
+int Obs_conditions::allSet = 1; //equal to 0 when all conditions are set correctly
+
+Obs_conditions::Obs_conditions() {
 	// TODO Auto-generated constructor stub
 
 	JD = ln_get_julian_from_sys();
@@ -19,9 +26,11 @@ Obs_conditions::Obs_conditions() : observer(), night_horizon(), horizon(), allSe
 	calculateNightHorizon();
 }
 
-Obs_conditions::Obs_conditions(double julian_day) : observer(), night_horizon(), JD(julian_day),
-		horizon(OBSERVATORY_HORIZON), allSet(0) {
+Obs_conditions::Obs_conditions(double julian_day) {
 	// TODO Auto-generated constructor stub
+
+	JD = julian_day;
+	horizon = OBSERVATORY_HORIZON;
 
 	setObserverFromConfig();
 	calculateNightHorizon();
@@ -45,9 +54,9 @@ int Obs_conditions::calculateNightHorizon(){
 	double julian = std::abs(JD) - 0.5;
 
 
-	int result = ln_get_solar_rst(julian, &observer, solar_rst);
+	int result = ln_get_solar_rst(julian, &Obs_conditions::observer, solar_rst);
 
-	if( JD < solar_rst->rise ){
+	if( Obs_conditions::JD < solar_rst->rise ){
 
 		night_horizon.start = JD;
 		night_horizon.end = solar_rst->rise;
@@ -59,37 +68,6 @@ int Obs_conditions::calculateNightHorizon(){
 		night_horizon.start = std::max(JD, solar_rst->set);
 		night_horizon.end = last_solar_rst->rise;
 	}
-
-	//std::cout << "SOL debut " << fixed << night_horizon.start << " fin "
-//					<< fixed << night_horizon.start << std::endl;
-
-//	if( JD > solar_rst->rise && JD < solar_rst->set){
-//
-//		ln_get_solar_rst(JD + 1, &observer, last_solar_rst);
-//	}
-//	else ln_get_solar_rst(JD - 1, &observer, last_solar_rst);
-//
-//
-//	//std::cout << "NEXT SOL debut " << fixed << last_solar_rst->set << " fin " << fixed << last_solar_rst->rise << std::endl;
-//
-//	if (result == SUCCESS) {
-//		if( JD < last_solar_rst->set ){
-//
-//			night_horizon.start = last_solar_rst->set;
-//			night_horizon.end = solar_rst->rise;
-//		}
-//		else{
-//
-//			night_horizon.start = JD;
-//			night_horizon.end = solar_rst->rise;
-//		}
-//
-//		night_horizon.start = solar_rst->set;
-//		night_horizon.end = last_solar_rst->rise;
-//
-//		std::cout << "SOL debut " << fixed << night_horizon.start << " fin "
-//				<< fixed << night_horizon.start << std::endl;
-
 		allSet = 0;
 
 		return SUCCESS;
@@ -97,22 +75,22 @@ int Obs_conditions::calculateNightHorizon(){
 //	else return FAILURE;
 }
 
-double Obs_conditions::getJd() {
-	return JD;
-}
-
-void Obs_conditions::setJd(double jd) {
-	JD = jd;
-}
-
-time_interval Obs_conditions::getNightHorizon() {
-	return night_horizon;
-}
-
-void Obs_conditions::setNightHorizon(time_interval nightHorizon) {
-	night_horizon = nightHorizon;
-}
-
+//double Obs_conditions::getJd() {
+//	return JD;
+//}
+//
+//void Obs_conditions::setJd(double jd) {
+//	JD = jd;
+//}
+//
+//time_interval Obs_conditions::getNightHorizon() {
+//	return night_horizon;
+//}
+//
+//void Obs_conditions::setNightHorizon(time_interval nightHorizon) {
+//	night_horizon = nightHorizon;
+//}
+//
 ln_lnlat_posn Obs_conditions::getObserver() {
 	return observer;
 }
@@ -120,26 +98,26 @@ ln_lnlat_posn Obs_conditions::getObserver() {
 ln_lnlat_posn * Obs_conditions::getObserverPtr() {
 	return &observer;
 }
-
-void Obs_conditions::setObserver(ln_lnlat_posn observer) {
-	this->observer = observer;
-}
-
-int Obs_conditions::getAllSet() {
-	return allSet;
-}
-
-void Obs_conditions::setAllSet(int allSet) {
-	this->allSet = allSet;
-}
-
-double Obs_conditions::getHorizon() {
-	return horizon;
-}
-
-void Obs_conditions::setHorizon(double horizon) {
-	this->horizon = horizon;
-}
+//
+//void Obs_conditions::setObserver(ln_lnlat_posn observer) {
+//	this->observer = observer;
+//}
+//
+//int Obs_conditions::getAllSet() {
+//	return allSet;
+//}
+//
+//void Obs_conditions::setAllSet(int allSet) {
+//	this->allSet = allSet;
+//}
+//
+//double Obs_conditions::getHorizon() {
+//	return horizon;
+//}
+//
+//void Obs_conditions::setHorizon(double horizon) {
+//	this->horizon = horizon;
+//}
 
 double Obs_conditions::night_duration_in_ms() {
 

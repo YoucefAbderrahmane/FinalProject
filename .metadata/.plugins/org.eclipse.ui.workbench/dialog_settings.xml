@@ -12,12 +12,10 @@
 		<list key="textEntries">
 		</list>
 	</section>
-	<section name="WorkbenchPreferenceDialogSettings">
-		<item value="10" key="DIALOG_Y_ORIGIN"/>
-		<item value="336" key="DIALOG_X_ORIGIN"/>
-	</section>
 	<section name="NewWizardAction">
-	</section>
-	<section name="ImportExportAction">
+		<item value="org.eclipse.cdt.ui.wizards.NewMakeFromExisting" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.cdt.ui.newCWizards"/>
+		</list>
 	</section>
 </section>

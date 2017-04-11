@@ -71,7 +71,6 @@ public:
 	static Obs_conditions* getConditions();
 	void setConditions(Obs_conditions * conditions);
 
-
 	static Obs_conditions * conditions;
 	static vector<Observation> observations; //all observable requests for the night of the schedule
 

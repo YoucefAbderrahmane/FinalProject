@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;scheduler/pagmo_sol&apos; to &apos;genethic_algo&apos;" description="Rename resource &apos;pagmo_sol&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="pagmo_sol" name="genethic_algo" stamp="1466784635718" updateReferences="true"/>
-</session>

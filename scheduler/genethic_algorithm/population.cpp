@@ -14,6 +14,16 @@
 #include "../utilities/time_calculation.h"
 #include "Stats.h"
 
+population::population() : individuals(), population_size(),
+champions(), schedule(),ordo(),n_telescopes(){
+}
+
+population::population(int population_size, int n) : individuals(), population_size(population_size),
+		champions(), schedule(),ordo(),n_telescopes(){
+	// TODO Auto-generated constructor stub
+	this->individuals.reserve(population_size);
+}
+
 population::population(int population_size, Schedule schedule, int n) : individuals(), population_size(population_size),
 		champions(), schedule(schedule),ordo(),n_telescopes(n)
 {
@@ -89,7 +99,9 @@ void population::init_individual(int index) {
 	individuals.at(index).compute_obj_func();
 	//std::cout<< "Population init_individual : before uptdate dom " << std::endl;
 	//std::cout<< "Population init_individual : start update_dom"<< std::endl;
-	this->update_dom(index);
+
+	//this->update_dom(index);
+
 	repair(&individuals.at(index));
 	//std::cout<< "Population init_individual : end " << std::endl;
 
@@ -101,6 +113,8 @@ void population::init_gene(int gene_index, int individual_index, int nb_max_t) {
 	double sup = 0.0;	//the upper bound for the random number
 	double range = 0.0; //needs to be equal to: sup - inf
 	double div = 0.0;	//the divisor needed to generate a random number
+
+	Obs_conditions * conditions = new Obs_conditions();
 
 	//generate the probability of selecting the observation
 	sup = 1.0;
@@ -119,8 +133,8 @@ void population::init_gene(int gene_index, int individual_index, int nb_max_t) {
 
 	//std::cout<< "Population init_gene : start date " << std::endl;
 
-	inf = Schedule::conditions->getNightHorizon().start;
-	sup = addSecondsToJD(Schedule::conditions->getNightHorizon().end, -Schedule::observations.at(gene_index).getDuration());
+	inf = conditions->night_horizon.start;
+	sup = addSecondsToJD(conditions->night_horizon.end, -Schedule::observations.at(gene_index).getDuration());
 
 	range = sup - inf;
 	div = RAND_MAX / range;
@@ -150,7 +164,7 @@ void population::check_init() {
 	int s = (int) individuals[i].genes.size();
 	for(int j =0; j < s; j++)
 	{
-	check_gene(j, i);
+		check_gene(j, i);
 	}
 	//std::cout << std::endl;
 	//std::cout << std::endl;
@@ -165,7 +179,7 @@ void population::check_init() {
 	//check_gene(gene, i);
 
 	//std::cout << std::endl;
-//	std::cout << std::endl;
+	//	std::cout << std::endl;
 }
 
 chromosome  population::get_individual(int chromosome_index) {
@@ -235,9 +249,11 @@ void population::repair(chromosome * individual) {
 
 void population::repair_vect_obs(std::vector<gene *>* genes) {
 
+	Obs_conditions * conditions = new Obs_conditions();
+
 	int done = 0;
 //	double lower_bound = schedule.getConditions()->getNightHorizon().start;
-	double lower_bound = Schedule::conditions->getNightHorizon().start;
+	double lower_bound = conditions->night_horizon.start;
 	double upper_bound = 0.0;
 	double range = 0.0;
 	double div = 0.0;
@@ -289,7 +305,7 @@ void population::repair_vect_obs(std::vector<gene *>* genes) {
 					upper_bound = genes->at(i+2)->get_start_time();
 
 					}
-				else upper_bound = Schedule::conditions->getNightHorizon().end;
+				else upper_bound = conditions->night_horizon.end;
 
 				if( addSecondsToJD(genes->at(i)->get_end_time(), genes->at(i+1)->duration) < upper_bound ){
 
@@ -319,8 +335,8 @@ void population::repair_vect_obs(std::vector<gene *>* genes) {
 //				std::cout << "priority  " << std::endl;
 
 
-				double p1 = schedule.getObservations().at(genes->at(i)->index).getRequest()->getPriority();
-				double p2 = schedule.getObservations().at(genes->at(i+1)->index).getRequest()->getPriority();
+				double p1 = Obs_conditions::observations.at(genes->at(i)->index).getPriority();
+				double p2 = Obs_conditions::observations.at(genes->at(i+1)->index).getPriority();
 
 				//std::cout << "priority " << p1 << " " << p2 << std::endl;
 				if(p1 > p2){
@@ -382,6 +398,35 @@ void population::repair_vect_obs(std::vector<gene *>* genes) {
 int population::get_size() {
 	return this->population_size;
 }
+
+
+
+
+//Check if p dominates q, 1 if p dominates q (p<q), -1 if q dominates p, 0 otherwise
+int population::comp_dom(chromosome p, chromosome q){
+
+	int dom = 0;
+	int leq = 0;
+	//compare objective functions of the two individuals
+	for(int i = 0; i < PROB_DIM; i++){
+
+		if(p.f[i] <= q.f[i]) leq = 1;
+		else{
+			leq = 0;
+			break;
+		}
+		if(p.f[i] < q.f[i]) dom = 1;
+	}
+
+	return leq*dom;
+//	if(leq == 1 && dom == 1) return 1;
+//	else return 0;
+}
+
+
+
+
+
 //checks if indivual1 dominates individual2 which objective functions are f1 and f2 respectively
 int population::compare_fitness(std::vector<double> f1,
 		std::vector<double> f2) {
@@ -406,54 +451,32 @@ void population::check_gene(int gene_idx, int individual_idx) {
 //ok
 void population::update_dom(int index) {
 
-	//double tstart = clock();
-	//std::cout<< "-------------------start update_dom, index ="<< index<< std::endl;
-	//std::cout << "getting ind index " << index << std::endl;
 	chromosome * cr = &(this->individuals.at(index));
 
-	//std::cout << "got ind index " << index << std::endl;
-	/*if(cr->getDomList().size() != 0){
-	for(int i =0; i < (int) cr->getDomList().size(); i++)// decrease the number of domination count of every dominated individual by index
-	{
-		std::cout << "taille " << cr->getDomList().size() << "e nsemble de dom minus " << i << std::endl;
-		this->individuals.at(cr->getDomListOf(i)).dom_count = individuals.at(cr->getDomListOf(i)).dom_count - 1;
-		//std::cout<< "mise a jour	";
-	}
-	}*/
 	cr->clearDomList();
 	cr->setDomCount(0);
 	int size = this->individuals.size();
-	//std::cout << "update_dom pop size :"<< size<< std::endl;
+
 	for(int i=0;i < size;i++)
 	{
-		//std::cout<< "I'm i = "<< i<< std::endl;
 		if(index !=i)
 		{
-			//std::cout<< "I'm i and different from index "<< std::endl;
 			//check if index is dominated by  i
 			if(compare_fitness(this->individuals.at(i).getF(),cr->getF()))
 			{
-				//std::cout<<"result of the comparison "<< compare_fitness(this->individuals[i].getF(),cr->getF())<< std::endl;
 				//update the domination count of index
 				cr->incrementDomCount();
-
-
 			}
 
 			//check if index dominates i
-		if(compare_fitness(cr->f,this->individuals[i].f))
+			if(compare_fitness(cr->f,this->individuals[i].f))
 			{
 				cr->dom_list.push_back(i);
-				//std::cout<< "I am "<< index<< " and I dominate "<< i<< std::endl;
 			}
 		}
 	}
 	cr= NULL;
 	delete cr;
-//	std::cout<< "-------------find de update_dom----------------"<< std::endl;
-
-	//printf("UPDATE DOM Time taken: %.5fs\n", (double)(clock() - tstart)/CLOCKS_PER_SEC);
-
 }
 //ok
 struct obj_fct_comp {
@@ -466,15 +489,57 @@ struct obj_fct_comp {
 int obj_fct;
 };
 
+
+std::vector<chromosome *> population::update_crowding_dist(std::vector<int> front){
+
+	//Initialization
+	int l = front.size(); //number of individuals in the front
+	obj_fct_comp f(0); //objective function comparator
+
+	std::vector<chromosome *> front_copy; //will contain all individuals of the front
+	front_copy.resize(l);
+
+	//Initialize the crowding distance for each individual in the front and set the front_copy
+	for(int i=0; i < l; i++){
+		individuals.at(front.at(i)).crowding_dist = 0.0;
+		front_copy.at(i) = &individuals.at(front.at(i));
+	}
+
+	//Set the min and max values for each objective function in the set front_copy
+	std::vector<double> f_min = get_min_f(front_copy);
+	std::vector<double> f_max = get_max_f(front_copy);
+
+	//Crowding distance calculations loop
+
+		//For each objective function
+		for(int i = 0; i < PROB_DIM; ++i){
+			//1- Sort the front based on the i'th objective function
+				f.obj_fct=i;
+				std::sort(front_copy.begin(),front_copy.end(),f);
+			//2- Initialize the crowding distance of the bounding individuals
+				front_copy.at(0)->setCrowdingDist(std::numeric_limits<double>::max());
+				front_copy.at(l-1)->setCrowdingDist(std::numeric_limits<double>::max());
+			//3- Compute the other individuals' crowding distance using the formula
+				double diff = f_max.at(i) - f_min.at(i);
+				for(int j=1; j < l-2; j++){
+					front_copy.at(j)->crowding_dist = front_copy.at(j)->getCrowdingDist()
+							+ ( front_copy.at(j+1)->get_obj_func(i)
+									- front_copy.at(j-1)->get_obj_func(i) ) / diff;
+				}
+		}
+
+	return front_copy;
+}
+
+
 //updates the crowding distance of a front ok
 void population::update_crowding_dist(std::vector<chromosome *> front) {
+
 	std::vector<chromosome>::size_type taille  = front.size()-1;
-	//std::cout<<"je suis taille "<< taille<< std::endl;
 	obj_fct_comp f(0);
 	double crow = 0.0;
-	//std::cout<<"je suis PROB_DIM "<< PROB_DIM << std::endl;
 
-	 //we loop for each objective function
+	//we loop for each objective function
 	int tour =0;
 	 for (int i = 0; i < PROB_DIM; ++i)
 	 {
@@ -523,9 +588,77 @@ void population::change(){this->individuals[0].setCrowdingDist(1024);}
 //have to update dom count before
 void population::update_pareto_information() {
 
-	//double tstart = clock();
+	//I- First front construction
+		fronts.push_back(* new vector<int>());
 
-	std::vector<int> list_dom_count(this->get_size(),0);
+		//For each individual p in the population
+		for(int i=0; i < individuals.size(); i++){
+
+			//1- Domination count and domination list are already initialized from the chromosome class
+			//Reset again here
+			individuals.at(i).dom_count = 0;
+			individuals.at(i).dom_list.clear();
+
+			//2- Construct the first front (We need the fronts here in the population)
+
+			//for each individual q in the population
+			for(int j=0; j < individuals.size(); j++){
+
+				//if p dominates q
+				if( comp_dom(individuals.at(i), individuals.at(j)) ){
+
+					individuals.at(i).dom_list.push_back(j); //q is added to the dominated individuals of p
+				}
+				//if q dominates p
+				else if(comp_dom(individuals.at(j), individuals.at(i))){
+
+					individuals.at(i).dom_count++; //p is dominated by one more individual
+				}
+			}
+
+			if( individuals.at(i).dom_count == 0 ){
+
+				//p belongs to the first front
+				individuals.at(i).pareto_rank = 1;
+				fronts.at(0).push_back(i);
+			}
+		}
+
+	//II- Other fronts construction
+		int i = 0;
+		//Range the previously constructed front in order to construct the next one
+		while(fronts.at(i).size() > 0){
+
+			vector<int> front_set; //Will contain the next front
+
+			//For all individuals in the current front
+			for(int j=0; j < fronts.at(i).size(); j++){
+
+				int p = fronts.at(i).at(j); //The individual in the front
+				//Range p's domination list
+				for(int k = 0; k < individuals.at(p).dom_list.size(); k++ ){
+
+					int q = individuals.at(p).dom_list.at(k); //the dominated individual to be classed
+
+					individuals.at(q).dom_count = individuals.at(q).dom_count -1; //decrease its domination count
+
+					//If q's domination count is equal 0, then it belongs to the next front
+					if( individuals.at(q).dom_count == 0 ){
+
+						individuals.at(q).pareto_rank = i+2;
+						front_set.push_back(q);
+					}
+				}
+			}
+			i++; //Check the next front
+			//assign the newly constructed front
+			fronts.push_back(front_set);
+		}
+
+
+	/* Previous code */
+
+	/*std::vector<int> list_dom_count(this->get_size(),0);
 	//we need the index to update the crowding distance in the population
 	std::vector<int> index;
 	std::vector<chromosome *> front, S;
@@ -545,31 +678,20 @@ void population::update_pareto_information() {
 	unsigned int rank =1;
 	//we search for the other fronts
 
-	//std::cout << "pop update pareto, front size " << front.size() << std::endl;
 	while(front.size()!=0)
 	{
 		//update crowding distance of the current  paerto front
 		population::update_crowding_dist(front);
 
-		//std::cout << "pop update pareto, crwd done " << std::endl;
-		//update crowding distance of the population
-		/*for(std::vector<int>::size_type i =0; i < index.size();i++)
-		{
-			this->individuals[index[i]].setCrowdingDist(front[i].getCrowdingDist());
-		}*/
-
 		population::compute_pareto_fronts(index);
 		index.clear();
 
-		//std::cout << "pop update pareto, add index done " << std::endl;
 		//for each individual int the front
 		for(std::vector<chromosome *>::size_type i=0; i < front.size();i++)
 		{
-			//std::cout<< "pop pareto_info : parcours du front"<< std::endl;
 			//for each individual dominated by front[i]
 			for(std::vector<double>::size_type j=0; j< front[i]->getDomList().size();j++)
 			{
-				//std::cout<< "pop pareto_info : modification de S"<< std::endl;
 				//decrease the dom_count
 				list_dom_count[front[i]->getDomList()[j]]--;
 				//check if there isn't an individual that dominates the individual j
@@ -584,42 +706,72 @@ void population::update_pareto_information() {
 				}
 			}
 		}
-		//std::cout<< "test de taille de front "<< front.size()<< endl;
 		front = S;
-		//std::cout<< "test 2 de taille de front "<< front.size()<< endl;
-		//std::cout<< "test de taille de S "<< S.size()<< endl;
 		S.clear();
-		//std::cout<< "test 2 de taille de S "<< S.size()<< endl;
 		rank++;
-	}
-
-	//printf("PARETO Time taken: %.5fs\n", (double)(clock() - tstart)/CLOCKS_PER_SEC);
-
+	}*/
 }
 
 void population::compute_pareto_fronts(std::vector<int> index) {
 	fronts.push_back(index);
 }
 
-std::vector<double> population::compute_ideal() {
-update_pareto_information();
+std::vector<double> population::get_min_f(std::vector<chromosome *> set){
 
-std::vector<double> ideal (PROB_DIM,numeric_limits<double>::max());
-for(std::vector<chromosome>::size_type i = 0; i < this->individuals.size();i++ )
-{
-	if(this->individuals[i].getParetoRank() == 0)
+	std::vector<double> f_min (PROB_DIM,numeric_limits<double>::max());
+
+	for(std::vector<chromosome *>::size_type i = 0; i < set.size(); i++)
 	{
-		for(std::vector<double>::size_type j = 0; j < ideal.size(); j++)
+		for(std::vector<double>::size_type j = 0; j < f_min.size(); j++)
 		{
-			if(this->individuals[i].get_obj_func(j) < ideal[j])
+			if(set.at(i)->get_obj_func(j) < f_min[j])
 			{
-				//std::cout<< "ideal de j "<< j<< " est "<< this->individuals[i].get_obj_func(j)<< std::endl;
-				ideal[j] = this->individuals[i].get_obj_func(j);
+				f_min[j] = set.at(i)->get_obj_func(j);
 			}
 		}
 	}
+
+	return f_min;
 }
-return ideal;
+
+std::vector<double> population::get_max_f(std::vector<chromosome *> set){
+
+	std::vector<double> f_max (PROB_DIM,-numeric_limits<double>::max());
+
+	for(std::vector<chromosome *>::size_type i = 0; i < set.size(); i++)
+		{
+			for(std::vector<double>::size_type j = 0; j < f_max.size(); j++)
+			{
+				if(set.at(i)->get_obj_func(j) > f_max[j])
+				{
+					f_max[j] = set.at(i)->get_obj_func(j);
+				}
+			}
+		}
+
+		return f_max;
+}
+
+
+std::vector<double> population::compute_ideal() {
+	update_pareto_information();
+
+	std::vector<double> ideal (PROB_DIM,numeric_limits<double>::max());
+	for(std::vector<chromosome>::size_type i = 0; i < this->individuals.size();i++ )
+	{
+		if(this->individuals[i].getParetoRank() == 0)
+		{
+			for(std::vector<double>::size_type j = 0; j < ideal.size(); j++)
+			{
+				if(this->individuals[i].get_obj_func(j) < ideal[j])
+				{
+					//std::cout<< "ideal de j "<< j<< " est "<< this->individuals[i].get_obj_func(j)<< std::endl;
+					ideal[j] = this->individuals[i].get_obj_func(j);
+				}
+			}
+		}
+	}
+	return ideal;
 }
 
 std::vector<double> population::compute_nadir() {
@@ -740,16 +892,11 @@ int population::getFrontsSize() {
 
 void population::updateViolation() {
 
-	//double tstart = clock();
-
 	for(int i = 0; i < population_size; i++)
 	{
 		//individuals.at(i).ratio_violated_const(*schedule.getConditions());
-		individuals.at(i).ratio_violated_const(*Schedule::conditions);
+		individuals.at(i).ratio_violated_const();
 	}
-
-	//printf("VIOLATION Time taken: %.5fs\n", (double)(clock() - tstart)/CLOCKS_PER_SEC);
-
 }
 
 void population::clearChampions() {
@@ -952,6 +1099,8 @@ void population::show_stats() {
 		std::cout << "Télescopes " << best5.get_obj_func(3) << std::endl;*/
 
 }
+
+
 
 void population::RetreiveRequestTelescopes(std::vector<Telescope>* telescopes) {
 	int sizec = (int) ordo.genes.size();

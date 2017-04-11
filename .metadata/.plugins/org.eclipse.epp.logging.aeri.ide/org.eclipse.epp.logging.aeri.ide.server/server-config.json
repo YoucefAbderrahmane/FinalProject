@@ -1,11 +1,7 @@
 {
   "version": "v1",
   "title": "Eclipse Automated Error Reporting",
-<<<<<<< HEAD
-  "timestamp": 1470161792354,
-=======
-  "timestamp": 1470052053231,
->>>>>>> pagmo_integ
+  "timestamp": 1483361771172,
   "ttl": 10080,
   "helpUrl": "https://dev.eclipse.org/recommenders/community/aeri/v2/help/",
   "feedbackUrl": "http://ctrlflow.com/automated-error-reporting",
@@ -28,9 +24,9 @@
   "acceptedPackages": [
     "ch.qos.*",
     "com.cforcoding.*",
-    "com.ctrlflow.*",
     "com.google.*",
     "com.gradleware.tooling.*",
+    "com.mountainminds.eclemma.*",
     "com.naef.*",
     "com.sun.*",
     "java.*",
@@ -40,20 +36,22 @@
     "org.eclipse.*",
     "org.fordiac.*",
     "org.gradle.*",
+    "org.jacoco.*",
     "org.osgi.*",
     "org.slf4j.*",
     "sun.*"
   ],
   "requiredPackages": [
     "com.cforcoding.*",
-    "com.ctrlflow.*",
     "com.gradleware.tooling.*",
+    "com.mountainminds.eclemma.*",
     "com.naef.*",
     "org.eclipse.*",
     "org.fordiac.*",
-    "org.gradle.*"
+    "org.gradle.*",
+    "org.jacoco.*"
   ],
-  "acceptOtherPackages": true,
+  "acceptOtherPackages": false,
   "acceptUiFreezes": true,
   "ignoredStatuses": [
     ":java.io.IOException:There is not enough space on the disk",
@@ -68,9 +66,5 @@
     "org.eclipse.pde.core::The current target platform contains errors*",
     "org.eclipse.ui::Conflicting handlers for*"
   ],
-<<<<<<< HEAD
-  "problemsZipLastDownloadTimestamp": 1470162635477
-=======
-  "problemsZipLastDownloadTimestamp": 1470052453048
->>>>>>> pagmo_integ
+  "problemsZipLastDownloadTimestamp": 1483362145178
 }

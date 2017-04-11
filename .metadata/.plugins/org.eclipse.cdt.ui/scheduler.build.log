@@ -1,25 +1,6 @@
-13:53:14 **** Incremental Build of configuration Debug for project scheduler ****
+09:46:04 **** Incremental Build of configuration Default for project scheduler ****
 make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-../src/scheduler.cpp: In function ‘void* Inter(void*)’:
-../src/scheduler.cpp:82:9: warning: unused variable ‘interruption’ [-Wunused-variable]
-  double interruption = (double) rand()/RAND_MAX;
-         ^
-../src/scheduler.cpp:96:8: warning: unused variable ‘sizei’ [-Wunused-variable]
-    int sizei = (int) individuals->size();
-        ^
-../src/scheduler.cpp:116:9: warning: variable ‘rc’ set but not used [-Wunused-but-set-variable]
-     int rc=0;
-         ^
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/Telescope.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova -lpthread
-Finished building target: scheduler
- 
+make: Rien à faire pour « all ».
 
-13:53:15 Build Finished (took 1s.736ms)
+09:46:04 Build Finished (took 195ms)
 

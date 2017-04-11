@@ -21,6 +21,8 @@ class population {
 	friend class MyNSGA;
 
 public:
+	population();
+	population(int population_size, int n);
 	population(int population_size, Schedule schedule, int n);
 	population(std::vector<chromosome> individuals, int population_size, int n);
 	virtual ~population();
@@ -34,9 +36,20 @@ public:
 
 	void addIndividual(chromosome ch);
 
+	int comp_dom(chromosome p, chromosome q); //Tells if p dominates q_____State: working.
+
+	void update_pareto_information(); //update the pareto info (front rank and crowding distance)
+										//_____State: modified, not tested
+
+	//Get the min and max value for each objective function of the individuals in set
+	std::vector<double> get_min_f(std::vector<chromosome *> set);
+	std::vector<double> get_max_f(std::vector<chromosome *> set);
+
+	std::vector<chromosome *> update_crowding_dist(std::vector<int> front);
+
+
 	int compare_fitness(std::vector<double> f1, std::vector<double> f2);//return true if f1 is better than f2 /*ok*/
-	void update_pareto_information(); //update the pareto info (front rank and crowding distance)/*ok*/
-	void update_crowding_dist(std::vector<chromosome *> front); /* ok *///update the crowding distance of all individuals /*ok*/
+		void update_crowding_dist(std::vector<chromosome *> front); /* ok *///update the crowding distance of all individuals /*ok*/
 	void compute_pareto_fronts(std::vector<int> index); //compute the pareto fronts./*ok*/
 	std::vector<double> compute_ideal();	//compute the ideal objective vector
 	std::vector<double> compute_nadir();	//compute the nadir objective vector

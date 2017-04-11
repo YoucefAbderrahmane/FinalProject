@@ -257,70 +257,70 @@ int Schedule::moonDistConstraintGenerator(double * min_moon_dist){
 	return FAILURE;
 }
 
-int Schedule::observationRequestGenerator(Request * request){
-
-	int isTimeConstrainted = 1;
-	int isHeightConstrainted = 1;
-	int isMoonConstrainted = 1;
-
-	//srand(time(NULL));
-
-	//Target Generation...must be observable
-	Target * target = new Target();
-	targetGenerator(target);
-
-	//randomly generating exposure time
-	int exp_range = MAX_EXPOSURE - MIN_EXPOSURE;
-	int exp_div = RAND_MAX / exp_range;
-	int exposure = MIN_EXPOSURE + rand() / exp_div;
-
-	//time constraint generation
-	time_interval * requested = new time_interval();
-	isTimeConstrainted = timeConstraintGenerator(requested);
-
-	//min height constraint generation
-	double min_height = 0;
-	isHeightConstrainted = heightConstraintGenerator(&min_height);
-
-	//min moon constraint generation
-	double min_moon_dist = MOON_DISK;
-	isMoonConstrainted = moonDistConstraintGenerator(&min_moon_dist);
-
-	//helping variables...
-	double start = requested->start;
-	double duration = requested->end - requested->start;
-
-	//Generating the request's observations
-	for(int i = 1; i <= request->getLength(); i++){
-
-		Observation * obs = new Observation(request, i, *target, (double) exposure, Schedule::conditions);
-		obs->setTimeConst(isTimeConstrainted);
-
-		obs->set_max_height();
-
-		obs->setHeightConst(isHeightConstrainted);
-		if( !isHeightConstrainted )
-			obs->setMinHeight(min_height);
-
-		obs->setMoonConst(isMoonConstrainted);
-		if( !isMoonConstrainted )
-			obs->setMoonMinSeparation(min_moon_dist);
-
-		requested->start = addSecondsToJD(start, (i-1)*(request->getPeriod()));
-		requested->end = requested->start + duration; //in JD
-
-		if( requested->end > conditions->night_horizon.end ){
-
-			request->setLength(i-1);
-			break;
-		}
-
-		obs->setReqTime(*requested);
-		request->addObservation(*obs);
-	}
-
-	return SUCCESS;
-}
+//int Schedule::observationRequestGenerator(Request * request){
+//
+//	int isTimeConstrainted = 1;
+//	int isHeightConstrainted = 1;
+//	int isMoonConstrainted = 1;
+//
+//	//srand(time(NULL));
+//
+//	//Target Generation...must be observable
+//	Target * target = new Target();
+//	targetGenerator(target);
+//
+//	//randomly generating exposure time
+//	int exp_range = MAX_EXPOSURE - MIN_EXPOSURE;
+//	int exp_div = RAND_MAX / exp_range;
+//	int exposure = MIN_EXPOSURE + rand() / exp_div;
+//
+//	//time constraint generation
+//	time_interval * requested = new time_interval();
+//	isTimeConstrainted = timeConstraintGenerator(requested);
+//
+//	//min height constraint generation
+//	double min_height = 0;
+//	isHeightConstrainted = heightConstraintGenerator(&min_height);
+//
+//	//min moon constraint generation
+//	double min_moon_dist = MOON_DISK;
+//	isMoonConstrainted = moonDistConstraintGenerator(&min_moon_dist);
+//
+//	//helping variables...
+//	double start = requested->start;
+//	double duration = requested->end - requested->start;
+//
+//	//Generating the request's observations
+//	for(int i = 1; i <= request->getLength(); i++){
+//
+//		Observation * obs = new Observation(i, *target, (double) exposure);
+//		obs->setTimeConst(isTimeConstrainted);
+//
+//		obs->set_max_height();
+//
+//		obs->setHeightConst(isHeightConstrainted);
+//		if( !isHeightConstrainted )
+//			obs->setMinHeight(min_height);
+//
+//		obs->setMoonConst(isMoonConstrainted);
+//		if( !isMoonConstrainted )
+//			obs->setMoonMinSeparation(min_moon_dist);
+//
+//		requested->start = addSecondsToJD(start, (i-1)*(request->getPeriod()));
+//		requested->end = requested->start + duration; //in JD
+//
+//		if( requested->end > conditions->night_horizon.end ){
+//
+//			request->setLength(i-1);
+//			break;
+//		}
+//
+//		obs->setReqTime(*requested);
+//		request->addObservation(*obs);
+//	}
+//
+//	return SUCCESS;
+//}
 
 int Schedule::singularRequestGenerator(Request * request){
 
@@ -346,7 +346,7 @@ int Schedule::singularRequestGenerator(Request * request){
 
 	//generating observations
 	//...
-	observationRequestGenerator(request);
+	//observationRequestGenerator(request);
 
 	return SUCCESS;
 }
@@ -392,9 +392,9 @@ int Schedule::randomObservationAllocation(){
 	for(int i = 0; i < observations_length; i++){
 
 		selected = (double) rand() / (double) RAND_MAX;
-		if( selected < (observations[i].getRequest()->getPriority()) ){
-
-			observations[i].setTaken(0);
+//		if( selected < (observations[i].getRequest()->getPriority()) ){
+//
+//			observations[i].setTaken(0);
 
 			//allocate a random telescope
 			//...
@@ -402,7 +402,7 @@ int Schedule::randomObservationAllocation(){
 
 			//move on to the next observation
 			//...
-		}
+//		}
 	}
 
 	return SUCCESS;
@@ -412,34 +412,34 @@ int Schedule::randomObservationAllocation(){
 //	return conditions;
 //}
 
-void Schedule::checkObservations() {
-
-	//Use this function to check if observations are generated correctly
-	//This function will become useless when the number of observation is too high
-
-	std::cout << "Number of generated observations : " << Schedule::observations.size() << std::endl;
-	std::cout << "Julian day : " << fixed << Schedule::conditions->JD << std::endl;
-	std::cout << "Observer's position : " << "lat " << Schedule::conditions->observer.lat
-			<< " - lng " << Schedule::conditions->observer.lng << std::endl;
-	std::cout << "Night horizon : " << fixed << Schedule::conditions->night_horizon.start << " - "
-			<< fixed << Schedule::conditions->night_horizon.end <<std::endl;
-
-	for(int i = 0; i < (int) observations.size(); i++){
-
-		std::cout << "Observation " << i << std::endl;
-		std::cout << "Obs req id : " << observations[i].getRequest()->getReqId() << std::endl;
-		std::cout << "Obs id : " << observations[i].getObsId()<< std::endl;
-		std::cout << "Obs priority : " << observations[i].getRequest()->getPriority()<< std::endl;
-		std::cout << "Obs exp time : " << fixed << observations[i].getExposureTime() << std::endl;
-		std::cout << "Obs min h : " << fixed << observations[i].getMinHeight() << std::endl;
-		std::cout << "Obs min moon : " << fixed << observations[i].getMoonMinSeparation() << std::endl;
-		std::cout << "Obs req time : " << fixed << observations[i].getReqTime().start << " - "
-				<< fixed << observations[i].getReqTime().end << std::endl;
-		std::cout << "Obs target : " << "dec " << fixed << observations[i].getTarget().getEqDec() << " - "
-				<< "ra " << fixed << observations[i].getTarget().getEqRAsc() << std::endl;
-		std::cout << endl;
-	}
-}
+//void Schedule::checkObservations() {
+//
+//	//Use this function to check if observations are generated correctly
+//	//This function will become useless when the number of observation is too high
+//
+//	std::cout << "Number of generated observations : " << Schedule::observations.size() << std::endl;
+//	std::cout << "Julian day : " << fixed << Schedule::conditions->JD << std::endl;
+//	std::cout << "Observer's position : " << "lat " << Schedule::conditions->observer.lat
+//			<< " - lng " << Schedule::conditions->observer.lng << std::endl;
+//	std::cout << "Night horizon : " << fixed << Schedule::conditions->night_horizon.start << " - "
+//			<< fixed << Schedule::conditions->night_horizon.end <<std::endl;
+//
+//	for(int i = 0; i < (int) observations.size(); i++){
+//
+//		std::cout << "Observation " << i << std::endl;
+//		std::cout << "Obs req id : " << observations[i].getRequest()->getReqId() << std::endl;
+//		std::cout << "Obs id : " << observations[i].getObsId()<< std::endl;
+//		std::cout << "Obs priority : " << observations[i].getRequest()->getPriority()<< std::endl;
+//		std::cout << "Obs exp time : " << fixed << observations[i].getExposureTime() << std::endl;
+//		std::cout << "Obs min h : " << fixed << observations[i].getMinHeight() << std::endl;
+//		std::cout << "Obs min moon : " << fixed << observations[i].getMoonMinSeparation() << std::endl;
+//		std::cout << "Obs req time : " << fixed << observations[i].getReqTime().start << " - "
+//				<< fixed << observations[i].getReqTime().end << std::endl;
+//		std::cout << "Obs target : " << "dec " << fixed << observations[i].getTarget().getEqDec() << " - "
+//				<< "ra " << fixed << observations[i].getTarget().getEqRAsc() << std::endl;
+//		std::cout << endl;
+//	}
+//}
 
 void Schedule::setConditions(Obs_conditions * conditions) {
 	this->conditions = conditions;

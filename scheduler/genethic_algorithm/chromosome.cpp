@@ -13,22 +13,18 @@
 #include "../utilities/time_calculation.h"
 #include "../Model/Schedule.h"
 
-chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
+chromosome::chromosome() : genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
 		dom_count(), dom_list(), nb_max_t(0) {
 	// TODO Auto-generated constructor stub
 
 	f.resize(PROB_DIM);
 	c.resize(CSTR_DIM);
 	telescopes_alloc.resize(N_TELESCOPE);
-
-	//std::cout << "instantiation succeeded." << std::endl;
 }
 
-chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
+chromosome::chromosome(std::vector<Observation> observations) : genes(), telescopes_alloc(),
 		violation_ratio(0.0), f(), c(),
-		overlap_index(), pareto_rank(), crowding_dist(), dom_count(), dom_list(),conditions(), nb_max_t(0){
-
-	this->observations = observations;
+		overlap_index(), pareto_rank(), crowding_dist(), dom_count(0), dom_list(), nb_max_t(0){
 
 	f.resize(PROB_DIM);
 	c.resize(CSTR_DIM);
@@ -40,17 +36,6 @@ chromosome::chromosome(std::vector<Observation> observations) : observations(), 
 
 		genes.push_back(* new gene(i));
 	}
-//
-//	gene * g;
-//	for(std::vector<Observation>::size_type i = 0; i < observations->size(); i++){
-//
-//		g = new gene();
-//		//g->observation = &observations->at(i);
-//		genes.push_back(*g);
-//
-//		//genes[i] = gene();
-//	}
-
 }
 
 chromosome::~chromosome() {
@@ -67,6 +52,8 @@ void chromosome::compute_obj_func() {
 	f.at(1) = 0.0; //f[1] : Average of altitude merits of all observed targets (maximize)
 	f.at(2) = 0.0; //f[2] : Average of telescope movement during the whole schedule (minimize)
 	f.at(3) = 0.0; //f[3] : number of telescopes used for scheduling (minimize)
+
+	//Obs_conditions * conditions = new Obs_conditions();
 
 	std::vector<double> telescope_dist(N_TELESCOPE, 0.0);
 	//telescope_dist.reserve(N_TELESCOPE);
@@ -99,7 +86,7 @@ void chromosome::compute_obj_func() {
 
 
 		//if the observation is scheduled
-		if( genes.at(i).is_scheduled(observations.at(i)) ){
+		if( genes.at(i).is_scheduled(Obs_conditions::observations.at(i)) ){
 
 			curr_teles = genes.at(i).telescope_used;	//get the telescope id
 			telescopes_alloc.at(curr_teles) = 1;	//mark the telescope as used
@@ -109,10 +96,9 @@ void chromosome::compute_obj_func() {
 
 			//sum altitude merits of all observed targets
 			//f[1] += genes.at(i).observation->altituteMerit();
-			f.at(1) += observations.at(i).altituteMerit();
+			f.at(1) += Obs_conditions::observations.at(i).altituteMerit();
 
 			//computing the distance traveled by each telescope
-
 			if(first.at(curr_teles) == 0){ //if it is the first observation, save it and move on
 
 				first.at(curr_teles) = 1;
@@ -122,14 +108,15 @@ void chromosome::compute_obj_func() {
 				//compute the actual distance traveled
 				pos = new ln_equ_posn();
 				//pos = genes.at(i).observation->getTarget().getEqCord();
-				pos = observations.at(i).getTarget().getEqCord();
+				pos = Obs_conditions::observations.at(i).getTarget().getEqCord();
 				dist = last_teles_obs[curr_teles].getTarget().getAngularDistance(pos);
 				telescope_dist[curr_teles] += dist;
 			}
 
+			Obs_conditions * conditions = new Obs_conditions();
 			//update the last observation visited of the current telescope
-			last_teles_obs.at(curr_teles) = observations.at(i);//* genes.at(i).observation;
-			violation_ratio +=  this->is_in_req_time(i) + this->is_above_min_height(*(Schedule::conditions),i);
+			last_teles_obs.at(curr_teles) = conditions->observations.at(i);//* genes.at(i).observation;
+			violation_ratio +=  this->is_in_req_time(i) + this->is_above_min_height(i);
 		}
 	}
 	violation_ratio /= genes.size();
@@ -235,28 +222,28 @@ double chromosome::get_cst_val(int index) {
 //}
 
 
-void chromosome::checkObservations() {
-
-	//Use this function to check if observations are generated correctly
-	//This function will become useless when the number of observation is too high
-
-	std::cout << "Number of generated observations : " << genes.size() << std::endl;
-
-	for(int i = 0; i < (int) genes.size(); i++){
-
-		std::cout << "Observation " << i << std::endl;
-		std::cout << "Obs req id : " << observations.at(i).getRequest()->getReqId() << std::endl;
-		std::cout << "Obs id : " << observations.at(i).getObsId()<< std::endl;
-		std::cout << "Obs exp time : " << fixed << observations.at(i).getExposureTime() << std::endl;
-		std::cout << "Obs min h : " << fixed << observations.at(i).getMinHeight() << std::endl;
-		std::cout << "Obs min moon : " << fixed << observations.at(i).getMoonMinSeparation() << std::endl;
-		std::cout << "Obs req time : " << fixed << observations.at(i).getReqTime().start << " - "
-				<< fixed << observations.at(i).getReqTime().end << std::endl;
-		std::cout << "Obs target : " << "dec " << fixed << observations.at(i).getTarget().getEqDec() << " - "
-				<< "ra " << fixed << observations.at(i).getTarget().getEqRAsc() << std::endl;
-		std::cout << endl;
-	}
-}
+//void chromosome::checkObservations() {
+//
+//	//Use this function to check if observations are generated correctly
+//	//This function will become useless when the number of observation is too high
+//
+//	std::cout << "Number of generated observations : " << genes.size() << std::endl;
+//
+//	for(int i = 0; i < (int) genes.size(); i++){
+//
+//		std::cout << "Observation " << i << std::endl;
+//		std::cout << "Obs req id : " << observations.at(i).getRequest()->getReqId() << std::endl;
+//		std::cout << "Obs id : " << observations.at(i).getObsId()<< std::endl;
+//		std::cout << "Obs exp time : " << fixed << observations.at(i).getExposureTime() << std::endl;
+//		std::cout << "Obs min h : " << fixed << observations.at(i).getMinHeight() << std::endl;
+//		std::cout << "Obs min moon : " << fixed << observations.at(i).getMoonMinSeparation() << std::endl;
+//		std::cout << "Obs req time : " << fixed << observations.at(i).getReqTime().start << " - "
+//				<< fixed << observations.at(i).getReqTime().end << std::endl;
+//		std::cout << "Obs target : " << "dec " << fixed << observations.at(i).getTarget().getEqDec() << " - "
+//				<< "ra " << fixed << observations.at(i).getTarget().getEqRAsc() << std::endl;
+//		std::cout << endl;
+//	}
+//}
 
 void chromosome::clearDomList() {
 	dom_list.clear();
@@ -275,18 +262,18 @@ double chromosome::getDomListOf(int index)
 }
 void chromosome::updateViolationRatio()
 {
-	int size = this->observations.size();
+	int size = Obs_conditions::observations.size();
 	violation_ratio = 0.0;
 	for(int i = 0; i < size; i++)
 	{
 		/*int isAboveMinHeight(double JD);
 	int isAwayFromMoon(double JD);
 	int isInReqTime();*/
-		violation_ratio += this->observations[i].isAboveMinHeight(this->genes[i].start_date);
+		violation_ratio += Obs_conditions::observations[i].isAboveMinHeight(this->genes[i].start_date);
 		//std::cout<< "details of violation "<< violation_ratio<< std::endl;
-		violation_ratio += this->observations[i].isAwayFromMoon(this->genes[i].start_date);
+		violation_ratio += Obs_conditions::observations[i].isAwayFromMoon(this->genes[i].start_date);
 		//std::cout<< "details of violation "<< violation_ratio<< std::endl;
-		violation_ratio +=  this->observations[i].isInReqTime();
+		violation_ratio +=  Obs_conditions::observations[i].isInReqTime();
 		//std::cout<< "observation "<< i << " valeur de violation = "<< violation_ratio<< std::endl;
 	}
 	this->violation_ratio /= size;
@@ -300,33 +287,35 @@ gene chromosome::getGene(int index)
 
 
 
-int chromosome::is_above_min_height(Obs_conditions conditions, int index) {
+int chromosome::is_above_min_height(int index) {
 
 	//get height of object
 
-	if( observations.at(index).isHeightConst() ){
+	if( Obs_conditions::observations.at(index).isHeightConst() ){
 
 	struct ln_equ_posn eq_coord;
 	struct ln_hrz_posn horiz_coord;
 
-	eq_coord.dec = observations.at(index).target.getEqDec();
-	eq_coord.ra = observations.at(index).target.getEqRAsc();
+	eq_coord.dec = Obs_conditions::observations.at(index).target.getEqDec();
+	eq_coord.ra = Obs_conditions::observations.at(index).target.getEqRAsc();
 
-	ln_get_hrz_from_equ(&eq_coord, conditions.getObserverPtr(), genes.at(index).start_date, &horiz_coord);
+	ln_get_hrz_from_equ(&eq_coord, Obs_conditions::getObserverPtr(), genes.at(index).start_date, &horiz_coord);
 
-	if( horiz_coord.alt >= observations.at(index).getMinHeight() ) return SUCCESS;
+	if( horiz_coord.alt >= Obs_conditions::observations.at(index).getMinHeight() ) return SUCCESS;
 	else return FAILURE;
 
 	}
 	else return SUCCESS;
 }
 
-int chromosome::is_away_moon(Obs_conditions conditions, int index) {
+int chromosome::is_away_moon(int index) {
 
-	if( observations.at(index).isMoonConst()){
-		double dist = observations.at(index).getTarget().getMoonAngularDistance(genes.at(index).start_date);
+	Obs_conditions * conditions = new Obs_conditions();
 
-		if( dist > observations.at(index).getMoonMinSeparation() ) return SUCCESS; //good
+	if( Obs_conditions::observations.at(index).isMoonConst()){
+		double dist = conditions->observations.at(index).getTarget().getMoonAngularDistance(genes.at(index).start_date);
+
+		if( dist > conditions->observations.at(index).getMoonMinSeparation() ) return SUCCESS; //good
 		else return FAILURE; //bad
 	}
 	else return SUCCESS;
@@ -334,9 +323,11 @@ int chromosome::is_away_moon(Obs_conditions conditions, int index) {
 
 int chromosome::is_in_req_time(int index) {
 
-	if( observations.at(index).isTimeConst() ){
+	Obs_conditions * conditions = new Obs_conditions();
 
-		time_interval requested = observations.at(index).getReqTime();
+	if( conditions->observations.at(index).isTimeConst() ){
+
+		time_interval requested = conditions->observations.at(index).getReqTime();
 
 		if( genes.at(index).start_date >= requested.start
 				&& genes.at(index).start_date <= requested.end )
@@ -358,12 +349,12 @@ int chromosome::is_close_to_meridien(int index) {
 	return 0;
 }
 
-void chromosome::ratio_violated_const(Obs_conditions conditions) {
+void chromosome::ratio_violated_const() {
 
 	double sum = 0.0;
 	for(int i = 0;  i < (int) genes.size(); i++){
 
-		sum +=  is_above_min_height(conditions, i) +
+		sum +=  is_above_min_height(i) +
 				// is_away_moon(conditions, i) +
 				 is_in_req_time(i);
 	}
@@ -374,16 +365,10 @@ void chromosome::ratio_violated_const(Obs_conditions conditions) {
 double chromosome::get_duration() {
 
 	double total = 0.0;
+	for(int i = 0; (int) i < genes.size(); i++){
 
-
-		for(int i = 0; (int) i < genes.size(); i++){
-
-			if( genes.at(i).getIsSched() ) total += genes.at(i).duration;
-		}
-
-		double dur = total/f.at(3);
-		//std::cout << f.at(3)<< " value " << fixed << dur << std::endl;
-
+		if( genes.at(i).getIsSched() ) total += genes.at(i).duration;
+	}
 
 	return total*1000 / f.at(3);
 }

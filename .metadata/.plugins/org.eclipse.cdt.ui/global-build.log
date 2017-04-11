@@ -1,249 +1,77 @@
-12:38:56 **** Incremental Build of configuration Debug for project scheduler ****
+
+Invoking autoreconf in build directory: /home/pfe/dev/Graduation_project/scheduler/Default
+
+sh -c "autoreconf -i" 
+autoreconf: 'configure.ac' or 'configure.in' is required
+
+Configuration failed with error
+Build stopped
+()09:41:32 **** Incremental Build of configuration Default for project scheduler ****
 make all 
 make: Rien à faire pour « all ».
-12:40:52 **** Incremental Build of configuration Debug for project scheduler ****
+
+Invoking autoreconf in build directory: /home/pfe/dev/Graduation_project/scheduler/Default
+
+sh -c "autoreconf -i" 
+autoreconf: 'configure.ac' or 'configure.in' is required
+
+Configuration failed with error
+Build stopped
+()09:45:45 **** Incremental Build of configuration Default for project scheduler ****
 make all 
 Building file: ../genethic_algorithm/population.cpp
 Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/Telescope.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova -lpthread
-Finished building target: scheduler
- 
-12:42:01 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-../src/scheduler.cpp: In function ‘void* Inter(void*)’:
-../src/scheduler.cpp:82:9: warning: unused variable ‘interruption’ [-Wunused-variable]
-  double interruption = (double) rand()/RAND_MAX;
-         ^
-../src/scheduler.cpp:96:8: warning: unused variable ‘sizei’ [-Wunused-variable]
-    int sizei = (int) individuals->size();
-        ^
-../src/scheduler.cpp:114:9: warning: variable ‘rc’ set but not used [-Wunused-but-set-variable]
-     int rc=0;
-         ^
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/Telescope.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova -lpthread
-Finished building target: scheduler
- 
-13:28:52 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-../src/scheduler.cpp: In function ‘void* Inter(void*)’:
-../src/scheduler.cpp:82:9: warning: unused variable ‘interruption’ [-Wunused-variable]
-  double interruption = (double) rand()/RAND_MAX;
-         ^
-../src/scheduler.cpp:96:8: warning: unused variable ‘sizei’ [-Wunused-variable]
-    int sizei = (int) individuals->size();
-        ^
-../src/scheduler.cpp:114:9: warning: variable ‘rc’ set but not used [-Wunused-but-set-variable]
-     int rc=0;
-         ^
-Finished building: ../src/scheduler.cpp
- 
-Building file: ../genethic_algorithm/MyNSGA.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
-Finished building: ../genethic_algorithm/MyNSGA.cpp
- 
-Building file: ../genethic_algorithm/Telescope.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/Telescope.d" -MT"genethic_algorithm/Telescope.o" -o "genethic_algorithm/Telescope.o" "../genethic_algorithm/Telescope.cpp"
-../genethic_algorithm/Telescope.cpp: In member function ‘void Telescope::executeSchedule()’:
-../genethic_algorithm/Telescope.cpp:26:9: warning: unused variable ‘t’ [-Wunused-variable]
-  time_t t;
-         ^
-Finished building: ../genethic_algorithm/Telescope.cpp
- 
-Building file: ../genethic_algorithm/chromosome.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/chromosome.d" -MT"genethic_algorithm/chromosome.o" -o "genethic_algorithm/chromosome.o" "../genethic_algorithm/chromosome.cpp"
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome()’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:149:19: warning: ‘chromosome::dom_list’ will be initialized after [-Wreorder]
-  std::vector<int> dom_list; //list of dominated individuals
+g++ -D__GXX_EXPERIMENTAL_CXX_0X__ -D_GLIBCXX_USE_C99 -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
+../genethic_algorithm/population.cpp: In member function ‘void population::update_pareto_information()’:
+../genethic_algorithm/population.cpp:595:18: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for(int i=0; i < individuals.size(); i++){
+                  ^
+../genethic_algorithm/population.cpp:605:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+    for(int j=0; j < individuals.size(); j++){
                    ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome(std::vector<Observation>)’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:151:17: warning: ‘chromosome::conditions’ will be initialized after [-Wreorder]
-  Obs_conditions conditions;
-                 ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-../genethic_algorithm/chromosome.cpp: In member function ‘double chromosome::get_duration()’:
-../genethic_algorithm/chromosome.cpp:379:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0; (int) i < genes.size(); i++){
-                                       ^
-../genethic_algorithm/chromosome.cpp:384:10: warning: unused variable ‘dur’ [-Wunused-variable]
-   double dur = total/f.at(3);
-          ^
-Finished building: ../genethic_algorithm/chromosome.cpp
- 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
-Finished building: ../genethic_algorithm/population.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/Telescope.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova -lpthread
-Finished building target: scheduler
- 
-13:37:12 **** Incremental Build of configuration Debug for project scheduler ****
-make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-../src/scheduler.cpp: In function ‘void* Inter(void*)’:
-../src/scheduler.cpp:82:9: warning: unused variable ‘interruption’ [-Wunused-variable]
-  double interruption = (double) rand()/RAND_MAX;
-         ^
-../src/scheduler.cpp:96:8: warning: unused variable ‘sizei’ [-Wunused-variable]
-    int sizei = (int) individuals->size();
-        ^
-../src/scheduler.cpp:114:9: warning: variable ‘rc’ set but not used [-Wunused-but-set-variable]
-     int rc=0;
-         ^
-Finished building: ../src/scheduler.cpp
- 
-Building file: ../genethic_algorithm/MyNSGA.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/MyNSGA.d" -MT"genethic_algorithm/MyNSGA.o" -o "genethic_algorithm/MyNSGA.o" "../genethic_algorithm/MyNSGA.cpp"
-Finished building: ../genethic_algorithm/MyNSGA.cpp
- 
-Building file: ../genethic_algorithm/Telescope.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/Telescope.d" -MT"genethic_algorithm/Telescope.o" -o "genethic_algorithm/Telescope.o" "../genethic_algorithm/Telescope.cpp"
-../genethic_algorithm/Telescope.cpp: In member function ‘void Telescope::executeSchedule()’:
-../genethic_algorithm/Telescope.cpp:26:9: warning: unused variable ‘t’ [-Wunused-variable]
-  time_t t;
-         ^
-Finished building: ../genethic_algorithm/Telescope.cpp
- 
-Building file: ../genethic_algorithm/chromosome.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/chromosome.d" -MT"genethic_algorithm/chromosome.o" -o "genethic_algorithm/chromosome.o" "../genethic_algorithm/chromosome.cpp"
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome()’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
-                      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:149:19: warning: ‘chromosome::dom_list’ will be initialized after [-Wreorder]
-  std::vector<int> dom_list; //list of dominated individuals
+../genethic_algorithm/population.cpp:635:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+    for(int j=0; j < fronts.at(i).size(); j++){
                    ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:16:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome() : observations(), genes(), telescopes_alloc(), violation_ratio(0), f(), c(), overlap_index(), pareto_rank(), crowding_dist(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h: In constructor ‘chromosome::chromosome(std::vector<Observation>)’:
-../genethic_algorithm/chromosome.h:150:9: warning: ‘chromosome::violation_ratio’ will be initialized after [-Wreorder]
-  double violation_ratio;
-         ^
-../genethic_algorithm/chromosome.h:141:22: warning:   ‘std::vector<double> chromosome::f’ [-Wreorder]
-  std::vector<double> f; //objective functions vector
+../genethic_algorithm/population.cpp:639:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for(int k = 0; k < individuals.at(p).dom_list.size(); k++ ){
                       ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-In file included from ../genethic_algorithm/chromosome.cpp:8:0:
-../genethic_algorithm/chromosome.h:151:17: warning: ‘chromosome::conditions’ will be initialized after [-Wreorder]
-  Obs_conditions conditions;
-                 ^
-../genethic_algorithm/chromosome.h:139:6: warning:   ‘int chromosome::nb_max_t’ [-Wreorder]
-  int nb_max_t; // number max of the telescopes allocated
-      ^
-../genethic_algorithm/chromosome.cpp:27:1: warning:   when initialized here [-Wreorder]
- chromosome::chromosome(std::vector<Observation> observations) : observations(), genes(), telescopes_alloc(),
- ^
-../genethic_algorithm/chromosome.cpp: In member function ‘double chromosome::get_duration()’:
-../genethic_algorithm/chromosome.cpp:379:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0; (int) i < genes.size(); i++){
-                                       ^
-../genethic_algorithm/chromosome.cpp:384:10: warning: unused variable ‘dur’ [-Wunused-variable]
-   double dur = total/f.at(3);
-          ^
-Finished building: ../genethic_algorithm/chromosome.cpp
- 
-Building file: ../genethic_algorithm/population.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"genethic_algorithm/population.d" -MT"genethic_algorithm/population.o" -o "genethic_algorithm/population.o" "../genethic_algorithm/population.cpp"
 Finished building: ../genethic_algorithm/population.cpp
  
 Building target: scheduler
 Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/Telescope.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova -lpthread
+g++ -L/usr/local/lib -pthread -o "scheduler"  ./utilities/read.o ./utilities/time_calculation.o  ./src/scheduler.o  ./simple/obssimple.o ./simple/simplegene.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/Telescope.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova
 Finished building target: scheduler
  
-13:53:14 **** Incremental Build of configuration Debug for project scheduler ****
+
+Invoking autoreconf in build directory: /home/pfe/dev/Graduation_project/scheduler/Default
+
+sh -c "autoreconf -i" 
+autoreconf: 'configure.ac' or 'configure.in' is required
+
+Configuration failed with error
+Build stopped
+()09:45:50 **** Incremental Build of configuration Default for project scheduler ****
 make all 
-Building file: ../src/scheduler.cpp
-Invoking: GCC C++ Compiler
-g++ -I/home/pfe/dev/libraries/libnova-0.15.0/src -Ipthread -I/home/pfe/dev/Cpp/Libraries/pagmo/src -I/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova -I/home/pfe/dev/Graduation_project/scheduler/Model -include/home/pfe/dev/Cpp/Libraries/libnova-0.15.0/src/libnova/libnova.h -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/scheduler.d" -MT"src/scheduler.o" -o "src/scheduler.o" "../src/scheduler.cpp"
-../src/scheduler.cpp: In function ‘void* Inter(void*)’:
-../src/scheduler.cpp:82:9: warning: unused variable ‘interruption’ [-Wunused-variable]
-  double interruption = (double) rand()/RAND_MAX;
-         ^
-../src/scheduler.cpp:96:8: warning: unused variable ‘sizei’ [-Wunused-variable]
-    int sizei = (int) individuals->size();
-        ^
-../src/scheduler.cpp:116:9: warning: variable ‘rc’ set but not used [-Wunused-but-set-variable]
-     int rc=0;
-         ^
-Finished building: ../src/scheduler.cpp
- 
-Building target: scheduler
-Invoking: GCC C++ Linker
-g++ -L/use/local/lib -o "scheduler"  ./utilities/time_calculation.o  ./src/scheduler.o  ./genethic_algorithm/MyNSGA.o ./genethic_algorithm/Stats.o ./genethic_algorithm/Telescope.o ./genethic_algorithm/chromosome.o ./genethic_algorithm/gene.o ./genethic_algorithm/population.o  ./Model/Obsconditions.o ./Model/Observation.o ./Model/Request.o ./Model/Schedule.o ./Model/Target.o ./Model/observer.o   -lnova -lpthread
-Finished building target: scheduler
- 
+make: Rien à faire pour « all ».
+
+Invoking autoreconf in build directory: /home/pfe/dev/Graduation_project/scheduler/Default
+
+sh -c "autoreconf -i" 
+autoreconf: 'configure.ac' or 'configure.in' is required
+
+Configuration failed with error
+Build stopped
+()09:46:03 **** Incremental Build of configuration Default for project scheduler ****
+make all 
+make: Rien à faire pour « all ».
+
+Invoking autoreconf in build directory: /home/pfe/dev/Graduation_project/scheduler/Default
+
+sh -c "autoreconf -i" 
+autoreconf: 'configure.ac' or 'configure.in' is required
+
+Configuration failed with error
+Build stopped
+()09:46:04 **** Incremental Build of configuration Default for project scheduler ****
+make all 
+make: Rien à faire pour « all ».

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;scheduler/cpp_node_conn&apos;" deleteContents="false" description="Delete resource &apos;scheduler/cpp_node_conn&apos;" element1="/scheduler/cpp_node_conn" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1471805653580"/>
-</session>

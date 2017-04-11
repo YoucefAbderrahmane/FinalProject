@@ -8,7 +8,9 @@
 #ifndef OBSCONDITIONS_H_
 #define OBSCONDITIONS_H_
 
-#include <libnova/ln_types.h>
+#include <libnova/libnova.h>
+#include <vector>
+#include "Observation.h"
 #include "config.h"
 
 //#include "../genethic_algo/aures.h"
@@ -27,26 +29,26 @@ public:
 	void setObserverFromConfig();
 
 	int calculateNightHorizon();
-	double getJd();
-	void setJd(double jd);
-	time_interval getNightHorizon();
-	void setNightHorizon(time_interval nightHorizon);
-	ln_lnlat_posn getObserver();
-	ln_lnlat_posn * getObserverPtr();
-	void setObserver(ln_lnlat_posn observer);
-	int getAllSet();
-	void setAllSet(int allSet);
-	double getHorizon();
-	void setHorizon(double horizon);
+//	double getJd();
+//	void setJd(double jd);
+//	time_interval getNightHorizon();
+//	void setNightHorizon(time_interval nightHorizon);
+	static ln_lnlat_posn getObserver();
+	static ln_lnlat_posn * getObserverPtr();
+//	void setObserver(ln_lnlat_posn observer);
+//	int getAllSet();
+//	void setAllSet(int allSet);
+//	double getHorizon();
+//	void setHorizon(double horizon);
 
-	double night_duration_in_ms ();
+	static double night_duration_in_ms();
 
-private:
-	ln_lnlat_posn observer; //position of the observer
-	time_interval night_horizon; //the scheduling night horizon
-	double JD;	//date of the schedule
-	double horizon;
-	int allSet; //equal to 0 when all conditions are set correctly
+	static ln_lnlat_posn observer; //position of the observer
+	static time_interval night_horizon; //the scheduling night horizon
+	static double JD;	//date of the schedule
+	static double horizon;
+	static std::vector<Observation> observations;
+	static int allSet; //equal to 0 when all conditions are set correctly
 };
 
 #endif /* OBSCONDITIONS_H_ */

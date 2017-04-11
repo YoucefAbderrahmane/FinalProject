@@ -18,23 +18,23 @@
 #include "Schedule.h"
 
 
+//Observation::Observation() : request(),
+//								obs_id(), target(), exposure_time(), moon_min_separation(), req_time(),
+//								sched_time(), end_time(), min_height(), max_height(), telescope(), taken(), constraints(),
+//								conditions(){
+//
+//}
 
-Observation::Observation() : request(),
-								obs_id(), target(), exposure_time(), moon_min_separation(), req_time(),
-								sched_time(), end_time(), min_height(), max_height(), telescope(), taken(), constraints(),
-								conditions(){
+Observation::Observation() : 	obs_id(), target(), exposure_time(), req_time(){
 
 }
 
 
-Observation::Observation(Request * request, 
-	int obs_id, Target target, double exposure_time, Obs_conditions * conditions) : request(request),
-			obs_id(obs_id), target(target), exposure_time(exposure_time), sched_time(), min_height(),
-			max_height(), moon_min_separation(MOON_DISK), telescope(), taken(), end_time(), conditions(conditions){
+Observation::Observation(int obs_id, Target target, double exposure_time) :
+		obs_id(obs_id), target(), exposure_time(exposure_time), req_time() {
 
 	this->target = target;
-	this->request = request;
-	this->conditions = conditions;
+	Obs_conditions * conditions = new Obs_conditions();
 	target.get_rise_set_transit(conditions->JD, conditions->horizon, &conditions->observer);
 }
 
@@ -52,27 +52,7 @@ void Observation::setExposureTime(int exposureTime) {
 	exposure_time = exposureTime;
 }
 
-double Observation::getMinHeight() const {
-	return min_height;
-}
 
-void Observation::setMinHeight(double minHeight) {
-
-		double range = max_height - 0.0;
-		double div = RAND_MAX / range;
-		min_height = rand() / div;
-
-//		int i = (max_height > min_height);
-//		std::cout << i << std::endl;
-}
-
-double Observation::getMoonMinSeparation() const {
-	return moon_min_separation;
-}
-
-void Observation::setMoonMinSeparation(double moonMinSeparation) {
-	if( moonMinSeparation > MOON_DISK ) moon_min_separation = moonMinSeparation;
-}
 
 int Observation::getObsId() const {
 	return obs_id;
@@ -158,6 +138,8 @@ int Observation::calculateVisibilityHorizon(double horizon, std::vector<struct t
 	struct time_interval unvis;
 
 	int circumpolar;
+
+	Obs_conditions * conditions = new Obs_conditions();
 
 	/** GET night horizon **/
 
@@ -246,7 +228,7 @@ int Observation::isAboveMinHeight(double JD) {
 	eq_coord.dec = target.getEqDec();
 	eq_coord.ra = target.getEqRAsc();
 
-	ln_get_hrz_from_equ(&eq_coord, &conditions->observer, JD, &horiz_coord);
+	ln_get_hrz_from_equ(&eq_coord, &Obs_conditions::observer, JD, &horiz_coord);
 
 	if( horiz_coord.alt >= getMinHeight() ) return SUCCESS;
 	else return FAILURE;
@@ -278,7 +260,7 @@ int Observation::isInReqTime() {
 	else return FAILURE; //bad
 }
 
-double Observation::calculateEndTime() {
+/*double Observation::calculateEndTime() {
 
 	//convert start time from JD to date
 	time_t * d = new time_t();
@@ -296,7 +278,7 @@ double Observation::calculateEndTime() {
 
 	//return the equivalent julian day
 	return ln_get_julian_from_timet (&new_d);
-}
+}*/
 
 
 double Observation::altituteMerit(){
@@ -328,22 +310,10 @@ double Observation::altituteMerit(){
 	if (height < H_min) return 0.0;
 
 	double v = (double) (height - H_min) / (max_height - H_min);
-	//std::cout << "v " << v << std::endl;
 	return v;
-
-//		//get the transit heinght of the target
-//		double transit_jd = target.getRiseSetTransit().transit;
-//		ln_get_hrz_from_equ (target.getEqCord(),
-//						& conditions->observer,
-//						transit_jd,
-//						position);
-//		double H_t = abs(position->alt);
-
-		//calculate the altitude merit
-
 }
 
-
+/*
 double Observation::altituteMerit2(){
 
 	//minimal altitude of an object attained during 24 hours
@@ -355,7 +325,7 @@ double Observation::altituteMerit2(){
 	//
 
 	return 0.0;
-}
+}*/
 
 
 int Observation::isOptimalHeight(double JD) {
@@ -368,13 +338,13 @@ int Observation::isOptimalHeight(double JD) {
 	return FAILURE;
 }
 
-Request* Observation::getRequest() const {
+/*Request* Observation::getRequest() const {
 	return request;
 }
 
 void Observation::setRequest(Request* request) {
 	this->request = request;
-}
+}*/
 
 double Observation::getSchedTime() const {
 	return sched_time;
@@ -392,7 +362,7 @@ void Observation::setEndTime(double endTime) {
 	end_time = endTime;
 }
 
-Obs_conditions* Observation::getConditions() const {
+/*Obs_conditions* Observation::getConditions() const {
 	return conditions;
 }
 
@@ -415,4 +385,35 @@ void Observation::set_max_height(){
 			//std::cout << fixed << transit_jd << std::endl;
 
 			max_height = abs(position->alt);
+}*/
+
+
+double Observation::getMinHeight() const {
+	return min_height;
+}
+
+void Observation::setMinHeight(double minHeight) {
+
+		double range = max_height - 0.0;
+		double div = RAND_MAX / range;
+		min_height = rand() / div;
+
+//		int i = (max_height > min_height);
+//		std::cout << i << std::endl;
+}
+
+double Observation::getMoonMinSeparation() const {
+	return moon_min_separation;
+}
+
+void Observation::setMoonMinSeparation(double moonMinSeparation) {
+	if( moonMinSeparation > MOON_DISK ) moon_min_separation = moonMinSeparation;
+}
+
+int Observation::getPriority() {
+	return priority;
+}
+
+void Observation::setPriority(int priority) {
+	this->priority = priority;
 }

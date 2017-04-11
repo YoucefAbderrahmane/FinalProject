@@ -23,6 +23,7 @@ public:
 	chromosome tournamentSelection(int individu1, int individu2, population p);
 	void mutation(chromosome *c, chromosome *cr, population p);
 	void crossover(chromosome *enf1, chromosome *enf2, chromosome p1, chromosome p2);
+	population * make_offspring(population * p);
 	void nsga2(population *p);
 	//chromosome tournamentSelection(int individu1, int individu2, population p);
 
